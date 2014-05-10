@@ -1,9 +1,9 @@
 [user]
-	email = kylejkneitinger@gmail.com
-	name = Kyle Kneitinger
+    email = kylejkneitinger@gmail.com
+    name = Kyle Kneitinger
 
 [color]
-	ui = true
+    ui = true
 
 [core]
     editor = vim
