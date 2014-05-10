@@ -1,0 +1,1 @@
+xautolock -time 5 -locker "sudo pm-suspend" -detectsleep &
