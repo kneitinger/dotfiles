@@ -1,16 +1,17 @@
 " .vimrc
-" See: http://vimdoc.sourceforge.net/htmldoc/options.html for details
-
-" For multi-byte character support (CJK support, for example):
-"set fileencodings=ucs-bom,utf-8,cp936,big5,euc-jp,euc-kr,gb18030,latin1
-
-" inoremap <Up> <nop>
-" inoremap <Down> <nop>
-" inoremap <Left> <nop>
-" inoremap <Right> <nop>
-
-set nocompatible    " be iMproved
+"
+" Make vim more featured
+set nocompatible
 let g:OS = 'linux'
+
+
+set t_Co=256
+set encoding=utf-8
+set background=dark 
+syntax on
+
+filetype off        " required
+
 let mapleader = ','
 " Remove trailing whitespace
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
@@ -86,25 +87,21 @@ set textwidth=80    " Maximum width of text that is being inserted. A longer
 
 set ruler           " Show the line and column number of the cursor position,
                     " separated by a comma.
-set encoding=utf-8
-set background=dark " When set to "dark", Vim will try to use colors that look
-                    " good on a dark background. When set to "light", Vim will
-                    " try to use colors that look good on a light background.
-                    " Any other value is illegal.
-
 set mouse=a         " Enable the use of the mouse.
 
-filetype off        " required
-
-filetype plugin indent on
-syntax on
-
-call pathogen#infect()
-
-set t_Co=256        " 256 color mode
-
-set noshowmode      " Do not show current mode, airline already does
-set laststatus=2    " airline is always visible
+" Airline.vim
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme="bubblegum"
+set noshowmode      " Do not show current mode, airline already does
+set laststatus=2    " airline is always visible
+
+" Syntastic.vim
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+
+
+call pathogen#infect()
+
+filetype plugin indent on
+
