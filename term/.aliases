@@ -1,0 +1,7 @@
+# Overwritten commands
+alias tmux="tmux -2"
+alias df="df -h"
+
+" Shortcuts
+alias xlt="xautolock -toggle"
+alias gcm="git commit -m"
