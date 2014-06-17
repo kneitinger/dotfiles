@@ -1,0 +1,23 @@
+# Desktop
+Host 192.168.1.53
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_tesseract
+  CheckHostIP yes
+  Port 22
+# Laptop
+Host 192.168.1.54
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_fuzzy
+  CheckHostIP yes
+  Port 22
+#Raspberry Pi
+Host 192.168.1.55
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_raspi
+  CheckHostIP yes
+  Port 22
+Host github.com
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_rsa_github
+ControlMaster auto
+ControlPath /tmp/%r@%h:%p
