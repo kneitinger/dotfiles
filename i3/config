@@ -28,6 +28,11 @@ bindsym $mod+d exec dmenu_run
 # For only desktop applications comment the above line and uncomment the next
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# Map volume keys to amixer functionsudio Control
+bindsym XF86AudioRaiseVolume exec amixer sset Master 3%+
+bindsym XF86AudioLowerVolume exec amixer sset Master 3%-
+bindsym XF86AudioMute exec amixer sset Master toggle
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
