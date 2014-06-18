@@ -133,6 +133,15 @@ bar {
         position top
         mode dock
         modifier Mod1
+        colors {
+                background #333333
+                statusline #a6adf9
+                separator #bbbbbb
+
+                # Property         border  backgr  text
+                focused_workspace  #202963 #767db9 #ffffff
+                inactive_workspace #333333 #222222 #888888
+        }
 }
 # Toggle i3 bar
 bindsym $mod+b bar mode toggle
