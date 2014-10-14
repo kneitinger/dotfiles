@@ -14,10 +14,15 @@ font pango:Inconsolata for Powerline, Icons 9
 floating_modifier $mod
 
 # Workspace definitions
-set $ws1 "1: term"     # Computer monitor icon
-set $ws2 "2: web"      # Globe icon
-set $ws3 "3: docs"     # Page with folded corner icon
-set $ws4 "4: media"    # Film frame icon
+
+# Workspace 1: terminal with computer monitor icon
+set $ws1 "1: term"
+# Workspace 2: internet with globe icon
+set $ws2 "2: web"
+# Workspace 3: documents with folded corner page icon
+set $ws3 "3: docs"
+# Workspace 4: media with film frmae icon
+set $ws4 "4: media"
 
 # Application Launchers
 bindsym $mod+Return exec i3-sensible-terminal
