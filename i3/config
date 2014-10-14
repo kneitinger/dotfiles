@@ -14,10 +14,10 @@ font pango:Inconsolata for Powerline, Icons 9
 floating_modifier $mod
 
 # Workspace definitions
-set $ws1 "1: term"
-set $ws2 "2: web"
-set $ws3 "3: docs"
-set $ws4 "4: media"
+set $ws1 "1: term"     # Computer monitor icon
+set $ws2 "2: web"      # Globe icon
+set $ws3 "3: docs"     # Page with folded corner icon
+set $ws4 "4: media"    # Film frame icon
 
 # Application Launchers
 bindsym $mod+Return exec i3-sensible-terminal
@@ -81,13 +81,11 @@ bindsym $mod+Shift+grave move scratchpad
 bindsym $mod+grave scratchpad show
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -103,7 +101,6 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
-
 # Enable double pressing of workspace binding to return to previous space
 workspace_auto_back_and_forth yes
 
@@ -138,6 +135,11 @@ mode $bookmenu {
     bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf; mode "default"
     bindsym l exec evince /home/leaf/Skoo/logic.pdf; mode "default"
     bindsym c exec evince /home/leaf/Skoo/calculus.pdf; mode "default"
+    # Same as above but doesn't exit book mode. Useful for opening many books
+    bindsym Shift+p exec evince /home/leaf/Skoo/physics.pdf;
+    bindsym Shift+a exec evince /home/leaf/Skoo/physics_answers.pdf;
+    bindsym Shift+l exec evince /home/leaf/Skoo/logic.pdf;
+    bindsym Shift+c exec evince /home/leaf/Skoo/calculus.pdf;
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -159,7 +161,7 @@ mode $sysmenu {
 
 # Colorscheme definitions
 set $fg #1793b1
-set $fgStat #37b3d1
+set $fgStat #37b3f1
 set $bg #333333
 set $fgP #0b4866
 
@@ -171,7 +173,9 @@ bar {
     # status_command i3status --config ~/.i3/status.conf
     position top
     mode dock
+    # Don't show #s on workspace labels. Looks pleasant & retains functionality
     strip_workspace_numbers yes
+    # Holding <Alt> displays the dock if it is hidden with $mod+b
     modifier Mod1
     colors {
         background $bg
