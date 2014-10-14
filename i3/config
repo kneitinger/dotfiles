@@ -134,10 +134,10 @@ mode $resizemenu {
 set $bookmenu "books: [p]hysics/[a]nswers [l]ogic [c]alculus"
 bindsym $mod+Shift+b mode $bookmenu
 mode $bookmenu {
-    bindsym p exec evince /home/leaf/Skoo/physics.pdf
-    bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf
-    bindsym l exec evince /home/leaf/Skoo/logic.pdf
-    bindsym c exec evince /home/leaf/Skoo/calculus.pdf
+    bindsym p exec evince /home/leaf/Skoo/physics.pdf; mode "default"t stat
+    bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf; mode "default"
+    bindsym l exec evince /home/leaf/Skoo/logic.pdf; mode "default"
+    bindsym c exec evince /home/leaf/Skoo/calculus.pdf; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -150,7 +150,7 @@ mode $sysmenu {
     bindsym r restart
     bindsym b exec systemctl rebooot
     bindsym p exec systemctl shutdown
-    bindsym e exec i3-sensible-terminal -e vim .i3/config
+    bindsym e exec i3-sensible-terminal -e vim .i3/config; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
