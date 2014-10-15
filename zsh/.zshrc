@@ -7,7 +7,8 @@ bindkey -M menuselect 'j' vi-down-line-or-history # bottom
 ## aliases ##
 
 alias tmux='tmux -2'
-alias xlt='xautolock -toggle && echo "Yay! You did it!"'
+alias todo='vim ~/todo'
+alias xlt='xautolock -toggle'
 alias -g '...'='../..'
 alias -g '....'='../../..'
 alias -g BG='& exit'
