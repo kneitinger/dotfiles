@@ -60,7 +60,15 @@ status.register("wireless",
 #    path="/",
 #    format="{used}/{total}G [{avail}G]",)
 
+status.register("shell",
+        command="echo  updates: $(( $(checkupdates | wc -l) + $(cower -u | wc -l) ))",
+        interval=600)
+
 status.register("cpu_usage",
         format="{usage}% cpu",)
+
+status.register("shell",
+        command="xprop -id $(xdotool getactivewindow) | grep 'WM_NAME(STRING)' | cut -d'\"' -f2",
+        interval=1)
 
 status.run()
