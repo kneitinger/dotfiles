@@ -78,7 +78,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # Toggle i3 bar
-bindsym $mod+b bar mode toggle
+bindsym $mod++Shift+b bar mode toggle
 
 # Send to scratchpad
 bindsym $mod+Shift+grave move scratchpad
@@ -130,13 +130,14 @@ mode $resizemenu {
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 # Book launcher menu
 set $bookmenu "books: [p]hysics/[a]nswers [l]ogic [c]alculus"
-bindsym $mod+Shift+b mode $bookmenu
+bindsym $mod+b mode $bookmenu
 mode $bookmenu {
-    bindsym p exec evince /home/leaf/Skoo/physics.pdf; mode "default"t stat
+    bindsym p exec evince /home/leaf/Skoo/physics.pdf; mode "default"
     bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf; mode "default"
     bindsym l exec evince /home/leaf/Skoo/logic.pdf; mode "default"
     bindsym c exec evince /home/leaf/Skoo/calculus.pdf; mode "default"
@@ -147,6 +148,7 @@ mode $bookmenu {
     bindsym Shift+c exec evince /home/leaf/Skoo/calculus.pdf;
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+b mode "default"
 }
 
 # System menu
@@ -160,6 +162,7 @@ mode $sysmenu {
     bindsym e exec i3-sensible-terminal -e vim .i3/config; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+q mode "default"
 }
 
 # THEME CONFIGURATION #
