@@ -21,8 +21,10 @@ set $ws1 "1: term"
 set $ws2 "2: web"
 # Workspace 3: documents with folded corner page icon
 set $ws3 "3: docs"
-# Workspace 4: media with film frmae icon
+# Workspace 4: media with film frame icon
 set $ws4 "4: media"
+# Workspace 5: misc
+set $ws5 "5: misc"
 
 # Application Launchers
 bindsym $mod+Return exec i3-sensible-terminal
@@ -30,7 +32,7 @@ bindsym $mod+m exec vlc
 bindsym $mod+n exec firefox
 bindsym $mod+p exec pcmanfm
 bindsym $mod+u exec uzbl-browser
-bindsym $mod+t exec synclient TouchpadOff=$(synclient | grep -c 'T.*pa.*0')
+bindsym $mod+t exec ~/bin/togglesyn
 
 # Autolaunch programs at boot
 exec i3-sensible-terminal
@@ -104,7 +106,7 @@ bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace 5
+bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace 6
 # Enable double pressing of workspace binding to return to previous space
 workspace_auto_back_and_forth yes
@@ -114,7 +116,7 @@ bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace 6
 
 # resize window (you can also use the mouse for that)
@@ -134,16 +136,20 @@ mode $resizemenu {
 }
 
 # Book launcher menu
-set $bookmenu "books: [p]hysics/[a]nswers [l]ogic [c]alculus"
+set $bookmenu "books: [p]hysics/[a]nswers/[s]olutions [d]iscrete [l]ogic [c]alculus"
 bindsym $mod+b mode $bookmenu
 mode $bookmenu {
     bindsym p exec evince /home/leaf/Skoo/physics.pdf; mode "default"
     bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf; mode "default"
+    bindsym s exec evince /home/leaf/Skoo/physics_solutions.pdf; mode "default"
+    bindsym d exec evince /home/leaf/Skoo/discrete.pdf; mode "default"
     bindsym l exec evince /home/leaf/Skoo/logic.pdf; mode "default"
     bindsym c exec evince /home/leaf/Skoo/calculus.pdf; mode "default"
     # Same as above but doesn't exit book mode. Useful for opening many books
     bindsym Shift+p exec evince /home/leaf/Skoo/physics.pdf;
     bindsym Shift+a exec evince /home/leaf/Skoo/physics_answers.pdf;
+    bindsym Shift+s exec evince /home/leaf/Skoo/physics_solutions.pdf;
+    bindsym Shift+d exec evince /home/leaf/Skoo/discrete.pdf;
     bindsym Shift+l exec evince /home/leaf/Skoo/logic.pdf;
     bindsym Shift+c exec evince /home/leaf/Skoo/calculus.pdf;
     bindsym Return mode "default"
@@ -157,7 +163,7 @@ bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
     bindsym r restart
-    bindsym b exec systemctl rebooot
+    bindsym b exec systemctl reboot
     bindsym p exec systemctl shutdown
     bindsym e exec i3-sensible-terminal -e vim .i3/config; mode "default"
     bindsym Return mode "default"
@@ -197,7 +203,7 @@ bar {
 }
 
 # Background image
-exec feh --bg-scale ~/Pictures/nasaTimelapse.png
+exec feh --bg-scale ~/Pictures/iranshrine.jpg
 
 # New window's border
 new_window pixel 1
@@ -207,6 +213,6 @@ new_window pixel 1
 
 # Color scheme
 #class                  border  backgr  text    indicator
-client.focused          $fgStat $fgStat #ffffff #000000
-client.unfocused        $fgP    $fgP    #bbbbbb #000000
+client.focused          $fgStat $fgStat #ffffff $fg
+client.unfocused        $fgP    $fgP    #bbbbbb $fg
 client.focused_inactive $fgP    $fgP    #bbbbbb #000000
