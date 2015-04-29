@@ -1,5 +1,4 @@
 # Kyle Kneitinger's i3 config file
-# See http://i3wm.org/docs/userguide.html for extended reference
 
 # WM mod key
 set $mod Mod4
@@ -8,7 +7,7 @@ set $mod Mod4
 # is used in the bar {} block below. After the comma is the fallback font.
 # In this case, it handles the iconic glyphs in the workspace names and status
 # bar. Uses AUR pkg ttf-font-icons
-font pango:Inconsolata for Powerline, Icons 9
+font pango:Inconsolata, Icons 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -16,19 +15,22 @@ floating_modifier $mod
 # Workspace definitions
 
 # Workspace 1: terminal with computer monitor icon
-set $ws1 "1: term"
+set $ws1 "1: gen"
 # Workspace 2: internet with globe icon
 set $ws2 "2: web"
 # Workspace 3: documents with folded corner page icon
-set $ws3 "3: docs"
+set $ws3 "3: discrete"
 # Workspace 4: media with film frame icon
-set $ws4 "4: media"
-# Workspace 5: misc
-set $ws5 "5: misc"
+set $ws4 "4: calc"
+# Workspace 5: media
+set $ws5 "5: media"
+set $ws6 "6: vm"
+set $ws7 "7: misc"
 
 # Application Launchers
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+m exec vlc
+bindsym $mod+Shift+m exec google-chrome-stable
 bindsym $mod+n exec firefox
 bindsym $mod+p exec pcmanfm
 bindsym $mod+u exec uzbl-browser
@@ -36,28 +38,36 @@ bindsym $mod+t exec ~/bin/togglesyn
 
 # Autolaunch programs at boot
 exec i3-sensible-terminal
+exec redshift
 exec keepassx
 exec firefox
-
 # Configure default workspace for certain applications
 assign [class="Firefox"] $ws2
 assign [class="[U,u]zbl-core"] $ws2
-assign [class="[V,v]lc"] $ws4
-assign [class="[E,e]vince"] $ws3
+assign [class="[V,v]lc"] $ws5
+assign [class="Google-chrome-stable"] $ws5
 
 # kill focused window
 bindsym $mod+Shift+c kill
 
 
 # Display dmenu bar w/ patch for height & xft fonts. AUR pkg dmenu-xft-height
-bindsym $mod+d exec dmenu_run -h 20 -fn "Inconsolata-10" -nb "$bg" -sb "$fg"
+bindsym $mod+d exec dmenu_run -h 24 -fn "Inconsolata-12" -nb "$bg" -sb "$fg"
 # Display stock dmenu bar
 # bindsym $mod+d exec dmenu_run -nb "$bg" -sb "$fg"
 
 # Map volume keys to amixer functions
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 3%+
-bindsym XF86AudioLowerVolume exec amixer -q set Master 3%-
 bindsym XF86AudioMute exec amixer sset Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +3%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -3% 
+bindsym XF86AudioMicMute exec amixer sset Capture toggle
+bindsym XF86MonBrightnessDown exec xbacklight -dec 2
+bindsym XF86MonBrightnessUp exec xbacklight -inc 2
+#bindsym XF86Display exec 
+#bindsym XF86Tools exec 
+#bindsym XF86Search exec 
+#bindsym XF86LaunchA exec  
+bindsym XF86Explorer exec pcmanfm 
 
 # change focus
 bindsym $mod+h focus left
@@ -80,7 +90,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen
 
 # Toggle i3 bar
-bindsym $mod++Shift+b bar mode toggle
+bindsym $mod+Shift+b bar mode toggle
 
 # Send to scratchpad
 bindsym $mod+Shift+grave move scratchpad
@@ -107,7 +117,13 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+l workspace next
+
 # Enable double pressing of workspace binding to return to previous space
 workspace_auto_back_and_forth yes
 
@@ -117,7 +133,10 @@ bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+Left move container to workspace prev
+bindsym $mod+Shift+Right move container to workspace next
 
 # resize window (you can also use the mouse for that)
 set $resizemenu "resize: [h] w- [j] h+ [k] h- [l] w+"
@@ -136,36 +155,34 @@ mode $resizemenu {
 }
 
 # Book launcher menu
-set $bookmenu "books: [p]hysics/[a]nswers/[s]olutions [d]iscrete [l]ogic [c]alculus"
+set $bookmenu "books: [d]iscrete [c]alculus/[s]olutions [o]s"
 bindsym $mod+b mode $bookmenu
 mode $bookmenu {
-    bindsym p exec evince /home/leaf/Skoo/physics.pdf; mode "default"
-    bindsym a exec evince /home/leaf/Skoo/physics_answers.pdf; mode "default"
-    bindsym s exec evince /home/leaf/Skoo/physics_solutions.pdf; mode "default"
-    bindsym d exec evince /home/leaf/Skoo/discrete.pdf; mode "default"
-    bindsym l exec evince /home/leaf/Skoo/logic.pdf; mode "default"
-    bindsym c exec evince /home/leaf/Skoo/calculus.pdf; mode "default"
+    bindsym d exec zathura /home/leaf/Skoo/discrete.pdf; mode "default"
+    bindsym c exec zathura /home/leaf/Skoo/calculus.pdf; mode "default"
+    bindsym s exec zathura /home/leaf/Skoo/calc_sols.pdf; mode "default"
+    bindsym o exec zathura /home/leaf/Books/modern_os_4th_tanenbaum.pdf; mode "default"
     # Same as above but doesn't exit book mode. Useful for opening many books
-    bindsym Shift+p exec evince /home/leaf/Skoo/physics.pdf;
-    bindsym Shift+a exec evince /home/leaf/Skoo/physics_answers.pdf;
-    bindsym Shift+s exec evince /home/leaf/Skoo/physics_solutions.pdf;
-    bindsym Shift+d exec evince /home/leaf/Skoo/discrete.pdf;
-    bindsym Shift+l exec evince /home/leaf/Skoo/logic.pdf;
-    bindsym Shift+c exec evince /home/leaf/Skoo/calculus.pdf;
+    bindsym Shift+d exec zathura /home/leaf/Skoo/discrete.pdf
+    bindsym Shift+c exec zathura /home/leaf/Skoo/calculus.pdf
+    bindsym Shift+s exec zathura /home/leaf/Skoo/calc_sols.pdf
+    bindsym Shift+o exec zathura /home/leaf/Books/modern_os_4th_tanenbaum.pdf
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+b mode "default"
 }
 
 # System menu
-set $sysmenu "system:  [r]eload re[b]oot [p]oweroff [e]dit conf"
+set $sysmenu "system:  [s]uspend [r]eload re[b]oot [p]oweroff [c]onf [e]xit"
 bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
     bindsym r restart
+    bindsym s exec systemctl suspend; mode "default"
     bindsym b exec systemctl reboot
     bindsym p exec systemctl shutdown
-    bindsym e exec i3-sensible-terminal -e vim .i3/config; mode "default"
+    bindsym c exec i3-sensible-terminal -e vim .i3/config; mode "default"
+    bindsym e exit
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+q mode "default"
@@ -206,7 +223,7 @@ bar {
 exec feh --bg-scale ~/Pictures/iranshrine.jpg
 
 # New window's border
-new_window pixel 1
+new_window pixel 2
 
 # Remove window borders along screen edges
 # hide_edge_borders both
