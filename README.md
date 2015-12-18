@@ -18,11 +18,11 @@ Modify the configuration of the system.
 
 * `extscreen`: A simple wrapper around xrandr to work easily with external displays
 * `fixmouse`: Reapplies desired mouse behavior when it mysteriously changes
-* `mirror-update`:Filter Arch Linux mirrorlist for only US mirrors, then finds the 6 fastest
+* `mirror-update`: Filter Arch Linux mirrorlist for only US mirrors, then finds the 6 fastest
 * `toggle-jack`: Start or stop
   [JACK](https://wiki.archlinux.org/index.php/JACK_Audio_Connection_Kit) with a
 given audio device.
-* `toggle-syn`:Disables/Enables a Synaptics touchpad and moves the cursor to the
+* `toggle-syn`: Disables/Enables a Synaptics touchpad and moves the cursor to the
 bottom-left corner of the display
 * `wacom-init`: Sets up Wacom tablet to my liking.
 
