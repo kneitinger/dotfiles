@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Launches a rofi (https://davedavenport.github.io/rofi/) window populated with
+# all non-executable, non-hidden files in the specified directories, and
+# launches them with their MIME default application
+
+DIRS="/home/leaf/Downloads /home/leaf/Documents /home/leaf/Skoo /home/leaf/Pictures /home/leaf/Papers /home/leaf/Books"
+
+FILES="$(find -L $DIRS -type f -not -path '*/\.*' -prune -not -executable | rofi -show run -dmenu -p "Launch file:" -i )"
+
+
+if [ -n "$FILES" ]; then
+    mimeopen "$FILES"
+fi

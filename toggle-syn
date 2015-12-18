@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Disables/Enables a Synaptics touchpad and moves the cursor to the
+# bottom-left corner of the display
+
+synclient TouchpadOff=$(synclient | grep -c T.*pa.*0)
+xdotool mousemove 0 3000 

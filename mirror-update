@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# From:
+# (https://wiki.archlinux.org/index.php/Mirrors#List_mirrors_only_for_a_specific_country)
+# Filter Arch Linux mirrorlist for only US mirrors, then finds the 6 fastest
+
+Cnt="United States"
+awk -v GG="$Cnt" \
+    '{if(match($0,GG) != "0")AA="1";if(AA == "1"){if( length($2) != "0"  )print substr($0,2) ;else AA="0"} }' \
+    /etc/pacman.d/mirrorlist.pacnew > /etc/pacman.d/mirrorlist.backup
+
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+

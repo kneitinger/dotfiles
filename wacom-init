@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Sets up a Wacom tablet to my liking: left-handed, only pen/no touch,
+# mapped only to my external display, buttons for undo/redo and zoom +/-
+
+STY=$(xsetwacom --list devices | grep STYLUS | cut -f 2 | cut -d: -f2)
+TOUCH=$(xsetwacom --list devices | grep TOUCH | cut -f 2 | cut -d: -f2)
+PAD=$(xsetwacom --list devices | grep PAD | cut -f 2 | cut -d: -f2)
+ERASE=$(xsetwacom --list devices | grep ERASER | cut -f 2 | cut -d: -f2)
+
+for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Rotate half; done
+for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Touch off; done
+for i in $STY $TOUCH $ERASE; do xsetwacom --set $i MapToOutput "DP2"; done
+
+xsetwacom --set $PAD Button 3 " key +ctrl z -ctrl"
+xsetwacom --set $PAD Button 8 " key +ctrl y -ctrl"
+xsetwacom --set $PAD Button 9 " key -"
+xsetwacom --set $PAD Button 1 " key +"
