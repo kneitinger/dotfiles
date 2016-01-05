@@ -1,20 +1,23 @@
-" .vimrc
-
 let g:OS = 'linux'
 set t_Co=256        " 256 color mode
 set encoding=utf-8
 set background=dark
+set noerrorbells
+set vb
 
 set nocompatible
-filetype off        " required for vundle, reenabled later.
+filetype off        " required for vundle, re-enabled later.
 
 syntax enable
 colorscheme jellybeans
 
+set laststatus=2
+hi StatusLine term=reverse ctermbg=4 gui=undercurl guisp=Cyan
+set statusline=[%n][%<%F]%h%m%r%=%y[Line:%l/%L][Col:%v][%p%%]
+"hi ColorColumn   ctermfg=NONE ctermbg=235 cterm=NONE guifg=NONE guibg=#3c3c3c gui=NONE
+"set colorcolumn=80
 
-
-
-let mapleader = ','
+let mapleader = '\'
 
 " Remove trailing whitespace
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
@@ -28,15 +31,18 @@ function! StripTrailingWhitespace()
         retab
     endif
 endfunction
+nmap <leader>w :cal StripTrailingWhitespace()<CR>
 
-nmap <leader>tW :cal StripTrailingWhitespace()<CR>
 
+map j gj
+map k gk
 map <Up> <nop>
 map <Down> <nop>
 map <Left> <nop>
 map <Right> <nop>
 set mouse=a         " Enable the use of the mouse.
 map <Esc><Esc> :w<CR>
+noremap Q <Nop>
 
 " Search Options
 set hlsearch        " When there is a previous search pattern, highlight all
@@ -55,7 +61,7 @@ set smartcase       " Override the 'ignorecase' option if the search pattern
                     " over something.
 
 " set autoindent      " Copy indent from current line when starting a new line
-
+"setlocal spell spelllang=en_us
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
 set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
@@ -67,6 +73,8 @@ set smarttab        " When on, a <Tab> in front of a line inserts blanks
 set showcmd         " Show (partial) command in status line.
 
 set number          " Show  current line number.
+
+" Sometimes slow yet very helpful
 set relativenumber  " All other line numbers are distance from current line
 set cursorline
 
@@ -78,7 +86,7 @@ set showmatch       " When a bracket is inserted, briefly jump to the matching
 set textwidth=80    " Maximum width of text that is being inserted. A longer
                     " line will be broken after white space to get this width.
 
-set formatoptions=c,q,rt " This is a sequence of letters which describes how
+set formatoptions=c,q " This is a sequence of letters which describes how
                     " automatic formatting is to be done.
                     "
                     " letter    meaning when present in 'formatoptions'
@@ -91,52 +99,34 @@ set formatoptions=c,q,rt " This is a sequence of letters which describes how
                     " t         Auto-wrap text using textwidth (does not apply
                     "           to comments)
 
-set ruler           " Show the line and column number of the cursor position,
-                    " separated by a comma.
-
-
 " set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'edkolev/tmuxline.vim'
-"Plugin 'wellle/tmux-complete.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'bling/vim-airline'
-"Plugin 'tomasr/molokai'
-Plugin 'scrooloose/syntastic'
-Plugin 'nanotech/jellybeans.vim'
-"Plugin 'ervandew/supertab'
-"Plugin 'sbl/scvim'
+Plugin 'vim-latex/vim-latex'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"   Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"   Plugin 'L9'
-" Git plugin not hosted on GitHub
-"   Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"   Plugin 'file:///home/gmarik/path/to/plugin'
+"YouCompleteMe
+let g:ycm_warning_symbol = '⚠'
+let g:ycm_error_symbol = '✗'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" Airline.vim
-let g:airline_powerline_fonts = 1
-let g:airline_theme="bubblegum"
-let g:airline_enable_syntastic = 1
-set noshowmode      " Do not show current mode, airline already does
-set laststatus=2    " airline is always visible
+" LaTeX Suite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat = "pdf"
+let g:Tex_ViewRule_pdf = "zathura --debug=error"
+let g:Tex_CompileRule_pdf = "rubber --pdf --warn all"
+"let g:Tex_CompileRule_pdf = "xelatex"
+let g:Tex_Leader = '/'
+let g:Imap_FreezeImap = 1
 
-" Syntastic.vim
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
+"let g:livepreview_previewer = "zathura --debug=error"
 
-" Supercollider
-" let g:sclangTerm = "roxterm -e $SHELL -ic"

@@ -7,67 +7,108 @@ set $mod Mod4
 # is used in the bar {} block below. After the comma is the fallback font.
 # In this case, it handles the iconic glyphs in the workspace names and status
 # bar. Uses AUR pkg ttf-font-icons
-font pango:Inconsolata, Icons 12
+font pango:Inconsolata, FontAwesome 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+
 # Workspace definitions
 
 # Workspace 1: terminal with computer monitor icon
-set $ws1 "1: gen"
+set $ws1 "1: gen"
 # Workspace 2: internet with globe icon
-set $ws2 "2: web"
+set $ws2 "2: web"
 # Workspace 3: documents with folded corner page icon
-set $ws3 "3: discrete"
+set $ws3 "3:Σ algs"
+set $ws4 "4: lang"
 # Workspace 4: media with film frame icon
-set $ws4 "4: calc"
-# Workspace 5: media
-set $ws5 "5: media"
-set $ws6 "6: vm"
-set $ws7 "7: misc"
+set $ws5 "5: works"
+set $ws6 "6: media"
+set $ws7 "7: misc"
 
 # Application Launchers
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec roxterm
 bindsym $mod+m exec vlc
-bindsym $mod+Shift+m exec google-chrome-stable
+bindsym $mod+Shift+m exec google-chrome-stable; workspace $ws7
 bindsym $mod+n exec firefox
 bindsym $mod+p exec pcmanfm
 bindsym $mod+u exec uzbl-browser
-bindsym $mod+t exec ~/bin/togglesyn
+bindsym $mod+t exec ~/bin/toggle-syn
 
 # Autolaunch programs at boot
-exec i3-sensible-terminal
-exec redshift
+exec roxterm
+exec --no-startup-id redshift
 exec keepassx
 exec firefox
+
+# Map left-control tap to escape // handled in .xinitrc
+#exec --no-startup-id xcape -e 'Control_L=Escape' -t 175
+#
 # Configure default workspace for certain applications
-assign [class="Firefox"] $ws2
-assign [class="[U,u]zbl-core"] $ws2
-assign [class="[V,v]lc"] $ws5
-assign [class="Google-chrome-stable"] $ws5
+assign [class="Firefox" window_type="normal"] $ws2
+#assign [class="[U,u]zbl-core"] $ws2
+#assign [class="[V,v]lc"] $ws5
+assign [class="Google-chrome"] $ws4
+
+
+bindsym Insert nop
+
+
+
+for_window [class="Google-chrome"] border none
+for_window [class="Firefox"] border none
+for_window [title="feh:/tmp/*"] floating enable
 
 # kill focused window
-bindsym $mod+Shift+c kill
-
+bindsym $mod+Shift+c kill 
 
 # Display dmenu bar w/ patch for height & xft fonts. AUR pkg dmenu-xft-height
-bindsym $mod+d exec dmenu_run -h 24 -fn "Inconsolata-12" -nb "$bg" -sb "$fg"
+#bindsym $mod+d exec dmenu_run -h 20 -fn "Inconsolata-10" -nb "$bg" -sb "$fg"
+bindsym $mod+d exec rofi -show run
+bindsym $mod+b exec ~/bin/pdfselect
+bindsym $mod+o exec ~/bin/mimelaunch
+bindsym $mod+x exec rofi -show window
 # Display stock dmenu bar
 # bindsym $mod+d exec dmenu_run -nb "$bg" -sb "$fg"
 
 # Map volume keys to amixer functions
 bindsym XF86AudioMute exec amixer sset Master toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +3%
+
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -3% 
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +3%
+bindsym $mod+XF86AudioLowerVolume exec pactl set-sink-volume 1 -10% 
+bindsym $mod+XF86AudioRaiseVolume exec pactl set-sink-volume 1 +10%
+
 bindsym XF86AudioMicMute exec amixer sset Capture toggle
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
-bindsym XF86MonBrightnessUp exec xbacklight -inc 2
-#bindsym XF86Display exec 
-#bindsym XF86Tools exec 
-#bindsym XF86Search exec 
-#bindsym XF86LaunchA exec  
-bindsym XF86Explorer exec pcmanfm 
+
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+bindsym $mod+XF86MonBrightnessDown exec xbacklight -set 2
+bindsym XF86MonBrightnessUp exec xbacklight -inc 3
+bindsym $mod+XF86MonBrightnessUp exec xbacklight -set 100
+
+bindsym XF86Display exec ~/bin/toggle-jack
+bindsym $mod+XF86Display exec ~/bin/toggle-jack h4
+bindsym $mod+Shift+XF86Display exec ~/bin/toggle-jack usb
+
+bindsym XF86Tools exec roxterm -e nmtui 
+bindsym $mod+XF86Tools exec roxterm -e htop
+
+bindsym XF86Search exec ~/bin/picnote
+bindsym $mod+XF86Search exec scrot -s /tmp/$(date +"%F_%H-%M").png
+
+bindsym $mod+XF86LaunchA exec /home/leaf/bin/extscreen --left
+#bindsym $mod+Shift+XF86LaunchA exec /home/leaf/bin/extscreen --off
+bindsym XF86LaunchA exec /home/leaf/bin/extscreen --right
+
+bindsym XF86Explorer move workspace to output left
+
+# Universal vim keys
+bindsym Mod1+Ctrl+h exec xdotool getactivewindow key Left
+bindsym Mod1+Ctrl+j exec xdotool getactivewindow key Down
+bindsym Mod1+Ctrl+k exec xdotool getactivewindow key Up
+bindsym Mod1+Ctrl+l exec xdotool getactivewindow key Right
 
 # change focus
 bindsym $mod+h focus left
@@ -89,6 +130,12 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
+# Toggle window title bar
+bindsym $mod+minus border toggle
+
+# The middle button over a titlebar kills the window
+bindsym button2 kill
+
 # Toggle i3 bar
 bindsym $mod+Shift+b bar mode toggle
 
@@ -99,6 +146,7 @@ bindsym $mod+grave scratchpad show
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -135,18 +183,18 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+Left move container to workspace prev
-bindsym $mod+Shift+Right move container to workspace next
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Right move workspace to output right
 
 # resize window (you can also use the mouse for that)
 set $resizemenu "resize: [h] w- [j] h+ [k] h- [l] w+"
 bindsym $mod+r mode $resizemenu
 mode $resizemenu {
     # These bindings trigger as soon as you enter the resize mode
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
-    bindsym k resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym $mod+s+Left resize shrink width 10 px or 10 ppt
+    bindsym $mod+s+Up  resize grow height 10 px or 10 ppt
+    bindsym $mod+s+Down  resize shrink height 10 px or 10 ppt
+    bindsym $mod+s+Right  resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -155,18 +203,14 @@ mode $resizemenu {
 }
 
 # Book launcher menu
-set $bookmenu "books: [d]iscrete [c]alculus/[s]olutions [o]s"
-bindsym $mod+b mode $bookmenu
+set $bookmenu "books: [c]omp_structs [s]oft_eng"
+#bindsym $mod+b mode $bookmenu
 mode $bookmenu {
-    bindsym d exec zathura /home/leaf/Skoo/discrete.pdf; mode "default"
-    bindsym c exec zathura /home/leaf/Skoo/calculus.pdf; mode "default"
-    bindsym s exec zathura /home/leaf/Skoo/calc_sols.pdf; mode "default"
-    bindsym o exec zathura /home/leaf/Books/modern_os_4th_tanenbaum.pdf; mode "default"
+    bindsym c exec zathura /home/leaf/Skoo/sipser.pdf; mode "default"
+    bindsym s exec zathura /home/leaf/Skoo/soft_eng.pdf; mode "default"
     # Same as above but doesn't exit book mode. Useful for opening many books
-    bindsym Shift+d exec zathura /home/leaf/Skoo/discrete.pdf
-    bindsym Shift+c exec zathura /home/leaf/Skoo/calculus.pdf
-    bindsym Shift+s exec zathura /home/leaf/Skoo/calc_sols.pdf
-    bindsym Shift+o exec zathura /home/leaf/Books/modern_os_4th_tanenbaum.pdf
+    bindsym Shift+c exec zathura /home/leaf/Skoo/sipser.pdf
+    bindsym Shift+s exec zathura /home/leaf/Skoo/soft_eng.pdf
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+b mode "default"
@@ -178,10 +222,11 @@ bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
     bindsym r restart
+    bindsym x reload; mode "default"
     bindsym s exec systemctl suspend; mode "default"
     bindsym b exec systemctl reboot
     bindsym p exec systemctl shutdown
-    bindsym c exec i3-sensible-terminal -e vim .i3/config; mode "default"
+    bindsym c exec roxterm -e vim .i3/config; mode "default"
     bindsym e exit
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -201,11 +246,11 @@ bar {
     # Using i3pystatus
     status_command python ~/.i3/status.py
     # Using i3status
-    # status_command i3status --config ~/.i3/status.conf
+    #status_command i3status --config ~/.i3/status.conf
     position top
     mode dock
     # Don't show #s on workspace labels. Looks pleasant & retains functionality
-    strip_workspace_numbers yes
+    #strip_workspace_numbers yes
     # Holding <Alt> displays the dock if it is hidden with $mod+b
     modifier Mod1
     colors {
@@ -216,14 +261,15 @@ bar {
         # Property         border  backgr  text
         focused_workspace  $fg     $fg     #ffffff
         inactive_workspace $fg     $fgP    #bbbbbb
+        urgent_workspace   #0bd866    $fgP    #ffffff
     }
 }
 
 # Background image
-exec feh --bg-scale ~/Pictures/iranshrine.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/iranshrine.jpg
 
 # New window's border
-new_window pixel 2
+new_window pixel 1
 
 # Remove window borders along screen edges
 # hide_edge_borders both
@@ -231,5 +277,5 @@ new_window pixel 2
 # Color scheme
 #class                  border  backgr  text    indicator
 client.focused          $fgStat $fgStat #ffffff $fg
-client.unfocused        $fgP    $fgP    #bbbbbb $fg
+client.unfocused        $fgStat    $fgP    #bbbbbb $fg
 client.focused_inactive $fgP    $fgP    #bbbbbb #000000
