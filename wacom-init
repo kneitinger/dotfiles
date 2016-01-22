@@ -14,5 +14,5 @@ for i in $STY $TOUCH $ERASE; do xsetwacom --set $i MapToOutput "DP2"; done
 
 xsetwacom --set $PAD Button 3 " key +ctrl z -ctrl"
 xsetwacom --set $PAD Button 8 " key +ctrl y -ctrl"
-xsetwacom --set $PAD Button 9 " key -"
+xsetwacom --set $PAD Button 9 " key +super +shift y -shift -super"
 xsetwacom --set $PAD Button 1 " key +"

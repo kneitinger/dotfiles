@@ -36,3 +36,6 @@ default app.
 to [rofi](https://davedavenport.github.io/rofi/) for fast, easy, launching.
 * `picnote`: Begins an interactive screengrabbing box with scrot and then displays the 
 image in a minimal view.  Good for quick temporary graphical references
+* `pauseyoutube`: Locates a window title containing "Youtube", moves the cursor
+  to the center of the window, left-clicks, and restores your mouse to it's
+initial position
