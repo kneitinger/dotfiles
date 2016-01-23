@@ -8,11 +8,39 @@ TOUCH=$(xsetwacom --list devices | grep TOUCH | cut -f 2 | cut -d: -f2)
 PAD=$(xsetwacom --list devices | grep PAD | cut -f 2 | cut -d: -f2)
 ERASE=$(xsetwacom --list devices | grep ERASER | cut -f 2 | cut -d: -f2)
 
-for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Rotate half; done
-for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Touch off; done
-for i in $STY $TOUCH $ERASE; do xsetwacom --set $i MapToOutput "DP2"; done
+## DEFAULTS ##
 
+# Left handedness!
+for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Rotate half; done
+
+# Touch pad off
+for i in $STY $TOUCH $ERASE; do xsetwacom --set $i Touch off; done
+
+# Map pen to external monitor (fails gracefully if no ext. monitor present)
+for i in $STY; do xsetwacom --set $i MapToOutput "DP2"; done
+
+# Undo, Redo
 xsetwacom --set $PAD Button 3 " key +ctrl z -ctrl"
 xsetwacom --set $PAD Button 8 " key +ctrl y -ctrl"
-xsetwacom --set $PAD Button 9 " key +super +shift y -shift -super"
-xsetwacom --set $PAD Button 1 " key +"
+
+# Zoom in/out
+xsetwacom --set $PAD Button 1 " key +ctrl +shift + -shift -ctrl"
+xsetwacom --set $PAD Button 9 " key +ctrl - -ctrl"
+
+for ARG in $@; do
+    case $ARG in
+        right)  
+            for i in $STY $TOUCH $ERASE; do \
+                xsetwacom --set $i Rotate none; done ;;
+        touch)
+            for i in $STY $TOUCH $ERASE; do \
+                xsetwacom --set $i Touch on; done ;;
+
+        youtube|yt)
+            xsetwacom --set $PAD \
+                Button 9 " key +super +shift y -shift -super" ;;
+        touch-map)
+            for i in $STY $TOUCH $ERASE; do \
+                xsetwacom --set $i MapToOutput desktop; done
+    esac
+done
