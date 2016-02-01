@@ -12,6 +12,8 @@ Usually ran as cron jobs.  Provide some form of feedback.
 
 * `batt-notify`: Calculates the remaining battery power percentage left on a
   two-battery system
+* `ipcheck`: Sends an email to specified address upon change in external IP
+  address.
 
 ### Settings 
 Modify the configuration of the system.

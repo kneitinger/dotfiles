@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Send an email upon external IP address change
+# or, how I learned to accept dynamic IP addresses.
+
+# Usage: set up cron job to execute ipcheck [your-email-address]
+
+EMAIL=$1
+IP_FILE=~/.last_ip
+CURR_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
+
+if [ -e "$LAST_IP" ]; then
+    LAST_IP=$(cat "$IP_FILE")
+
+    if [ "$CURR_IP" = "$LAST_IP" ]; then
+        exit
+    else
+        echo "$CURR_IP" > "$IP_FILE"
+        mutt -s "New IP" "$EMAIL" < $CURR_IP
+    fi
+else
+    echo "$CURR_IP" > "$IP_FILE"
+    mutt -s "New IP" "$EMAIL" < $IP_FILE
+fi
