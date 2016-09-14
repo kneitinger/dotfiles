@@ -1,0 +1,10 @@
+.DS_Store
+*.swp
+.git/
+.git
+bundle/*/doc/tags
+.netrwhist
+init.vim
+cache/*/*
+spell/
+
