@@ -34,3 +34,6 @@
 [submodule "bundle/llvm.vim"]
 	path = bundle/llvm.vim
 	url = https://github.com/superbil/llvm.vim
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = https://github.com/SirVer/ultisnips.git

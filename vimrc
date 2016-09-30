@@ -306,3 +306,6 @@ let g:indentLine_color_term = 238
 
 " Tabular
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/snippets']
