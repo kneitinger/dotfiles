@@ -1,0 +1,38 @@
+# Kyle Kneitinger's i3 config file
+
+# WM mod key: Mod1 for alt, Mod4 for win.
+set $mod Mod1
+set $alt Mod4
+
+# Workspace definitions
+set $ws1 "1: gen"
+set $ws2 "2: web"
+set $ws3 "3:Σ school"
+set $ws4 "4: netflix"
+set $ws5 "5: overflow"
+set $ws6 "6: cbdm"
+set $ws7 "7: media"
+set $ws8 "8: Slack"
+
+# Configure default workspace for certain applications
+assign [class="chromium" window_type="normal"] $ws2
+assign [class="Google-chrome"] $ws4
+
+for_window [class="google-chrome"] border none
+for_window [class="Slack"] border none
+for_window [class="Virt-manager"] border none
+for_window [class="Firefox"] border none
+for_window [title="feh:/tmp/*"] floating enable
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+focus_follows_mouse yes
+
+# Enable double pressing of workspace binding to return to previous space
+workspace_auto_back_and_forth yes
+
+# Autolaunch programs at boot
+exec gnome-terminal
+exec --no-startup-id redshift
+exec keepassx
+exec chromium
