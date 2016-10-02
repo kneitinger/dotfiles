@@ -309,3 +309,11 @@ let g:indentLine_color_term = 238
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/snippets']
+let g:UltiSnipsExpandTrigger="<c-\\>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+" Use tab for suggestion selection
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
