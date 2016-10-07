@@ -8,11 +8,11 @@ set $alt Mod4
 set $ws1 "1: gen"
 set $ws2 "2: web"
 set $ws3 "3:Σ school"
-set $ws4 "4: netflix"
-set $ws5 "5: overflow"
-set $ws6 "6: cbdm"
-set $ws7 "7: media"
-set $ws8 "8: Slack"
+set $ws4 "4: overflow"
+set $ws5 "5: files"
+set $ws6 "6: comm"
+set $ws7 "7"
+set $ws8 "8"
 
 # Configure default workspace for certain applications
 assign [class="chromium" window_type="normal"] $ws2
