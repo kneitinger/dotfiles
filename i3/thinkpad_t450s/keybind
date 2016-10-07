@@ -22,10 +22,10 @@ bindsym $mod+XF86AudioRaiseVolume exec amixer set Master 10%+
 bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # Pressing Mod sets to extremes
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5
-bindsym $mod+XF86MonBrightnessDown exec xbacklight -set 2
-bindsym XF86MonBrightnessUp exec xbacklight -inc 1
-bindsym $mod+XF86MonBrightnessUp exec xbacklight -set 100
+bindsym XF86MonBrightnessDown exec light -U 7
+bindsym $mod+XF86MonBrightnessDown exec light -S 2
+bindsym XF86MonBrightnessUp exec light -A 3
+bindsym $mod+XF86MonBrightnessUp exec light -S 100
 
 bindsym XF86Display exec ~/bin/toggle-jack
 bindsym $mod+XF86Display exec ~/bin/toggle-jack h4
@@ -44,6 +44,6 @@ bindsym $mod+XF86LaunchA exec /home/leaf/bin/extscreen --left
 # Toggle which display worksapce is on (since wrapping is enabled)
 bindsym XF86Explorer move workspace to output left
 
-bindsym $mod+Shift+9 move workspace to output HDMI1
-bindsym $mod+Shift+0 move workspace to output DP2
-bindsym $mod+Shift+o move workspace to output eDP1
+bindsym $mod+Shift+9 move workspace to output HDMI-1
+bindsym $mod+Shift+0 move workspace to output DP-2
+bindsym $mod+Shift+o move workspace to output eDP-1
