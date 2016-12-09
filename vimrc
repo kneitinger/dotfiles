@@ -317,3 +317,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:deoplete#enable_at_startup = 1
 " Use tab for suggestion selection
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"let g:python2_host_prog = '/home/leaf/.pyenv/neovim2/bin/python'
+"let g:python3_host_prog = '/home/leaf/.pyenv/neovim3/bin/python'
+
+" vim-racer Rust completion
+set hidden
+let g:racer_cmd = "/home/leaf/.cargo/bin/racer"
+let $RUST_SRC_PATH = "/usr/src/rust/src"
+
