@@ -14,7 +14,8 @@ if !has('nvim')
     set nocompatible
     set t_Co=256        " 256 color mode
 endif
-"set encoding=utf-8
+
+set encoding=utf-8
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -31,32 +32,32 @@ set hidden
 " Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
+" bytefluent.com/vivify is a good scheme discovery tool
 try
-    colorscheme alduin  " bytefluent.com/vivify is a good scheme discovery tool
+    colorscheme alduin
 catch
+    colorscheme jellybeans
 endtry
 
-" Columns after 80 are colored darker
-"execute "set colorcolumn=" . join(range(81,335), ',')
 set colorcolumn=81
+
+" Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
-"highlight ColorColumn ctermbg=0
-"highlight CursorLine ctermbg=0
-autocmd ColorScheme *   highlight Comment cterm=italic
-                    \ | highlight MatchParen ctermfg=15 ctermbg=131
-                    \ | highlight StatusLine cterm=bold ctermbg=131
-                    \ | highlight User1 ctermbg=131
+au ColorScheme  * hi Comment     cterm=italic
+              \ | hi MatchParen  ctermfg=15 ctermbg=131
+              \ | hi StatusLine  cterm=bold ctermbg=131
+              \ | hi User1       ctermbg=131
+              \ | hi TabLineSel  cterm=bold ctermfg=16 ctermbg=131
+              \ | hi TabLine     cterm=standout,italic ctermfg=0 ctermbg=131
+              \ | hi TabLineFill ctermbg=0
 
 set laststatus=2    " always show status bar
+
 " status: [paste indicator][buffer num][filename][git stuff][modified][readonly]
 set statusline=%{HasPaste()}[%n][%<%F]%{fugitive#statusline()}%m%r%=
 " status: spacer [filetype]['Col:'column]['Line:' n/N:percentage through file]
 set statusline+=%y[Col:%c][Line:%l/%L:%p%%]
 
-
-highlight TabLineSel cterm=bold ctermbg=131 ctermfg=16
-highlight TabLine cterm=standout,italic ctermbg=131 ctermfg=0
-highlight TabLineFill ctermbg=0
 set tabline=%!TabLine()
 
 set number          " Show  current line number.
@@ -89,7 +90,7 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Reselect visual block after indent
 vnoremap < <gv
 vnoremap > >gv
-" Add newline with return key
+" Add newline in normal mode with return key
 nmap <CR> o<Esc>
 " Change cursor position in insert mode
 inoremap <C-h> <left>
@@ -121,26 +122,30 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Toggle paste mode on and off
 set pastetoggle=
-"map <leader>pp :setlocal paste!<cr>
+map <leader>pp :setlocal paste!<cr>
 
 
 " * or # search for selection in visual mode
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-"noremap <leader>t
+" Edit .vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<cr>
+" Source .vimrc
+nmap <silent> <leader>sv :so $MYVIMRC<cr>
 
-
-nmap <silent> <leader>ev :e $MYVIMRC<cr>   " Edit .vimrc
-nmap <silent> <leader>sv :so $MYVIMRC<cr>  " Source .vimrc
 " Spell check on/off
 nmap <silent> <leader>sp :setlocal spell!<CR>
+" Spell check jump
 map <leader>sn ]s
 map <leader>sp [s
+" Spell check add
 map <leader>sa zg
+" Spell check suggestions
 map <leader>s? z=
 
 set mouse=a         " Enable the use of the mouse.
+
 " Remove trailing whitespace
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 nmap <leader>w :cal StripTrailingWhitespace()<CR>
@@ -181,22 +186,22 @@ set formatoptions=c,r,q,t,j
 " Force certain extensions to be recognized
 augroup filetype
     au! BufRead,BufNewFile *.ll     set filetype=llvm
-    au! BufRead,BufNewFile *.fst	set filetype=faust
-    au! BufRead,BufNewFile *.dsp	set filetype=faust
-    au! BufRead,BufNewFile *.lib	set filetype=faust
+    au! BufRead,BufNewFile *.fst    set filetype=faust
+    au! BufRead,BufNewFile *.dsp    set filetype=faust
+    au! BufRead,BufNewFile *.lib    set filetype=faust
 augroup END
 
-
-
-autocmd FileType javacc setlocal shiftwidth=2 tabstop=2
-autocmd FileType java setlocal shiftwidth=2 tabstop=2 foldmethod=syntax
-autocmd FileType jacc setlocal shiftwidth=2 tabstop=2
 autocmd FileType tex setlocal shiftwidth=2 tabstop=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-command W w !sudo tee % > /dev/null
+" W allows writing a file that you forgot to sudo vim on
+"   - existence check lets you :source vimrc without error
+if !exists("sudowrite")
+    command W w !sudo tee % > /dev/null
+    let sudowrite=1
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Backup/Swap/Persistence Settings
@@ -272,25 +277,6 @@ endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"YouCompleteMe
-let g:ycm_warning_symbol = '⚠'
-let g:ycm_error_symbol = '✗'
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_filetype_blacklist = {
-      \ 'asm' : 1,
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1
-      \}
 
 " LaTeX Suite
 set grepprg=grep\ -nH\ $*
