@@ -42,11 +42,12 @@ set colorcolumn=81
 " run :so ~/.vim/color_names.vim to find desired values
 "highlight ColorColumn ctermbg=0
 "highlight CursorLine ctermbg=0
-highlight Comment cterm=italic
+autocmd ColorScheme *   highlight Comment cterm=italic
+                    \ | highlight MatchParen ctermfg=15 ctermbg=131
+                    \ | highlight StatusLine cterm=bold ctermbg=131
+                    \ | highlight User1 ctermbg=131
 
 set laststatus=2    " always show status bar
-highlight StatusLine cterm=bold ctermbg=131
-highlight User1 ctermbg=131
 " status: [paste indicator][buffer num][filename][git stuff][modified][readonly]
 set statusline=%{HasPaste()}[%n][%<%F]%{fugitive#statusline()}%m%r%=
 " status: spacer [filetype]['Col:'column]['Line:' n/N:percentage through file]
@@ -321,7 +322,6 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "let g:python3_host_prog = '/home/leaf/.pyenv/neovim3/bin/python'
 
 " vim-racer Rust completion
-set hidden
 let g:racer_cmd = "/home/leaf/.cargo/bin/racer"
 let $RUST_SRC_PATH = "/usr/src/rust/src"
 
