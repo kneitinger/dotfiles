@@ -7,10 +7,10 @@
 font pango:Inconsolata, FontAwesome 10
 
 # Colorscheme definitions
-set $fg #1793b1
+set $fg     #1793b1
 set $fgStat #37b3f1
-set $bg #333333
-set $fgP #0b4866
+set $bg     #333333
+set $fgP    #0b4866
 
 # Start i3bar to display a workspace bar
 bar {
@@ -34,7 +34,7 @@ bar {
         # Property         border  backgr  text
         focused_workspace  $fg     $fg     #ffffff
         inactive_workspace $fg     $fgP    #bbbbbb
-        urgent_workspace   #0bd866    $fgP    #ffffff
+        urgent_workspace   #0bd866 $fgP    #ffffff
     }
 }
 
@@ -42,10 +42,10 @@ bar {
 exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
 
 # New window's border
-new_window pixel 1
+new_window pixel 2
 
 # Remove window borders along screen edges
-hide_edge_borders both
+#hide_edge_borders both
 
 # Color scheme
 #class                  border  backgr  text    indicator

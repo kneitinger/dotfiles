@@ -15,7 +15,7 @@ set $ws7 "7"
 set $ws8 "8"
 
 # Configure default workspace for certain applications
-assign [class="chromium" window_type="normal"] $ws2
+#assign [class="chromium" window_type="normal"] $ws2
 assign [class="Google-chrome"] $ws4
 
 for_window [class="google-chrome"] border none
@@ -35,4 +35,4 @@ workspace_auto_back_and_forth yes
 exec gnome-terminal
 exec --no-startup-id redshift
 exec keepassx
-exec chromium
+exec firefox
