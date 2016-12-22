@@ -1,0 +1,22 @@
+# Completion Settings
+
+# Completions colored like ls --colot
+set colored-stats on
+set completion-ignore-case on
+# Show all without asking
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+# If in middle of word and later already matches, do not fill it in again
+set skip-completed-text on
+
+set bell-style visual
+
+# Always browse through history based on partial command match
+# Ctrl-k, Ctrl-j
+"\C-k": history-search-backward
+"\C-j": history-search-forward
+# Up arrow, Down arrow
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+
