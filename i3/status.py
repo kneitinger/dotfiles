@@ -7,12 +7,11 @@ from i3pystatus import Status
 status = Status(standalone=True)
 
 # Displays clock like this:
-# Tue 10/7 22:52
+# 10/7 22:52
 status.register("clock",
     interval=10,
-    #on_leftclick= ["notify-send \"\$(cal)\""],
     on_leftclick= "notify-send \"$(cal)\"",
-    format="%a %-m/%-d %-H:%M",)
+    format="%-m/%-d %-H:%M",)
 
 # Widget for volume of speakers
 #status.register("alsa",
@@ -43,7 +42,7 @@ status.register("battery",
     interval=11,
     battery_ident="BAT0",
     critical_color="#ff0000",
-    format="{status} {percentage:02.1f}% {remaining:%E%h:%M}",
+    format="{status} {percentage:02.0f}% {remaining:%E%h:%M}",
     alert=False,
     alert_percentage=10,
     status={
@@ -56,7 +55,7 @@ status.register("battery",
     interval=13,
     battery_ident="BAT1",
     critical_color="#ff0000",
-    format="{status} {percentage:02.1f}% {remaining:%E%h:%M}",
+    format="{status} {percentage:02.0f}% {remaining:%E%h:%M}",
     alert=False,
     alert_percentage=10,
     status={
@@ -74,7 +73,7 @@ status.register("network",
     interface="wlp3s0",
     color_up="#37b3f1",
     color_down="#4e5b62",
-    format_up=" {essid}[{quality:03.0f}%/{v4}]",
+    format_up=" {essid}[{v4}]",
     format_down=" ")
 
 # Shows disk usage of /
@@ -85,22 +84,16 @@ status.register("network",
 #    format="{used}/{total}G [{avail}G]",)
 
 status.register("shell",
-        command="printf %s%s \"   updates:$(( $(checkupdates | wc -l) + $(cower -u | wc -l) ))\"",
+        command="printf %s%s \"   $(( $(checkupdates | wc -l) + $(cower -u | wc -l) ))\"",
         #command="checkupdates | wc -l",
         #command="printf %s uname",
         interval=113)
 
 status.register("shell",
         command=" printf \"%s%s %s\" $(echo JACK:) $(if jack_control status | grep \"stopped\" &> /dev/null; then echo \"\"; else echo \"\"; fi) $(if jack_control status | grep \"started\" &> /dev/null; then echo \" [\"; jack_control dp | grep \"device\:\" | cut -d\: -f7 | cut -d\) -f1; echo \"]\" ; else echo \"\"; fi)",
-        #command="checkupdates | wc -l",
-        #command="printf %s uname",
         interval=7)
 
 status.register("cpu_usage",
         format="{usage}% cpu",)
-
-#status.register("shell",
-#        command="printf %s $(xprop -id $(xdotool getactivewindow) | grep 'WM_NAME(STRING)' | cut -d'\"' -f2)",
-#        interval=0.1)
 
 status.run()

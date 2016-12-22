@@ -1,0 +1,49 @@
+################################################################################
+# Lenovo ThinkPad T450s Keybindings
+# [ F1  -> Mute        ] [ F2  -> Vol Down   ]
+# [ F3  -> Vol Up      ] [ F4  -> Mic Togglw ]
+# [ F5  -> Bright Down ] [ F6  -> Bright Up  ]
+# [ F7  -> Display     ] [ F8  -> Wifi (HW)  ]
+# [ F9  -> Tools       ] [ F10 -> Search     ]
+# [ F11 -> LaunchA     ] [ F12 -> Explorer   ]
+################################################################################
+
+# Always bumpin' it when pressing Delete
+bindsym Insert nop
+
+# Map volume keys to amixer functions
+bindsym XF86AudioMute exec amixer sset Master toggle
+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 4%+
+bindsym $mod+XF86AudioLowerVolume exec amixer set Master 10%-
+bindsym $mod+XF86AudioRaiseVolume exec amixer set Master 10%+
+
+bindsym XF86AudioMicMute exec amixer sset Capture toggle
+
+# Pressing Mod sets to extremes
+bindsym XF86MonBrightnessDown exec light -U 7
+bindsym $mod+XF86MonBrightnessDown exec light -S 2
+bindsym XF86MonBrightnessUp exec light -A 3
+bindsym $mod+XF86MonBrightnessUp exec light -S 100
+
+bindsym XF86Display exec ~/bin/toggle-jack
+bindsym $mod+XF86Display exec ~/bin/toggle-jack h4
+bindsym $mod+Shift+XF86Display exec ~/bin/toggle-jack usb
+
+bindsym XF86Tools exec roxterm -e nmtui
+bindsym $mod+XF86Tools exec roxterm -e htop
+
+bindsym XF86Search exec ~/bin/picnote
+bindsym $mod+XF86Search exec scrot -s /tmp/$(date +"%F_%H-%M").png
+bindsym $mod+Shift+XF86Search exec scrot /tmp/$(date +"%F_%H-%M").png
+
+bindsym XF86LaunchA exec /home/leaf/bin/extscreen --left
+bindsym $mod+XF86LaunchA exec /home/leaf/bin/extscreen --left
+
+# Toggle which display worksapce is on (since wrapping is enabled)
+bindsym XF86Explorer move workspace to output left
+
+bindsym $mod+Shift+9 move workspace to output HDMI-1
+bindsym $mod+Shift+0 move workspace to output DP-2
+bindsym $mod+Shift+o move workspace to output eDP-1

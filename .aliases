@@ -1,0 +1,32 @@
+#!/bin/bash
+
+alias xlt='xautolock -toggle'
+alias se='sudoedit'
+alias vim='nvim -p'
+alias view='vim -R'
+
+# Directory traversal
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias tmp='cd /tmp'
+
+
+# Arch package management
+alias yup='yaourt -Syua'
+alias pup='pacaur -Syu --noedit --noconfirm'
+alias yo='yaourt'
+
+# ls
+alias ls='ls --color'
+alias la='ls -a'
+alias lal='ls -lha'
+alias ll='ls -lh'
+alias ls='ls --color'
+
+# Always ask before overwriting a file with mv or cp
+alias mv='mv -i'
+alias cp='cp -i'
+
+# Allow sudo-ing aliases...no idea why this works
+alias sudo='sudo '

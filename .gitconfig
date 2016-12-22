@@ -1,13 +1,15 @@
 [user]
-    email = kylejkneitinger@gmail.com
+    email = kyle@kneit.in
     name = Kyle Kneitinger
-
 [color]
     ui = true
-
 [core]
     editor = vim
     excludesfile = ~/.git_excludes
-
 [github]
     user = kneitinger
+[alias]
+	d = difftool
+    a = add
+    s = status
+    c = commit

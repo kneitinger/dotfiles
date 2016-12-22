@@ -1,0 +1,123 @@
+################################################################################
+# CORE KEYBINDINGS:
+#   keybinds to be used on every machine
+################################################################################
+
+# Application Launchers
+bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Shift+m exec google-chrome-stable; workspace $ws7
+bindsym $mod+Shift+n exec chromium
+bindsym $mod+p exec pcmanfm
+bindsym $mod+t exec ~/bin/toggle-syn
+
+# Rofi dmenu replacement bindings
+bindsym $mod+d exec rofi -show run
+bindsym $mod+b exec ~/bin/pdfselect
+bindsym $mod+o exec ~/bin/mimelaunch
+bindsym $mod+x exec rofi -show window
+
+# Window/Container Manipulation ======================
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# The middle button over a titlebar kills the window
+bindsym button2 kill
+
+# Set split in horizontal orientation
+bindsym $mod+g split h
+# Set split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# Send to scratchpad
+bindsym $mod+Shift+grave move scratchpad
+# Show scratchpad
+bindsym $mod+grave scratchpad show
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+w layout tabbed
+bindsym $mod+z layout stacking
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+# focus the child container
+bindsym $mod+c focus child
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+
+
+# Workspace Manipulation #############################
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+
+bindsym $mod+Ctrl+h workspace prev
+bindsym $mod+Ctrl+l workspace next
+
+# Move focused workspace to another display
+bindsym $mod+Shift+Left move workspace to output left
+bindsym $mod+Shift+Right move workspace to output right
+
+# Theme Manipulation #################################
+
+# Toggle focused windows title bar
+bindsym $mod+minus border toggle
+
+# Toggle i3 bar
+bindsym $mod+Shift+b bar mode toggle
+
+# Menus ##############################################
+
+# System menu
+set $sysmenu "system:  [s]uspend [l]ock [r]eload re[b]oot [p]oweroff [c]onf [e]xit"
+bindsym $mod+q mode $sysmenu
+mode $sysmenu {
+    # restart i3 inplace (preserves your layout/session)
+    bindsym r restart
+    bindsym x reload /home/leaf/.i3/config2; mode "default"
+    bindsym s exec systemctl suspend; mode "default"
+    bindsym b exec systemctl reboot
+    bindsym p exec systemctl shutdown
+    bindsym c exec roxterm -e vim .i3/config; mode "default"
+    bindsym l exec i3lock -n -i ~/.lock.png; mode "default"
+    bindsym e exit
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+q mode "default"
+}

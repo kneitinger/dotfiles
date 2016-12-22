@@ -1,0 +1,54 @@
+# THEME CONFIGURATION #
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below. After the comma is the fallback font.
+# In this case, it handles the iconic glyphs in the workspace names and status
+# bar. Uses AUR pkg ttf-font-icons
+font pango:Inconsolata, FontAwesome 10
+
+# Colorscheme definitions
+set $fg     #1793b1
+set $fgStat #37b3f1
+set $bg     #333333
+set $fgP    #0b4866
+
+# Start i3bar to display a workspace bar
+bar {
+    tray_output primary
+
+    # Using i3pystatus
+    status_command python ~/.i3/status.py
+    # Using i3status
+    #status_command i3status --config ~/.i3/status.conf
+    position top
+    mode dock
+    # Don't show #s on workspace labels. Looks pleasant & retains functionality
+    #strip_workspace_numbers yes
+    # Holding <Alt> displays the dock if it is hidden with $mod+b
+    modifier $alt
+    colors {
+        background $bg
+        statusline $fgStat
+        separator #aaaaaa
+
+        # Property         border  backgr  text
+        focused_workspace  $fg     $fg     #ffffff
+        inactive_workspace $fg     $fgP    #bbbbbb
+        urgent_workspace   #0bd866 $fgP    #ffffff
+    }
+}
+
+# Background image
+exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
+
+# New window's border
+new_window pixel 2
+
+# Remove window borders along screen edges
+#hide_edge_borders both
+
+# Color scheme
+#class                  border  backgr  text    indicator
+client.focused          $fgStat $fgStat #ffffff $fg
+client.unfocused        $fgStat    $fgP    #bbbbbb $fg
+client.focused_inactive $fgP    $fgP    #bbbbbb #000000

@@ -1,0 +1,8 @@
+./i3/i3-file-watch.sh
+./i3/i3-conf-gen.sh
+./.xinitrc
+./.exports
+./.bash_profile
+./.bashrc
+./.aliases
+./test.sh
