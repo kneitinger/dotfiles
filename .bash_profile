@@ -18,9 +18,6 @@ shopt -s histappend
 # Fix typos in directories!
 shopt -s cdspell
 
-export LANG="en_US.UTF-8";
-export LC_ALL="en_US.UTF-8";
-
 # shellcheck disable=SC1091
 source /usr/share/autojump/autojump.bash
 
