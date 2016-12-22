@@ -1,10 +1,12 @@
+#!/bin/sh
 
 # Source the system xinit scripts
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-    for f in /etc/X11/xinit/xinitrc.d/?* ; do
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
+  for f in /etc/X11/xinit/xinitrc.d/?* ; do
+    # shellcheck source=/dev/null
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
 fi
 
 # Reverse scroll direction
@@ -60,5 +62,5 @@ case $session in
     i3-dev            ) exec ~/Programming/i3/i3 -d all --shmlog-size=26214400;;
     ff                ) exec firefox;;
     # No known session, try to run it as command
-    *                 ) exec $1;;
+    *                 ) exec "$1";;
 esac
