@@ -32,8 +32,9 @@ if [ -f ~/.Xresources ]; then
     xrdb -merge ~/.Xresources
 fi
 
-if [ -f ~/.xmodmap_t450s ]; then
-    xmodmap ~/.xmodmap_t450s
+# Load the current computer's xmodmap file if present
+if [ -f "$HOME/.xmodmap_$MODEL" ]; then
+    xmodmap "$HOME/.xmodmap_$MODEL"
 fi
 
 # Power saving
