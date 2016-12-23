@@ -16,7 +16,7 @@ if [ -e "$IP_FILE" ]; then
         exit
     else
         echo "$CURR_IP" > "$IP_FILE"
-        echo $CURR_IP | mutt -s "New IP" "$EMAIL"
+        echo "$CURR_IP" | mutt -s "New IP" "$EMAIL"
     fi
 else
     echo "$CURR_IP" > "$IP_FILE"

@@ -7,16 +7,17 @@ EXT="DP2"
 
 # If no external display is connected, or if one is connected and enabled,
 # toggle it off.
-if (xrandr | grep "$EXT disconnected") || !(xrandr | grep "$EXT connected (normal left inverted right x axis y axis)"); then
-    xrandr --output $IN --auto --output $EXT --off 
+if (xrandr | grep "$EXT disconnected") || ! (xrandr | grep "$EXT connected (normal left inverted right x axis y axis)"); then
+    xrandr --output $IN --auto --output $EXT --off
+    feh --bg-scale ~/Pictures/iranshrine.jpg
     exit
 fi
 
-if [ "$1" == "--right" ]; then
+if [ "$1" = "--right" ]; then
     DIR="right"
-elif [ "$1" == "--left" ]; then
+elif [ "$1" = "--left" ]; then
     DIR="left"
-elif [ "$1" == "--off" ]; then
+elif [ "$1" = "--off" ]; then
     xrandr --output $IN --auto --output $EXT --off; exit
 else
     exit 1

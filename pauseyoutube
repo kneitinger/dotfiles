@@ -6,13 +6,13 @@
 
 ID=$(xdotool search --limit 1 --onlyvisible --name "Youtube")
 
-eval $(xdotool getmouselocation --shell)
+eval "$(xdotool getmouselocation --shell)"
 INITX=$X
 INITY=$Y
 INITSCR=$SCREEN
 
 # Sets variables: WINDOW X Y WIDTH HEIGHT SCREEN
-eval $(xdotool getwindowgeometry --shell $ID)
+eval "$(xdotool getwindowgeometry --shell "$ID")"
 
-xdotool mousemove --window $ID $(($WIDTH/2)) $(($HEIGHT/2)) click 1 \
-    mousemove --screen $INITSCR $INITX $INITY
+xdotool mousemove --window "$ID" $(("$WIDTH"/2)) $(("$HEIGHT"/2)) click 1 \
+    mousemove --screen "$INITSCR" "$INITX" "$INITY"
