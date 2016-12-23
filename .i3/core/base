@@ -33,6 +33,5 @@ workspace_auto_back_and_forth yes
 
 # Autolaunch programs at boot
 exec gnome-terminal
-exec --no-startup-id redshift
 exec keepassx
 exec firefox

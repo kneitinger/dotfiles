@@ -47,6 +47,12 @@ xautolock -time 35 -locker "systemctl suspend"&
 # Set laptop screen as primary display
 xrandr --output eDP-1 --primary
 
+# Call low battery notification daemon
+batt-notify &
+
+# Call redshift
+redshift &
+
 # If invoked with startx ~/.xinitrc [some entry or path], launch that.
 # If invoked as just startx, run i3
 #~/Programming/i3/i3 -d all --shmlog-size=26214400
