@@ -48,8 +48,8 @@ xautolock -time 35 -locker "systemctl suspend"&
 # Set laptop screen as primary display
 xrandr --output eDP-1 --primary
 
-# Call low battery notification daemon
-batt-notify &
+# Call low battery notification script to warn when battery below 7 percent
+batt-notify -p 6 -t 70 &
 
 # Call redshift
 redshift &
