@@ -3,7 +3,7 @@
 # Finds all PDFS in the given locations and feeds the files to rofi
 # (https://davedavenport.github.io/rofi/) for pleasant launching
 
-FILE="$(find -L ~/Books ~/Skoo ~/Downloads ~/Papers -name "*.pdf" | rofi -show -dmenu -p "Pdfs:" -i )"
+FILE="$(find -L ~/Books ~/School ~/Downloads ~/Papers -name "*.pdf" | rofi -show -dmenu -p "Pdfs:" -i )"
 
 if [ -n "$FILE" ]; then
     zathura "$FILE"
