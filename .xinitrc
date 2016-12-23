@@ -40,13 +40,29 @@ fi
 # Power saving
 xbacklight -set 30
 xset +dpms
-xset dpms 660 0 0
+if [ "$MODEL" = "thinkpad_t420s" ]; then
+    xset dpms 1200 0 0
+else
+    xset dpms 660 0 0
+fi
 
 # Lock screen upon suspend, requires AUR package xss-lock-git
-xautolock -time 35 -locker "systemctl suspend"&
+xautolock -time 25 -locker "systemctl suspend"&
 
 # Set laptop screen as primary display
-xrandr --output eDP-1 --primary
+case $MODEL in
+    thinkpad_t450s)
+        xrandr --output eDP-1 --primary;;
+    thinkpad_t420s)
+        xrandr --output LVDS1 --primary;;
+esac
+
+# If using music laptop, start JACK and bridge pulseaudio
+if [ "$MODEL" = "thinkpad_t420s" ]; then
+    jack_control start
+    pactl set-default-sink jack_out
+    pactl set-default-source jack_in
+fi
 
 # Call low battery notification script to warn when battery below 7 percent
 batt-notify -p 6 -t 70 &
