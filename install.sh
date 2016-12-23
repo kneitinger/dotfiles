@@ -5,3 +5,5 @@ FILES=$(find "$PWD" -name ".*" -not -name ".git" -not -name ".gitignore" -not -n
 for file in $FILES; do
   ln -sfn "$file" "$HOME/$(basename "$file")"
 done
+
+"$HOME/.i3/i3-conf-gen.sh"
