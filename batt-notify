@@ -3,14 +3,17 @@
 # Calculates the remaining battery power percentage left on a two-battery system
 # TODO: Rewrite to handle 1,2,...,n battery systems nicely
 
-BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
-BAT1=$(cat /sys/class/power_supply/BAT1/capacity)
+while true; do
+  BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
+  BAT1=$(cat /sys/class/power_supply/BAT1/capacity)
 
-AVG=$[ ($BAT0+$BAT1) / 2 ]
+  AVG=$(( (BAT0+BAT1) / 2 ))
 
-if [ "$AVG" -le 8 ]; then
-    if [ $(cat /sys/class/power_supply/AC/online) -eq 0 ]; then
-        notify-send "Low Battery Warning!" "You have $AVG% charge remaining." \
-            -i /usr/share/icons/Numix-Circle/scalable/apps/battery.svg -u low -t 60000
+  if [ "$AVG" -le 99 ]; then
+    if [ "$(cat /sys/class/power_supply/AC/online)" -eq 0 ]; then
+      notify-send "Low Battery Warning!" "You have $AVG% charge remaining." \
+        -i /usr/share/icons/Numix-Circle/scalable/apps/battery.svg -u low -t 10000
     fi
-fi
+  fi
+  sleep 60
+done
