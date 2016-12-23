@@ -23,15 +23,18 @@ way.
   `thinkpad_t450s` directory. Files in a machine specific directory should
   correspond to on in `core`, and will be discovered when the one in `core` is
   being added to the `config`.
-+ An optional script using `inotifywait` from the [`inotify-tools` package](https://github.com/rvoicilas/inotify-tools/wiki) can be set to watch for changes in the core and machine folders and recompile the `config` file automatically.
++ An optional script, `i3-file-watch.sh`, using `inotifywait` from the [`inotify-tools` package](https://github.com/rvoicilas/inotify-tools/wiki) can be set to watch for changes in the core and machine folders and recompile the `config` file automatically.
 
 ## Installation
 
-To install, simply clone this repository and link the i3 directory to `~/.i3`
+If the base `dotfiles` repo's install script is run, these i3 files are
+installed as well.  If you wish to use just the i3 related files, simply clone this repository and link the .i3 directory to `~/.i3`
 ```
-ln -sf dotfiles/i3 ~/.i3
+git clone git@github.com:kneitinger/dotfiles.git
+cd dotfiles
+ln -sfn "$PWD/dotfiles/.i3" "$HOME/.i3"
 cd ~/.i3
-chmod +x i3-* && ./i3-conf-gen.sh
+./i3-conf-gen.sh
 ```
 
 Optionally, edit `.xinitrc`, `.bash_profile`, or any other startup file to
