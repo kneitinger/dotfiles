@@ -1,7 +1,26 @@
 #!/bin/sh
 
 # Calculates the remaining battery power percentage left on a two-battery system
+# and produces a warning if below a certain threshold
 # TODO: Rewrite to handle 1,2,...,n battery systems nicely
+
+THRESHOLD=8
+DELAY=60
+
+while getopts :p:t: option; do
+  case $option in
+    p)
+      THRESHOLD="$OPTARG"
+      ;;
+    t)
+      DELAY="$OPTARG"
+      ;;
+    [?])
+      echo "Usage: $0 [-p battery-percent-threshold] [-t period]"
+      exit 1
+      ;;
+  esac
+done
 
 while true; do
   BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
@@ -9,11 +28,11 @@ while true; do
 
   AVG=$(( (BAT0+BAT1) / 2 ))
 
-  if [ "$AVG" -le 99 ]; then
+  if [ "$AVG" -le "$THRESHOLD" ]; then
     if [ "$(cat /sys/class/power_supply/AC/online)" -eq 0 ]; then
       notify-send "Low Battery Warning!" "You have $AVG% charge remaining." \
         -i /usr/share/icons/Numix-Circle/scalable/apps/battery.svg -u low -t 10000
     fi
   fi
-  sleep 60
+  sleep "$DELAY"
 done
