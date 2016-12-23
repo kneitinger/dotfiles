@@ -42,10 +42,9 @@ xset +dpms
 xset dpms 660 0 0
 
 # Lock screen upon suspend, requires AUR package xss-lock-git
-#LOCKCMD="i3lock -n -i ~/Pictures/iranshrine.png"
-#xss-lock -- "$LOCKCMD" &
 xautolock -time 35 -locker "systemctl suspend"&
 
+# Set laptop screen as primary display
 xrandr --output eDP-1 --primary
 
 # If invoked with startx ~/.xinitrc [some entry or path], launch that.
