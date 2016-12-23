@@ -1,0 +1,26 @@
+################################################################################
+# Lenovo ThinkPad T420s Keybindings
+# [ F1  ->             ] [ F2  -> ScreenSaver      ]
+# [ F3  -> Battery     ] [ F4  -> Sleep *          ]
+# [ F5  -> WLAN *      ] [ F6  -> WebCam           ]
+# [ F7  -> Display     ] [ F8  -> TouchpadToggle   ]
+# [ F9  ->             ] [ F10 ->                  ]
+# [ F11 ->             ] [ F12 -> Suspend DONT USE ]
+################################################################################
+
+# Map volume keys to amixer functions
+bindsym XF86AudioMute exec amixer sset Master toggle
+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioRaiseVolume exec amixer set Master 4%+
+bindsym $mod+XF86AudioLowerVolume exec amixer set Master 10%-
+bindsym $mod+XF86AudioRaiseVolume exec amixer set Master 10%+
+
+bindsym XF86AudioMicMute exec amixer sset Capture toggle
+
+bindsym XF86AudioStop exec cadence-pulse2jack
+
+# Pressing Mod sets to extremes
+# Backlight is otherwise controlled by hardware
+bindsym $mod+XF86MonBrightnessDown exec light -S 2
+bindsym $mod+XF86MonBrightnessUp exec light -S 100
