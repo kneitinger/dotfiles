@@ -13,11 +13,17 @@ machines that I use for different purposes, the file is auto generated based on
 which machine it is being used on.  See [the i3 directory's README](https://github.com/kneitinger/dotfiles/tree/master/.i3)
 for more details.
 
-## Xorg
-_TODO!_
-
 ## Shell
-_TODO!_
+The shell configuration files are for `bash`, yet designed in a modular way.
+All aliases and environment variables are in separate files that would work for
+`zsh` environments as well.  An additional aspect of modularity is based on the
+`$MODEL` environment variable which conditionally determines settings for
+different machines in an easilly scalabable way.
+
+Any environment variables or startup scripts that contain personal or private
+information can be stored in `~/.additional`, which is excluded from tracking,
+via the repo's `.gitignore`.
+
 
 ## vim
 Due to periodic updates of plugins used, I've opted to store my vim dotfiles in
