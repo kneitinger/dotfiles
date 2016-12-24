@@ -1,8 +1,11 @@
 #dotfiles
 
 ## Installation
-To install, simply run `install.sh` which creates soft links from the relevant
+To install, simply run `install.sh` which creates symbolic links from the relevant
 files in this repo to your home folder, and then builds the i3 config file.
+Using symbolic links means that you don't have to change your file habits at
+all.  Your `.bashrc` appears to be exactly where you would expect it, yet is
+seamlessly tracked in the dotfiles repo.
 Warning: the first time it is ran, it will overwrite any existing files in $HOME if they
 have the same name as any file in this repo. After the first run, `install.sh`
 is non=destructive and can be safely ran at any time.
@@ -18,7 +21,7 @@ The shell configuration files are for `bash`, yet designed in a modular way.
 All aliases and environment variables are in separate files that would work for
 `zsh` environments as well.  An additional aspect of modularity is based on the
 `$MODEL` environment variable which conditionally determines settings for
-different machines in an easilly scalabable way.
+different machines in an easily scalable way.
 
 Any environment variables or startup scripts that contain personal or private
 information can be stored in `~/.additional`, which is excluded from tracking,
