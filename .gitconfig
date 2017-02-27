@@ -13,3 +13,9 @@
     a = add
     s = status
     c = commit
+
+[merge]
+tool = mymeld
+conflictstyle = diff3
+[mergetool "mymeld"]
+cmd = meld $LOCAL $BASE $REMOTE -o $MERGED --diff $BASE $LOCAL --diff $BASE $REMOTE --auto-merge
