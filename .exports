@@ -15,3 +15,5 @@ export EDITOR=/usr/bin/nvim
 # Use United States English
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
+
+export PAGER=less
