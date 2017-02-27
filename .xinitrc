@@ -43,7 +43,7 @@ xset +dpms
 if [ "$MODEL" = "thinkpad_t420s" ]; then
     xset dpms 1200 0 0
 else
-    xset dpms 660 0 0
+    xset dpms 1260 0 0
 fi
 
 # Lock screen upon suspend, requires AUR package xss-lock-git
