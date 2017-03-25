@@ -89,3 +89,5 @@ rofi.kb-custom-19:                   Alt+Shift+9
 rofi.key-window:
 rofi.key-run:
 rofi.key-ssh:
+
+Xcursor.size: 16
