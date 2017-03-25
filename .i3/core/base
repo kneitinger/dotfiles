@@ -18,6 +18,7 @@ set $ws0 "  10 "
 
 # Configure default workspace for certain applications
 #assign [class="chromium" window_type="normal"] $ws2
+assign [class="Spotify"] $ws4
 assign [class="Slack"] $ws6
 
 # No border for apps that usually take up a whole workspace
