@@ -44,11 +44,8 @@ exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
 # New window's border
 new_window pixel 2
 
-# Remove window borders along screen edges
-#hide_edge_borders both
-
 # Color scheme
 #class                  border  backgr  text    indicator
 client.focused          $fgStat $fgStat #ffffff $fg
-client.unfocused        $fgStat    $fgP    #bbbbbb $fg
+client.unfocused        $fgStat $fgP    #bbbbbb $fg
 client.focused_inactive $fgP    $fgP    #bbbbbb #000000
