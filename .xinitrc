@@ -70,6 +70,11 @@ batt-notify -p 6 -t 70 &
 # Call redshift
 redshift &
 
+# Automatically ecompile i3 config if any of its component files are changed
+if [ -e "$HOME/.i3/i3-file-watch.sh" ]; then
+    "$HOME"/.i3/i3-file-watch.sh &
+fi
+
 # If invoked with startx ~/.xinitrc [some entry or path], launch that.
 # If invoked as just startx, run i3
 #~/Programming/i3/i3 -d all --shmlog-size=26214400
