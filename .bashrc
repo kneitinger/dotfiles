@@ -19,12 +19,57 @@ else
   BOLD=""
 fi
 
+# Function by Jessie Frazelle
+# https://github.com/jessfraz/dotfiles/blob/master/.bash_prompt
 prompt_git() {
-  if git status &> /dev/null; then
-    echo -en "(${GREEN}$(git branch | grep "\*" | cut -d\  -f2)${WHITE})"
-  else
-    return
-  fi
+	local s=''
+	local branch=''
+
+	# Check if the current directory is in a Git repository.
+	if [ "$(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}")" == '0' ]; then
+
+		# check if the current directory is in .git before running git checks
+		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+			if [[ -O "$(git rev-parse --show-toplevel)/.git/index" ]]; then
+				git update-index --really-refresh -q &> /dev/null
+			fi;
+
+			# Check for uncommitted changes in the index.
+			if ! git diff --quiet --ignore-submodules --cached; then
+				s+='+'
+			fi;
+
+			# Check for unstaged changes.
+			if ! git diff-files --quiet --ignore-submodules --; then
+				s+='!'
+			fi;
+
+			# Check for untracked files.
+			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+				s+='?'
+			fi;
+
+			# Check for stashed files.
+			if git rev-parse --verify refs/stash &>/dev/null; then
+				s+='$'
+			fi
+
+		fi
+
+		# Get the short symbolic ref.
+		# If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+		# Otherwise, just give up.
+		branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+			git rev-parse --short HEAD 2> /dev/null || \
+			echo '(unknown)')"
+
+		[ -n "${s}" ] && s=" [${s}]"
+
+        echo -e "(\001${GREEN}\002${branch}\001${WHITE}\002)\001${BLUE}\002${s}"
+	else
+		return
+	fi
 }
 
 prompt_err() {
@@ -35,11 +80,10 @@ prompt_err() {
 }
 
 PS1="\[${BOLD}${WHITE}\]"
-PS1+="${RED}\$(prompt_err)${WHITE}"
-PS1+="[${BLUE}\u${WHITE}: ${PURP}\W${WHITE}]"
+PS1+="\[${RED}\]\$(prompt_err)\[${WHITE}\]"
+PS1+="[\[${BLUE}\]\u\[${WHITE}\]: \[${PURP}\]\W\[${WHITE}\]]"
 PS1+="\$(prompt_git)"
-PS1+=" \$\[${RESET}\] "
-
+PS1+=" \[${WHITE}\]\$\[${RESET}\] "
 
 if [[ -f "${HOME}/.bash_profile" ]]; then
 	# shellcheck source=/dev/null
