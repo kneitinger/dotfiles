@@ -38,8 +38,7 @@ bindsym XF86Search exec ~/bin/picnote
 bindsym $mod+XF86Search exec scrot -s /tmp/$(date +"%F_%H-%M").png
 bindsym $mod+Shift+XF86Search exec scrot /tmp/$(date +"%F_%H-%M").png
 
-bindsym XF86LaunchA exec /home/leaf/bin/extscreen --left
-bindsym $mod+XF86LaunchA exec /home/leaf/bin/extscreen --left
+bindsym XF86LaunchA exec ~/bin/screenselect
 
 # Toggle which display worksapce is on (since wrapping is enabled)
 bindsym XF86Explorer move workspace to output left
