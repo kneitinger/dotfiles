@@ -18,7 +18,7 @@ set $ws0 "  10 "
 
 # Configure default workspace for certain applications
 #assign [class="chromium" window_type="normal"] $ws2
-assign [class="Google-chrome"] $ws4
+assign [class="Slack"] $ws6
 
 # No border for apps that usually take up a whole workspace
 for_window [class="google-chrome"] border none
@@ -39,3 +39,4 @@ workspace_auto_back_and_forth yes
 exec gnome-terminal
 exec keepassx
 exec firefox
+exec slack
