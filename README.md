@@ -15,10 +15,12 @@ Usually ran as cron jobs.  Provide some form of feedback.
 * `ipcheck`: Sends an email to specified address upon change in external IP
   address.
 
-### Settings 
+### Settings
 Modify the configuration of the system.
 
-* `extscreen`: A simple wrapper around xrandr to work easily with external displays
+* `screenselect`: Launches a [rofi](https://davedavenport.github.io/rofi/)
+  window populated with all xrandr scripts in ~/.screenlayout/$MODEL, and
+  executes the chosen layout
 * `fixmouse`: Reapplies desired mouse behavior when it mysteriously changes
 * `mirror-update`: Filter Arch Linux mirrorlist for only US mirrors, then finds the 6 fastest
 * `toggle-jack`: Start or stop
@@ -36,7 +38,7 @@ Starts a program.  Usually mapped to a keyboard combination shortcut.
 default app.
 * `pdfselect`: Finds all PDFS in the given locations and feeds the files
 to [rofi](https://davedavenport.github.io/rofi/) for fast, easy, launching.
-* `picnote`: Begins an interactive screengrabbing box with scrot and then displays the 
+* `picnote`: Begins an interactive screengrabbing box with scrot and then displays the
 image in a minimal view.  Good for quick temporary graphical references
 * `pauseyoutube`: Locates a window title containing "Youtube", moves the cursor
   to the center of the window, left-clicks, and restores your mouse to it's

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Launches a rofi (https://davedavenport.github.io/rofi/) window populated with
+# all xrandr scripts in ~/.screenlayout/$MODEL, and executes the chosen layout
+
+LAYOUT="$(find -L "$HOME/.screenlayout/$MODEL" -type f |
+         rofi -show run -dmenu -p "Select Layout:" -i )"
+
+if [ -n "$LAYOUT" ]; then
+    "$LAYOUT"
+fi
