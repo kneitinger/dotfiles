@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Declare beautiful colors
 if tput setaf 1 &> /dev/null; then
   tput sgr0
   GREEN=$(tput setaf 10)
@@ -72,6 +73,7 @@ prompt_git() {
 	fi
 }
 
+# Displays the exit code of the last run command if non-zero
 prompt_err() {
   local LAST_ERR="$?"
   if [ "$LAST_ERR" -ne 0 ]; then
