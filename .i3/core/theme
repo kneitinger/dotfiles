@@ -22,8 +22,10 @@ bar {
     #status_command i3status --config ~/.i3/status.conf
     position top
     mode dock
+
     # Don't show #s on workspace labels. Looks pleasant & retains functionality
-    #strip_workspace_numbers yes
+    strip_workspace_numbers yes
+
     # Holding <Alt> displays the dock if it is hidden with $mod+b
     modifier $alt
     colors {
