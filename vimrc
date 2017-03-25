@@ -286,6 +286,7 @@ let g:Tex_ViewRule_pdf = "zathura --debug=error"
 let g:Tex_CompileRule_pdf = "latexmk -pdf -shell-escape"
 let g:Tex_Leader = '/'
 let g:Imap_FreezeImap = 1
+let g:tex_conceal = ""
 
 " Indentline
 let g:indentLine_char = '┆'
