@@ -63,7 +63,7 @@ stat.register("shell",
               interval=113)
 
 stat.register("shell",
-              command="printf \"%s%s %s\" $(echo JACK:) $(if jack_control status | grep \"stopped\" &> /dev/null; then echo \"\"; else echo \"\"; fi) $(if jack_control status | grep \"started\" &> /dev/null; then echo \" [\"; jack_control dp | grep \"device\:\" | cut -d\: -f7 | cut -d\) -f1; echo \"]\" ; else echo \"\"; fi)",
+              command="~/.i3/status_scripts/jack-stat.sh",
               interval=7)
 
 stat.register("cpu_usage",
