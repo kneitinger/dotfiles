@@ -59,8 +59,7 @@ stat.register("shell",
               interval=2)
 
 stat.register("shell",
-              command="echo   $(( $(checkupdates | wc -l) + $(cower -u | wc -l) ))",
-
+              command="~/.i3/status_scripts/update-stat.sh",
               interval=113)
 
 stat.register("shell",
