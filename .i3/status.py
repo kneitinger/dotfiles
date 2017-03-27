@@ -13,23 +13,6 @@ status.register("clock",
     on_leftclick= "notify-send \"$(cal)\"",
     format="%-m/%-d %-H:%M",)
 
-# Widget for volume of speakers
-#status.register("alsa",
-#    card=1,
-#    muted="",      # Speaker icon w/ no audio coming out
-#    unmuted="",    # Speaker icon w/ audio coming out
-#    color_muted="#999999",
-#    mixer="Speaker",
-#    format="{muted} {volume}",)
-
-# Widget for volume of headphones
-#status.register("alsa",
-#    card=1,
-#    color_muted="#999999",
-#    mixer="Headphone",
-#    interval=7,
-#    format=" {volume}",)
-
 status.register("pulseaudio",
     muted=" ",      # Speaker icon w/ no audio coming out
     unmuted="",    # Speaker icon w/ audio coming out
@@ -82,6 +65,13 @@ status.register("network",
 #status.register("disk",
 #    path="/",
 #    format="{used}/{total}G [{avail}G]",)
+
+status.register("shell",
+    command="~/.i3/status_scripts/lock-stat.sh",
+    on_leftclick="~/.i3/status_scripts/lock-toggler.sh",
+    #command="checkupdates | wc -l",
+    #command="printf %s uname",
+    interval=2)
 
 status.register("shell",
         command="printf %s%s \"   $(( $(checkupdates | wc -l) + $(cower -u | wc -l) ))\"",
