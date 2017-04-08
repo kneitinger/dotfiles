@@ -40,14 +40,16 @@ bar {
     # Holding <Alt> displays the dock if it is hidden with $mod+b
     modifier $alt
     colors {
-        background $bg
-        statusline $fgStat
-        separator #aaaaaa
+        background $greyd
+        statusline $sand
+        separator  $turf
 
-        # Property         border  backgr  text
-        focused_workspace  $fg     $fg     #ffffff
-        inactive_workspace $fg     $fgP    #bbbbbb
-        urgent_workspace   #0bd866 $fgP    #ffffff
+        # Property         border   backgr   text
+        focused_workspace  $salmon  $salmon  $white
+        active_workspace   $salmond $salmond $white
+        inactive_workspace $greyd   $greyd   $grey
+        urgent_workspace   $clay    $salmond $white
+        binding_mode       $salmon  $salmon  $white
     }
 }
 

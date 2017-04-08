@@ -48,9 +48,9 @@ stat.register("battery",
 stat.register("network",
               interval=7,
               interface="wlp3s0",
-              color_up="#37b3f1",
-              color_down="#4e5b62",
-              format_up=" {essid}[{v4}]",
+              color_up="#D7AF87",           # $sand in .i3 config
+              color_down="#CCCCCC",
+              format_up=" {essid}\[{v4}\]",
               format_down=" ")
 
 stat.register("shell",
