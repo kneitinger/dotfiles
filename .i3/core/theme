@@ -60,7 +60,7 @@ exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
 new_window pixel 2
 
 # Color scheme
-#class                  border  backgr  text    indicator
-client.focused          $fgStat $fgStat #ffffff $fg
-client.unfocused        $fgStat $fgP    #bbbbbb $fg
-client.focused_inactive $fgP    $fgP    #bbbbbb #000000
+# class                 border   backgr   text   indicator
+client.focused          $salmon  $salmon  $white $turf
+client.unfocused        $salmond $salmond $grey  $turf
+client.focused_inactive $salmond $salmonl $white $turf
