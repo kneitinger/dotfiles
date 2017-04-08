@@ -6,6 +6,12 @@
 # bar. Uses AUR pkg ttf-font-icons
 font pango:Inconsolata, FontAwesome 10
 
+# Background image
+exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
+
+# New window's border
+new_window pixel 2
+
 # Colorscheme definitions
 set $salmonl #AF8787
 set $salmon  #AF5F5F
@@ -18,25 +24,28 @@ set $grey    #CCCCCC
 set $clay    #AF3C00
 set $greyd   #2E3436
 
-# Start i3bar to display a workspace bar
-bar {
-    tray_output primary
+# Color scheme
+# class                 border   backgr   text   indicator
+client.focused          $salmon  $salmon  $white $turf
+client.unfocused        $salmond $salmond $grey  $turf
+client.focused_inactive $salmond $salmonl $white $turf
 
-    # Using i3pystatus
-    status_command python ~/.i3/status.py
-    # Using i3status
-    #status_command i3status --config ~/.i3/status.conf
+# i3bar configuration
+bar {
     position top
     mode dock
-
-    # Do not print visible separator between elements of the status bar
-    separator_symbol "  "
+    # Holding <Alt> displays the dock if it is hidden with $mod+b
+    modifier $alt
 
     # Don't show #s on workspace labels. Looks pleasant & retains functionality
     strip_workspace_numbers yes
 
-    # Holding <Alt> displays the dock if it is hidden with $mod+b
-    modifier $alt
+    # Using i3pystatus
+    status_command python ~/.i3/status.py
+    # Do not print visible separator between elements of the status bar
+    separator_symbol "  "
+    tray_output primary
+
     colors {
         background $greyd
         statusline $sand
@@ -50,15 +59,3 @@ bar {
         binding_mode       $salmon  $salmon  $white
     }
 }
-
-# Background image
-exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
-
-# New window's border
-new_window pixel 2
-
-# Color scheme
-# class                 border   backgr   text   indicator
-client.focused          $salmon  $salmon  $white $turf
-client.unfocused        $salmond $salmond $grey  $turf
-client.focused_inactive $salmond $salmonl $white $turf
