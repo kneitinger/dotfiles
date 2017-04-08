@@ -7,6 +7,17 @@
 font pango:Inconsolata, FontAwesome 10
 
 # Colorscheme definitions
+set $salmonl #AF8787
+set $salmon  #AF5F5F
+set $salmond #5C4D4D
+set $sand    #D7AF87
+set $earth   #875F5F
+set $turf    #87875F
+set $white   #FFFFFF
+set $grey    #CCCCCC
+set $clay    #AF3C00
+set $greyd   #2E3436
+
 set $fg     #1793b1
 set $fgStat #37b3f1
 set $bg     #333333
