@@ -18,11 +18,6 @@ set $grey    #CCCCCC
 set $clay    #AF3C00
 set $greyd   #2E3436
 
-set $fg     #1793b1
-set $fgStat #37b3f1
-set $bg     #333333
-set $fgP    #0b4866
-
 # Start i3bar to display a workspace bar
 bar {
     tray_output primary
