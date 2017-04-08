@@ -30,3 +30,6 @@ alias cp='cp -i'
 
 # Allow sudo-ing aliases...no idea why this works
 alias sudo='sudo '
+
+# Clean up LaTeX build files
+alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log} _minted*'
