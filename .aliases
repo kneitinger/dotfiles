@@ -18,7 +18,7 @@ alias pup='pacaur -Syu --noedit --noconfirm'
 alias yo='yaourt'
 
 # ls
-alias ls='ls --color'
+alias ls='ls --color=auto'
 alias la='ls -a'
 alias lal='ls -lha'
 alias ll='ls -lh'
