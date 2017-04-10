@@ -91,3 +91,53 @@ rofi.key-run:
 rofi.key-ssh:
 
 Xcursor.size: 16
+
+! Alduin Colors
+! special
+*.foreground:   #dfdfaf
+*.background:   #1c1c1c
+*.cursorColor:  #dfdfaf
+
+! black
+*.color0:       #1c1c1c
+*.color8:       #875f5f
+
+! red
+*.color1:       #af1600
+*.color9:       #af5f5f
+
+! green
+*.color2:       #af5f00
+*.color10:      #d75f00
+
+! yellow
+*.color3:       #878787
+*.color11:      #5f5f87
+
+! blue
+*.color4:       #af875f
+*.color12:      #dfaf87
+
+! magenta
+*.color5:       #875f5f
+*.color13:      #af8787
+
+! cyan
+*.color6:       #87afaf
+*.color14:      #afdfd7
+
+! white
+*.color7:       #dfdfaf
+*.color15:      #ffdf87
+
+!URxvt.font:         xft:monaco:size=8
+URxvt.font:         xft:inconsolata:size=11
+URxvt.scrollBar:    false
+
+Xft.antialias:	true
+Xft.rgba:	    rgba
+Xft.hinting:	true
+Xft.hintstyle:	hintslight
+Xft.autohint:	false
+Xft.lcdfilter:	lcddefault
+
