@@ -4,7 +4,7 @@
 ################################################################################
 
 # Application Launchers
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+m exec google-chrome-stable; workspace $ws7
 bindsym $mod+Shift+n exec chromium
 bindsym $mod+p exec pcmanfm
