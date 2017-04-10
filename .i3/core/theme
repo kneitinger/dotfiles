@@ -22,7 +22,9 @@ set $turf    #87875F
 set $white   #FFFFFF
 set $grey    #CCCCCC
 set $clay    #AF3C00
-set $greyd   #2E3436
+set $greyd   #1C1C1C
+set $red     #AF1600
+set $lavend  #5F5F87 
 
 # Color scheme
 # class                 border   backgr   text   indicator
@@ -54,8 +56,8 @@ bar {
         # Property         border   backgr   text
         focused_workspace  $salmon  $salmon  $white
         active_workspace   $salmond $salmond $white
-        inactive_workspace $greyd   $greyd   $grey
-        urgent_workspace   $clay    $salmond $white
+        inactive_workspace $lavend  $lavend  $grey
+        urgent_workspace   $red     $red     $white
         binding_mode       $salmon  $salmon  $white
     }
 }
