@@ -1,18 +1,3 @@
-rofi.font: inconsolata 12
-rofi.color-enabled: true
-rofi.color-normal: #0B4866,#FFFFFF,#0F6088,#37B3F1,#333333
-rofi.line-margin: 3
-rofi.color-window: #333333,#888888
-rofi.location: 2
-rofi.padding: 3
-rofi.separator-style: solid
-rofi.hide-scrollbar: true
-rofi.width:                          50
-rofi.lines:                          15
-rofi.columns:                        1
-
-Xcursor.size: 16
-
 ! Alduin Colors
 ! special
 *.foreground:   #dfdfaf
@@ -50,6 +35,21 @@ Xcursor.size: 16
 ! white
 *.color7:       #dfdfaf
 *.color15:      #ffdf87
+
+rofi.font: inconsolata 12
+rofi.color-enabled: true
+rofi.color-normal: #0B4866,#FFFFFF,#0F6088,#37B3F1,#333333
+rofi.line-margin: 3
+rofi.color-window: #333333,#888888
+rofi.location: 2
+rofi.padding: 3
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.width:                          50
+rofi.lines:                          15
+rofi.columns:                        1
+
+Xcursor.size: 16
 
 !URxvt.font:         xft:monaco:size=8
 URxvt.font:         xft:inconsolata:size=11
