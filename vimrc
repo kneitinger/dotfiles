@@ -45,7 +45,7 @@ set colorcolumn=81
 " run :so ~/.vim/color_names.vim to find desired values
 au ColorScheme  * hi Comment     cterm=italic
               \ | hi MatchParen  ctermfg=15 ctermbg=131
-              \ | hi StatusLine  cterm=bold ctermbg=131
+              \ | hi StatusLine  cterm=bold ctermbg=131 ctermfg=16
               \ | hi User1       ctermbg=131
               \ | hi TabLineSel  cterm=bold ctermfg=16 ctermbg=131
               \ | hi TabLine     cterm=standout,italic ctermfg=0 ctermbg=131
@@ -189,6 +189,8 @@ augroup filetype
     au! BufRead,BufNewFile *.fst    set filetype=faust
     au! BufRead,BufNewFile *.dsp    set filetype=faust
     au! BufRead,BufNewFile *.lib    set filetype=faust
+    au! BufRead,BufNewFile *.lhs    set textwidth=74
+    au! BufRead,BufNewFile *.lhs    set colorcolumn=76
 augroup END
 
 autocmd FileType tex setlocal shiftwidth=2 tabstop=2
