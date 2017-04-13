@@ -23,7 +23,7 @@ bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # Pressing Mod sets to extremes
 bindsym XF86MonBrightnessDown exec light -U 7
-bindsym $mod+XF86MonBrightnessDown exec light -S 2
+bindsym $mod+XF86MonBrightnessDown exec light -S 0.5
 bindsym XF86MonBrightnessUp exec light -A 3
 bindsym $mod+XF86MonBrightnessUp exec light -S 100
 
