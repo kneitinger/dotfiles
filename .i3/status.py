@@ -79,8 +79,9 @@ stat.register("shell",
               command="~/.i3/status_scripts/jack-stat.sh",
               interval=7)
 
-stat.register("cpu_usage",
-        format="{usage:02}% cpu",)
+if "Linux" in uname[0]:
+    stat.register("cpu_usage",
+            format="{usage:02}% cpu",)
 
 if "Linux" in uname[0]:
     stat.register("window_title")
