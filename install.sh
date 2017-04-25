@@ -9,4 +9,8 @@ done
 if [ "$(uname)" != "Darwin" ]; then
   "$HOME/.i3/install-venv.sh"
   "$HOME/.i3/i3-conf-gen.sh"
+
+  mkdir -p "$HOME"/.fonts
+  curl -L -o "$HOME"/.fonts/FontAwesome.otf \
+    https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/FontAwesome.otf
 fi
