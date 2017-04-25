@@ -6,4 +6,7 @@ for file in $FILES; do
   ln -sfn "$file" "$HOME/$(basename "$file")"
 done
 
-"$HOME/.i3/i3-conf-gen.sh"
+if [ "$(uname)" != "Darwin" ]; then
+  "$HOME/.i3/install-venv.sh"
+  "$HOME/.i3/i3-conf-gen.sh"
+fi
