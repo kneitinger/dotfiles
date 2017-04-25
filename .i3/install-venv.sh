@@ -4,6 +4,10 @@
 
 set -e
 
+if which pip3 > /dev/null 2>&1; then
+    python3 -m ensurepip --user
+fi
+
 python3 -m venv "$HOME"/.i3/.venv
 cd "$HOME"/.i3/.venv
 
