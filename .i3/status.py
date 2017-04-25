@@ -2,7 +2,9 @@
 
 from i3pystatus import Status
 from socket import gethostname
+from shutil import which
 import os
+
 
 uname = os.uname()
 hostname = gethostname()
@@ -75,9 +77,10 @@ if "ARCH" in uname[2]:
                   command="~/.i3/status_scripts/update-stat.sh",
                   interval=113)
 
-stat.register("shell",
-              command="~/.i3/status_scripts/jack-stat.sh",
-              interval=7)
+if which('jack') != None:
+    stat.register("shell",
+                  command="~/.i3/status_scripts/jack-stat.sh",
+                  interval=7)
 
 if "Linux" in uname[0]:
     stat.register("cpu_usage",
