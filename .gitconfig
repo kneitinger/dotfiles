@@ -9,17 +9,18 @@
 [github]
     user = kneitinger
 [alias]
-	d = difftool
-    a = add
-    s = status
-    c = commit
+    d  = difftool
+    a  = add
+    s  = status
+    c  = commit
+    rh = reset HEAD
 
 [merge]
-tool = mymeld
-conflictstyle = diff3
+    tool = mymeld 
+    conflictstyle = diff3
 [mergetool "mymeld"]
-cmd = meld $LOCAL $BASE $REMOTE -o $MERGED --diff $BASE $LOCAL --diff $BASE $REMOTE --auto-merge
+    cmd = meld $LOCAL $BASE $REMOTE -o $MERGED --diff $BASE $LOCAL --diff $BASE $REMOTE --auto-merge
 
 [rerere]
-	enabled = true
-	autoupdate = true
+    enabled = true
+    autoupdate = true
