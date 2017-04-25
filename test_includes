@@ -4,6 +4,7 @@
 ./.exports
 ./.i3/i3-conf-gen.sh
 ./.i3/i3-file-watch.sh
+./.i3/install-venv.sh
 ./install.sh
 ./test.sh
 ./.xinitrc
