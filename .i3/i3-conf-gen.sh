@@ -9,12 +9,11 @@ if [ -e "$HOME"/.i3/config ]; then
   mv "$HOME"/.i3/config "$HOME"/.i3/.config_backup
 fi
 
-CONFIGS=$(find "$HOME"/.i3/core/* -printf "%f\n")
-for conf in $CONFIGS; do
-  printf "\n" >> "$HOME"/.i3/config
+for conf in $(ls "$HOME"/.i3/core); do
+  echo -e "\n" >> "$HOME"/.i3/config
   cat "$HOME/.i3/core/$conf" >> "$HOME"/.i3/config
   if [ -e "$MODEL" ] && [ -e "$HOME/.i3/$MODEL/$conf" ]; then
-    printf "\n" >> "$HOME"/.i3/config
+    echo -e "\n" >> "$HOME"/.i3/config
     cat "$HOME/.i3/$MODEL/$conf" >> "$HOME"/.i3/config
   fi
 done
