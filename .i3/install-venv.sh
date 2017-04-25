@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1091
 
 set -e
 
@@ -11,6 +10,7 @@ fi
 python3 -m venv "$HOME"/.i3/.venv
 cd "$HOME"/.i3/.venv
 
+# shellcheck disable=SC1091
 source bin/activate
 
 pip3 install colour     \
