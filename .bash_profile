@@ -18,6 +18,10 @@ shopt -s histappend
 # Fix typos in directories!
 shopt -s cdspell
 
+if which syncthing > /dev/null 2>&1; then
+    syncthing &
+fi
+
 # shellcheck disable=SC1091
 if [ "$(uname)" = 'Linux' ]; then
     source /usr/share/autojump/autojump.bash
