@@ -46,8 +46,15 @@ else
     xset dpms 1260 0 0
 fi
 
+# Disable beep!
+xset b off
+
 # Lock screen upon suspend, requires AUR package xss-lock-git
-xautolock -time 25 -locker "systemctl suspend"&
+if [ "$(uname)" = 'Linux' ]; then
+    xautolock -time 25 -locker "systemctl suspend"&
+else
+    xautolock -time 25 -locker "sudo zzz"&
+fi
 
 # Set laptop screen as primary display
 case $HOSTNAME in
