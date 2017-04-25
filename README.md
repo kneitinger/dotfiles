@@ -20,7 +20,7 @@ for more details.
 The shell configuration files are for `bash`, yet designed in a modular way.
 All aliases and environment variables are in separate files that would work for
 `zsh` environments as well.  An additional aspect of modularity is based on the
-`$MODEL` environment variable which conditionally determines settings for
+`$HOSTNAME` environment variable which conditionally determines settings for
 different machines in an easily scalable way.
 
 Any environment variables or startup scripts that contain personal or private

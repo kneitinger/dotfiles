@@ -33,14 +33,14 @@ if [ -f ~/.Xresources ]; then
 fi
 
 # Load the current computer's xmodmap file if present
-if [ -f "$HOME/.xmodmap_$MODEL" ]; then
-    xmodmap "$HOME/.xmodmap_$MODEL"
+if [ -f "$HOME/.xmodmap_$HOSTNAME" ]; then
+    xmodmap "$HOME/.xmodmap_$HOSTNAME"
 fi
 
 # Power saving
 xbacklight -set 30
 xset +dpms
-if [ "$MODEL" = "thinkpad_t420s" ]; then
+if [ "$HOSTNAME" = "tunepad" ]; then
     xset dpms 1200 0 0
 else
     xset dpms 1260 0 0
@@ -50,15 +50,15 @@ fi
 xautolock -time 25 -locker "systemctl suspend"&
 
 # Set laptop screen as primary display
-case $MODEL in
-    thinkpad_t450s)
+case $HOSTNAME in
+    janeway)
         xrandr --output eDP-1 --primary;;
-    thinkpad_t420s)
+    tunepad)
         xrandr --output LVDS1 --primary;;
 esac
 
 # If using music laptop, start JACK and bridge pulseaudio
-if [ "$MODEL" = "thinkpad_t420s" ]; then
+if [ "$HOSTNAME" = "tunepad" ]; then
     jack_control start
     pactl set-default-sink jack_out
     pactl set-default-source jack_in
