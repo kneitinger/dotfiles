@@ -1,16 +1,14 @@
-#!/bin/bash
-
-# Figure out which computer we're on to use certain configs accordingly
-MODEL=$(tr "[:blank:]" "_" < /sys/devices/virtual/dmi/id/product_version | tr "[:upper:]" "[:lower:]")
-export MODEL
-
 export HISTSIZE=5000000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # TODO
 #export HISTIGNORE=""
 
-export EDITOR=/usr/bin/nvim
+if [ "$(uname)" = 'Linux' ]; then
+    export EDITOR=/usr/bin/nvim
+else
+    export EDITOR=/usr/local/bin/nvim
+fi
 
 # Use United States English
 export LANG="en_US.UTF-8";

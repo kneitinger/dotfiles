@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -e
 
@@ -9,7 +9,7 @@ if [ -e "$HOME"/.i3/config ]; then
   mv "$HOME"/.i3/config "$HOME"/.i3/.config_backup
 fi
 
-for conf in $(ls "$HOME"/.i3/core); do
+for conf in "$HOME"/.i3/core/*; do
   echo -e "\n" >> "$HOME"/.i3/config
   cat "$HOME/.i3/core/$conf" >> "$HOME"/.i3/config
   if [ -e "$MODEL" ] && [ -e "$HOME/.i3/$MODEL/$conf" ]; then

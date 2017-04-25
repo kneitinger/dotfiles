@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Declare beautiful colors
 if tput setaf 1 &> /dev/null; then

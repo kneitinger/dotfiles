@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-PATH=/usr/lib/ccache/bin:~/bin:$(ruby -e 'print Gem.user_dir')/bin:/opt:~/.cargo/bin:$PATH
+PATH=~/bin:~/.cargo/bin:~/.cabal/bin:$PATH
 
 # Include modularized config files
 for file in ~/.{aliases,path,exports,additional}; do
@@ -19,6 +19,8 @@ shopt -s histappend
 shopt -s cdspell
 
 # shellcheck disable=SC1091
-source /usr/share/autojump/autojump.bash
-
-rustup -v >/dev/null 2>&1 && { rustup completions bash > ~/.bash-completion; }
+if [ "$(uname)" = 'Linux' ]; then
+    source /usr/share/autojump/autojump.bash
+else
+    source /usr/local/share/autojump/autojump.bash
+fi
