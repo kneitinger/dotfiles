@@ -87,10 +87,15 @@ PS1+="[\[${BLUE}\]\u\[${WHITE}\]: \[${PURP}\]\W\[${WHITE}\]]"
 PS1+="\$(prompt_git)"
 PS1+=" \[${WHITE}\]\$\[${RESET}\] "
 
-if [[ -f "${HOME}/.bash_profile" ]]; then
-	# shellcheck source=/dev/null
-	source "${HOME}/.bash_profile"
+# shellcheck disable=SC1091
+if [ "$(uname)" = 'Linux' ]; then
+    source /usr/share/autojump/autojump.bash
+else
+    source /usr/local/share/autojump/autojump.bash
 fi
+
+# shellcheck disable=SC1090
+source "$HOME"/.aliases
 
 GPG_TTY=$(tty)
 export GPG_TTY
