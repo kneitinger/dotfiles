@@ -18,11 +18,15 @@ alias pup='pacaur -Syu --noedit --noconfirm'
 alias yo='yaourt'
 
 # ls
-alias ls='ls --color=auto'
+if [ $(uname) = 'Linux' ]; then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
+
 alias la='ls -a'
 alias lal='ls -lha'
 alias ll='ls -lh'
-alias ls='ls --color'
 
 # Always ask before overwriting a file with mv or cp
 alias mv='mv -i'
