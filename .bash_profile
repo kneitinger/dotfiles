@@ -19,7 +19,7 @@ shopt -s histappend
 shopt -s cdspell
 
 if which syncthing > /dev/null 2>&1; then
-    syncthing > /dev/null 2>&1 &
+    syncthing --gui-address="http://localhost:8384" > /dev/null 2>&1 &
 fi
 
 # shellcheck disable=SC1090
