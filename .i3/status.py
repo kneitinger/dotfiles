@@ -44,7 +44,8 @@ if "Linux" in uname[0]:
                       interval=13,
                       battery_ident="BAT1",
                       critical_color="#ff0000",
-                      format="{status} {percentage:02.0f}% {remaining:%E%h:%M}",
+                      format="{status} {percentage:02.0f}%"
+                             " {remaining:%E%h:%M}",
                       alert=False,
                       alert_percentage=10,
                       status={
@@ -55,7 +56,8 @@ if "Linux" in uname[0]:
 
 if "FreeBSD" in uname[0]:
     stat.register("shell",
-                  command='acpiconf -i 0 | grep "Remaining capacity" | grep -o "[0-9]*%"',
+                  command='acpiconf -i 0 | grep "Remaining capacity"'
+                          '| grep -o "[0-9]*%"',
                   interval=13)
 
 
@@ -77,16 +79,13 @@ if "ARCH" in uname[2]:
                   command="~/.i3/status_scripts/update-stat.sh",
                   interval=113)
 
-if which('jack') != None:
+if which('jack') is not None:
     stat.register("shell",
                   command="~/.i3/status_scripts/jack-stat.sh",
                   interval=7)
 
 if "Linux" in uname[0]:
     stat.register("cpu_usage",
-            format="{usage:02}% cpu",)
-
-if "Linux" in uname[0]:
-    stat.register("window_title")
+                  format="{usage:02}% cpu",)
 
 stat.run()
