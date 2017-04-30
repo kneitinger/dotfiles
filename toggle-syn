@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Disables/Enables a Synaptics touchpad and moves the cursor to the
 # bottom-left corner of the display

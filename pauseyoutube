@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Locates window with "Youtube" in the title, moves mouse to center of that
 # window, left-clicks, and restores mouse to initial position.

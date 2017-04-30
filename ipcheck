@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Send an email upon external IP address change
 # or, how I learned to accept dynamic IP addresses.

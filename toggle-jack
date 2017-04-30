@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SOUND_INT="hw:PCH"
 SOUND_USB="hw:USB"

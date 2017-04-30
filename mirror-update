@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # From:
 # (https://wiki.archlinux.org/index.php/Mirrors#List_mirrors_only_for_a_specific_country)

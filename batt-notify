@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Calculates the remaining battery power percentage left on a two-battery system
 # and produces a warning if below a certain threshold

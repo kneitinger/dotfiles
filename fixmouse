@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/usr/bin/env bash
 
 # Don't know why, but sometimes the ol' thinkpad middle button gives me a hard
 # time.  This reapplies the desired behaviour

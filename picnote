@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Begins an interactive screengrabbing box with scrot and then displays the
 # image in a minimal view.  Good for quick temporary graphical references

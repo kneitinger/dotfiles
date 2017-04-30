@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Sets up a Wacom tablet to my liking: left-handed, only pen/no touch,
 # mapped only to my external display, buttons for undo/redo and zoom +/-
