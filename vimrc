@@ -43,7 +43,7 @@ set colorcolumn=81
 
 " Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
-au ColorScheme  * hi Comment     cterm=italic
+au! VimEnter  * hi Comment     cterm=italic
               \ | hi MatchParen  ctermfg=15 ctermbg=131
               \ | hi StatusLine  cterm=bold ctermbg=131 ctermfg=16
               \ | hi User1       ctermbg=131
