@@ -109,3 +109,14 @@ unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 fi
+
+
+if [ "$(uname)" = 'Linux' ]; then
+    BASHC_FILE=/usr/share/bash-completion/bash_completion
+else
+    BASHC_FILE=/usr/local/share/bash-completion/bash_completion.sh
+fi
+
+# shellcheck disable=SC1090
+[[ $PS1 && -f "$BASHC_FILE" ]] && \
+ 	        source "$BASHC_FILE"
