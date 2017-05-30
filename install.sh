@@ -30,8 +30,8 @@ cd "$HOME"/.vim/.venv
 
 # shellcheck disable=SC1091
 source bin/activate
-
 pip3 install neovim
-
 deactivate
 
+cd "$HOME"/.vim/
+git submodule update --init
