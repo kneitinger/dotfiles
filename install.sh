@@ -35,3 +35,5 @@ deactivate
 
 cd "$HOME"/.vim/
 git submodule update --init
+
+vim -c "UpdateRemotePlugins" -c "q"
