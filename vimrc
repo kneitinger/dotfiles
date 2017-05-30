@@ -308,7 +308,7 @@ let g:deoplete#enable_at_startup = 1
 " Use tab for suggestion selection
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "let g:python2_host_prog = '/home/leaf/.pyenv/neovim2/bin/python'
-"let g:python3_host_prog = '/home/leaf/.pyenv/neovim3/bin/python'
+let g:python3_host_prog = '/home/leaf/.vim/.venv/bin/python'
 
 " vim-racer Rust completion
 let g:racer_cmd = "/home/leaf/.cargo/bin/racer"
