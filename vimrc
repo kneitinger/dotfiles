@@ -276,6 +276,9 @@ function! TabLine()
   return s
 endfunction
 
+" Load freebsd style functions, mapped to <leader>f
+source $HOME/.vim/scripts/freebsd.vim
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
