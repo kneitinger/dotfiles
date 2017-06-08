@@ -15,6 +15,7 @@ bindsym $mod+d exec rofi -show run
 bindsym $mod+b exec ~/bin/pdfselect
 bindsym $mod+o exec ~/bin/mimelaunch
 bindsym $mod+x exec rofi -show window
+bindsym $mod+s exec rofi -show ssh
 
 # Window/Container Manipulation ======================
 
