@@ -43,6 +43,6 @@ bindsym XF86LaunchA exec ~/bin/screenselect
 # Toggle which display worksapce is on (since wrapping is enabled)
 bindsym XF86Explorer move workspace to output left
 
-bindsym $mod+Ctrl+9 move workspace to output HDMI-1
-bindsym $mod+Ctrl+0 move workspace to output DP-2
-bindsym $mod+Ctrl+o move workspace to output eDP-1
+bindsym $mod+Ctrl+9 move workspace to output HDMI1
+bindsym $mod+Ctrl+0 move workspace to output DP2
+bindsym $mod+Ctrl+o move workspace to output eDP1

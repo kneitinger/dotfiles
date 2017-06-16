@@ -59,7 +59,7 @@ fi
 # Set laptop screen as primary display
 case $HOSTNAME in
     janeway)
-        xrandr --output eDP-1 --primary;;
+        xrandr --output eDP1 --primary;;
     tunepad)
         xrandr --output LVDS1 --primary;;
 esac
