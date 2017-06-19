@@ -83,7 +83,8 @@ prompt_err() {
 
 PS1="\[${BOLD}${WHITE}\]"
 PS1+="\[${RED}\]\$(prompt_err)\[${WHITE}\]"
-PS1+="[\[${BLUE}\]\u\[${WHITE}\]: \[${PURP}\]\W\[${WHITE}\]]"
+PS1+="[\[${RESET}\]\[${BLUE}\]\u\\[${BOLD}${GREEN}\]|\[${RESET}\]\[${BLUE}\]\h\[${WHITE}\]:"
+PS1+="\[${PURP}\]\W\[${BOLD}${WHITE}\]]"
 PS1+="\$(prompt_git)"
 PS1+=" \[${WHITE}\]\$\[${RESET}\] "
 
@@ -97,6 +98,11 @@ fi
 # shellcheck disable=SC1090
 source "$HOME"/.aliases
 
+mkcd () {
+  mkdir "$1"
+  cd "$1" || exit
+}
+
 GPG_TTY=$(tty)
 export GPG_TTY
 # Start the gpg-agent if not already running
@@ -109,6 +115,8 @@ unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
 	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 fi
+# add alias for ssh to update the tty
+alias ssh="gpg-connect-agent updatestartuptty /bye >/dev/null; ssh"
 
 
 if [ "$(uname)" = 'Linux' ]; then
