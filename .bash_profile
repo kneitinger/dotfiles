@@ -18,7 +18,7 @@ shopt -s histappend
 # Fix typos in directories!
 shopt -s cdspell
 
-if which syncthing > /dev/null 2>&1; then
+if which syncthing > /dev/null && ! pgrep -x "syncthing" > /dev/null 2>&1; then
     syncthing --gui-address="http://localhost:8384" > /dev/null 2>&1 &
 fi
 
