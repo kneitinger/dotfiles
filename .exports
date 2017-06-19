@@ -19,5 +19,5 @@ export LC_ALL="en_US.UTF-8";
 export PAGER=less
 
 if [ "$(uname)" = 'FreeBSD' ]; then
-    CCACHE_DIR="$HOME/.ccache"
+    export CCACHE_DIR="$HOME/.ccache"
 fi
