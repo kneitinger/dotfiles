@@ -41,7 +41,7 @@ rofi.color-enabled: true
 rofi.color-normal: #0B4866,#FFFFFF,#0F6088,#37B3F1,#333333
 rofi.line-margin: 3
 rofi.color-window: #333333,#888888
-rofi.location: 2
+rofi.location: 1
 rofi.padding: 3
 rofi.separator-style: solid
 rofi.hide-scrollbar: true
