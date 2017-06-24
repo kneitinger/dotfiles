@@ -92,7 +92,7 @@ PS1+=" \[${WHITE}\]\$\[${RESET}\] "
 if [ "$(uname)" = 'Linux' ]; then
     source /usr/share/autojump/autojump.bash
 else
-    source /usr/local/share/autojump/autojump.bash
+    [[ -s /home/leaf/.autojump/etc/profile.d/autojump.sh ]] && source /home/leaf/.autojump/etc/profile.d/autojump.sh
 fi
 
 # shellcheck disable=SC1090
