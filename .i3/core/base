@@ -1,8 +1,8 @@
 # Kyle Kneitinger's i3 config file
 
 # WM mod key: Mod1 for alt, Mod4 for win.
-set $mod Mod1
-set $alt Mod4
+set $mod Mod3
+set $alt Mod1
 
 # Workspace definitions
 set $ws1 "1:  1  "

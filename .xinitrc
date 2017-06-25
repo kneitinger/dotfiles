@@ -25,7 +25,28 @@ synclient TapButton2=3
 
 # Map CapsLock->ctrl, ctrl-tap->Esc
 setxkbmap -option ctrl:nocaps
+
+# Ergonomic tap vs. hold keybindings
 xcape -e 'Control_L=Escape' -t 175
+xcape -e 'Shift_L=parenleft' -t 130
+xcape -e 'Shift_R=parenright' -t 130
+xcape -e 'Alt_L=Shift_L|bracketleft' -t 130
+xcape -e 'Alt_R=Shift_R|bracketright' -t 130
+xcape -e 'Super_L=bracketleft' -t 130
+xcape -e 'Print=Shift_R|bracketright' -t 130
+
+# Map a spacebar hold to act as the i3 modifier
+xmodmap -e "clear mod3"
+xmodmap -e "clear mod4"
+xmodmap -e "add mod3 =  Hyper_L"
+xmodmap -e "add mod4 = Super_L Super_R"
+
+spare_mod="Hyper_L"
+xmodmap -e "keycode 65 = $spare_mod"
+xmodmap -e "add Hyper_L = $spare_mod"
+xmodmap -e "keycode any = space"
+xcape -e "$spare_mod=space"
+
 
 # Load Xresources
 if [ -f ~/.Xresources ]; then

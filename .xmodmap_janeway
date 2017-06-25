@@ -21,7 +21,7 @@
 !keycode 206 = NoSymbol Super_L NoSymbol Super_L <-- no key
 !keycode 218 = Print NoSymbol Print              <-- no key
 
-keycode  64 = Super_L NoSymbol Super_L
-keycode 107 = Alt_R Meta_R Alt_R Meta_R
-keycode 108 = Super_R NoSymbol Super_R
-keycode 133 = Alt_L Meta_L Alt_L Meta_L
+!keycode  64 = Super_L NoSymbol Super_L
+!keycode 107 = Alt_R Meta_R Alt_R Meta_R
+!keycode 108 = Super_R NoSymbol Super_R
+!keycode 133 = Alt_L Meta_L Alt_L Meta_L
