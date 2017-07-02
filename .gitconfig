@@ -4,7 +4,6 @@
 [color]
     ui = true
 [core]
-    editor = vim
     excludesfile = ~/.git_excludes
 [github]
     user = kneitinger
