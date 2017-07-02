@@ -21,6 +21,8 @@ bindsym $mod+s exec rofi -show ssh
 
 # kill focused window
 bindsym $mod+Shift+c kill
+bindsym $mod+BackSpace kill
+bindsym $mod+Escape kill
 
 # change focus
 bindsym $mod+h focus left

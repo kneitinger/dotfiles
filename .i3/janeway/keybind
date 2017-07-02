@@ -40,8 +40,7 @@ bindsym $mod+Shift+XF86Search exec scrot /tmp/$(date +"%F_%H-%M").png
 
 bindsym XF86LaunchA exec ~/bin/screenselect
 
-# Toggle which display worksapce is on (since wrapping is enabled)
-bindsym XF86Explorer move workspace to output left
+bindsym XF86Explorer bar mode toggle
 
 bindsym $mod+Ctrl+9 move workspace to output HDMI1
 bindsym $mod+Ctrl+0 move workspace to output DP2

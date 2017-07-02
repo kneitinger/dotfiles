@@ -37,8 +37,8 @@ client.focused_inactive $salmond $salmonl $white $turf
 bar {
     position top
     mode dock
-    # Holding <Alt> displays the dock if it is hidden with $mod+b
-    modifier $alt
+
+    modifier none
 
     # Don't show #s on workspace labels. Looks pleasant & retains functionality
     strip_workspace_numbers yes

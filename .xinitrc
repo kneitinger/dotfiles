@@ -33,7 +33,11 @@ xcape -e 'Shift_R=parenright' -t 130
 xcape -e 'Alt_L=Shift_L|bracketleft' -t 130
 xcape -e 'Alt_R=Shift_R|bracketright' -t 130
 xcape -e 'Super_L=bracketleft' -t 130
-xcape -e 'Print=Shift_R|bracketright' -t 130
+if [ "$HOSTNAME" = "janeway" ]; then
+    tunepadxcape -e 'Print=bracketright' -t 130
+else
+    tunepadxcape -e 'Menu=bracketright' -t 130
+fi
 
 # Map a spacebar hold to act as the i3 modifier
 xmodmap -e "clear mod3"
@@ -51,11 +55,6 @@ xcape -e "$spare_mod=space"
 # Load Xresources
 if [ -f ~/.Xresources ]; then
     xrdb -merge ~/.Xresources
-fi
-
-# Load the current computer's xmodmap file if present
-if [ -f "$HOME/.xmodmap_$HOSTNAME" ]; then
-    xmodmap "$HOME/.xmodmap_$HOSTNAME"
 fi
 
 # Power saving
