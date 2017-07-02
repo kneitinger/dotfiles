@@ -81,7 +81,16 @@ prompt_err() {
   fi
 }
 
-PS1="\[${BOLD}${WHITE}\]"
+case $TERM in
+    xterm*|rxvt*)
+        PS1='\[\033]0;\u@\h:\w\007\]'
+        ;;
+    *)
+        PS1=''
+        ;;
+esac
+
+PS1+="\[${BOLD}${WHITE}\]"
 PS1+="\[${RED}\]\$(prompt_err)\[${WHITE}\]"
 PS1+="[\[${RESET}\]\[${BLUE}\]\u\\[${BOLD}${GREEN}\]|\[${RESET}\]\[${BLUE}\]\h\[${WHITE}\]:"
 PS1+="\[${PURP}\]\W\[${BOLD}${WHITE}\]]"
