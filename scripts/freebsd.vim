@@ -38,7 +38,6 @@ let loaded_FreeBSD = 1
 " FreeBSD mapping to switch current buffer to style(9).  This is generally '\f'.
 nmap <silent> <Leader>f :call FreeBSD_Style()<CR>
 
-
 " Ignore indents caused by parentheses in FreeBSD style.
 function! IgnoreParenIndent()
     let indent = cindent(v:lnum)
@@ -66,3 +65,10 @@ function! FreeBSD_Style()
     setlocal tabstop=8
     setlocal textwidth=80
 endfun
+
+if expand('%:p') =~ '/usr/src/' || expand('%:p') =~ '/usr/home/leaf/head/' 
+	call FreeBSD_Style()
+else
+	nmap <silent> <Leader>f :call FreeBSD_Style()<CR>
+endif
+
