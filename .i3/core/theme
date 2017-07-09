@@ -7,7 +7,7 @@
 font pango:Inconsolata, FontAwesome 10
 
 # Background image
-exec --no-startup-id feh --bg-scale ~/Pictures/_bg.jpg
+exec --no-startup-id feh --bg-scale ~/.bg.jpg
 
 # New window's border
 new_window pixel 2
