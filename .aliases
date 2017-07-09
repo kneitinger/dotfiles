@@ -1,6 +1,8 @@
 alias xlt='xautolock -toggle'
 alias se='sudoedit'
 alias vim='nvim -p'
+alias cim='nvim -p'
+alias bim='nvim -p'
 alias view='vim -R'
 
 # Directory traversal
@@ -35,3 +37,8 @@ alias sudo='sudo '
 
 # Clean up LaTeX build files
 alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log} _minted*'
+
+# ZFS Aliases
+alias zsnap='zfs list -t snap'
+alias zsnaps='zfs list -t snap'
+alias zprops='zfs get all'
