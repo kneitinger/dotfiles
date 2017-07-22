@@ -6,7 +6,11 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 # TODO
 #export HISTIGNORE=""
 
-export EDITOR=`which nvim`
+EDITOR=$(which nvim || which vim)
+SVN_EDITOR=$EDITOR
+export EDITOR
+export SVN_EDITOR
+
 
 # Use United States English
 export LANG="en_US.UTF-8";
