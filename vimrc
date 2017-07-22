@@ -50,6 +50,7 @@ au! VimEnter  * hi Comment     cterm=italic
               \ | hi TabLineSel  cterm=bold ctermfg=16 ctermbg=131
               \ | hi TabLine     cterm=standout,italic ctermfg=0 ctermbg=131
               \ | hi TabLineFill ctermbg=0
+              \ | hi Normal guibg=NONE ctermbg=NONE
 
 set laststatus=2    " always show status bar
 
