@@ -41,7 +41,7 @@ rofi.color-enabled: true
 rofi.color-normal: #0B4866,#FFFFFF,#0F6088,#37B3F1,#333333
 rofi.line-margin: 3
 rofi.color-window: #333333,#888888
-rofi.location: 1
+rofi.location: 2
 rofi.padding: 3
 rofi.separator-style: solid
 rofi.hide-scrollbar: true
@@ -51,8 +51,7 @@ rofi.columns:                        1
 
 Xcursor.size: 16
 
-!URxvt.font:         xft:monaco:size=8
-URxvt.font:         xft:inconsolata:size=11
+URxvt.font:         xft:monaco:size=10
 URxvt.scrollBar:    false
 
 ! do not scroll with output
@@ -63,6 +62,20 @@ URxvt*scrollWithBuffer: true
 
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
+
+! Dynamic font size change
+! (requires https://github.com/majutsushi/urxvt-font-size)
+URxvt.perl-ext-common: font-size
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+
+urxvt*depth: 32
+urxvt*background: [90]#1c1c1c
 
 Xft.antialias:	true
 Xft.rgba:	    rgba
