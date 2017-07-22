@@ -6,11 +6,7 @@ export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; histor
 # TODO
 #export HISTIGNORE=""
 
-if [ "$(uname)" = 'Linux' ]; then
-    export EDITOR=/usr/bin/nvim
-else
-    export EDITOR=/usr/local/bin/nvim
-fi
+export EDITOR=`which nvim`
 
 # Use United States English
 export LANG="en_US.UTF-8";
