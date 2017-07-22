@@ -34,9 +34,9 @@ xcape -e 'Alt_L=Shift_L|bracketleft' -t 130
 xcape -e 'Alt_R=Shift_R|bracketright' -t 130
 xcape -e 'Super_L=bracketleft' -t 130
 if [ "$HOSTNAME" = "janeway" ]; then
-    tunepadxcape -e 'Print=bracketright' -t 130
+    xcape -e 'Print=bracketright' -t 130
 else
-    tunepadxcape -e 'Menu=bracketright' -t 130
+    xcape -e 'Menu=bracketright' -t 130
 fi
 
 # Map a spacebar hold to act as the i3 modifier

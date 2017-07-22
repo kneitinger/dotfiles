@@ -31,7 +31,7 @@ bindsym XF86Display exec ~/bin/toggle-jack
 bindsym $mod+XF86Display exec ~/bin/toggle-jack h4
 bindsym $mod+Shift+XF86Display exec ~/bin/toggle-jack usb
 
-bindsym XF86Tools exec roxterm -e nmtui
+bindsym XF86Tools exec ~/bin/keyset
 bindsym $mod+XF86Tools exec roxterm -e htop
 
 bindsym XF86Search exec ~/bin/picnote
