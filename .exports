@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export HISTSIZE=5000000
 export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups:erasedupe:ignorespace
@@ -21,3 +23,4 @@ export PAGER=less
 if [ "$(uname)" = 'FreeBSD' ]; then
     export CCACHE_DIR="$HOME/.ccache"
 fi
+
