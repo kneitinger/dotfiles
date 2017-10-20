@@ -3,9 +3,11 @@
 # Launches a rofi (https://davedavenport.github.io/rofi/) window populated with
 # all xrandr scripts in ~/.screenlayout/$MODEL, and executes the chosen layout
 
-LAYOUT="$(find -L "$HOME/.screenlayout/$MODEL" -type f |
+LAYOUT="$(find -L "$HOME/.screenlayout/$HOSTNAME" -type f |
          rofi -show run -dmenu -p "Select Layout:" -i )"
 
 if [ -n "$LAYOUT" ]; then
     "$LAYOUT"
+    compton -CG --no-fading-openclose -b --xrender-sync --xrender-sync-fence
+    feh --bg-fill ~/.bg.jpg
 fi
