@@ -121,7 +121,7 @@ mode $sysmenu {
     bindsym s exec systemctl suspend; mode "default"
     bindsym b exec systemctl reboot
     bindsym p exec systemctl shutdown
-    bindsym c exec roxterm -e vim .i3/config; mode "default"
+    bindsym c exec i3-sensible-terminal -e vim .i3/config; mode "default"
     bindsym l exec i3lock -n -i ~/.lock.png; mode "default"
     bindsym e exit
     bindsym Return mode "default"
