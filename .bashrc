@@ -104,8 +104,14 @@ else
     [[ -s /home/leaf/.autojump/etc/profile.d/autojump.sh ]] && source /home/leaf/.autojump/etc/profile.d/autojump.sh
 fi
 
-# shellcheck disable=SC1090
-source "$HOME"/.aliases
+# Include modularized config files
+for file in ~/.{aliases,path,exports,additional}; do
+  if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+    # shellcheck source=/dev/null
+    source "$file"
+  fi
+done
+unset file
 
 mkcd () {
   mkdir "$1"
