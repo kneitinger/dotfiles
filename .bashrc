@@ -139,3 +139,10 @@ fi
 # shellcheck disable=SC1090
 [[ $PS1 && -f "$BASHC_FILE" ]] && \
  	        source "$BASHC_FILE"
+
+if [ "$(hostname)" = 'ziyal' ]; then
+    export WORKON_HOME=/home/leaf/work/venv
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
+shopt -s autocd
