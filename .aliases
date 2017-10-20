@@ -5,6 +5,9 @@ alias cim='nvim -p'
 alias bim='nvim -p'
 alias view='vim -R'
 
+alias car='cat'
+alias packer='packer-io'
+
 # Directory traversal
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -42,3 +45,9 @@ alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log} _minted*'
 alias zsnap='zfs list -t snap'
 alias zsnaps='zfs list -t snap'
 alias zprops='zfs get all'
+
+kittens()
+{
+    tree
+    find . -type f -exec echo -e "\n***************{}***************" \; -exec cat {} \;
+}
