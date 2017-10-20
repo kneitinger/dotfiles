@@ -41,3 +41,4 @@ exec i3-sensible-terminal
 exec keepassxc
 exec firefox
 exec slack
+exec  syncthing --gui-address="http://localhost:8384"
