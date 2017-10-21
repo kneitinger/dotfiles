@@ -100,10 +100,8 @@ inoremap <C-k> <up>
 inoremap <C-j> <down>
 
 " Move between windows with std vim movements
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-h> :tabprevious<CR>
+map <C-l> :tabnext<CR>
 
 " Tab creation/movement
 map <leader>tc :tabnew<cr>
@@ -192,6 +190,7 @@ augroup filetype
     au! BufRead,BufNewFile *.lib    set filetype=faust
     au! BufRead,BufNewFile *.lhs    set textwidth=74
     au! BufRead,BufNewFile *.lhs    set colorcolumn=76
+    au! BufRead,BufNewFile *.yml    set ts=2 shiftwidth=2
 augroup END
 
 autocmd FileType tex setlocal shiftwidth=2 tabstop=2
@@ -313,8 +312,3 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "let g:python2_host_prog = '/home/leaf/.pyenv/neovim2/bin/python'
 let g:python3_host_prog = '/home/leaf/.vim/.venv/bin/python'
-
-" vim-racer Rust completion
-let g:racer_cmd = "/home/leaf/.cargo/bin/racer"
-let $RUST_SRC_PATH = "/usr/src/rust/src"
-
