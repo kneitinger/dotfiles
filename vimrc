@@ -312,3 +312,7 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "let g:python2_host_prog = '/home/leaf/.pyenv/neovim2/bin/python'
 let g:python3_host_prog = '/home/leaf/.vim/.venv/bin/python'
+
+" vim-terraform
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
