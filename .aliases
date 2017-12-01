@@ -30,6 +30,7 @@ fi
 alias la='ls -a'
 alias lal='ls -lha'
 alias ll='ls -lh'
+alias ks='ls'
 
 # Always ask before overwriting a file with mv or cp
 alias mv='mv -i'
@@ -46,8 +47,11 @@ alias zsnap='zfs list -t snap'
 alias zsnaps='zfs list -t snap'
 alias zprops='zfs get all'
 
+alias dog='pygmentize -g'
+
 kittens()
 {
     tree
     find . -type f -exec echo -e "\n***************{}***************" \; -exec cat {} \;
 }
+
