@@ -5,10 +5,13 @@
 
 # Application Launchers
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+m exec google-chrome-stable; workspace $ws7
-bindsym $mod+Shift+n exec chromium
 bindsym $mod+p exec pcmanfm
-bindsym $mod+t exec ~/bin/toggle-syn
+bindsym $mod+Shift+t exec ~/bin/toggle-syn
+
+# Scratchpadded Apps
+bindsym $mod+m [con_mark="music"] scratchpad show; move position center
+bindsym $mod+n [con_mark="keys"] scratchpad show; move position center
+bindsym $mod+c [con_mark="tele"] scratchpad show; move position center
 
 # Rofi dmenu replacement bindings
 bindsym $mod+d exec rofi -show run
@@ -20,7 +23,6 @@ bindsym $mod+s exec rofi -show ssh
 # Window/Container Manipulation ======================
 
 # kill focused window
-bindsym $mod+Shift+c kill
 bindsym $mod+BackSpace kill
 bindsym $mod+Escape kill
 
@@ -58,14 +60,14 @@ bindsym $mod+z layout stacking
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+g floating toggle
+bindsym $mod+Shift+f floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
 # focus the child container
-bindsym $mod+c focus child
+# bindsym $mod+c focus child
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -105,9 +107,6 @@ bindsym $mod+Shift+Right move workspace to output right
 
 # Toggle focused windows title bar
 bindsym $mod+minus border toggle
-
-# Toggle i3 bar
-bindsym $mod+Shift+b bar mode toggle
 
 # Menus ##############################################
 

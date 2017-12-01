@@ -3,6 +3,7 @@
 # WM mod key: Mod1 for alt, Mod4 for win.
 set $mod Mod3
 set $alt Mod1
+set $super Mod4
 
 # Workspace definitions
 set $ws1 "1:  1  "
@@ -17,17 +18,18 @@ set $ws9 "9:  9  "
 set $ws0 "0:  0  "
 
 # Configure default workspace for certain applications
-#assign [class="chromium" window_type="normal"] $ws2
-assign [class="Spotify"] $ws4
 assign [class="Slack"] $ws6
 
 # No border for apps that usually take up a whole workspace
-for_window [class="google-chrome"] border none
-for_window [class="Spotify"] border none
 for_window [class="Slack"] border none
 for_window [class="Virt-manager"] border none
 for_window [class="Firefox"] border none
 for_window [title="feh:/tmp/*"] floating enable
+
+# Mark windows for named scratchpads
+for_window [class="Spotify"] mark "music", move scratchpad
+for_window [class="keepassxc" title="db - KeePassXC"] mark "keys", move scratchpad
+for_window [class="TelegramDesktop"] mark "tele", move scratchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
