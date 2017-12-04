@@ -8,7 +8,7 @@ killall -q polybar
 
 # Launch bars
 for i in $(polybar -m | awk -F: '{print $1}'); do
-    MONITOR=$i polybar example -c ~/.i3//polybar.conf &
+    MONITOR=$i polybar example -c ~/.i3/polybar.conf &
 done
 
 echo "Bars launched..."
