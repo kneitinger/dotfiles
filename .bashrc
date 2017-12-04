@@ -150,6 +150,10 @@ if [ "$(hostname)" = 'ziyal' ]; then
     export WORKON_HOME=/home/leaf/work/venv
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
+elif [ "$(hostname)" = 'janeway' ]; then
+    export WORKON_HOME=/home/leaf/venvs
+    # shellcheck disable=SC1091
+    source /usr/bin/virtualenvwrapper.sh
 fi
 
 shopt -s autocd
