@@ -1,4 +1,4 @@
-! Alduin Colors
+!! Alduin Colors
 ! special
 *.foreground:   #dfdfaf
 *.background:   #1c1c1c
@@ -52,7 +52,7 @@ rofi.columns:                        1
 
 Xcursor.size: 16
 
-URxvt.font:         xft:monaco:size=10
+URxvt.font:         xft:monaco:size=8
 URxvt.scrollBar:    false
 
 ! do not scroll with output
@@ -76,7 +76,7 @@ URxvt.keysym.C-slash:  font-size:show
 
 
 urxvt*depth: 32
-urxvt*background: [95]#1c1c1c
+urxvt*background: [83]#1c1c1c
 
 Xft.antialias:	true
 Xft.rgba:	    rgba
