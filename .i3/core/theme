@@ -25,7 +25,7 @@ set $grey    #CCCCCC
 set $clay    #AF3C00
 set $greyd   #1C1C1C
 set $red     #AF1600
-set $lavend  #5F5F87 
+set $lavend  #5F5F87
 
 # Color scheme
 # class                 border   backgr   text   indicator
@@ -33,32 +33,36 @@ client.focused          $salmon  $salmon  $white $turf
 client.unfocused        $salmond $salmond $grey  $turf
 client.focused_inactive $salmond $salmonl $white $turf
 
-# i3bar configuration
 bar {
-    position top
-    mode dock
-
-    modifier none
-
-    # Don't show #s on workspace labels. Looks pleasant & retains functionality
-    strip_workspace_numbers yes
-
-    # Using i3pystatus
-    status_command ~/.i3/.venv/bin/python ~/.i3/status.py
-    # Do not print visible separator between elements of the status bar
-    separator_symbol "   "
-    tray_output primary
-
-    colors {
-        background $greyd
-        statusline $sand
-        separator  $turf
-
-        # Property         border   backgr   text
-        focused_workspace  $salmon  $salmon  $white
-        active_workspace   $salmond $salmond $white
-        inactive_workspace $lavend  $lavend  $grey
-        urgent_workspace   $red     $red     $white
-        binding_mode       $salmon  $salmon  $white
-    }
+    i3bar_command $HOME/.i3/bar_scripts/polybar_launch.sh
 }
+
+# i3bar configuration
+# bar {
+#     position top
+#     mode dock
+#
+#     modifier none
+#
+#     # Don't show #s on workspace labels. Looks pleasant & retains functionality
+#     strip_workspace_numbers yes
+#
+#     # Using i3pystatus
+#     status_command ~/.i3/.venv/bin/python ~/.i3/status.py
+#     # Do not print visible separator between elements of the status bar
+#     separator_symbol "  "
+#     tray_output primary
+#
+#     colors {
+#         background $greyd
+#         statusline $sand
+#         separator  $turf
+#
+#         # Property         border   backgr   text
+#         focused_workspace  $salmon  $salmon  $white
+#         active_workspace   $salmond $salmond $white
+#         inactive_workspace $lavend  $lavend  $grey
+#         urgent_workspace   $red     $red     $white
+#         binding_mode       $salmon  $salmon  $white
+#     }
+# }
