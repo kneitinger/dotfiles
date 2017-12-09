@@ -8,7 +8,11 @@ killall -q polybar
 
 # Launch bars
 for i in $(polybar -m | awk -F: '{print $1}'); do
-    MONITOR=$i polybar example -c ~/.i3/polybar.conf &
+    if [ "$i" = "eDP1" ]; then
+        MONITOR_PRIMARY=$i polybar primary -c ~/.i3/polybar.conf &
+    else
+        MONITOR_AUX=$i polybar aux -c ~/.i3/polybar.conf &
+    fi
 done
 
 echo "Bars launched..."
