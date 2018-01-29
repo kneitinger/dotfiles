@@ -60,6 +60,9 @@ URxvt*scrollTtyOutput: false
 ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
 URxvt*scrollWithBuffer: true
 
+! scrollback buffer size
+URxvt*saveLines: 10000
+
 ! scroll back to the bottom on keypress
 URxvt*scrollTtyKeypress: true
 
