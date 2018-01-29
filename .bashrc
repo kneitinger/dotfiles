@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1117
 
 # Declare beautiful colors
 if tput setaf 1 &> /dev/null; then

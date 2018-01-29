@@ -12,10 +12,10 @@ for conf in "$HOME"/.i3/core/*; do
   # Strip leading path
   conf=${conf##*/}
 
-  echo -e "\n" >> "$HOME"/.i3/config
+  echo -e "\\n" >> "$HOME"/.i3/config
   cat "$HOME/.i3/core/$conf" >> "$HOME"/.i3/config
   if [ -e "$HOSTNAME" ] && [ -e "$HOME/.i3/$HOSTNAME/$conf" ]; then
-    echo -e "\n" >> "$HOME"/.i3/config
+    echo -e "\\n" >> "$HOME"/.i3/config
     cat "$HOME/.i3/$HOSTNAME/$conf" >> "$HOME"/.i3/config
   fi
 done

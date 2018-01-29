@@ -16,8 +16,7 @@ alias tmp='cd /tmp'
 
 
 # Arch package management
-alias yup='yaourt -Syua'
-alias pup='pacaur -Syu --noedit --noconfirm'
+alias yup='yaourt -Syua --noconfirm'
 alias yo='yaourt'
 
 # ls
@@ -52,6 +51,10 @@ alias dog='pygmentize -g'
 kittens()
 {
     tree
-    find . -type f -exec echo -e "\n***************{}***************" \; -exec cat {} \;
+    find . -type f -exec echo -e "\\n***************{}***************" \; -exec cat {} \;
 }
 
+host-clear()
+{
+    sed -i "$1d" "$HOME/.ssh/known_hosts"
+}
