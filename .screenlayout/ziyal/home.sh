@@ -1,6 +1,2 @@
 #!/bin/sh
-
-"$HOME"/.screenlayout/dell_work/primer.sh
-sleep 3
-
-xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 928x1080 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP2 --mode 1920x1080 --pos 1920x0 --rotate normal
+xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 952x1080 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1-3 --off --output DP1-2 --off --output DP1-1 --off --output DP2 --mode 1920x1080 --pos 1920x0 --rotate normal
