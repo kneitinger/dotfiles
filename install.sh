@@ -33,8 +33,5 @@ source bin/activate
 pip3 install neovim
 deactivate
 
-cd "$HOME"/.vim/
-git submodule update --init
-
 nvim -c "UpdateRemotePlugins" -c "q"
 
