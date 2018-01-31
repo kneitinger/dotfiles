@@ -2,7 +2,7 @@
 *.swp
 .git/
 .git
-bundle/*/doc/tags
+bundle
 .netrwhist
 init.vim
 cache/*/*
