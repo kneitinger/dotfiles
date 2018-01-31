@@ -177,7 +177,7 @@ set matchtime=1     " Tenths of a second to show the match
 
 set textwidth=79    " Line auto-break column threshold
 
-set formatoptions=c,r,q,t,j
+set formatoptions=c,r,q,j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype-Specific Settings
