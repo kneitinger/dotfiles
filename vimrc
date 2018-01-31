@@ -1,11 +1,28 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen Initialization
+" Vim-Plug Initialization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-call pathogen#helptags()
-syntax on
-filetype plugin indent on
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/bundle')
+Plug 'scrooloose/syntastic'
+Plug 'yggdroot/indentline'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-endwise'
+Plug 'hashivim/vim-terraform'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'alessandroyorba/alduin'
+Plug 'gmoe/vim-faust'
+Plug 'sirver/ultisnips'
+Plug 'shougo/deoplete.nvim'
+Plug 'zchee/deoplete-jedi'
+Plug 'scrooloose/syntastic'
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Settings
