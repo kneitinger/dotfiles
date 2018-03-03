@@ -12,5 +12,8 @@ if [ "$(uname)" != "Darwin" ]; then
 
   mkdir -p "$HOME"/.fonts
   curl -L -o "$HOME"/.fonts/FontAwesome.otf \
-    https://github.com/FortAwesome/Font-Awesome/raw/master/fonts/FontAwesome.otf
+    https://github.com/FortAwesome/Font-Awesome/raw/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0/fonts/FontAwesome.otf
+  curl -L -o "$HOME"/.fonts/monaco.ttf \
+    https://github.com/todylu/monaco.ttf/raw/master/monaco.ttf
+  fc-cache -f ~/.fonts
 fi
