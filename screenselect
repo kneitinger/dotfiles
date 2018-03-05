@@ -4,7 +4,7 @@
 # all xrandr scripts in ~/.screenlayout/$MODEL, and executes the chosen layout
 
 LAYOUT="$(find -L "$HOME/.screenlayout/$HOSTNAME" -type f |
-         rofi -show run -dmenu -p "Select Layout:" -i )"
+         rofi -show run -dmenu -p "Select Layout" -i )"
 
 if [ -n "$LAYOUT" ]; then
     "$LAYOUT"
