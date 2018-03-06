@@ -9,6 +9,8 @@ set -e
 FILES=$(find . -type f -not -path "*/.*" -not -name "LICENSE" -not -name "README.md")
 
 for file in $FILES; do
-  shellcheck -s bash "$file"
-  echo "[ok] $file shellcheck pass"
+    if file "$file" | grep Bourne; then
+        shellcheck -s bash "$file"
+        echo "[ok] $file shellcheck pass"
+    fi
 done
