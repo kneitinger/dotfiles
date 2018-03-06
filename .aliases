@@ -30,6 +30,7 @@ alias la='ls -a'
 alias lal='ls -lha'
 alias ll='ls -lh'
 alias ks='ls'
+alias sl='ls'
 
 # Always ask before overwriting a file with mv or cp
 alias mv='mv -i'
