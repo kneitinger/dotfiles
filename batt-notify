@@ -1,38 +1,92 @@
-#!/usr/bin/env bash
+#!/usr/bin/env python3
 
-# Calculates the remaining battery power percentage left on a two-battery system
-# and produces a warning if below a certain threshold
-# TODO: Rewrite to handle 1,2,...,n battery systems nicely
+import argparse
+import platform
+import re
+import subprocess
+import sys
+import time
 
-THRESHOLD=8
-DELAY=60
 
-while getopts :p:t: option; do
-  case $option in
-    p)
-      THRESHOLD="$OPTARG"
-      ;;
-    t)
-      DELAY="$OPTARG"
-      ;;
-    [?])
-      echo "Usage: $0 [-p battery-percent-threshold] [-t period]"
-      exit 1
-      ;;
-  esac
-done
+os = platform.system()
+alert_dur = 10000
 
-while true; do
-  BAT0=$(cat /sys/class/power_supply/BAT0/capacity)
-  BAT1=$(cat /sys/class/power_supply/BAT1/capacity)
 
-  AVG=$(( (BAT0+BAT1) / 2 ))
+def parse_args():
+    parser = argparse.ArgumentParser(prog='batt-notify')
+    parser.add_argument("-p", "--percent",
+                        help="percent threshold",
+                        default=8,
+                        type=int,
+                        metavar="N")
+    parser.add_argument("-t", "--time",
+                        help="renotify interval",
+                        default=60,
+                        type=int,
+                        metavar="SECS")
 
-  if [ "$AVG" -le "$THRESHOLD" ]; then
-    if [ "$(cat /sys/class/power_supply/AC/online)" -eq 0 ]; then
-      notify-send "Low Battery Warning!" "You have $AVG% charge remaining." \
-        -i /usr/share/icons/Numix-Circle/scalable/apps/battery.svg -u low -t 10000
-    fi
-  fi
-  sleep "$DELAY"
-done
+    parser.add_argument("-o", "--oneshot",
+                        help="do not run in daemon mode",
+                        default=False,
+                        action='store_true')
+    parser.add_argument("batteries", nargs="+")
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    while True:
+        percent = 0
+        for batt in args.batteries:
+            percent += get_percent(batt)
+
+        percent = percent / len(args.batteries)
+
+        print(percent)
+
+        if percent <= args.percent:
+            alert(percent)
+
+        if args.oneshot:
+            break
+
+        time.sleep(args.time)
+
+
+def get_percent(batt):
+    return percent_freebsd(batt) if os == 'FreeBSD' else percent_linux(batt)
+
+
+def percent_linux(batt):
+    pass
+
+
+def percent_freebsd(batt):
+    s = subprocess.run(["acpiconf", "-i", batt], stdout=subprocess.PIPE)
+
+    if s.returncode != 0:
+        sys.exit(1)
+
+    r = re.compile(b"([0-9]{2,3})%")
+    result = r.search(s.stdout)
+
+    if not result:
+        sys.exit(1)
+
+    return int(result.groups()[0])
+
+
+def alert(percent):
+    path = "/usr{}/share/icons/Adwaita/scalable/devices/battery-symbolic.svg"
+    path = path.format("/local" if os == 'FreeBSD' else "")
+
+    msg = "You have {}% charge remaining.".format(percent)
+
+    subprocess.run(["notify-send", "Low Battery Warning!", msg,
+                   "-i", path, "-u", "low", "-t", str(alert_dur)])
+
+
+if __name__ == "__main__":
+    main()
