@@ -44,8 +44,6 @@ def main():
 
         percent = percent / len(args.batteries)
 
-        print(percent)
-
         if percent <= args.percent:
             alert(percent)
 
@@ -60,7 +58,11 @@ def get_percent(batt):
 
 
 def percent_linux(batt):
-    pass
+    percent = 0
+    with open('/sys/class/power_supply/BAT{}/capacity'.format(batt), 'r') as f:
+        percent = f.read()
+
+    return int(percent)
 
 
 def percent_freebsd(batt):
