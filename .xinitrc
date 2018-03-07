@@ -94,9 +94,12 @@ if [ "$HOSTNAME" = "tunepad" ]; then
 fi
 
 # Call low battery notification script to warn when battery below 7 percent
-if [ "$(uname)" = 'Linux' ]; then
-    batt-notify -p 6 -t 70 &
-fi
+case $HOSTNAME in
+    janeway)
+        batt-notify -p 7 -t 70 0 1 & ;;
+    tunepad|ziyal|troi)
+        batt-notify -p 7 -t 70 0 & ;;
+esac
 
 # Call redshift
 redshift &
