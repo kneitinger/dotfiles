@@ -6,4 +6,8 @@ if pidof spotify >/dev/null 2>&1; then
         | grep -o '".*-[^:]*"' \
         | tr -d '"')
     echo "[$INFO]"
+else
+    echo "*"
 fi
+
+exit 0
