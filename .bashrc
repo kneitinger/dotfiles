@@ -155,6 +155,17 @@ elif [ "$(hostname)" = 'janeway' ]; then
     export WORKON_HOME=/home/leaf/venvs
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
+elif [ "$(hostname)" = 'troi' ]; then
+    VIRTUALENVWRAPPER_PYTHON=$(which python3)
+    export VIRTUALENVWRAPPER_PYTHON
+    export WORKON_HOME=/home/leaf/venv
+    # shellcheck disable=SC1091
+    source virtualenvwrapper.sh &> /dev/null
 fi
 
 shopt -s autocd
+
+# Alt-h for manpage
+bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
+
+HISTTIMEFORMAT="%y-%m-%d %T "
