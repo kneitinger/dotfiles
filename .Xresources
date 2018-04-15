@@ -1,40 +1,42 @@
-!! Alduin Colors
+! Derived from https://gist.github.com/avh4/137537c80688fc77a95f33ff2ce38f9c
+! which is derived from http://sailorhg.github.io/fairyfloss/
 ! special
-*.foreground:   #dfdfaf
-*.background:   #1c1c1c
-*.cursorColor:  #dfdfaf
+*.foreground:   #f6f6ef
+*.background:   #5a5376
+*.cursorColor:  #f6f6ef
 
 ! black
-*.color0:       #1c1c1c
-*.color8:       #875f5f
+*.color0:       #000000
+*.color8:       #555555
 
 ! red
-*.color1:       #af1600
-*.color9:       #af5f5f
+*.color1:       #eb5d5c
+*.color9:       #fd8b89
 
 ! green
-*.color2:       #af5f00
-*.color10:      #d75f00
+*.color2:       #5fe861
+*.color10:      #6dff6f
 
 ! yellow
-*.color3:       #878787
-*.color11:      #5f5f87
+*.color3:       #dfb508
+*.color11:      #ffe90a
 
 ! blue
-*.color4:       #af875f
-*.color12:      #dfaf87
+*.color4:       #9d65ff
+*.color12:      #b78cff
 
 ! magenta
-*.color5:       #875f5f
-*.color13:      #af8787
+*.color5:       #fc6ea2
+*.color13:      #fda6c7
 
 ! cyan
-*.color6:       #87afaf
-*.color14:      #afdfd7
+*.color6:       #70f7aa
+*.color14:      #b7ffd7
 
 ! white
-*.color7:       #dfdfaf
-*.color15:      #ffdf87
+*.color7:       #bbbbbb
+*.color15:      #ffffff
+
 
 rofi.font: inconsolata 12
 rofi.color-enabled: true
@@ -78,7 +80,7 @@ URxvt.keysym.C-slash:  font-size:show
 urxvt.vim-scrollback: M-x
 
 urxvt*depth: 32
-urxvt*background: [83]#1c1c1c
+! urxvt*background: [83]#1c1c1c
 
 Xft.antialias:	true
 Xft.rgba:	    rgba
