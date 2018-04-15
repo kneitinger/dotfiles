@@ -14,9 +14,11 @@ stat = Status(standalone=True)
 # Displays clock like this:
 # 10/7 22:52
 stat.register("clock",
-              interval=10,
-              on_leftclick="notify-send \"$(cal)\"",
-              format="%-m/%-d %-H:%M",)
+              interval=3,
+              on_leftclick="notify-send 'Calendar' \"<tt>$(cal -h)</tt>\"",
+              on_rightclick=['scroll_format', 1],
+              format=[("%-m/%-d %-H:%M %Z", "America/Los_Angeles"),
+                      ("%-m/%-d %-H:%M %Z", "UTC")],)
 
 stat.register("pulseaudio",
               muted=" ",      # Speaker icon w/ no audio coming out
