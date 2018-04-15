@@ -116,8 +116,8 @@ bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
     bindsym r restart
-    bindsym x reload /home/leaf/.i3/config2; mode "default"
-    bindsym s exec systemctl suspend; mode "default"
+    bindsym x reload /home/leaf/.i3/config; mode "default"
+    bindsym s exec ~/.i3/status_scripts/ambisleep; mode "default"
     bindsym b exec systemctl reboot
     bindsym p exec systemctl shutdown
     bindsym c exec i3-sensible-terminal -e vim .i3/config; mode "default"
