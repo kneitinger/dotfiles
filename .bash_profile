@@ -23,9 +23,3 @@ shopt -s nocaseglob
 shopt -s histappend
 # Fix typos in directories!
 shopt -s cdspell
-
-# shellcheck disable=SC1090
-#if [ -f ~/.bashrc ]; then
-    #source ~/.bashrc;
-#fi
-
