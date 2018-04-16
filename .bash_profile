@@ -25,7 +25,7 @@ shopt -s histappend
 shopt -s cdspell
 
 # shellcheck disable=SC1090
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc;
-fi
+#if [ -f ~/.bashrc ]; then
+    #source ~/.bashrc;
+#fi
 
