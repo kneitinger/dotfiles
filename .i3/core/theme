@@ -4,7 +4,7 @@
 # is used in the bar {} block below. After the comma is the fallback font.
 # In this case, it handles the iconic glyphs in the workspace names and status
 # bar. Uses AUR pkg ttf-font-icons
-font pango:Inconsolata, FontAwesome 10
+font pango:Fantasque Sans Mono, FontAwesome 11
 
 # Background image
 exec --no-startup-id feh --bg-scale ~/.bg.jpg
@@ -25,7 +25,7 @@ set $grey    #CCCCCC
 set $clay    #AF3C00
 set $greyd   #1C1C1C
 set $red     #AF1600
-set $lavend  #5F5F87 
+set $lavend  #5F5F87
 
 # Color scheme
 # class                 border   backgr   text   indicator

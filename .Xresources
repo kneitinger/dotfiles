@@ -53,7 +53,7 @@ rofi.columns:                        1
 
 Xcursor.size: 16
 
-URxvt.font:         xft:monaco:size=8
+URxvt.font:         xft:FantasqueSansMono:size=10
 URxvt.scrollBar:    false
 
 ! do not scroll with output
@@ -80,12 +80,12 @@ URxvt.keysym.C-slash:  font-size:show
 urxvt.vim-scrollback: M-x
 
 urxvt*depth: 32
-! urxvt*background: [83]#1c1c1c
+urxvt*background: [93]#5a5376
 
-Xft.antialias:	true
-Xft.rgba:	    rgba
-Xft.hinting:	true
-Xft.hintstyle:	hintslight
-Xft.autohint:	false
-Xft.lcdfilter:	lcddefault
+Xft.antialias:  true
+Xft.rgba:       rgba
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+Xft.autohint:   false
+Xft.lcdfilter:  lcddefault
 
