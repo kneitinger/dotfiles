@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Be sure to create a file in /etc/udev/rules.d/ with the body:
+# ACTION=="add", SUBSYSTEM=="hidraw", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/leaf/.Xauthority", \
+# RUN+="/home/leaf/bin/fix_fn_lock_bt"
+
+set -v
+
+echo 0 > "$(find /sys | grep "fn_lock")"

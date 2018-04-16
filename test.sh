@@ -5,10 +5,16 @@
 
 set -e
 
-# find all executables and run `shellcheck`
-#find . -type f -not -iwholename '*.git*' -exec shellcheck {} \;
-
 while read -r file; do
   shellcheck -s bash "$file"
   echo "[ok] $file shellcheck pass"
 done < ./test_includes
+
+FILES=$(find ./bin -type f -not -path "*/.*" -not -name "README.md")
+
+for file in $FILES; do
+    if file "$file" | grep Bourne 1> /dev/null; then
+        shellcheck -s bash "$file"
+        echo "[ok] $file shellcheck pass"
+    fi
+done

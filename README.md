@@ -34,6 +34,6 @@ Due to periodic updates of plugins used, I've opted to store my vim dotfiles in
 the commit logs of this repo.
 
 ## Tests
-A test script, `test.sh` which runs the `shellcheck` linter on every file listed
-in `test_includes` is provided.  Upon any push to Github, this script is ran on
-Travis CI.
+A test script, `test.sh`, which runs the `shellcheck` linter on every file listed
+in `test_includes` or residing in the `./bin` directory, is provided.
+Upon any push to Github, this script is ran on Travis CI.

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+SINK=$(pactl list sinks | grep "RUNNING"  -A1 \
+       | tr -d ' \t' | cut -d: -f2 | tail -n1)
+
+case "$1" in
+    "vol")
+        pactl set-sink-volume "$SINK" "$2"
+        ;;
+    "mute")
+        pactl set-sink-mute "$SINK" toggle
+        ;;
+esac

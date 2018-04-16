@@ -2,3 +2,5 @@
 .i3/.config_backup
 .i3/.venv
 .additional
+bin/.*
+bin/xcape
