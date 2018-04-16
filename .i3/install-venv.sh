@@ -3,7 +3,7 @@
 
 set -e
 
-if which pip3 > /dev/null 2>&1; then
+if ! which pip3 > /dev/null 2>&1; then
     python3 -m ensurepip --user
 fi
 

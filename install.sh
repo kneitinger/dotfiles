@@ -8,10 +8,9 @@ FILES=$(find "$PWD" -name ".*" -not -name ".git" -not -name ".gitignore" -not -n
 for file in $FILES; do
     ln -sfn "$file" "$HOME/$(basename "$file")"
 done
-ln -sfn "bin" "$HOME/bin"
+ln -sfn "$PWD/bin" "$HOME/bin"
 
-# Leave virtual environment if in one
-deactivate || true
+deativate 2> /dev/null || true
 
 echo "** Installing i3 files and compiling config"
 "$HOME/.i3/install-venv.sh"
@@ -45,11 +44,6 @@ if [[ ! -d "$HOME"/.vim/cache ]]; then
 fi
 
 ln -sf "$HOME"/.vim/vimrc "$HOME"/.vimrc
-
-# Create neovim virtual env
-if which pip3 > /dev/null 2>&1; then
-    python3 -m ensurepip --user
-fi
 
 python3 -m venv "$HOME"/.vim/.venv
 cd "$HOME"/.vim/.venv
