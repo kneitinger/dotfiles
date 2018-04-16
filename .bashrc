@@ -119,23 +119,6 @@ mkcd () {
   cd "$1" || exit
 }
 
-if [ "$(uname)" = 'Linux' ]; then
-    GPG_TTY=$(tty)
-    export GPG_TTY
-    # Start the gpg-agent if not already running
-    if ! pgrep -x -u "${USER}" gpg-agent >/dev/null 2>&1; then
-        gpg-connect-agent /bye >/dev/null 2>&1
-        gpg-connect-agent updatestartuptty /bye >/dev/null
-    fi
-    # Set SSH to use gpg-agent
-    unset SSH_AGENT_PID
-    if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-        export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-    fi
-    # add alias for ssh to update the tty
-    alias ssh="gpg-connect-agent updatestartuptty /bye >/dev/null; ssh"
-fi
-
 
 if [ "$(uname)" = 'Linux' ]; then
     BASHC_FILE=/usr/share/bash-completion/bash_completion
@@ -151,6 +134,11 @@ if [ "$(hostname)" = 'ziyal' ]; then
     export WORKON_HOME=/home/leaf/work/venv
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
+    if [[ $- != *i* ]]; then
+        workon core
+    fi
+
+    complete -C '/home/leaf/work/venv/core/bin/aws_completer' aws
 elif [ "$(hostname)" = 'janeway' ]; then
     export WORKON_HOME=/home/leaf/venvs
     # shellcheck disable=SC1091
