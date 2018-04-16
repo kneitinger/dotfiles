@@ -134,7 +134,7 @@ if [ "$(hostname)" = 'ziyal' ]; then
     export WORKON_HOME=/home/leaf/work/venv
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
-    if [[ $- != *i* ]]; then
+    if [[ $- == *i* ]]; then
         workon core
     fi
 
