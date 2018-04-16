@@ -1,6 +1,19 @@
+.venv
+.DS_Store
+
+# .i3 related
 .i3/config
 .i3/.config_backup
-.i3/.venv
+
 .additional
+
 bin/.*
 bin/xcape
+
+# .vim related
+*.swp
+.vim/bundle
+.vim/init.vim
+.vim/cache/*/*
+.vim/spell/
+

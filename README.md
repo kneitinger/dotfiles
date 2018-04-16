@@ -1,4 +1,4 @@
-#dotfiles
+# dotfiles
 
 ## Installation
 To install, simply run `install.sh` which creates symbolic links from the relevant
@@ -26,12 +26,6 @@ different machines in an easily scalable way.
 Any environment variables or startup scripts that contain personal or private
 information can be stored in `~/.additional`, which is excluded from tracking,
 via the repo's `.gitignore`.
-
-
-## vim
-Due to periodic updates of plugins used, I've opted to store my vim dotfiles in
-[their own repo](https://github.com/kneitinger/vimdots) so as to not clutter up
-the commit logs of this repo.
 
 ## Tests
 A test script, `test.sh`, which runs the `shellcheck` linter on every file listed
