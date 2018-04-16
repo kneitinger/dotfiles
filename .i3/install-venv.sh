@@ -17,7 +17,7 @@ pip3 install colour     \
              i3ipc      \
              i3pystatus \
              netifaces  \
-             pytx
+             pytz
 
 if [ "$(uname)" == "Linux" ]; then
     pip3 install basiciw
