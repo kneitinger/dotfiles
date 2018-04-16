@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Begins an interactive screengrabbing box with scrot and then displays the
+# image in a minimal view.  Good for quick temporary graphical references
+
+# Blog post about it located here: http://kneit.in/2015/09/18/picnote.html
+
+PIC="/tmp/$RANDOM.png"
+
+scrot -s $PIC && feh --title feh:$PIC $PIC &
+
+rm $PIC

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+SOUND_INT="hw:PCH"
+SOUND_USB="hw:USB"
+SOUND_H4="hw:H4"
+
+SR=44100
+FRAME_PER_PERIOD=128
+PERIOD_PER_BUFF=4
+
+if jack_control status | grep "stopped" &> /dev/null; then
+    if [ "$1" == "usb" ]; then
+        jack_control dps device "$SOUND_USB"
+        jack_control dps capture "$SOUND_USB"
+        jack_control dps playback "$SOUND_USB"
+    elif [ "$1" == "h4" ]; then
+        jack_control dps device "$SOUND_H4"
+        jack_control dps capture "$SOUND_H4"
+        jack_control dps playback "$SOUND_H4"
+    else
+        jack_control dps device "$SOUND_INT"
+        jack_control dps capture "$SOUND_INT"
+        jack_control dps playback "$SOUND_INT"
+    fi
+
+    # Additional JACK setting
+    jack_control eps realtime true
+    jack_control ds alsa
+    jack_control dps rate $SR
+    jack_control dps nperiods $PERIOD_PER_BUFF
+    jack_control dps period $FRAME_PER_PERIOD
+
+    jack_control start
+else
+    jack_control stop
+fi
