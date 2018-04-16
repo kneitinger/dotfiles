@@ -3,12 +3,11 @@
 set -e
 
 echo "** Copying files"
-FILES=$(find "$PWD" -name ".*" -not -name ".git" -not -name ".gitignore" -not -name ".travis.yml")
+FILES=$(find "$PWD" -maxdepth 1 -name ".*" -not -name ".git" -not -name ".gitignore" -not -name ".travis.yml" -o -name "bin")
 
 for file in $FILES; do
     ln -sfn "$file" "$HOME/$(basename "$file")"
 done
-ln -sfn "$PWD/bin" "$HOME/bin"
 
 deativate 2> /dev/null || true
 
