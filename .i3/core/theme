@@ -14,24 +14,47 @@ new_window pixel 2
 new_float pixel 2
 
 # Colorscheme definitions
-set $salmonl #AF8787
-set $salmon  #AF5F5F
-set $salmond #5C4D4D
-set $sand    #D7AF87
-set $earth   #875F5F
-set $turf    #87875F
-set $white   #FFFFFF
-set $grey    #CCCCCC
-set $clay    #AF3C00
-set $greyd   #1C1C1C
-set $red     #AF1600
-set $lavend  #5F5F87
+set_from_resource $foreground i3.foreground   #f6f6ef
+set_from_resource $background i3.background   #5a5376
+set_from_resource $cursorColor i3.cursorColor  #f6f6ef
+
+# black
+set_from_resource $color0 i3.color0       #000000
+set_from_resource $color8 i3.color8       #555555
+
+# red
+set_from_resource $color1 i3.color1       #eb5d5c
+set_from_resource $color9 i3.color9       #fd8b89
+
+# green
+set_from_resource $color2 i3.color2       #5fe861
+set_from_resource $color10 i3.color10      #6dff6f
+
+# yellow
+set_from_resource $color3 i3.color3       #dfb508
+set_from_resource $color11 i3.color11      #ffe90a
+
+# blue
+set_from_resource $color4 i3.color4       #9d65ff
+set_from_resource $color12 i3.color12      #b78cff
+
+# magenta
+set_from_resource $color5 i3.color5       #fc6ea2
+set_from_resource $color13 i3.color13      #fda6c7
+
+# cyan
+set_from_resource $color6 i3.color6       #70f7aa
+set_from_resource $color14 i3.color14      #b7ffd7
+
+# white
+set_from_resource $color7 i3.color7       #bbbbbb
+set_from_resource $color15 i3.color15      #ffffff
 
 # Color scheme
-# class                 border   backgr   text   indicator
-client.focused          $salmon  $salmon  $white $turf
-client.unfocused        $salmond $salmond $grey  $turf
-client.focused_inactive $salmond $salmonl $white $turf
+# class                 border   backgr   text        indicator
+client.focused          $color2  $color2  $foreground $color2
+client.unfocused        $color4  $color4  $foreground $color4
+client.focused_inactive $color4  $color4  $foreground $color4
 
 # i3bar configuration
 bar {
@@ -50,15 +73,15 @@ bar {
     tray_output primary
 
     colors {
-        background $greyd
-        statusline $sand
-        separator  $turf
+        background $color8
+        statusline $color13
+        separator  $color8
 
         # Property         border   backgr   text
-        focused_workspace  $salmon  $salmon  $white
-        active_workspace   $salmond $salmond $white
-        inactive_workspace $lavend  $lavend  $grey
-        urgent_workspace   $red     $red     $white
-        binding_mode       $salmon  $salmon  $white
+        focused_workspace  $color6  $color8  $foreground
+        active_workspace   $color11 $color8  $foreground
+        inactive_workspace $color5  $color8  $foreground
+        urgent_workspace   $color1  $color8  $color1
+        binding_mode       $color11 $color8  $color11
     }
 }
