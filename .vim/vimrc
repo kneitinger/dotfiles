@@ -16,7 +16,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'alessandroyorba/alduin'
+Plug 'neozenith/estilo-xoria256'
 Plug 'gmoe/vim-faust'
 Plug 'sirver/ultisnips'
 Plug 'shougo/deoplete.nvim'
@@ -48,26 +48,23 @@ set hidden
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-" bytefluent.com/vivify is a good scheme discovery tool
+
 try
-    colorscheme alduin
-catch
-    colorscheme jellybeans
+    colorscheme xoria256
 endtry
 
 set colorcolumn=81
 
 " Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
-au! VimEnter  * hi Comment     cterm=italic
-              \ | hi MatchParen  ctermfg=15 ctermbg=131
-              \ | hi StatusLine  cterm=bold ctermbg=131 ctermfg=16
-              \ | hi User1       ctermbg=131
-              \ | hi TabLineSel  cterm=bold ctermfg=16 ctermbg=131
-              \ | hi TabLine     cterm=standout,italic ctermfg=0 ctermbg=131
-              \ | hi TabLineFill ctermbg=0
+au! VimEnter  * hi Comment     cterm=italic ctermfg=14
+              \ | hi StatusLine  cterm=bold,italic ctermbg=4 ctermfg=15
+              \ | hi User1       ctermbg=14
+              \ | hi TabLineSel  cterm=bold,italic ctermfg=15 ctermbg=4
+              \ | hi TabLine     cterm=italic ctermfg=15 ctermbg=12
+              \ | hi TabLineFill ctermbg=NONE
               \ | hi Normal guibg=NONE ctermbg=NONE
+              "\ | hi MatchParen  ctermfg=15 ctermbg=131
 
 set laststatus=2    " always show status bar
 
