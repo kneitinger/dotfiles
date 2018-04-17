@@ -73,7 +73,7 @@ bar {
 
     colors {
         background $color8
-        statusline $color13
+        statusline $color6
         separator  $color8
 
         # Property          border    backgr   text
@@ -81,6 +81,6 @@ bar {
         active_workspace    $color11  $color8  $foreground
         inactive_workspace  $color5   $color8  $foreground
         urgent_workspace    $color1   $color8  $color1
-        binding_mode        $color11  $color8  $color11
+        binding_mode        $color11  $color8  $foreground
     }
 }
