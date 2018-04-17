@@ -123,6 +123,10 @@ PS1+="\[${CYN}\]\W "
 PS1+="\[${L_GRY}\]\$(prompt_git)"
 PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
 
+if [ "$(uname)" = 'FreeBSD' ]; then
+    export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+fi
+
 # shellcheck disable=SC1091
 if [ "$(uname)" = 'Linux' ]; then
     source /usr/share/autojump/autojump.bash
