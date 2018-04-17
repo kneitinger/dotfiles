@@ -23,6 +23,25 @@ if tput setaf 1 &> /dev/null; then
     BLD=$(tput bold)
     ITL=$(tput sitm)
     RST=$(tput sgr0)
+else
+    RED="\e[31m"
+    L_RED="\e[91m"
+    GRN="\e[32m"
+    L_GRN="\e[92m"
+    YLW="\e[33m"
+    L_YLW="\e[93m"
+    PUR="\e[34m"
+    L_PUR="\e[94m"
+    PNK="\e[35m"
+    L_PNK="\e[95m"
+    CYN="\e[36m"
+    L_CYN="\e[96m"
+    GRY="\e[37m"
+    L_GRY="\e[97m"
+
+    BLD="\e[1m"
+    ITL="\e[3m"
+    RST="\e[0m"
 fi
 
 # Function by Jessie Frazelle
@@ -93,7 +112,7 @@ case $TERM in
         PS1=''
         ;;
     *)
-        PS1='\[\033]0;\u@\h:\w\007\]'
+        PS1='\[\u@\h:\w\]'
         ;;
 esac
 
