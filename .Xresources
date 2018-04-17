@@ -38,7 +38,7 @@
 *.color15:      #ffffff
 
 
-rofi.font: inconsolata 12
+rofi.font: FantasqueSansMono 10
 rofi.color-enabled: true
 rofi.color-normal: #0B4866,#FFFFFF,#0F6088,#37B3F1,#333333
 rofi.line-margin: 3
@@ -80,12 +80,12 @@ URxvt.keysym.C-slash:  font-size:show
 urxvt.vim-scrollback: M-x
 
 urxvt*depth: 32
-urxvt*background: [93]#5a5376
+urxvt*background: [97]#5a5376
 
 Xft.antialias:  true
 Xft.rgba:       rgba
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
-Xft.autohint:   false
+Xft.autohint:   true
 Xft.lcdfilter:  lcddefault
 
