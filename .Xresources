@@ -80,7 +80,7 @@ URxvt.keysym.C-slash:  font-size:show
 urxvt.vim-scrollback: M-x
 
 urxvt*depth: 32
-urxvt*background: [97]#5a5376
+urxvt*background: #5a5376
 
 Xft.antialias:  true
 Xft.rgba:       rgba
