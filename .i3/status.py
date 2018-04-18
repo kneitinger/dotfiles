@@ -12,7 +12,7 @@ hostname = gethostname()
 stat = Status(standalone=True)
 
 # Displays clock like this:
-# 10/7 22:52
+# 10/7 22:52 UTC
 stat.register("clock",
               interval=3,
               on_leftclick="notify-send 'Calendar' \"<tt>$(cal -h)</tt>\"",
@@ -21,10 +21,10 @@ stat.register("clock",
                       ("%-m/%-d %-H:%M %Z", "UTC")],)
 
 stat.register("pulseaudio",
-              muted=" ",      # Speaker icon w/ no audio coming out
-              unmuted="",    # Speaker icon w/ audio coming out
+              muted="Vol:",   # Speaker icon w/ no audio coming out
+              unmuted="Vol:",  # Speaker icon w/ audio coming out
               color_muted="#999999",
-              format="{muted} {volume}",
+              format="{muted}{volume}",
               )
 
 # Indicates charging status of battery in direction, percent and time remaining
@@ -37,9 +37,9 @@ if "Linux" in uname[0]:
                   alert=False,
                   alert_percentage=10,
                   status={
-                      "DIS": " ↓",
-                      "CHR": " ↑",
-                      "FULL": " ",
+                      "DIS": u"()",
+                      "CHR": u"()",
+                      "FULL": u"(-)",
                   },)
     if "janeway" in hostname:
         stat.register("battery",
@@ -51,9 +51,9 @@ if "Linux" in uname[0]:
                       alert=False,
                       alert_percentage=10,
                       status={
-                          "DIS": " ↓",
-                          "CHR": " ↑",
-                          "FULL": " ",
+                          "DIS": u"()",
+                          "CHR": u"()",
+                          "FULL": u"(-)",
                       },)
 
 if "FreeBSD" in uname[0]:
@@ -66,10 +66,10 @@ if "FreeBSD" in uname[0]:
 stat.register("network",
               interval=7,
               interface="wlp3s0",
-              color_up="#D7AF87",           # $sand in .i3 config
+              color_up="#70F7AA",           # $sand in .i3 config
               color_down="#CCCCCC",
-              format_up=" {essid}\[{v4}\]",
-              format_down=" ")
+              format_up="{essid}\[{v4}\]",
+              format_down="")
 
 stat.register("shell",
               command="~/.i3/status_scripts/lock-stat.sh",

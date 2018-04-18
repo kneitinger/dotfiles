@@ -16,9 +16,15 @@ echo "** Installing i3 files and compiling config"
 "$HOME/.i3/i3-conf-gen.sh"
 
 echo "** Installing fonts"
+FA_VER="731953d9efa9e83a8f13d296de605057d0fb366d"
+FA_PREF="https://github.com/FortAwesome/Font-Awesome/blob/$FA_VER/use-on-desktop"
 mkdir -p "$HOME"/.fonts
-curl -L -o "$HOME"/.fonts/FontAwesome.otf \
-    https://github.com/FortAwesome/Font-Awesome/raw/41b9ed01103e6820c3cb043ba7ddab30ecd3f4c0/fonts/FontAwesome.otf
+curl -L -o "$HOME"/.fonts/FontAwesome5Brands-Regular.otf \
+    "$FA_PREF/Font%20Awesome%205%20Brands-Regular-400.otf"
+curl -L -o "$HOME"/.fonts/FontAwesome5BFree-Regular.otf \
+    "$FA_PREF/Font%20Awesome%205%20Free-Regular-400.otf"
+curl -L -o "$HOME"/.fonts/FontAwesome5Free-Solid.otf \
+    "$FA_PREF/Font%20Awesome%205%20Brands-Solid-900.otf"
 curl -L -o "$HOME"/.fonts/monaco.ttf \
     https://github.com/todylu/monaco.ttf/raw/master/monaco.ttf
 curl -L -o /tmp/fantasque_mono.tar.gz \
