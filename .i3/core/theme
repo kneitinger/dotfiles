@@ -68,7 +68,7 @@ bar {
     # Using i3pystatus
     status_command ~/.i3/.venv/bin/python ~/.i3/status.py
     # Do not print visible separator between elements of the status bar
-    separator_symbol "   "
+    separator_symbol "  "
     tray_output primary
 
     colors {
