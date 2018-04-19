@@ -60,3 +60,9 @@ host-clear()
 {
     sed -i "$1d" "$HOME/.ssh/known_hosts"
 }
+
+mkcd ()
+{
+    mkdir "$1"
+    cd "$1" || exit
+}
