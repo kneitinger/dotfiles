@@ -2,6 +2,7 @@
 # shellcheck disable=SC1117
 # shellcheck disable=SC2034
 # shellcheck disable=SC1090
+# shellcheck disable=SC1091
 
 # Declare beautiful colors
 if tput setaf 1 &> /dev/null; then
@@ -128,7 +129,6 @@ if [ "$(uname)" = 'FreeBSD' ]; then
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 fi
 
-# shellcheck disable=SC1091
 case $(uname) in
     Linux)
         source /usr/share/autojump/autojump.bash
@@ -155,7 +155,6 @@ esac
 if [ "$(hostname)" = 'ziyal' ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
     export WORKON_HOME="$HOME/work/venv"
-    # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
 
     # Check if shell is interactive
@@ -166,13 +165,11 @@ if [ "$(hostname)" = 'ziyal' ]; then
     complete -C "$HOME/work/venv/core/bin/aws_completer" aws
 elif [ "$(hostname)" = 'janeway' ]; then
     export WORKON_HOME="$HOME/venvs"
-    # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
 elif [ "$(hostname)" = 'troi' ]; then
     VIRTUALENVWRAPPER_PYTHON=$(which python3)
     export VIRTUALENVWRAPPER_PYTHON
     export WORKON_HOME="$HOME/venv"
-    # shellcheck disable=SC1091
     source virtualenvwrapper.sh &> /dev/null
 fi
 
