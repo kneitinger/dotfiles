@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:/home/leaf/.gem/ruby/2.4.0/bin:/opt:$PATH
+PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:/opt:$PATH
 
 # Include modularized config files
 for file in ~/.{aliases,path,exports,additional}; do
