@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1117
 # shellcheck disable=SC2034
+# shellcheck disable=SC1090
 
 # Declare beautiful colors
 if tput setaf 1 &> /dev/null; then
@@ -133,8 +134,8 @@ case $(uname) in
         source /usr/share/autojump/autojump.bash
         ;;
     FreeBSD | *)
-        [[ -s /home/leaf/.autojump/etc/profile.d/autojump.sh ]] \
-            && source /home/leaf/.autojump/etc/profile.d/autojump.sh
+        [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] \
+            && source "$HOME/.autojump/etc/profile.d/autojump.sh"
         ;;
 esac
 
@@ -148,13 +149,12 @@ case $(uname) in
         ;;
 esac
 
-# shellcheck disable=SC1090
 [[ $PS1 && -f "$BASHC_FILE" ]] && \
     source "$BASHC_FILE"
 
 if [ "$(hostname)" = 'ziyal' ]; then
     export VIRTUAL_ENV_DISABLE_PROMPT=1
-    export WORKON_HOME=/home/leaf/work/venv
+    export WORKON_HOME="$HOME/work/venv"
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
 
@@ -163,15 +163,15 @@ if [ "$(hostname)" = 'ziyal' ]; then
         workon core
     fi
 
-    complete -C '/home/leaf/work/venv/core/bin/aws_completer' aws
+    complete -C "$HOME/work/venv/core/bin/aws_completer" aws
 elif [ "$(hostname)" = 'janeway' ]; then
-    export WORKON_HOME=/home/leaf/venvs
+    export WORKON_HOME="$HOME/venvs"
     # shellcheck disable=SC1091
     source /usr/bin/virtualenvwrapper.sh
 elif [ "$(hostname)" = 'troi' ]; then
     VIRTUALENVWRAPPER_PYTHON=$(which python3)
     export VIRTUALENVWRAPPER_PYTHON
-    export WORKON_HOME=/home/leaf/venv
+    export WORKON_HOME="$HOME/venv"
     # shellcheck disable=SC1091
     source virtualenvwrapper.sh &> /dev/null
 fi
