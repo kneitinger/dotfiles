@@ -17,9 +17,3 @@ if [ $? -ge 2 ]; then
   ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
 fi
 
-# Disregard case-ness in pathname expansion
-shopt -s nocaseglob
-# Append to bash history
-shopt -s histappend
-# Fix typos in directories!
-shopt -s cdspell
