@@ -50,19 +50,16 @@ alias zprops='zfs get all'
 
 alias dog='pygmentize -g'
 
-kittens()
-{
+kittens () {
     tree
     find . -type f -exec echo -e "\\n***************{}***************" \; -exec cat {} \;
 }
 
-host-clear()
-{
+host-clear () {
     sed -i "$1d" "$HOME/.ssh/known_hosts"
 }
 
-mkcd ()
-{
+mkcd () {
     mkdir "$1"
     cd "$1" || exit
 }
