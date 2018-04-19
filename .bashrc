@@ -128,32 +128,25 @@ if [ "$(uname)" = 'FreeBSD' ]; then
 fi
 
 # shellcheck disable=SC1091
-if [ "$(uname)" = 'Linux' ]; then
-    source /usr/share/autojump/autojump.bash
-else
-    [[ -s /home/leaf/.autojump/etc/profile.d/autojump.sh ]] && source /home/leaf/.autojump/etc/profile.d/autojump.sh
-fi
-
-# Include modularized config files
-for file in ~/.{aliases,path,exports,additional}; do
-    if [[ -r "$file" ]] && [[ -f "$file" ]]; then
-        # shellcheck source=/dev/null
-        source "$file"
-    fi
-done
-unset file
-
-mkcd () {
-    mkdir "$1"
-    cd "$1" || exit
-}
+case $(uname) in
+    Linux)
+        source /usr/share/autojump/autojump.bash
+        ;;
+    FreeBSD | *)
+        [[ -s /home/leaf/.autojump/etc/profile.d/autojump.sh ]] \
+            && source /home/leaf/.autojump/etc/profile.d/autojump.sh
+        ;;
+esac
 
 
-if [ "$(uname)" = 'Linux' ]; then
-    BASHC_FILE=/usr/share/bash-completion/bash_completion
-else
-    BASHC_FILE=/usr/local/share/bash-completion/bash_completion.sh
-fi
+case $(uname) in
+    Linux)
+        BASHC_FILE=/usr/share/bash-completion/bash_completion
+        ;;
+    FreeBSD | *)
+        BASHC_FILE=/usr/local/share/bash-completion/bash_completion.sh
+        ;;
+esac
 
 # shellcheck disable=SC1090
 [[ $PS1 && -f "$BASHC_FILE" ]] && \
@@ -183,9 +176,18 @@ elif [ "$(hostname)" = 'troi' ]; then
     source virtualenvwrapper.sh &> /dev/null
 fi
 
-shopt -s autocd
-
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
+# Disregard case-ness in pathname expansion
+shopt -s nocaseglob
+
+# Append to bash history
+shopt -s histappend
 HISTTIMEFORMAT="%y-%m-%d %T "
+
+# Fix typos in directories!
+shopt -s cdspell
+
+# If only a directory name is entered, cd into it
+shopt -s autocd
