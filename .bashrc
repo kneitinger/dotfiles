@@ -5,46 +5,24 @@
 # shellcheck disable=SC1091
 
 # Declare beautiful colors
-if tput setaf 1 &> /dev/null; then
-    tput sgr0
-    RED=$(tput setaf 1)
-    L_RED=$(tput setaf 9)
-    GRN=$(tput setaf 2)
-    L_GRN=$(tput setaf 10)
-    YLW=$(tput setaf 3)
-    L_YLW=$(tput setaf 11)
-    PUR=$(tput setaf 4)
-    L_PUR=$(tput setaf 12)
-    PNK=$(tput setaf 5)
-    L_PNK=$(tput setaf 13)
-    CYN=$(tput setaf 6)
-    L_CYN=$(tput setaf 14)
-    GRY=$(tput setaf 7)
-    L_GRY=$(tput setaf 15)
+RED="\e[31m"    # color1
+L_RED="\e[91m"  # color9
+GRN="\e[32m"    # color2
+L_GRN="\e[92m"  # color10
+YLW="\e[33m"    # color3
+L_YLW="\e[93m"  # color11
+PUR="\e[34m"    # color4
+L_PUR="\e[94m"  # color12
+PNK="\e[35m"    # color5
+L_PNK="\e[95m"  # color13
+CYN="\e[36m"    # color6
+L_CYN="\e[96m"  # color14
+GRY="\e[37m"    # color7
+L_GRY="\e[97m"  # color15
 
-    BLD=$(tput bold)
-    ITL=$(tput sitm)
-    RST=$(tput sgr0)
-else
-    RED="\e[31m"
-    L_RED="\e[91m"
-    GRN="\e[32m"
-    L_GRN="\e[92m"
-    YLW="\e[33m"
-    L_YLW="\e[93m"
-    PUR="\e[34m"
-    L_PUR="\e[94m"
-    PNK="\e[35m"
-    L_PNK="\e[95m"
-    CYN="\e[36m"
-    L_CYN="\e[96m"
-    GRY="\e[37m"
-    L_GRY="\e[97m"
-
-    BLD="\e[1m"
-    ITL="\e[3m"
-    RST="\e[0m"
-fi
+BLD="\e[1m"
+ITL="\e[3m"
+RST="\e[0m"
 
 # Function by Jessie Frazelle
 # https://github.com/jessfraz/dotfiles/blob/master/.bash_prompt
@@ -128,6 +106,13 @@ PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
 if [ "$(uname)" = 'FreeBSD' ]; then
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 fi
+
+for file in ~/.{aliases,path,exports,additional}; do
+    if [[ -r "$file" ]] && [[ -f "$file" ]]; then
+        source "$file"
+    fi
+done
+unset file
 
 case $(uname) in
     Linux)
