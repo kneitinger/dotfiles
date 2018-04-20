@@ -19,14 +19,6 @@ echo "** Installing fonts"
 FA_VER="731953d9efa9e83a8f13d296de605057d0fb366d"
 FA_PREF="https://github.com/FortAwesome/Font-Awesome/blob/$FA_VER/use-on-desktop"
 mkdir -p "$HOME"/.fonts
-curl -L -o "$HOME"/.fonts/FontAwesome5Brands-Regular.otf \
-    "$FA_PREF/Font%20Awesome%205%20Brands-Regular-400.otf"
-curl -L -o "$HOME"/.fonts/FontAwesome5BFree-Regular.otf \
-    "$FA_PREF/Font%20Awesome%205%20Free-Regular-400.otf"
-curl -L -o "$HOME"/.fonts/FontAwesome5Free-Solid.otf \
-    "$FA_PREF/Font%20Awesome%205%20Brands-Solid-900.otf"
-curl -L -o "$HOME"/.fonts/monaco.ttf \
-    https://github.com/todylu/monaco.ttf/raw/master/monaco.ttf
 curl -L -o /tmp/fantasque_mono.tar.gz \
     https://github.com/belluzj/fantasque-sans/releases/download/v1.7.2/FantasqueSansMono-Normal.tar.gz
 mkdir -p /tmp/fantasque_mono && tar xzfv /tmp/fantasque_mono.tar.gz -C /tmp/fantasque_mono 
@@ -64,4 +56,5 @@ source bin/activate
 pip3 install neovim
 deactivate
 
+nvim -c "PlugInstall" -c "q" -c "q"
 nvim -c "UpdateRemotePlugins" -c "q"
