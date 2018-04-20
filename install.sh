@@ -16,8 +16,6 @@ echo "** Installing i3 files and compiling config"
 "$HOME/.i3/i3-conf-gen.sh"
 
 echo "** Installing fonts"
-FA_VER="731953d9efa9e83a8f13d296de605057d0fb366d"
-FA_PREF="https://github.com/FortAwesome/Font-Awesome/blob/$FA_VER/use-on-desktop"
 mkdir -p "$HOME"/.fonts
 curl -L -o /tmp/fantasque_mono.tar.gz \
     https://github.com/belluzj/fantasque-sans/releases/download/v1.7.2/FantasqueSansMono-Normal.tar.gz
