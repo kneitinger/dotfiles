@@ -68,8 +68,8 @@ stat.register("network",
               interface="wlp3s0",
               color_up="#70F7AA",           # $sand in .i3 config
               color_down="#CCCCCC",
-              format_up="{essid}\[{v4}\]",
-              format_down="")
+              format_up=" {essid}\[{v4}\]",
+              format_down=" ")
 
 stat.register("shell",
               command="~/.i3/status_scripts/lock-stat.sh",
