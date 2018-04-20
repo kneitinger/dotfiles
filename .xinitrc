@@ -30,8 +30,13 @@ setxkbmap -option ctrl:nocaps
 
 # Ergonomic tap vs. hold keybindings
 xcape -e 'Control_L=Escape' -t 175
-xcape -e 'Shift_L=parenleft' -t 130
-xcape -e 'Shift_R=parenright' -t 130
+if [ "$(uname)" = 'FreeBSD' ]; then
+    xcape -e 'Shift_L=Shift_L|parenleft' -t 130
+    xcape -e 'Shift_R=Shift_R|parenright' -t 130
+else
+    xcape -e 'Shift_L=parenleft' -t 130
+    xcape -e 'Shift_R=parenright' -t 130
+fi
 xcape -e 'Alt_L=Shift_L|bracketleft' -t 130
 xcape -e 'Alt_R=Shift_R|bracketright' -t 130
 xcape -e 'Super_L=bracketleft' -t 130
