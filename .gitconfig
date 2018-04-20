@@ -13,6 +13,8 @@
     s  = status
     c  = commit
     rh = reset HEAD
+    c- = checkout --
+    puo = push -u origin
 
 [merge]
     tool = mymeld 
