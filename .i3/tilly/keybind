@@ -1,0 +1,50 @@
+################################################################################
+# Lenovo ThinkPad T450s/USB Keybindings
+# [ F1  -> Mute        ] [ F2  -> Vol Down   ]
+# [ F3  -> Vol Up      ] [ F4  -> Prev Track ]
+# [ F5  -> Play/Pause  ] [ F6  -> Next Track ]
+# [ F7  ->             ] [ F8  -> Display    ]  <-- Super_L?
+# [ F9  -> Search      ] [ F10 -> KBLight(HW)]
+# [ F11 -> BrightDown  ] [ F12 -> BrightUp   ]
+################################################################################
+
+# Always bumpin' it when pressing Delete
+bindsym Insert nop
+
+# Audio bindings use audioctl from github.com/kneitinger/bin
+# It is simnply a pactl wrapper that operates on the active audio sink
+
+# Map volume keys to amixer functions
+bindsym XF86AudioMute exec audioctl mute
+
+bindsym XF86AudioLowerVolume exec audioctl vol -5%
+bindsym XF86AudioRaiseVolume exec audioctl vol +4%
+bindsym $mod+XF86AudioLowerVolume exec audioctl vol -10%
+bindsym $mod+XF86AudioRaiseVolume exec audioctl vol +10%
+
+# Pressing Mod sets to extremes
+#bindsym XF86MonBrightnessDown exec light -U 7
+#bindsym $mod+XF86MonBrightnessDown exec light -S 0.5
+#bindsym XF86MonBrightnessUp exec light -A 3
+#bindsym $mod+XF86MonBrightnessUp exec light -S 100
+
+#bindsym XF86Display exec ~/bin/toggle-jack
+#bindsym $mod+XF86Display exec ~/bin/toggle-jack h4
+#bindsym $mod+Shift+XF86Display exec ~/bin/toggle-jack usb
+
+#bindsym XF86Tools exec ~/bin/keyset
+
+#bindsym $mod+XF86Tools exec roxterm -e htop
+
+#bindsym --release XF86Search exec ~/bin/picnote
+#bindsym --release $mod+XF86Search exec scrot -s /tmp/$(date +"%F_%H-%M").png
+#bindsym --release $mod+Shift+XF86Search exec scrot /tmp/$(date +"%F_%H-%M").png
+
+#bindsym XF86LaunchA exec ~/bin/screenselect
+
+#bindsym XF86Explorer bar mode toggle
+
+# Prefer regular setup, fallback to home setup
+#bindsym $mod+Ctrl+9 move workspace to output DP1-1; move workspace to output HDMI1
+#bindsym $mod+Ctrl+0 move workspace to output DP1-2; move workspace to output DP2
+#bindsym $mod+Ctrl+o move workspace to output eDP1
