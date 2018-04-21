@@ -151,7 +151,7 @@ if [ "$(hostname)" = 'ziyal' ]; then
 elif [ "$(hostname)" = 'janeway' ]; then
     export WORKON_HOME="$HOME/venvs"
     source /usr/bin/virtualenvwrapper.sh
-elif [ "$(hostname)" = 'troi' ]; then
+elif [ "$(hostname)" = 'troi' ] || [ "$(hostname)" = 'tilly' ]; then
     VIRTUALENVWRAPPER_PYTHON=$(which python3)
     export VIRTUALENVWRAPPER_PYTHON
     export WORKON_HOME="$HOME/venv"
