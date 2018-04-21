@@ -5,16 +5,12 @@
 
 set -e
 
-while read -r file; do
-  shellcheck -s bash "$file"
-  echo "[ok] $file shellcheck pass"
-done < ./test_includes
-
-FILES=$(find ./bin -type f -not -path "*/.*" -not -name "README.md")
+FILES="$(find . \
+    -maxdepth 3 -type f -not -iwholename '*.git*' -exec file {} \; \
+    | grep shell \
+    | cut -d':' -f1)"
 
 for file in $FILES; do
-    if file "$file" | grep Bourne 1> /dev/null; then
-        shellcheck -s bash "$file"
-        echo "[ok] $file shellcheck pass"
-    fi
+    shellcheck -s bash "$file"
+    echo "[ok] $file shellcheck pass"
 done
