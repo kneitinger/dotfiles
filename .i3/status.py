@@ -58,9 +58,8 @@ if "Linux" in uname[0]:
 
 if "FreeBSD" in uname[0]:
     stat.register("shell",
-                  command='acpiconf -i 0 | grep "Remaining capacity"'
-                          '| grep -o "[0-9]*%"',
-                  interval=13)
+                  command="~/.i3/status_scripts/freebsd-batt.py 0",
+                  interval=2)
 
 
 stat.register("network",
