@@ -13,6 +13,7 @@ cd "$HOME"/.i3/.venv
 # shellcheck disable=SC1091
 source bin/activate
 
+pip3 install -U pip
 pip3 install colour     \
              i3ipc      \
              i3pystatus \
