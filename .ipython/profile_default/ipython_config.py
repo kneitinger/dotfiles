@@ -216,7 +216,7 @@ c.InteractiveShell.color_info = True
 #c.InteractiveShell.logappend = ''
 
 ## The name of the logfile to use.
-c.InteractiveShell.logfile = strftime('~/ipython/%Y%m%d_%H%M%S.py')
+c.InteractiveShell.logfile = strftime('~/.ipylogs/%Y%m%d_%H%M%S.py')
 
 ## Start logging to the default log file in overwrite mode. Use `logappend` to
 #  specify a log file to **append** logs to.
