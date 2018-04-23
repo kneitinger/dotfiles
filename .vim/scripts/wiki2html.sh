@@ -10,7 +10,7 @@ INPUT="$5"
 
 FILE=$(basename "$INPUT" | cut -d'.' -f1)
 OUTPUT="$OUTPUTDIR$FILE.html"
-CSSFILENAME=$(basename "$6")
+CSSFILE=$(basename "$6")
 
 HAS_MATH=$(grep -o '\$\$.\+\$\$' "$INPUT")
 if [ ! -z "$HAS_MATH" ]; then
@@ -19,8 +19,5 @@ else
     MATH=
 fi
 
-sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' < "$INPUT" \
-    | pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILENAME" \
-    | sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' \
-    > "$OUTPUT"
+pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" < "$INPUT" > "$OUTPUT"
 
