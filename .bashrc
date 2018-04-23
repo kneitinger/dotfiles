@@ -137,26 +137,19 @@ esac
 [[ $PS1 && -f "$BASHC_FILE" ]] && \
     source "$BASHC_FILE"
 
-if [ "$(hostname)" = 'ziyal' ]; then
-    export VIRTUAL_ENV_DISABLE_PROMPT=1
-    export WORKON_HOME="$HOME/work/venv"
-    source /usr/bin/virtualenvwrapper.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+VIRTUALENVWRAPPER_PYTHON=$(which python3) && export VIRTUALENVWRAPPER_PYTHON
+export WORKON_HOME="$HOME/.venv"
+source virtualenvwrapper.sh &> /dev/null
 
-    # Check if shell is interactive
-    if [[ $- == *i* ]]; then
+if [[ $- == *i* ]]; then    # Check if interactive
+    if lsvirtualenv | grep "^core$" &> /dev/null; then
         workon core
     fi
-
-    complete -C "$HOME/work/venv/core/bin/aws_completer" aws
-elif [ "$(hostname)" = 'janeway' ]; then
-    export WORKON_HOME="$HOME/venvs"
-    source /usr/bin/virtualenvwrapper.sh
-elif [ "$(hostname)" = 'troi' ] || [ "$(hostname)" = 'tilly' ]; then
-    VIRTUALENVWRAPPER_PYTHON=$(which python3)
-    export VIRTUALENVWRAPPER_PYTHON
-    export WORKON_HOME="$HOME/venv"
-    source virtualenvwrapper.sh &> /dev/null
 fi
+
+# TODO if role has work
+# complete -C "$HOME/work/venv/core/bin/aws_completer" aws
 
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
