@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if ! pgrep -f vimwiki; the; then
+    urxvt -e vimwiki
+fi
