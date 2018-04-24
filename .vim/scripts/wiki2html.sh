@@ -19,5 +19,7 @@ else
     MATH=
 fi
 
-pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" < "$INPUT" > "$OUTPUT"
+
+sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' < "$INPUT" \
+    | pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" > "$OUTPUT"
 
