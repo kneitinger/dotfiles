@@ -224,19 +224,19 @@ endif
 " Backup/Swap/Persistence Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim/cache/undo
+    set undodir=~/.vim/cache/undo//
     set undofile
 catch
 endtry
 
 try
-    set backupdir=~/.vim/cache/backup
+    set backupdir=~/.vim/cache/backup//
     set backup
 catch
 endtry
 
 try
-    set directory=~/.vim/cache/swap
+    set directory=~/.vim/cache/swap//
     set swapfile
 catch
 endtry
@@ -333,6 +333,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " vimwiki
+autocmd FileType vimwiki setlocal noswapfile
 let g:vimwiki_list = [{'path': '~/notes',
     \ 'syntax': 'markdown',
     \ 'ext': '.md',
