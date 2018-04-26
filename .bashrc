@@ -148,9 +148,6 @@ if [[ $- == *i* ]]; then    # Check if interactive
     fi
 fi
 
-# TODO if role has work
-# complete -C "$HOME/work/venv/core/bin/aws_completer" aws
-
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
