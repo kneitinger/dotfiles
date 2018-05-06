@@ -37,6 +37,9 @@ alias lls='ls'
 alias mv='mv -i'
 alias cp='cp -i'
 
+# Open pcmanfm in current directory
+alias pc='pcmanfm 2> /dev/null & disown $!'
+
 # Allow sudo-ing aliases...no idea why this works
 alias sudo='sudo '
 
