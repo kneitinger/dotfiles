@@ -17,7 +17,7 @@ if [ $? -ge 2 ]; then
   ssh-agent -a "$SSH_AUTH_SOCK" >/dev/null
 fi
 
-if shopt -q login_shell; then
+if ! shopt -q login_shell; then
     # shellcheck disable=SC1090
     source "$HOME/.bashrc"
 fi
