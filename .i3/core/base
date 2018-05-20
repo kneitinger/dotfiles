@@ -28,7 +28,7 @@ for_window [title="feh:/tmp/*"] floating enable
 
 # Mark windows for named scratchpads
 for_window [class="Spotify"] mark "music", move scratchpad
-for_window [class="keepassxc" title="db - KeePassXC"] mark "keys", move scratchpad
+for_window [class="keepassxc" title="^.*.kdbx - KeePassXC"] mark "keys", move scratchpad
 for_window [class="TelegramDesktop"] mark "tele", move scratchpad
 for_window [title="vimwiki"] mark "vimwiki", move scratchpad
 
