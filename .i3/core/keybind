@@ -116,6 +116,9 @@ bindsym $mod+0 workspace $ws0
 bindsym $mod+Ctrl+h workspace prev
 bindsym $mod+Ctrl+l workspace next
 
+# Jump to urgent workspace
+bindsym $mod+u [urgent=latest] focus
+
 # Move focused workspace to another display
 bindsym $mod+Shift+Left move workspace to output left
 bindsym $mod+Shift+Right move workspace to output right
