@@ -13,9 +13,15 @@ stat = Status(standalone=True)
 
 # Displays clock like this:
 # 10/7 22:52 UTC
+
+# Date highlighting on FreeBSD is interpreted weirdly by notify-send.
+# Disable it with the -h flag
+cal_flag = ' -h' if 'FreeBSD' in uname[0] else ''
+cal_cmd = "notify-send 'Calendar' \"<tt>$(cal{})</tt>\"".format(cal_flag)
+
 stat.register("clock",
               interval=3,
-              on_leftclick="notify-send 'Calendar' \"<tt>$(cal -h)</tt>\"",
+              on_leftclick=cal_cmd,
               on_rightclick=['scroll_format', 1],
               format=[("%-m/%-d %-H:%M %Z", "America/Los_Angeles"),
                       ("%-m/%-d %-H:%M %Z", "UTC")],)
