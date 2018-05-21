@@ -8,7 +8,7 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'yggdroot/indentline'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-endwise'
@@ -22,7 +22,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'sirver/ultisnips'
 Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
-Plug 'scrooloose/syntastic'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
