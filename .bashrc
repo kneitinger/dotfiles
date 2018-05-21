@@ -157,6 +157,13 @@ shopt -s nocaseglob
 # Append to bash history
 shopt -s histappend
 HISTTIMEFORMAT="%y-%m-%d %T "
+HISTSIZE=5000000
+HISTFILESIZE=$HISTSIZE
+HISTCONTROL=ignoredups:erasedupe:ignorespace
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+# Remove timestamp from most current history item & set it as terminal title
+trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*\(\([0-9]\{2\}[[:punct:]]\)\{2\}[0-9]*[ ]*\)\{2\}//g")\007"' DEBUG
 
 # Fix typos in directories!
 shopt -s cdspell

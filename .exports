@@ -1,13 +1,5 @@
 #!/usr/bin/env bash
 
-export HISTSIZE=5000000
-export HISTFILESIZE=$HISTSIZE
-export HISTCONTROL=ignoredups:erasedupe:ignorespace
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
-
-# TODO
-#export HISTIGNORE=""
-
 EDITOR=$(which nvim || which vim)
 SVN_EDITOR=$EDITOR
 export EDITOR
