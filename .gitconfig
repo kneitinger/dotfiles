@@ -8,19 +8,13 @@
 [github]
     user = kneitinger
 [alias]
-    d  = difftool
+    d  = diff
     a  = add
     s  = status
     c  = commit
     rh = reset HEAD
     c- = checkout --
     puo = push -u origin
-
-[merge]
-    tool = mymeld 
-    conflictstyle = diff3
-[mergetool "mymeld"]
-    cmd = meld $LOCAL $BASE $REMOTE -o $MERGED --diff $BASE $LOCAL --diff $BASE $REMOTE --auto-merge
 
 [rerere]
     enabled = true
