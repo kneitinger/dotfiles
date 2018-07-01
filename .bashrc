@@ -138,7 +138,7 @@ esac
     source "$BASHC_FILE"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-VIRTUALENVWRAPPER_PYTHON=$(which python3) && export VIRTUALENVWRAPPER_PYTHON
+VIRTUALENVWRAPPER_PYTHON=$(python3 -V) && export VIRTUALENVWRAPPER_PYTHON
 export WORKON_HOME="$HOME/.venv"
 source virtualenvwrapper.sh &> /dev/null
 

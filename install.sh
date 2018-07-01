@@ -21,7 +21,7 @@ print_header "Bootstrapping pip and installing virtualenvwrapper"
 
 deativate 2> /dev/null || true
 
-if ! which pip3 > /dev/null 2>&1; then
+if ! pip3 -V > /dev/null 2>&1; then
     python3 -m ensurepip --user
 fi
 pip3 install --user virtualenvwrapper

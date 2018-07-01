@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-EDITOR=$(which nvim || which vim)
+EDITOR=$(nvim -v || vim -v)
 SVN_EDITOR=$EDITOR
 export EDITOR
 export SVN_EDITOR
