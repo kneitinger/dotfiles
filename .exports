@@ -16,3 +16,4 @@ if [ "$(uname)" = 'FreeBSD' ]; then
     export CCACHE_DIR="$HOME/.ccache"
 fi
 
+export GOBIN=$HOME/go/bin

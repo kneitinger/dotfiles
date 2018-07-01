@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:/opt:$PATH
+PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:/opt:~/go/bin:$PATH
 
 # Include modularized config files
 for file in ~/.{aliases,path,exports,additional}; do
