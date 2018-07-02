@@ -3,6 +3,7 @@
 # shellcheck disable=SC2034
 # shellcheck disable=SC1090
 # shellcheck disable=SC1091
+# shellcheck disable=SC2230
 
 # Declare beautiful colors
 RED="\e[31m"    # color1
@@ -138,7 +139,7 @@ esac
     source "$BASHC_FILE"
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-VIRTUALENVWRAPPER_PYTHON=$(python3 -V) && export VIRTUALENVWRAPPER_PYTHON
+VIRTUALENVWRAPPER_PYTHON=$(which python3) && export VIRTUALENVWRAPPER_PYTHON
 export WORKON_HOME="$HOME/.venv"
 source virtualenvwrapper.sh &> /dev/null
 

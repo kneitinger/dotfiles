@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+#shellcheck disable=SC2230
 
-EDITOR=$(nvim -v || vim -v)
+EDITOR=$(which nvim || which vim)
 SVN_EDITOR=$EDITOR
 export EDITOR
 export SVN_EDITOR
