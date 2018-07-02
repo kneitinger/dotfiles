@@ -16,8 +16,8 @@ alias tmp='cd /tmp'
 
 
 # Arch package management
-alias yup='yaourt -Syua --noconfirm'
-alias yo='yaourt'
+alias aup='aurman -Syu --edit'
+alias aur='aurman'
 
 # ls
 if [ "$(uname)" = 'Linux' ]; then
