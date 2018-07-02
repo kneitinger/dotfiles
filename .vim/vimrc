@@ -1,6 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-Plug Initialization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Install vimplug if not found
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -34,6 +36,8 @@ if !has('nvim')
 endif
 
 set encoding=utf-8
+
+" No bells
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -76,7 +80,7 @@ set statusline+=%y[Col:%c][Line:%l/%L:%p%%]
 
 set tabline=%!TabLine()
 
-set number          " Show  current line number.
+set number          " Show current line number.
 set relativenumber  " All other line numbers are distance from current line
 set cursorline      " Highlight current line
 set showcmd         " Show (partial) command in status line.
@@ -92,6 +96,17 @@ set cmdheight=2
 let mapleader = ','
 let g:mapleader = ','
 
+" Copy/cut/paste to system clipboard
+vnoremap <leader>c "+y
+nnoremap <leader>c "+y$
+
+inoremap <leader>v <ESC>"+pa
+vnoremap <leader>v "+p
+nnoremap <leader>v "+p
+
+vnoremap <leader>x "+d
+nnoremap <leader>x "+D
+
 " Make motion on wrapped lines intuitive
 noremap <silent> j gj
 noremap <silent> k gk
@@ -103,7 +118,7 @@ noremap Q <Nop>
 map Y y$
 " Clear search highlights upon screen-clear
 nnoremap <C-L> :nohl<CR><C-L>
-" Reselect visual block after indent
+" Reselect visual block selection after indent
 vnoremap < <gv
 vnoremap > >gv
 " Add newline in normal mode with return key
@@ -190,9 +205,9 @@ set smarttab        " Be smart about auto tabbing
 set showmatch       " When a bracket is inserted, show the matching one
 set matchtime=1     " Tenths of a second to show the match
 
-set textwidth=79    " Line auto-break column threshold
+"set textwidth=79    " Line auto-break column threshold
 
-set formatoptions=c,r,q,j
+"set formatoptions=c,r,q,j
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype-Specific Settings
