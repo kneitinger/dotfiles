@@ -81,7 +81,7 @@ stat.register("shell",
               on_leftclick="~/.i3/status_scripts/lock-toggler.sh",
               interval=2)
 
-if "ARCH" in uname[2]:
+if which('pacman') is not None:
     stat.register("shell",
                   command="~/.i3/status_scripts/update-stat.sh",
                   interval=113)
