@@ -3,7 +3,7 @@
 # [ F1  -> Mute        ] [ F2  -> Vol Down   ]
 # [ F3  -> Vol Up      ] [ F4  -> Prev Track ]
 # [ F5  -> Play/Pause  ] [ F6  -> Next Track ]
-# [ F7  ->             ] [ F8  -> Display    ]  <-- Super_L?
+# [ F7  ->             ] [ F8  -> Display    ]
 # [ F9  -> Search      ] [ F10 -> KBLight(HW)]
 # [ F11 -> BrightDown  ] [ F12 -> BrightUp   ]
 ################################################################################
@@ -46,5 +46,5 @@ bindsym XF86Explorer bar mode toggle
 
 # Prefer regular setup, fallback to home setup
 bindsym $mod+Ctrl+9 move workspace to output DP1-1; move workspace to output HDMI1
-bindsym $mod+Ctrl+0 move workspace to output DP1-2; move workspace to output DP2
+bindsym $mod+Ctrl+0 move workspace to output DP1-2; move workspace to output DP1
 bindsym $mod+Ctrl+o move workspace to output eDP1
