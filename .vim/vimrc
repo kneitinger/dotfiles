@@ -25,6 +25,7 @@ Plug 'sirver/ultisnips'
 Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/fzf.vim'
+Plug 'lervag/vimtex'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
