@@ -1,6 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim-Plug Initialization
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8
+scriptencoding utf-8
 
 " Install vimplug if not found
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -20,7 +22,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'neozenith/estilo-xoria256'
 Plug 'gmoe/vim-faust'
-Plug 'vimwiki/vimwiki'
 Plug 'sirver/ultisnips'
 Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
@@ -32,17 +33,15 @@ call plug#end()
 " Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if !has('nvim')
-    set nocompatible
     set t_Co=256        " 256 color mode
 endif
 
-set encoding=utf-8
 
 " No bells
 set noerrorbells
 set novisualbell
 set t_vb=
-set tm=500
+set timeoutlen=500
 
 set autoread        " Automatically reload files upon change
 set history=1000
@@ -94,7 +93,6 @@ set cmdheight=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
 let g:mapleader = ','
 
 " Copy/cut/paste to system clipboard
@@ -231,9 +229,9 @@ autocmd FileType tex setlocal shiftwidth=2 tabstop=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " W allows writing a file that you forgot to sudo vim on
 "   - existence check lets you :source vimrc without error
-if !exists("sudowrite")
+if !exists('sudowrite')
     command W w !sudo tee % > /dev/null
-    let sudowrite=1
+    let g:sudowrite=1
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -259,6 +257,7 @@ endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au BufEnter * set conceallevel=0  " Do not hide quotes, markdown formatters, etc.
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function definitions
@@ -283,13 +282,13 @@ function! HasPaste()
 endfunction
 
 function! TabLine()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    let tabnr = i + 1 " range() starts at 0
-    let winnr = tabpagewinnr(tabnr)
-    let buflist = tabpagebuflist(tabnr)
-    let bufnr = buflist[winnr - 1]
-    let bufname = fnamemodify(bufname(bufnr), ':t')
+  let l:s = ''
+  for l:i in range(tabpagenr('$'))
+    let l:tabnr = l:i + 1 " range() starts at 0
+    let l:winnr = tabpagewinnr(l:tabnr)
+    let l:buflist = tabpagebuflist(l:tabnr)
+    let l:bufnr = l:buflist[l:winnr - 1]
+    let l:bufname = fnamemodify(bufname(l:bufnr), ':t')
 
     let s .= '%' . tabnr . 'T'
     let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
@@ -314,16 +313,6 @@ source $HOME/.vim/scripts/freebsd.vim
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" LaTeX Suite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat = "pdf"
-let g:Tex_ViewRule_pdf = "zathura --debug=error"
-let g:Tex_CompileRule_pdf = "latexmk -pdf -shell-escape"
-let g:Tex_Leader = '/'
-let g:Imap_FreezeImap = 1
-let g:tex_conceal = ""
-
 " Indentline
 let g:indentLine_char = '┆'
 let g:indentLine_color_term = 238
@@ -334,8 +323,8 @@ let g:indentLine_color_term = 238
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/snippets']
 let g:UltiSnipsExpandTrigger="<c-\\>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger='<c-j>'
+let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -355,3 +344,6 @@ let g:vimwiki_list = [{'path': '~/notes',
     \ 'ext': '.md',
     \ 'path_html': '~/notes/.html',
     \ 'custom_wiki2html': '~/.vim/scripts/wiki2html.sh'}]
+
+" vimtex
+let g:vimtex_view_method='zathura'
