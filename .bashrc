@@ -141,13 +141,7 @@ esac
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 VIRTUALENVWRAPPER_PYTHON=$(which python3) && export VIRTUALENVWRAPPER_PYTHON
 export WORKON_HOME="$HOME/.venv"
-source virtualenvwrapper.sh &> /dev/null
-
-if [[ $- == *i* ]]; then    # Check if interactive
-    if lsvirtualenv | grep "^core$" &> /dev/null; then
-        workon core
-    fi
-fi
+source virtualenvwrapper_lazy.sh &> /dev/null
 
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
@@ -171,3 +165,4 @@ shopt -s cdspell
 
 # If only a directory name is entered, cd into it
 shopt -s autocd
+
