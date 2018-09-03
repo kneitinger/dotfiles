@@ -11,7 +11,7 @@ for file in ~/.{aliases,path,exports,additional}; do
 done
 unset file
 
-eval `ssh-agent`
+eval "$(ssh-agent)"
 
 if ! shopt -q login_shell; then
     # shellcheck disable=SC1090
