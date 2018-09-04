@@ -8,13 +8,17 @@
 [github]
     user = kneitinger
 [alias]
-    d  = diff
     a  = add
-    s  = status
     c  = commit
-    rh = reset HEAD
+    ch  = checkout
+    chb  = checkout -b
     c- = checkout --
+    d  = diff
     puo = push -u origin
+    rh = reset HEAD
+    s  = status
+    st = stash
+    sta = stash apply
 
 [rerere]
     enabled = true

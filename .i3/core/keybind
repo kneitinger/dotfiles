@@ -32,7 +32,6 @@ bindsym $mod+c [con_mark="tele"] scratchpad show; move position center
 
 # Rofi dmenu replacement bindings
 bindsym $mod+d exec rofi -show run
-bindsym $mod+b exec ~/bin/pdfselect
 bindsym $mod+o exec ~/bin/mimelaunch
 bindsym $mod+x exec rofi -show window
 bindsym $mod+s exec ~/bin/screenselect
@@ -128,6 +127,7 @@ bindsym $mod+Shift+Right move workspace to output right
 # Toggle focused windows title bar
 bindsym $mod+minus border toggle
 
+bindsym $mod+b bar mode toggle
 # Menus ##############################################
 
 # System menu
