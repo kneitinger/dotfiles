@@ -14,11 +14,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias tmp='cd /tmp'
 
-
-# Arch package management
-alias aup='aurman -Syu --noedit'
-alias aur='aurman'
-
 # ls
 if [ "$(uname)" = 'Linux' ]; then
     alias ls='ls --color=auto'
