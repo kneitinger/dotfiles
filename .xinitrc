@@ -122,12 +122,13 @@ fi
 #exec i3
 session=${1:-i3}
 case $session in
-    awesome           ) exec awesome;;
-    i3                ) exec i3;;
-    sway              ) exec sway;;
-    gnome             ) exec gnome-shell;;
-    i3-dev            ) exec /home/leaf/prog/i3/build/i3 -d all --shmlog-size=26214400;;
-    ff                ) exec firefox;;
+    awesome         ) exec awesome;;
+    i3              ) exec i3;;
+    sway            ) exec sway;;
+    gnome           ) exec gnome-shell;;
+    i3-dev          ) exec /home/leaf/prog/i3/build/i3 -d all --shmlog-size=26214400;;
+    ff              ) exec firefox;;
+    xmonad          ) exec xmonad;;
     # No known session, try to run it as command
-    *                 ) exec "$1";;
+    *               ) exec "$1";;
 esac
