@@ -19,7 +19,6 @@
     s  = status
     st = stash
     sta = stash apply
-
 [rerere]
     enabled = true
     autoupdate = true
