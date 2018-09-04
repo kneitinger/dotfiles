@@ -60,7 +60,6 @@ prompt_git() {
             if git rev-parse --verify refs/stash &>/dev/null; then
                 s+="\001${YLW}\002\$"
             fi
-
         fi
 
         # Get the short symbolic ref.
@@ -90,19 +89,17 @@ prompt_err() {
 # Disable fancy prompt for console
 case $TERM in
     xterm*|rxvt*)
-        PS1=''
+        PS1="\[${BLD}${ITL}\]"
+        PS1+="\[${RED}\]\$(prompt_err)"
+        PS1+="\[${L_YLW}\]\u\[${L_GRY}\] at \[${PNK}\]\h\[${L_GRY}\] in "
+        PS1+="\[${CYN}\]\W "
+        PS1+="\[${L_GRY}\]\$(prompt_git)"
+        PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
         ;;
     *)
         PS1='\[\u@\h:\w\]'
         ;;
 esac
-
-PS1+="\[${BLD}${ITL}\]"
-PS1+="\[${RED}\]\$(prompt_err)"
-PS1+="\[${L_YLW}\]\u\[${L_GRY}\] at \[${PNK}\]\h\[${L_GRY}\] in "
-PS1+="\[${CYN}\]\W "
-PS1+="\[${L_GRY}\]\$(prompt_git)"
-PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
 
 if [ "$(uname)" = 'FreeBSD' ]; then
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
@@ -146,23 +143,30 @@ source virtualenvwrapper_lazy.sh &> /dev/null
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
-# Disregard case-ness in pathname expansion
-shopt -s nocaseglob
-
 # Append to bash history
 shopt -s histappend
+
 HISTTIMEFORMAT="%y-%m-%d %T "
 HISTSIZE=5000000
 HISTFILESIZE=$HISTSIZE
 HISTCONTROL=ignoredups:erasedupe:ignorespace
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
-# Remove timestamp from most current history item & set it as terminal title
-trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*\(\([0-9]\{2\}[[:punct:]]\)\{2\}[0-9]*[ ]*\)\{2\}//g")\007"' DEBUG
+# If this is an xterm set the title to user@host: dir
+case "$TERM" in
+xterm*|rxvt*)
+    PROMPT_COMMAND='history -a; history -r; echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
-# Fix typos in directories!
-shopt -s cdspell
-
-# If only a directory name is entered, cd into it
-shopt -s autocd
+    # Show the currently running command in the terminal title:
+    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
+    show_command_in_title_bar()
+    {
+        case "$BASH_COMMAND" in
+            *\\033]0*) ;; # Consume escapes
+            *) echo -ne "\033]0;${BASH_COMMAND}\007" ;;
+        esac
+    }
+    trap show_command_in_title_bar DEBUG
+    ;;
+*) PROMPT_COMMAND='history -a; history -r' ;;
+esac
 
