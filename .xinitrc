@@ -107,6 +107,7 @@ case $HOSTNAME in
 esac
 
 # Call redshift
+/usr/lib/geoclue-2.0/demos/agent &
 redshift &
 
 # Automatically ecompile i3 config if any of its component files are changed
@@ -125,7 +126,7 @@ case $session in
     i3                ) exec i3;;
     sway              ) exec sway;;
     gnome             ) exec gnome-shell;;
-    i3-dev            ) exec ~/Programming/i3/i3 -d all --shmlog-size=26214400;;
+    i3-dev            ) exec /home/leaf/prog/i3/build/i3 -d all --shmlog-size=26214400;;
     ff                ) exec firefox;;
     # No known session, try to run it as command
     *                 ) exec "$1";;
