@@ -10,11 +10,11 @@ cd "$HOME"/.i3/.venv
 source bin/activate
 
 pip3 install -U pip
-pip3 install colour     \
-             i3ipc      \
-             i3pystatus \
-             netifaces  \
-             pytz
+pip3 install -U colour     \
+                i3ipc      \
+                i3pystatus \
+                netifaces  \
+                pytz
 
 if [ "$(uname)" == "Linux" ]; then
     pip3 install basiciw
