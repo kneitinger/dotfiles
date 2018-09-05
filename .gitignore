@@ -18,3 +18,4 @@ bin/xcape
 .vim/init.vim
 .vim/cache/*/*
 .vim/spell/
+.vim/black/

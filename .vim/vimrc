@@ -27,6 +27,7 @@ Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
+Plug 'ambv/black'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
