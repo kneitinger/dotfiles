@@ -9,6 +9,9 @@ set show-all-if-unmodified on
 # If in middle of word and later already matches, do not fill it in again
 set skip-completed-text on
 
+set completion-query-items 0
+set page-completions off
+
 set bell-style visual
 
 # Always browse through history based on partial command match
@@ -18,5 +21,6 @@ set bell-style visual
 # Up arrow, Down arrow
 "\e[A": history-search-backward
 "\e[B": history-search-forward
+
 
 
