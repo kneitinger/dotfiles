@@ -30,7 +30,7 @@ for_window [title="feh:/tmp/*"] floating enable
 for_window [class="Spotify"] mark "music", move scratchpad
 for_window [class="keepassxc" title="^.*.kdbx - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
-for_window [class="TelegramDesktop"] mark "tele", move scratchpad
+for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
 for_window [title="vimwiki"] mark "vimwiki", move scratchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
