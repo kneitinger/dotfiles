@@ -92,10 +92,6 @@ if which('jack') is not None:
                   interval=7)
 
 if "Linux" in uname[0]:
-    stat.register("cpu_usage",
-                  format="{usage:02}% cpu",)
-
-if "Linux" in uname[0]:
     stat.register("shell",
                   command="~/.i3/status_scripts/spotify_song.sh",
                   interval=4)
