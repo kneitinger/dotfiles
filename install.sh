@@ -68,7 +68,7 @@ cd "$HOME"/.vim/.venv
 # shellcheck disable=SC1091
 source bin/activate
 pip3 install -U pip
-pip3 install neovim
+pip3 install neovim black
 deactivate
 
 nvim -c "PlugInstall" -c "q" -c "q"

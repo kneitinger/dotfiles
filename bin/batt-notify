@@ -13,22 +13,21 @@ alert_dur = 10000
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog='batt-notify')
-    parser.add_argument("-p", "--percent",
-                        help="percent threshold",
-                        default=8,
-                        type=int,
-                        metavar="N")
-    parser.add_argument("-t", "--time",
-                        help="renotify interval",
-                        default=60,
-                        type=int,
-                        metavar="SECS")
+    parser = argparse.ArgumentParser(prog="batt-notify")
+    parser.add_argument(
+        "-p", "--percent", help="percent threshold", default=8, type=int, metavar="N"
+    )
+    parser.add_argument(
+        "-t", "--time", help="renotify interval", default=60, type=int, metavar="SECS"
+    )
 
-    parser.add_argument("-o", "--oneshot",
-                        help="do not run in daemon mode",
-                        default=False,
-                        action='store_true')
+    parser.add_argument(
+        "-o",
+        "--oneshot",
+        help="do not run in daemon mode",
+        default=False,
+        action="store_true",
+    )
     parser.add_argument("batteries", nargs="+")
 
     return parser.parse_args()
@@ -54,12 +53,12 @@ def main():
 
 
 def get_percent(batt):
-    return percent_freebsd(batt) if os == 'FreeBSD' else percent_linux(batt)
+    return percent_freebsd(batt) if os == "FreeBSD" else percent_linux(batt)
 
 
 def percent_linux(batt):
     percent = 0
-    with open('/sys/class/power_supply/BAT{}/capacity'.format(batt), 'r') as f:
+    with open("/sys/class/power_supply/BAT{}/capacity".format(batt), "r") as f:
         percent = f.read()
 
     return int(percent)
@@ -82,12 +81,23 @@ def percent_freebsd(batt):
 
 def alert(percent):
     path = "/usr{}/share/icons/Adwaita/scalable/devices/battery-symbolic.svg"
-    path = path.format("/local" if os == 'FreeBSD' else "")
+    path = path.format("/local" if os == "FreeBSD" else "")
 
     msg = "You have {}% charge remaining.".format(percent)
 
-    subprocess.run(["notify-send", "Low Battery Warning!", msg,
-                   "-i", path, "-u", "low", "-t", str(alert_dur)])
+    subprocess.run(
+        [
+            "notify-send",
+            "Low Battery Warning!",
+            msg,
+            "-i",
+            path,
+            "-u",
+            "low",
+            "-t",
+            str(alert_dur),
+        ]
+    )
 
 
 if __name__ == "__main__":

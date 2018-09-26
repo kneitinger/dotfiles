@@ -8,6 +8,5 @@ LAYOUT="$(find -L "$HOME/.screenlayout/$HOSTNAME" -type f |
 
 if [ -n "$LAYOUT" ]; then
     "$LAYOUT"
-    compton -CG --no-fading-openclose -b --xrender-sync --xrender-sync-fence
     feh --bg-fill ~/.bg.jpg
 fi
