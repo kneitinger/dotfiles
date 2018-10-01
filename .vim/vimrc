@@ -121,11 +121,6 @@ vnoremap < <gv
 vnoremap > >gv
 " Add newline in normal mode with return key
 nmap <CR> o<Esc>
-" Change cursor position in insert mode
-inoremap <C-h> <left>
-inoremap <C-l> <right>
-inoremap <C-k> <up>
-inoremap <C-j> <down>
 
 " Move between windows with std vim movements
 map <C-h> :tabprevious<CR>
@@ -308,13 +303,13 @@ endfunction
 function! KVimwikiDiaryGenerateLinks()
     if &filetype == 'vimwiki' && @% =~ "diary.md"
         " Clear previous diary links
-        if line('$') > 4
-            normal 5GdG
+        if line('$') > 2
+            normal 3GdG
         endif
         " Run stock gen
         VimwikiDiaryGenerateLinks
         " Change intent so as to not interpret as code/mono
-        %s/    \* \[2/- [2/g
+        %s/  \* \[2/- [2/g
         " Remove header that stock gen inserts
         %s/# Diary\n\n//g
     endif
@@ -355,7 +350,7 @@ let g:vimwiki_list = [{'path': '$HOME/notes',
     \ 'ext': '.md',
     \ 'path_html': '$HOME/notes/html',
     \ 'custom_wiki2html': '$HOME/.vim/scripts/wiki2html.sh'}]
-let g:vimwiki_conceallevel = '0'
+let g:vimwiki_conceallevel = '2'
 
 augroup FileType vimwiki
     set autoread
@@ -363,6 +358,9 @@ augroup FileType vimwiki
     let &titlestring = '%y'
     set title
     setlocal noswapfile
+    set tabstop=2
+    set shiftwidth=2
+    au! BufWrite * VimwikiAll2HTML
 augroup END
 
 " vimtex
