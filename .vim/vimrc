@@ -13,9 +13,6 @@ endif
 
 call plug#begin('~/.vim/bundle')
 Plug 'w0rp/ale'
-Plug 'yggdroot/indentline'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-endwise'
 Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
@@ -331,10 +328,6 @@ source $HOME/.vim/scripts/freebsd.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Indentline
-let g:indentLine_char = '┆'
-let g:indentLine_color_term = 238
 
 " Tabular
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
