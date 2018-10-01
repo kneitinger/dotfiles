@@ -18,7 +18,7 @@ else
     MATH=
 fi
 
-ESCAPED_PATH="\/home\/leaf\/notes\/html\/"
+ESCAPED_PATH="\\/home\\/leaf\\/notes\\/html\\/"
 
 sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' < "$INPUT" \
   | pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" \
