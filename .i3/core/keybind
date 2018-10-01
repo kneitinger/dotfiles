@@ -27,7 +27,7 @@ bindsym $mod+Shift+t exec ~/bin/toggle-syn
 # Scratchpadded Apps
 bindsym $mod+n [con_mark="keys"] scratchpad show; move position center
 bindsym $mod+m exec ksl "spotify"; [con_mark="music"] scratchpad show; move position center
-bindsym $mod+comma exec ksl "urxvt -e vmwiki"; [con_mark="vwiki"] scratchpad show; move position center
+bindsym $mod+comma [con_mark="vimwiki"] scratchpad show; move position center
 bindsym $mod+c [con_mark="tele"] scratchpad show; move position center
 
 # Rofi dmenu replacement bindings

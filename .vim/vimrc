@@ -308,6 +308,23 @@ function! TabLine()
   return s
 endfunction
 
+function! KVimwikiDiaryGenerateLinks()
+    if &filetype == 'vimwiki' && @% =~ "diary.md"
+        " Clear previous diary links
+        if line('$') > 4
+            normal 5GdG
+        endif
+        " Run stock gen
+        VimwikiDiaryGenerateLinks
+        " Change intent so as to not interpret as code/mono
+        %s/    \* \[2/- [2/g
+        " Remove header that stock gen inserts
+        %s/# Diary\n\n//g
+    endif
+endfunction
+" Give it a nice command with quick tab completion
+command! KyleVimwikiDiaryGenLinks call KVimwikiDiaryGenerateLinks()
+
 " Load freebsd style functions, mapped to <leader>f
 source $HOME/.vim/scripts/freebsd.vim
 
@@ -340,12 +357,20 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 
 " vimwiki
-autocmd FileType vimwiki setlocal noswapfile
-let g:vimwiki_list = [{'path': '~/notes',
+let g:vimwiki_list = [{'path': '$HOME/notes',
     \ 'syntax': 'markdown',
     \ 'ext': '.md',
-    \ 'path_html': '~/notes/.html',
-    \ 'custom_wiki2html': '~/.vim/scripts/wiki2html.sh'}]
+    \ 'path_html': '$HOME/notes/html',
+    \ 'custom_wiki2html': '$HOME/.vim/scripts/wiki2html.sh'}]
+let g:vimwiki_conceallevel = '0'
+
+augroup FileType vimwiki
+    set autoread
+    au! CursorHold * checktime
+    let &titlestring = '%y'
+    set title
+    setlocal noswapfile
+augroup END
 
 " vimtex
 let g:vimtex_view_method='zathura'
