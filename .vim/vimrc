@@ -323,7 +323,7 @@ let g:indentLine_color_term = 238
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/snippets']
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UtilSnips']
 let g:UltiSnipsExpandTrigger="<c-\\>"
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
