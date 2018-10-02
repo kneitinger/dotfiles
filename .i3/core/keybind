@@ -25,10 +25,10 @@ bindsym $mod+p exec pcmanfm
 bindsym $mod+Shift+t exec ~/bin/toggle-syn
 
 # Scratchpadded Apps
-bindsym $mod+n [con_mark="keys"] scratchpad show; move position center
-bindsym $mod+m exec ksl "spotify"; [con_mark="music"] scratchpad show; move position center
-bindsym $mod+comma [con_mark="vimwiki"] scratchpad show; move position center
-bindsym $mod+c [con_mark="tele"] scratchpad show; move position center
+bindsym $mod+n [con_mark="keys"] scratchpad show; [con_mark="keys"] move position center
+bindsym $mod+m [con_mark="music"] scratchpad show; [con_mark="music"] move position center
+bindsym $mod+comma [con_mark="vimwiki"] scratchpad show; [con_mark="vimwiki"] move position center
+bindsym $mod+c [con_mark="tele"] scratchpad show; [con_mark="tele"] move position center
 
 # Rofi dmenu replacement bindings
 bindsym $mod+d exec rofi -show run
@@ -75,10 +75,11 @@ bindsym $mod+w layout tabbed
 bindsym $mod+z layout stacking
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# toggle tiling / floating / sticky
 bindsym $mod+Shift+f floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
+bindsym $mod+r sticky toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
