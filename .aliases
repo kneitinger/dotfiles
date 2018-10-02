@@ -40,7 +40,7 @@ alias pc='2>/dev/null 1>&2 pcmanfm & disown $!'
 alias sudo='sudo '
 
 # Clean up LaTeX build files
-alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log} _minted*'
+alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log,out,synctex.gz} _minted*'
 
 # ZFS Aliases
 alias zsnap='zfs list -t snap'
