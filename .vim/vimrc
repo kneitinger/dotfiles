@@ -93,7 +93,7 @@ set cmdheight=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:mapleader = ','
+let g:mapleader = '\'
 
 " Copy/cut/paste to system clipboard
 vnoremap <leader>c "+y
@@ -356,6 +356,7 @@ let g:vimwiki_conceallevel = '2'
 au FileType vimwiki call SetVimwikiOptions()
 function SetVimwikiOptions()
     setlocal autoread
+    cd ~/notes
     au! CursorHold ~/notes/* checktime
     let &titlestring = '%y'
     setlocal title
@@ -368,3 +369,7 @@ endfunction
 " vimtex
 let g:vimtex_view_method='zathura'
 let g:vimtex_compiler_latexmk = {'build_dir' : './build'}
+
+" fzf
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
