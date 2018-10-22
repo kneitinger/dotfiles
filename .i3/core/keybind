@@ -27,7 +27,7 @@ bindsym $mod+Shift+t exec ~/bin/toggle-syn
 # Scratchpadded Apps
 bindsym $mod+n [con_mark="keys"] scratchpad show; [con_mark="keys"] move position center
 bindsym $mod+m [con_mark="music"] scratchpad show; [con_mark="music"] move position center
-bindsym $mod+comma [con_mark="vimwiki"] scratchpad show; [con_mark="vimwiki"] move position center
+bindsym $mod+backslash [con_mark="vimwiki"] scratchpad show; [con_mark="vimwiki"] move position center
 bindsym $mod+c [con_mark="tele"] scratchpad show; [con_mark="tele"] move position center
 
 # Rofi dmenu replacement bindings
