@@ -353,7 +353,7 @@ let g:vimwiki_list = [{'path': '$HOME/notes',
     \ 'custom_wiki2html': '$HOME/.vim/scripts/wiki2html.sh'}]
 let g:vimwiki_conceallevel = '2'
 
-au FileType vimwiki call SetVimwikiOptions()
+au BufRead,BufNewFile ~/notes/**.md call SetVimwikiOptions()
 function SetVimwikiOptions()
     setlocal autoread
     cd ~/notes
