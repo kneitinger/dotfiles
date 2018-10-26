@@ -7,6 +7,6 @@ LAYOUT="$(find -L "$HOME/.screenlayout/$HOSTNAME" -type f -exec basename {} \; |
          rofi -show run -dmenu -p "Select Layout" -i )"
 
 if [ -n "$LAYOUT" ]; then
-    "$HOME/.screenlayout/$LAYOUT"
+    "$HOME/.screenlayout/$HOSTNAME/$LAYOUT"
     feh --bg-fill ~/.bg.jpg
 fi
