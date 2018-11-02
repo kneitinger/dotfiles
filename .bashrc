@@ -143,11 +143,8 @@ source virtualenvwrapper_lazy.sh &> /dev/null
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
-# Append to bash history
-shopt -s histappend
-
 HISTTIMEFORMAT="%y-%m-%d %T "
-HISTSIZE=5000000
+HISTSIZE=500000000
 HISTFILESIZE=$HISTSIZE
 HISTCONTROL=ignoredups:erasedupe:ignorespace
 
