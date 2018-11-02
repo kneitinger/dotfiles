@@ -1,8 +1,8 @@
 alias xlt='xautolock -toggle'
 alias se='sudoedit'
-alias vim='nvim -p'
-alias cim='nvim -p'
-alias bim='nvim -p'
+alias vim='nvim'
+alias cim='nvim'
+alias bim='nvim'
 alias view='vim -R'
 
 alias car='cat'
