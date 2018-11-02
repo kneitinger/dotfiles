@@ -373,3 +373,4 @@ let g:vimtex_compiler_latexmk = {'build_dir' : './build'}
 " fzf
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>l :Lines<CR>
