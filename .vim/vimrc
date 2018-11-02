@@ -16,7 +16,6 @@ Plug 'w0rp/ale'
 Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
 Plug 'neozenith/estilo-xoria256'
 Plug 'gmoe/vim-faust'
 Plug 'sirver/ultisnips'
@@ -73,8 +72,8 @@ au! VimEnter  * hi Comment     cterm=italic ctermfg=14
 
 set laststatus=2    " always show status bar
 
-" status: [paste indicator][buffer num][filename][git stuff][modified][readonly]
-set statusline=%{HasPaste()}[%n][%<%F]%{fugitive#statusline()}%m%r%=
+" status: [paste indicator][buffer num][filename][modified][readonly]
+set statusline=%{HasPaste()}[%n][%<%F]%m%r%=
 " status: spacer [filetype]['Col:'column]['Line:' n/N:percentage through file]
 set statusline+=%y[Col:%c][Line:%l/%L:%p%%]
 
