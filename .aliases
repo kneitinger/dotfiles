@@ -3,6 +3,7 @@ alias se='sudoedit'
 alias vim='nvim'
 alias cim='nvim'
 alias bim='nvim'
+alias vw='nvim -c VimwikiIndex'
 alias view='vim -R'
 
 alias car='cat'
