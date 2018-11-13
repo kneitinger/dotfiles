@@ -114,7 +114,7 @@ unset file
 
 case $(uname) in
     Linux)
-        source /usr/share/autojump/autojump.bash
+        source /etc/profile.d/autojump.bash
         ;;
     FreeBSD | *)
         [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] \
@@ -153,7 +153,8 @@ HISTIGNORE='ls:bg:fg:history'
 # If this is an xterm set the title to user@host: dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND='history -a; history -r; echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND}; history -a; history -n; "
+    PROMPT_COMMAND+='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
     # Show the currently running command in the terminal title:
     # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
@@ -166,6 +167,6 @@ xterm*|rxvt*)
     }
     trap show_command_in_title_bar DEBUG
     ;;
-*) PROMPT_COMMAND='history -a; history -r' ;;
+*) PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n" ;;
 esac
 
