@@ -144,9 +144,11 @@ source virtualenvwrapper_lazy.sh &> /dev/null
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
 HISTTIMEFORMAT="%y-%m-%d %T "
-HISTSIZE=500000000
-HISTFILESIZE=$HISTSIZE
+# On bash >=4.3 -1 sets infinite history
+HISTSIZE=-1
+HISTFILESIZE=-1
 HISTCONTROL=ignoredups:erasedupe:ignorespace
+HISTIGNORE='ls:bg:fg:history'
 
 # If this is an xterm set the title to user@host: dir
 case "$TERM" in
