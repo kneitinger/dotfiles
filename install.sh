@@ -30,6 +30,7 @@ pip3 install --user virtualenvwrapper
 print_header "Installing i3 files and compiling config"
 "$HOME/.i3/install-venv.sh"
 "$HOME/.i3/i3-conf-gen.sh"
+mkdir -p "$HOME"/screenshots
 
 print_header "Installing fonts"
 mkdir -p "$HOME"/.fonts
