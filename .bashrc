@@ -143,17 +143,19 @@ source virtualenvwrapper_lazy.sh &> /dev/null
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
-HISTTIMEFORMAT="%y-%m-%d %T "
 # On bash >=4.3 -1 sets infinite history
 HISTSIZE=-1
 HISTFILESIZE=-1
-HISTCONTROL=ignoredups:erasedupe:ignorespace
-HISTIGNORE='ls:bg:fg:history'
+HISTCONTROL=ignoreboth
+shopt -s histappend
 
 # If this is an xterm set the title to user@host: dir
 case "$TERM" in
 xterm*|rxvt*)
-    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND}; history -a; history -n; "
+    # Append and reload history. Use of preexisting PROMPT_COMMAND (if defined)
+    # is to enable autojump
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n; "
+    # If not in command, set title. e.g. "leaf@janeway: ~"
     PROMPT_COMMAND+='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
     # Show the currently running command in the terminal title:
@@ -167,6 +169,7 @@ xterm*|rxvt*)
     }
     trap show_command_in_title_bar DEBUG
     ;;
-*) PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n" ;;
+*)
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n" ;;
 esac
 
