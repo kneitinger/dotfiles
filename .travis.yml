@@ -1,13 +1,8 @@
 ---
 
-language: bash
+language: minimal
 
-sudo: false
-
-addons:
-  apt:
-    packages:
-      - shellcheck
+dist: xenial
 
 script:
   - ./test.sh
