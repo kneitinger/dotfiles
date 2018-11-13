@@ -351,6 +351,8 @@ let g:vimwiki_list = [{'path': '$HOME/notes',
     \ 'path_html': '$HOME/notes/html',
     \ 'custom_wiki2html': '$HOME/.vim/scripts/wiki2html.sh'}]
 let g:vimwiki_conceallevel = '2'
+" Only count notebook md files as vimwiki filetype
+let g:vimwiki_global_ext = 0
 
 au BufRead,BufNewFile ~/notes/**.md call SetVimwikiOptions()
 function SetVimwikiOptions()
