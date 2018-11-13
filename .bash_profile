@@ -13,7 +13,7 @@ unset file
 
 eval "$(ssh-agent)"
 
-if ! shopt -q login_shell; then
+if shopt -q login_shell; then
     # shellcheck disable=SC1090
     source "$HOME/.bashrc"
 fi

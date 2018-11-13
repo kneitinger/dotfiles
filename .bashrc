@@ -97,7 +97,7 @@ case $TERM in
         PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
         ;;
     *)
-        PS1='\[\u@\h:\w\]'
+        PS1="[\u@\h:\w] \$ "
         ;;
 esac
 
