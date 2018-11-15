@@ -50,6 +50,11 @@ alias zprops='zfs get all'
 
 alias dog='pygmentize -g'
 
+# Fix bug where slack becomes unresponsive when dpms suspend occurs
+# Per aur.archlinux.org/packages/slack-desktop/
+# under '1ouis commented on 2018-11-15 06:36'
+alias slack='slack --disable-gpu'
+
 kittens () {
     tree
     find . -type f -exec echo -e "\\n***************{}***************" \; -exec cat {} \;
