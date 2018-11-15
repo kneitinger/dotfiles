@@ -36,10 +36,6 @@ bindsym $mod+XF86AudioRaiseVolume exec audioctl vol +10%
 
 #bindsym $mod+XF86Tools exec roxterm -e htop
 
-#bindsym --release XF86Search exec ~/bin/picnote
-#bindsym --release $mod+XF86Search exec scrot -s ~/screenshots/$(date +"%F_%H-%M").png
-#bindsym --release $mod+Shift+XF86Search exec scrot ~/screenshots/$(date +"%F_%H-%M").png
-
 #bindsym XF86LaunchA exec ~/bin/screenselect
 
 #bindsym XF86Explorer bar mode toggle

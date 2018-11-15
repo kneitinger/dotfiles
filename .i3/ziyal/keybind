@@ -36,10 +36,6 @@ bindsym XF86Tools exec ~/bin/keyset
 
 bindsym $mod+XF86Tools exec roxterm -e htop
 
-bindsym --release XF86Search exec ~/bin/picnote
-bindsym --release $mod+XF86Search exec scrot -s ~/screenshots/$(date +"%F_%H-%M-%S").png
-bindsym --release $mod+Shift+XF86Search exec scrot ~/screenshots/$(date +"%F_%H-%M-%S").png
-
 bindsym XF86LaunchA exec ~/bin/screenselect
 
 bindsym XF86Explorer bar mode toggle
