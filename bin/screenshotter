@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# If arg is provided, store screenshot relative to it
+BASE_PATH=${1:-$HOME/screenshots}
+
+TMP_PATH="$BASE_PATH/$(date +"%F_%H-%M-%S").png"
+
+scrot -s "$TMP_PATH" || exit 1
+
+FILENAME="$(zenity --entry \
+                   --text="Where would you like to save the file?" \
+                   --entry-text="$TMP_PATH")"
+
+# If zenity prompt was cancelled, just use tmp path
+if [ $? -eq 1 ]; then
+    exit 
+fi
+    
+# Delete tmp screenshot if filename is set to "rm"
+if [ "$FILENAME" = "rm" ]; then
+    rm "$TMP_PATH"
+    exit
+fi
+
+# If filename begins with "_" insert it as comment on time/date filename
+if [ "$(echo "$FILENAME" | head -c 1)" = "_" ]; then
+    FILENAME=${TMP_PATH//.png/$FILENAME.png}
+fi
+
+# Add .png suffix if not present
+FILENAME=$(echo "$FILENAME" | grep '.png' || echo "$FILENAME".png)
+
+mv "$TMP_PATH" "$BASE_PATH/$(basename "$FILENAME")"
+echo "$BASE_PATH/$(basename "$FILENAME")" | xclip
