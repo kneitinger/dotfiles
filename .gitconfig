@@ -14,6 +14,7 @@
     chb  = checkout -b
     c- = checkout --
     d  = diff
+    dc  = diff --cached
     puo = push -u origin
     rh = reset HEAD
     s  = status
