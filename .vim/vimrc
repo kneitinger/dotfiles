@@ -375,3 +375,6 @@ let g:vimtex_compiler_latexmk = {'build_dir' : './build'}
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
+
+" ALE
+au BufRead,BufNewFile ~/.ipylogs/**.py ALEDisable
