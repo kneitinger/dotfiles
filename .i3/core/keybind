@@ -63,8 +63,8 @@ bindsym $mod+Shift+l move right
 bindsym button2 kill
 
 # Additional mouse scroll handles volume
-bindsym --whole-window $mod+button4 exec amixer set Master 2%+
-bindsym --whole-window $mod+button5 exec amixer set Master 2%-
+bindsym --whole-window $mod+button4 exec audioctl vol +2%
+bindsym --whole-window $mod+button5 exec audioctl vol -2%
 
 # Set split in horizontal orientation
 bindsym $mod+g split h
