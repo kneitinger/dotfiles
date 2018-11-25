@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-SINK=$(pactl list sinks | grep "RUNNING"  -A1 \
-       | tr -d ' \t' | cut -d: -f2 | tail -n1)
+SINK="$(pactl list sinks | grep "RUNNING"  -A1 | cut -d':' -f2 | tail -n1 | tr -d ' ')"
+
+if [ -z "$SINK" ]; then
+	SINK="$(pactl info | grep 'Default Sink:' | cut -d':' -f2 | tr -d ' ')"
+fi
 
 case "$1" in
     "vol")
