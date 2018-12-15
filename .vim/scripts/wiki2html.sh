@@ -12,7 +12,7 @@ OUTPUT="$OUTPUTDIR$FILE.html"
 CSSFILE="$HOME/notes/style.css"
 
 HAS_MATH=$(grep -o '\$\$.\+\$\$' "$INPUT")
-if [ ! -z "$HAS_MATH" ]; then
+if [ -n "$HAS_MATH" ]; then
     MATH="--mathjax=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 else
     MATH=
