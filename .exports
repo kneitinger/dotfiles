@@ -21,3 +21,8 @@ if [ "$(uname)" = 'FreeBSD' ]; then
 fi
 
 export GOBIN=$HOME/go/bin
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+# Important.
+export ANSIBLE_COW_SELECTION=milk
