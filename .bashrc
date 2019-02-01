@@ -65,14 +65,13 @@ prompt_git() {
         # Get the short symbolic ref.
         # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
         # Otherwise, just give up.
-        branch="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+        branch=" $(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
             git rev-parse --short HEAD 2> /dev/null || \
             echo '(unknown)')"
-        branch="$(echo "$branch" | cut -d '/' -f 1,2)"
 
         [ -n "${s}" ] && s=" (${s}\001${L_GRY}\002)"
 
-        echo -e "on \001${GRN}\002${branch}\001${L_GRY}\002${s} "
+        echo -e "on\001${GRN}\002${branch}\001${L_GRY}\002${s} "
     else
         return
     fi
