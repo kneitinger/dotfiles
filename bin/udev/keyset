@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# To be paired with a udev rule, such as:
+#
+# $ cat /etc/udev/rules.d/82-keyset_on_hid_action.rules
+# SUBSYSTEM=="usb", ACTION=="add|remove", ENV{PRODUCT}=="17ef/1012/5030", RUN+="/home/leaf/bin/udev/dock_t450s"
+
+# $ cat 82-keyset_on_hid_action.rules
+# ACTION=="add|remove", SUBSYSTEM=="hidraw", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/leaf/.Xauthority", ENV{DBUS_SESSION_BUS_ADDRESS}="unix:path=/run/user/1000/bus" RUN+="/bin/su leaf -c /home/leaf/bin/udev/keyset"
+
+export XAUTHORITY=/home/leaf/.Xauthority
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+
+LOCKDIR=/tmp/keyset.lock
+if ! mkdir ${LOCKDIR} 2>/dev/null; then
+    exit 0
+fi
+
+sleep 0.5
+
+# wait for the dock state to change
+
+sudo -u leaf killall xcape
+
+# Map CapsLock->ctrl, ctrl-tap->Esc
+/usr/bin/setxkbmap -option ctrl:nocaps
+
+# Ergonomic tap vs. hold keybindings
+/usr/bin/xcape -e 'Control_L=Escape' -t 175
+
+# Map a spacebar hold to act as the i3 modifier
+/usr/bin/xmodmap -e "clear mod3"
+/usr/bin/xmodmap -e "clear mod4"
+/usr/bin/xmodmap -e "add mod3 =  Hyper_L"
+/usr/bin/xmodmap -e "add mod4 = Super_L Super_R"
+spare_mod="Hyper_L"
+/usr/bin/xmodmap -e "keycode 65 = $spare_mod"
+/usr/bin/xmodmap -e "keycode any = space"
+/usr/bin/xcape -e "Hyper_L=space"
+
+/usr/bin/notify-send 'Key mappings set up' --expire-time=2000
+
+rm -rf ${LOCKDIR}
