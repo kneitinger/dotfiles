@@ -34,6 +34,7 @@ bindsym $mod+n [con_mark="keys"] scratchpad show; [con_mark="keys"] move positio
 bindsym $mod+m [con_mark="music"] scratchpad show; [con_mark="music"] move position center
 bindsym $mod+backslash [con_mark="vimwiki"] scratchpad show; [con_mark="vimwiki"] move position center
 bindsym $mod+c [con_mark="tele"] scratchpad show; [con_mark="tele"] move position center
+bindsym $mod+t [con_mark="stopwatch"] scratchpad show
 
 # Rofi dmenu replacement bindings
 bindsym $mod+d exec rofi -show run
