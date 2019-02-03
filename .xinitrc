@@ -108,7 +108,7 @@ fi
 case $HOSTNAME in
     janeway)
         batt-notify -p 7 -t 70 0 1 & ;;
-    tunepad|ziyal|troi)
+    *)
         batt-notify -p 7 -t 70 0 & ;;
 esac
 
@@ -123,16 +123,13 @@ fi
 
 # If invoked with startx ~/.xinitrc [some entry or path], launch that.
 # If invoked as just startx, run i3
-#~/Programming/i3/i3 -d all --shmlog-size=26214400
-#/home/leaf/Programming/i3/i3
-#exec i3
 session=${1:-i3}
 case $session in
     awesome         ) exec awesome;;
     i3              ) exec i3;;
     sway            ) exec sway;;
     gnome           ) exec gnome-shell;;
-    i3-dev          ) exec /home/leaf/prog/i3/build/i3 -d all --shmlog-size=26214400;;
+    i3-dev          ) exec "$HOME/prog/i3/build/i3 -d all --shmlog-size=26214400";;
     ff              ) exec firefox;;
     xmonad          ) exec xmonad;;
     # No known session, try to run it as command
