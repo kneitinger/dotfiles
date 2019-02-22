@@ -8,7 +8,7 @@ all.  Your `.bashrc` appears to be exactly where you would expect it, yet is
 seamlessly tracked in the dotfiles repo.
 Warning: the first time it is ran, it will overwrite any existing files in $HOME if they
 have the same name as any file in this repo. After the first run, `install.sh`
-is non=destructive and can be safely ran at any time.
+is non-destructive and can be safely ran at any time.
 
 ## i3
 Pretty proud of this. Instead of maintaining separate configurations for
@@ -28,6 +28,6 @@ information can be stored in `~/.additional`, which is excluded from tracking,
 via the repo's `.gitignore`.
 
 ## Tests
-A test script, `test.sh`, which runs the `shellcheck` linter on every file listed
-in `test_includes` or residing in the `./bin` directory, is provided.
-Upon any push to Github, this script is ran on Travis CI.
+A test script, [`test.sh`](https://github.com/kneitinger/dotfiles/blob/master/test.sh),
+is provided.  It runs the `shellcheck` linter on every file that 'file' deems
+to be a shell script. Upon any push to Github, this script is ran on Travis CI.
