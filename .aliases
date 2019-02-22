@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+
+# Aliases and typo remediation!
+
 alias xlt='xautolock -toggle'
 alias se='sudoedit'
 alias vim='nvim'
@@ -15,7 +19,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias tmp='cd /tmp'
 
-# ls
+# Colorize ls
 if [ "$(uname)" = 'Linux' ]; then
     alias ls='ls --color=auto'
 else
@@ -28,6 +32,7 @@ alias ll='ls -lh'
 alias sl='ls'
 alias lls='ls'
 
+# Set up custom keyboard settings (xmodmap, xcape, etc)
 alias ks='keyset'
 
 # Always ask before overwriting a file with mv or cp
@@ -48,6 +53,7 @@ alias zsnap='zfs list -t snap'
 alias zsnaps='zfs list -t snap'
 alias zprops='zfs get all'
 
+# Like cat but more fun
 alias dog='pygmentize -g'
 
 # Fix bug where slack becomes unresponsive when dpms suspend occurs
@@ -55,16 +61,30 @@ alias dog='pygmentize -g'
 # under '1ouis commented on 2018-11-15 06:36'
 alias slack='slack --disable-gpu'
 
+# cats out all files in child directories. get it cat child heh heh
 kittens () {
     tree
     find . -type f -exec echo -e "\\n***************{}***************" \; -exec cat {} \;
 }
 
+# Removes duplicate ssh known_hosts entries
 host-clear () {
     sed -i "$1d" "$HOME/.ssh/known_hosts"
 }
 
+# Create directory and cd into it
 mkcd () {
     mkdir "$1"
     cd "$1" || exit
+}
+
+# git status -> vim
+# Finds untracked, added, and modified files in git repo and opens them in vim
+gsv () {
+    if git status &> /dev/null; then
+        mapfile -t changed_files < <(git status --short | grep -E '^(\?\?|A | M) ' | cut -c '4-')
+        vim "${changed_files[@]}"
+    else
+        echo "Working directory is not a git repository, exiting."
+    fi
 }
