@@ -142,18 +142,17 @@ bindsym $mod+b bar mode toggle
 # Menus ##############################################
 
 # System menu
-set $sysmenu "system:  [s]uspend [l]ock [r]eload re[b]oot [p]oweroff [c]onf [e]xit"
+set $sysmenu "system:  [s]uspend [l]ock [r]estart [b]lank-screen [p]oweroff reload-[c]onf e[x]it"
 bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
-    bindsym r restart
-    bindsym x reload /home/leaf/.i3/config; mode "default"
     bindsym s exec ~/.i3/status_scripts/ambisleep; mode "default"
-    bindsym b exec systemctl reboot
-    bindsym p exec systemctl shutdown
-    bindsym c exec i3-sensible-terminal -e vim .i3/config; mode "default"
     bindsym l exec i3lock -n -c 5a5376; mode "default"
-    bindsym e exit
+    bindsym r restart
+    bindsym b exec "xset dpms force off"; mode "default"
+    bindsym p exec systemctl shutdown
+    bindsym c reload; mode "default"
+    bindsym x exit
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+q mode "default"
