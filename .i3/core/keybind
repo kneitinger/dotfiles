@@ -45,7 +45,6 @@ bindsym $mod+s exec ~/bin/screenselect
 # Window/Container Manipulation ######################
 
 # kill focused window
-bindsym $mod+BackSpace kill
 bindsym $mod+Escape kill
 
 # change focus
