@@ -96,6 +96,15 @@ set wildmenu        " Show bar of command autocompletes
 set wildignore=*.o,*.out,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 set cmdheight=2
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Habot Breaking
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+noremap hh <nop>
+noremap jj <nop>
+noremap kk <nop>
+noremap ll <nop>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
