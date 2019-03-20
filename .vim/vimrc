@@ -76,6 +76,8 @@ au! VimEnter  * hi Comment     cterm=italic ctermfg=14
               \ | hi TabLine     cterm=italic ctermfg=15 ctermbg=12
               \ | hi TabLineFill ctermbg=NONE
               \ | hi Normal guibg=NONE ctermbg=NONE
+              \ | hi Normal guibg=NONE ctermbg=NONE
+              \ | hi LineNr ctermfg=12
               "\ | hi MatchParen  ctermfg=15 ctermbg=131
 
 set laststatus=2    " always show status bar
