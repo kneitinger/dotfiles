@@ -41,6 +41,6 @@ bindsym XF86LaunchA exec ~/bin/screenselect
 bindsym XF86Explorer bar mode toggle
 
 # Prefer regular setup, fallback to home setup
-bindsym $mod+Ctrl+9 move workspace to output DP1-1; move workspace to output HDMI1
-bindsym $mod+Ctrl+0 move workspace to output DP1-2; move workspace to output DP1
+bindsym $mod+Ctrl+9 move workspace to output DP1-1; move workspace to output HDMI-1
+bindsym $mod+Ctrl+0 move workspace to output DP1-2; move workspace to output DP-2-2
 bindsym $mod+Ctrl+o move workspace to output eDP1
