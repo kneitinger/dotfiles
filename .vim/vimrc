@@ -69,13 +69,9 @@ set colorcolumn=81
 
 " Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
-au! VimEnter  * hi Comment     cterm=italic ctermfg=14
-              \ | hi StatusLine  cterm=bold,italic ctermbg=4 ctermfg=15
-              \ | hi User1       ctermbg=14
-              \ | hi TabLineSel  cterm=bold,italic ctermfg=15 ctermbg=4
-              \ | hi TabLine     cterm=italic ctermfg=15 ctermbg=12
-              \ | hi TabLineFill ctermbg=NONE
-              \ | hi Normal guibg=NONE ctermbg=NONE
+au! VimEnter  * hi Comment cterm=italic ctermfg=14
+              \ | hi StatusLine cterm=bold,italic ctermbg=4 ctermfg=15
+              \ | hi User1 ctermbg=14
               \ | hi Normal guibg=NONE ctermbg=NONE
               \ | hi LineNr ctermfg=12
               "\ | hi MatchParen  ctermfg=15 ctermbg=131
@@ -140,23 +136,6 @@ vnoremap < <gv
 vnoremap > >gv
 " Add newline in normal mode with return key
 nmap <CR> o<Esc>
-
-" Move between windows with std vim movements
-map <C-h> :tabprevious<CR>
-map <C-l> :tabnext<CR>
-
-" Tab creation/movement
-map <leader>tc :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>td :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>tn :tabnext<cr>
-map <leader>tb :tabprevious<cr>
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-" Go to last tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -292,31 +271,6 @@ function! HasPaste()
         return '[PASTE]'
     endif
     return ''
-endfunction
-
-function! TabLine()
-  let l:s = ''
-  for l:i in range(tabpagenr('$'))
-    let l:tabnr = l:i + 1 " range() starts at 0
-    let l:winnr = tabpagewinnr(l:tabnr)
-    let l:buflist = tabpagebuflist(l:tabnr)
-    let l:bufnr = l:buflist[l:winnr - 1]
-    let l:bufname = fnamemodify(bufname(l:bufnr), ':t')
-
-    let s .= '%' . tabnr . 'T'
-    let s .= (tabnr == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
-    let s .= ' ' . tabnr
-
-    let n = tabpagewinnr(tabnr,'$')
-    if n > 1 | let s .= ':' . n | endif
-
-    let s .= empty(bufname) ? ' [No Name]' : ' ' . bufname
-
-    let bufmodified = getbufvar(bufnr, "&mod")
-    if bufmodified | let s .= '[+] ' | else | let s .= ' ' | endif
-  endfor
-  let s .= '%#TabLineFill#'
-  return s
 endfunction
 
 function! KVimwikiDiaryGenerateLinks()
