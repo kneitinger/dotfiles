@@ -88,7 +88,6 @@ set tabline=%!TabLine()
 set number          " Show current line number.
 set relativenumber  " All other line numbers are distance from current line
 set cursorline      " Highlight current line
-set showcmd         " Show (partial) command in status line.
 set lazyredraw      " Don't redraw screen until macro completes
 set scrolloff=2     " Pad scrolls with 2 lines of context
 set wildmenu        " Show bar of command autocompletes
