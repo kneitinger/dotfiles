@@ -34,6 +34,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'ambv/black'
 Plug 'vimwiki/vimwiki'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -352,3 +353,6 @@ nnoremap <leader>r :Rg<CR>
 
 " ALE
 au BufRead,BufNewFile ~/.ipylogs/**.py ALEDisable
+
+" Rust.vim
+let g:rustfmt_autosave = 1
