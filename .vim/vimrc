@@ -328,7 +328,7 @@ let g:vimwiki_conceallevel = '2'
 let g:vimwiki_global_ext = 0
 
 au BufRead,BufNewFile ~/notes/**.md call SetVimwikiOptions()
-function SetVimwikiOptions()
+function! SetVimwikiOptions()
     setlocal autoread
     cd ~/notes
     au! CursorHold ~/notes/* checktime
