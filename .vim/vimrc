@@ -93,7 +93,6 @@ set lazyredraw      " Don't redraw screen until macro completes
 set scrolloff=2     " Pad scrolls with 2 lines of context
 set wildmenu        " Show bar of command autocompletes
 set wildignore=*.o,*.out,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set cmdheight=2
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
