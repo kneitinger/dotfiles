@@ -134,8 +134,6 @@ nnoremap <C-L> :nohl<CR><C-L>
 " Reselect visual block selection after indent
 vnoremap < <gv
 vnoremap > >gv
-" Add newline in normal mode with return key
-nmap <CR> o<Esc>
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
