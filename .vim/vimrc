@@ -152,7 +152,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Edit .vimrc
 nmap <silent> <leader>ev :e $MYVIMRC<cr>
 " Source .vimrc
-nmap <silent> <leader>sv :so $MYVIMRC<cr>
+nmap <silent> <leader>sv :so $MYVIMRC<cr>:doau VimEnter<cr>
 
 " Spell check on/off
 nmap <silent> <leader>sp :setlocal spell!<CR>
