@@ -1,6 +1,6 @@
 # Completion Settings
 
-# Completions colored like ls --colot
+# Completions colored like ls --color
 set colored-stats on
 set completion-ignore-case on
 # Show all without asking
