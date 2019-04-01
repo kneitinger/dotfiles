@@ -299,7 +299,9 @@ source $HOME/.vim/scripts/freebsd.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Terminal Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au TermOpen * set nonumber norelativenumber
+if has('nvim')
+    au TermOpen * set nonumber norelativenumber
+endif
 tnoremap <C-\> <C-\><C-n>
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
