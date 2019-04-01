@@ -88,3 +88,13 @@ gsv () {
         echo "Working directory is not a git repository, exiting."
     fi
 }
+
+# Fuzzy find opener
+# Passes result of fzf to command specified as arg
+ff () {
+    CMD=$1
+    if nvim -v > /dev/null 2>&1 && [ "$1" == "vim" ]; then
+        CMD="nvim"
+    fi
+    "$CMD" "$(fzf)"
+}
