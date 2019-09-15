@@ -11,7 +11,10 @@ for file in ~/.{aliases,path,exports,additional} ~/.bash_completions/*; do
 done
 unset file
 
-eval "$(ssh-agent)"
+# Use system keyring to manage ssh if on MacOS
+if [ "$(uname)" != "Darwin" ]; then
+    eval "$(ssh-agent)"
+fi
 
 if shopt -q login_shell; then
     # shellcheck disable=SC1090
