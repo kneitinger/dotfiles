@@ -3,7 +3,7 @@
 PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:/opt:~/go/bin:$PATH
 
 # Include modularized config files
-for file in ~/.{aliases,path,exports,additional}; do
+for file in ~/.{aliases,path,exports,additional} ~/.bash_completions/*; do
   if [[ -r "$file" ]] && [[ -f "$file" ]]; then
     # shellcheck source=/dev/null
     source "$file"
