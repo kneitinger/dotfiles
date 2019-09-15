@@ -115,19 +115,24 @@ case $(uname) in
     Linux)
         source /etc/profile.d/autojump.bash
         ;;
-    FreeBSD | *)
+    FreeBSD)
         [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] \
             && source "$HOME/.autojump/etc/profile.d/autojump.sh"
         ;;
+    Darwin)
+        [ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ] && . "$(brew --prefix)/etc/profile.d/autojump.sh"
+        ;;
 esac
-
 
 case $(uname) in
     Linux)
         BASHC_FILE=/usr/share/bash-completion/bash_completion
         ;;
-    FreeBSD | *)
+    FreeBSD)
         BASHC_FILE=/usr/local/share/bash-completion/bash_completion.sh
+        ;;
+    Darwin)
+	    BASHC_FILE=$(brew --prefix)/etc/bash_completion
         ;;
 esac
 
