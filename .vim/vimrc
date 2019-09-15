@@ -20,7 +20,6 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 
 call plug#begin('~/.vim/bundle')
 Plug 'w0rp/ale'
-Plug 'hashivim/vim-terraform'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
 Plug 'neozenith/estilo-xoria256'
