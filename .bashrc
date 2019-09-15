@@ -147,9 +147,15 @@ source virtualenvwrapper_lazy.sh &> /dev/null
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
-# On bash >=4.3 -1 sets infinite history
-HISTSIZE=-1
-HISTFILESIZE=-1
+# On bash >=4.3 -1 sets infinite history, MacOS (as of 10.14.6) ships with 3.2
+if [ "$(uname)" = 'Darwin' ]; then
+    HISTSIZE=100000
+    HISTFILESIZE=100000
+else
+    HISTSIZE=-1
+    HISTFILESIZE=-1
+fi
+
 HISTCONTROL=ignoreboth
 shopt -s histappend
 
