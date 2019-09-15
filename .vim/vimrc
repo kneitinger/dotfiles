@@ -31,6 +31,7 @@ Plug 'zchee/deoplete-go'
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'ambv/black'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vimwiki/vimwiki'
 Plug 'rust-lang/rust.vim'
 Plug 'majutsushi/tagbar'
@@ -395,5 +396,6 @@ let g:rustfmt_autosave = 1
 " Language Client
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'go': ['~/go/bin/go-langserver', '-gocodecompletion', '-lint-tool', 'golint'],
     \ }
 set completeopt-=preview
