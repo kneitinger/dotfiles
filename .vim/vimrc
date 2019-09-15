@@ -106,10 +106,12 @@ set wildignore=*.o,*.out,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Habit Breaking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-noremap hh <nop>
-noremap jj <nop>
-noremap kk <nop>
-noremap ll <nop>
+if !empty($VIM_HARD_MODE)
+    noremap hh <nop>
+    noremap jj <nop>
+    noremap kk <nop>
+    noremap ll <nop>
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings
