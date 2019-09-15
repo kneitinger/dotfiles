@@ -44,7 +44,8 @@ rofi.color-active:  #555555,#70f7aa,#555555,#555555,#70f7aa
 rofi.color-window:  #555555,#70f7aa
 
 ! Rofi appearance
-rofi.font:          FantasqueSansMono 10
+rofi.font:          OperatorMonoMedium Italic 10
+! rofi.font:          FantasqueSansMono 10
 rofi.separator-style:   solid
 rofi.padding:           3
 rofi.location:          2
@@ -61,7 +62,9 @@ rofi.sorting_method:    fzf
 
 Xcursor.size: 16
 
-URxvt.font:         xft:FantasqueSansMono:size=10
+URxvt.font:         xft:OperatorMonoMedium:size=10,xft:Noto Color Emoji:size=10
+! URxvt.font:         xft:FantasqueSansMono:size=10
+URxvt.italicFont:         xft:OperatorMonoMedium:size=10:Italic
 URxvt.scrollBar:    false
 
 ! do not scroll with output
@@ -86,7 +89,7 @@ URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
 urxvt.vim-scrollback: M-x
-URxvt.url-launcher: /usr/bin/xdg-open
+! URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
 urxvt*depth: 32

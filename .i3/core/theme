@@ -3,7 +3,7 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. After the comma is the fallback font.
 # In this case, it handles the iconic glyphs in the status bar.
-font pango:FantasqueSansMono,FontAwesome 11
+font pango:OperatorMonoMedium,FontAwesome Italic 10
 
 # Background image
 exec --no-startup-id feh --bg-scale ~/.bg.jpg
@@ -67,6 +67,7 @@ bar {
 
     # Using i3pystatus
     status_command ~/.i3/.venv/bin/python ~/.i3/status.py
+    #status_command /home/leaf/prog/i3status-rust/target/release/i3status-rs /home/leaf/prog/i3status-rust/example_config.toml
     # Do not print visible separator between elements of the status bar
     separator_symbol "  "
     tray_output primary
