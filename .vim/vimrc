@@ -48,7 +48,6 @@ if !has('nvim')
     set t_Co=256        " 256 color mode
 endif
 
-
 " No bells
 set noerrorbells
 set novisualbell
@@ -71,8 +70,11 @@ set splitright
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 try
-    colorscheme xoria256
+    colorscheme fairlyfloss
 endtry
+
+" Regenerate colorscheme file if it is written to
+au! BufWrite */colorscheme_gen.erb !erb -T - % > $HOME/.vim/colors/fairlyfloss.vim
 
 " Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
