@@ -93,8 +93,16 @@ gsv () {
 # Passes result of fzf to command specified as arg
 ff () {
     CMD=$1
+    # vim -> nvim alias not recognized inhis function, so account for it
     if nvim -v > /dev/null 2>&1 && [ "$1" == "vim" ]; then
         CMD="nvim"
     fi
-    "$CMD" "$(fzf)"
+
+    # If command is 'cd', remove the filename and go to the parent dir,
+    # else execute command as is
+    if [ "$1" == "cd" ]; then
+        "$CMD" "$(dirname "$(fzf)")"
+    else
+        "$CMD" "$(fzf)"
+    fi
 }
