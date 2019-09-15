@@ -5,6 +5,8 @@
 
 SYNTAX="$2"
 OUTPUTDIR="$4"
+
+# Filename of currently processed file
 INPUT="$5"
 
 FILE=$(basename "$INPUT" | cut -d'.' -f1)
@@ -20,7 +22,7 @@ fi
 
 ESCAPED_PATH="\\/home\\/leaf\\/notes\\/html\\/"
 
-sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' < "$INPUT" \
+sed -r 's/(\[.+\])\(([^)~/.]+)\)/\1(\2.html)/g' < "$INPUT" \
   | pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" \
   | sed '/<body>/a<a href="%PATH%index.html">Index<\/a> | \ <a href="%PATH%diary\/diary.html">Diary</a>' \
   | sed "s/%PATH%/$ESCAPED_PATH/g" \
