@@ -33,6 +33,7 @@ Plug 'ambv/black'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vimwiki/vimwiki'
 Plug 'rust-lang/rust.vim'
+Plug 'mattesgroeger/vim-bookmarks'
 Plug 'majutsushi/tagbar'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -401,3 +402,7 @@ let g:LanguageClient_serverCommands = {
     \ 'go': ['~/go/bin/go-langserver', '-gocodecompletion', '-lint-tool', 'golint'],
     \ }
 set completeopt-=preview
+
+" vim-bookmarks
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 0
