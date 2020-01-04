@@ -59,6 +59,7 @@ client.focused_inactive  $color4  $color4  $foreground  $color4
 bar {
     position top
     mode dock
+    hidden_state hide
 
     modifier none
 
