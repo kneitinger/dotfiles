@@ -16,7 +16,13 @@ on_vagrant () {
 
 configure_i3 () {
     print_header "Installing i3 files and compiling config"
-    "$HOME/.i3/install-venv.sh"
+
+    PIP_PKGS=(colour i3ipc i3pystatus netifaces pytz)
+    if [ "$(uname)" == "Linux" ]; then
+        PIP_PKGS+=(basiciw)
+    fi
+    create_venv .i3/.venv "${PIP_PKGS[@]}"
+
     "$HOME/.i3/i3-conf-gen.sh"
     mkdir -p "$HOME"/screenshots
 }
@@ -33,7 +39,7 @@ configure_xorg_fonts () {
     fc-cache -f ~/.fonts
 }
 
-configure_venvs () {
+ensure_venv () {
     print_header "Bootstrapping pip and installing virtualenvwrapper"
     deativate 2> /dev/null || true
 
@@ -41,7 +47,24 @@ configure_venvs () {
         python3 -m ensurepip --user
     fi
     pip install --upgrade --user pip
-    pip3 install --user virtualenvwrapper
+}
+
+create_venv () {
+    if [[ "$1" = /* ]]; then
+        VENV_PATH="$1" 
+    else
+        VENV_PATH="$HOME/$1"
+    fi
+
+    shift
+    PACKAGES=("$@")
+    python3 -m venv "$VENV_PATH"
+    cd "$VENV_PATH"
+    # shellcheck disable=SC1091
+    source bin/activate
+    pip3 install -U pip
+    pip3 install "${PACKAGES[@]}"
+    deactivate
 }
 
 configure_vim () {
@@ -68,14 +91,7 @@ configure_vim () {
 
   ln -sf "$HOME"/.vim/vimrc "$HOME"/.vimrc
 
-  python3 -m venv "$HOME"/.vim/.venv
-  cd "$HOME"/.vim/.venv
-
-  # shellcheck disable=SC1091
-  source bin/activate
-  pip3 install -U pip
-  pip3 install neovim black
-  deactivate
+  create_venv .vim/.venv neovim black vint
 
   nvim -c "PlugInstall" -c "q" -c "q"
   nvim -c "UpdateRemotePlugins" -c "q"
@@ -119,7 +135,8 @@ symlink_files () {
 
 
 symlink_files
-configure_venvs
+ensure_venv
+create_venv "$HOME/.venv/core" ipython
 [ "$(uname)" != 'Darwin' ] && configure_i3
 [ "$(uname)" != 'Darwin' ] && configure_xorg_fonts
 configure_vim

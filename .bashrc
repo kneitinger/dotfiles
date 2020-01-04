@@ -139,11 +139,6 @@ esac
 [[ $PS1 && -f "$BASHC_FILE" ]] && \
     source "$BASHC_FILE"
 
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-VIRTUALENVWRAPPER_PYTHON=$(which python3) && export VIRTUALENVWRAPPER_PYTHON
-export WORKON_HOME="$HOME/.venv"
-source virtualenvwrapper_lazy.sh &> /dev/null
-
 # Alt-h for manpage
 bind '"\eh": "\C-a\eb\ed\C-y\e#man \C-y\C-m\C-p\C-p\C-a\C-d\C-e"'
 
