@@ -28,6 +28,7 @@ Plug 'sirver/ultisnips'
 Plug 'shougo/deoplete.nvim'
 Plug 'zchee/deoplete-jedi'
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 Plug 'ambv/black'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -79,7 +80,6 @@ au! BufWrite */colorscheme_gen.erb !erb -T - % > $HOME/.vim/colors/fairlyfloss.v
 " Ensure that highlight commands are run after colorscheme is loaded
 " run :so ~/.vim/color_names.vim to find desired values
 au! VimEnter  * hi Comment cterm=italic ctermfg=14
-              \ | hi StatusLine cterm=bold,italic ctermbg=4 ctermfg=15
               \ | hi User1 ctermbg=14
               \ | hi Normal guibg=NONE ctermbg=NONE
               \ | hi LineNr ctermfg=12
