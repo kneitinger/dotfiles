@@ -41,7 +41,7 @@ configure_xorg_fonts () {
 
 ensure_venv () {
     print_header "Bootstrapping pip and installing virtualenvwrapper"
-    deativate 2> /dev/null || true
+    deactivate 2> /dev/null || true
 
     if ! pip3 -V > /dev/null 2>&1; then
         python3 -m ensurepip --user
@@ -63,7 +63,7 @@ create_venv () {
     # shellcheck disable=SC1091
     source bin/activate
     pip3 install -U pip
-    pip3 install "${PACKAGES[@]}"
+    pip3 install -U "${PACKAGES[@]}"
     deactivate
 }
 
