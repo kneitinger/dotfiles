@@ -8,7 +8,8 @@ set -e
 FILES="$(find . \
     -maxdepth 3 -type f -not -iwholename '*.git*' -exec file {} \; \
     | grep shell \
-    | cut -d':' -f1)"
+    | cut -d':' -f1 \
+    | sort)"
 
 for file in $FILES; do
     shellcheck -s bash "$file"
