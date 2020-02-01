@@ -112,10 +112,6 @@ case $HOSTNAME in
         batt-notify -p 7 -t 70 0 & ;;
 esac
 
-# Call redshift
-/usr/lib/geoclue-2.0/demos/agent &
-redshift &
-
 # Automatically ecompile i3 config if any of its component files are changed
 if [ -e "$HOME/.i3/i3-file-watch.sh" ]; then
     "$HOME"/.i3/i3-file-watch.sh &
