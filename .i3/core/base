@@ -23,11 +23,14 @@ assign [class="Slack"] $ws6
 # No border for apps that usually take up a whole workspace
 for_window [class="Slack"] border none
 for_window [class="Virt-manager"] border none
-for_window [class="Firefox"] border none
 
 # Always floating windows
 for_window [title="feh:/tmp/*"] floating enable
 for_window [class="Pystopwatch"] floating enable
+
+# Firefox PiP windows should be sticky, and have a border
+# that is large enough to make simple resizing easy.
+for_window [title="Picture-in-Picture"] sticky enable, border pixel 5, resize set 350
 
 # Mark windows for named scratchpads
 for_window [class="Spotify"] mark "music", move scratchpad
