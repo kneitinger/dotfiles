@@ -12,7 +12,8 @@ export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
 
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export PATH=$GOPATH/bin:$PATH
+export GOBIN=$HOME/go/bin
 
 export PAGER=less
 
@@ -20,7 +21,6 @@ if [ "$(uname)" = 'FreeBSD' ]; then
     export CCACHE_DIR="$HOME/.ccache"
 fi
 
-export GOBIN=$HOME/go/bin
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
