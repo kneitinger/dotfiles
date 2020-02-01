@@ -1,5 +1,7 @@
 .venv
 .additional
+.bash_completion.d/*
+
 **/*.sqlite
 
 .ipython/*/db
@@ -11,7 +13,6 @@
 .i3/.config_backup
 
 bin/.*
-bin/xcape
 
 *.swp
 .vim/autoload/plug.vim
