@@ -23,3 +23,5 @@
 [rerere]
     enabled = true
     autoupdate = true
+[commit]
+    gpgsign = true
