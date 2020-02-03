@@ -69,7 +69,7 @@ URxvt*scrollWithBuffer:  true
 URxvt*saveLines:         50000
 
 ! (requires https://github.com/majutsushi/urxvt-font-size)
-URxvt.perl-ext:        font-size,vim-scrollback,matcher
+URxvt.perl-ext:        font-size,vim-scrollback
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-S-Up:   font-size:incglobal
@@ -78,8 +78,11 @@ URxvt.keysym.C-equal:  font-size:reset
 URxvt.keysym.C-slash:  font-size:show
 ! (requires https://github.com/ervandew/urxvt-vim-scrollback)
 urxvt.vim-scrollback:  M-x
-!URxvt.url-launcher:   /usr/bin/xdg-open
-URxvt.matcher.button:  1
+
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher:    /usr/bin/xdg-open
+URxvt.matcher.button:  3
 
 ! Xorg font appearance
 Xft.antialias: true
