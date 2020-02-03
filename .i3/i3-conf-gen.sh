@@ -2,7 +2,6 @@
 
 set -e
 
-echo "HOSTNAME is set to $HOSTNAME. All configs in the $HOSTNAME directory will be included"
 
 if [ -e "$HOME"/.i3/config ]; then
   mv "$HOME"/.i3/config "$HOME"/.i3/.config_backup
@@ -19,3 +18,8 @@ for conf in "$HOME"/.i3/core/*; do
     cat "$HOME/.i3/$HOSTNAME/$conf" >> "$HOME"/.i3/config
   fi
 done
+
+if notify-send -v > /dev/null 2>&1; then
+    notify-send "Rebuilding i3 config for $HOSTNAME" || true
+fi
+echo "HOSTNAME is set to $HOSTNAME. All configs in the $HOSTNAME directory will be included"
