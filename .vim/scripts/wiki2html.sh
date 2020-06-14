@@ -23,7 +23,7 @@ fi
 ESCAPED_PATH="\\/home\\/leaf\\/notes\\/html\\/"
 
 sed -r 's/(\[.+\])\(([^)~/.]+)\)/\1(\2.html)/g' < "$INPUT" \
-  | pandoc $MATH -s -f "$SYNTAX" -t html -c "$CSSFILE" \
+  | pandoc "$MATH" -s -f "$SYNTAX" -t html -c "$CSSFILE" \
   | sed '/<body>/a<a href="%PATH%index.html">Index<\/a> | \ <a href="%PATH%diary\/diary.html">Diary</a>' \
   | sed "s/%PATH%/$ESCAPED_PATH/g" \
   | sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g'> "$OUTPUT"
