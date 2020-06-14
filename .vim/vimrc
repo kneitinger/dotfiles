@@ -19,23 +19,23 @@ endif
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 
 call plug#begin('~/.vim/bundle')
-Plug 'w0rp/ale'
-Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
-Plug 'neozenith/estilo-xoria256'
+Plug 'ambv/black'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'gmoe/vim-faust'
-Plug 'sirver/ultisnips'
-Plug 'shougo/deoplete.nvim'
-Plug 'zchee/deoplete-jedi'
+Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
-Plug 'ambv/black'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'vimwiki/vimwiki'
-Plug 'rust-lang/rust.vim'
-Plug 'mattesgroeger/vim-bookmarks'
 Plug 'majutsushi/tagbar'
+Plug 'mattesgroeger/vim-bookmarks'
+Plug 'neozenith/estilo-xoria256'
+Plug 'rust-lang/rust.vim'
+Plug 'shougo/deoplete.nvim'
+Plug 'sirver/ultisnips'
+Plug 'vimwiki/vimwiki'
+Plug 'w0rp/ale'
+Plug 'zchee/deoplete-jedi'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
