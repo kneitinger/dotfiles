@@ -27,10 +27,11 @@ for_window [class="Virt-manager"] border none
 # Always floating windows
 for_window [title="feh:/tmp/*"] floating enable
 for_window [class="Pystopwatch"] floating enable
+for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
 
 # Firefox PiP windows should be sticky, and have a border
 # that is large enough to make simple resizing easy.
-for_window [title="Picture-in-Picture"] sticky enable, border pixel 5, resize set 350
+for_window [title="Picture-in-Picture"] sticky enable, border pixel 5, resize set width 20 ppt height 20 ppt
 
 # Mark windows for named scratchpads
 for_window [class="Spotify"] mark "music", move scratchpad
@@ -38,6 +39,7 @@ for_window [title="pyStopwatch"] mark "stopwatch", move scratchpad
 for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
+for_window [title="^Signal$"] mark "signal", move scratchpad
 for_window [title="^\[vimwiki\]$"] mark "vimwiki", move scratchpad, resize set 700 800
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -51,7 +53,6 @@ workspace_auto_back_and_forth yes
 exec i3-sensible-terminal
 exec keepassxc
 exec firefox
-exec slack
 exec syncthing --gui-address="http://localhost:8384"
 
 # Autolaunch tray applets at startup
