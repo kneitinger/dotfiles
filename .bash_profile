@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-PATH=~/bin:~/.local/bin:~/.cargo/bin:~/.cabal/bin:$(ruby -e 'puts Gem.user_dir')/bin:/opt:$PATH
-
 # Use system keyring to manage ssh if on MacOS
 if [ "$(uname)" != "Darwin" ]; then
     eval "$(ssh-agent)"

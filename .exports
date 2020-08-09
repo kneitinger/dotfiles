@@ -11,10 +11,6 @@ export SVN_EDITOR
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
 
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
-export GOBIN=$HOME/go/bin
-
 export PAGER=less
 
 if [ "$(uname)" = 'FreeBSD' ]; then

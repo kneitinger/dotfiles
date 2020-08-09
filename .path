@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Keeps PATH tidy by checking if entries are present before adding them
+
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+
+# Language specific paths
+paths=("$HOME/.cargo/bin" "$GOBIN" "$(ruby -e 'puts Gem.user_dir')/bin")
+# Extra bins and opts
+paths+=("$HOME/bin" "$HOME/.local/bin"  "/opt")
+
+for p in "${paths[@]}"; do
+    if [[ "$PATH" != *"$p"* ]]; then
+        PATH="$p:$PATH"
+    fi
+done
