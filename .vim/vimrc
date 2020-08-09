@@ -33,6 +33,7 @@ Plug 'neozenith/estilo-xoria256'
 Plug 'rust-lang/rust.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'sirver/ultisnips'
+Plug 'supercollider/scvim'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'zchee/deoplete-jedi'
@@ -407,3 +408,10 @@ set completeopt-=preview
 " vim-bookmarks
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 0
+
+" scvim
+let g:sclangTerm = "urxvt -e $SHELL -ic"
+let g:scFlash = 1
+let g:scTerminalBuffer = "off"
+let g:scSplitSize = 40
+autocmd VimEnter *.scd SClangStart
