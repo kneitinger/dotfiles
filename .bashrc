@@ -5,6 +5,16 @@
 # shellcheck disable=SC1091
 # shellcheck disable=SC2230
 
+# Start ssh-agent if on non-Mac and no ssh-agent is running
+if [ "$(uname)" != "Darwin" ]; then
+    if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+        ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    fi
+    if [[ ! "$SSH_AUTH_SOCK" ]]; then
+        source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+    fi
+fi
+
 # Declare beautiful colors
 RED="\e[31m"    # color1
 L_RED="\e[91m"  # color9
