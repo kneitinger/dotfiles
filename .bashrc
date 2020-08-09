@@ -5,6 +5,12 @@
 # shellcheck disable=SC1091
 # shellcheck disable=SC2230
 
+# If not running interactively, don't do anything
+case $- in
+	*i*) ;;
+	*) return;;
+esac
+
 # Start ssh-agent if on non-Mac and no ssh-agent is running
 if [ "$(uname)" != "Darwin" ]; then
     if ! pgrep -u "$USER" ssh-agent > /dev/null; then
