@@ -100,10 +100,6 @@ case $TERM in
         ;;
 esac
 
-if [ "$(uname)" = 'FreeBSD' ]; then
-    export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-fi
-
 for file in ~/.{aliases,path,exports,additional,bash_completion.d/*}; do
     if [[ -r "$file" ]] && [[ -f "$file" ]]; then
         source "$file"

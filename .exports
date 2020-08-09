@@ -15,6 +15,7 @@ export PAGER=less
 
 if [ "$(uname)" = 'FreeBSD' ]; then
     export CCACHE_DIR="$HOME/.ccache"
+    export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 fi
 
 
