@@ -1,11 +1,15 @@
 # Workspace definitions
 set $ws1 "1:1:util"
-set $ws2 "2:2:drum"
-set $ws3 "3:3:synth"
+set $ws2 "2:  2  "
+set $ws3 "3:3:sc"
 set $ws4 "4:  4  "
 set $ws5 "5:  5  "
 set $ws6 "6:  6  "
 set $ws7 "7:  7  "
 set $ws8 "8:  8  "
-set $ws9 "9:9:catia"
-set $ws0 "10:10:mixer"
+set $ws9 "9:  9  "
+set $ws0 "10:10:jack"
+
+assign [class="Cadence"] $ws0
+
+exec cadence
