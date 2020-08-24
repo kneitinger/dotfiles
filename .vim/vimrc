@@ -383,6 +383,9 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>r :Rg<CR>
+nnoremap <leader>t :Tags<CR>
+nnoremap <leader>wt :call fzf#vim#tags(expand('<cword>'))<CR>
+
 " Redefine Rg command with {'options': '--delimiter : --nth 4..'} to omit
 " filename matches
 command! -bang -nargs=* Rg
