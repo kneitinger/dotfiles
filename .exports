@@ -6,7 +6,6 @@ SVN_EDITOR=$EDITOR
 export EDITOR
 export SVN_EDITOR
 
-
 # Use United States English
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
@@ -18,6 +17,11 @@ if [ "$(uname)" = 'FreeBSD' ]; then
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 fi
 
+if [ "$(uname)" = 'Darwin' ]; then
+    export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+export FZF_DEFAULT_COMMAND='rg --files'
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
