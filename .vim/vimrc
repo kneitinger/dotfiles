@@ -26,7 +26,6 @@ Plug 'majutsushi/tagbar'
 Plug 'mattesgroeger/vim-bookmarks'
 Plug 'rust-lang/rust.vim'
 Plug 'sirver/ultisnips'
-Plug 'vimwiki/vimwiki'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -273,23 +272,6 @@ function! HasPaste()
     return ''
 endfunction
 
-function! KVimwikiDiaryGenerateLinks()
-    if &filetype == 'vimwiki' && @% =~ "diary.md"
-        " Clear previous diary links
-        if line('$') > 2
-            normal 3GdG
-        endif
-        " Run stock gen
-        VimwikiDiaryGenerateLinks
-        " Change intent so as to not interpret as code/mono
-        %s/  \* \[2/- [2/g
-        " Remove header that stock gen inserts
-        %s/# Diary\n\n//g
-    endif
-endfunction
-" Give it a nice command with quick tab completion
-command! KyleVimwikiDiaryGenLinks call KVimwikiDiaryGenerateLinks()
-
 " Load freebsd style functions, mapped to <leader>f
 source $HOME/.vim/scripts/freebsd.vim
 
@@ -332,29 +314,6 @@ let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
 let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
-
-" vimwiki
-let g:vimwiki_list = [{'path': '$HOME/notes',
-    \ 'syntax': 'markdown',
-    \ 'ext': '.md',
-    \ 'path_html': '$HOME/notes/html',
-    \ 'custom_wiki2html': '$HOME/.vim/scripts/wiki2html.sh'}]
-let g:vimwiki_conceallevel = 2
-" Only count notebook md files as vimwiki filetype
-let g:vimwiki_global_ext = 0
-
-au BufRead,BufNewFile ~/notes/**.md call SetVimwikiOptions()
-function! SetVimwikiOptions()
-    setlocal autoread
-    cd ~/notes
-    au! CursorHold ~/notes/* checktime
-    let &titlestring = '%y'
-    setlocal title
-    setlocal noswapfile
-    setlocal tabstop=2
-    setlocal shiftwidth=2
-    au! BufWrite ~/notes/* silent VimwikiAll2HTML
-endfunction
 
 " vimtex
 let g:vimtex_view_method='zathura'
