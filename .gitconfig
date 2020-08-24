@@ -1,7 +1,6 @@
 [user]
     email = kyle@kneit.in
     name = Kyle Kneitinger
-    signingkey = E4251897
 [color]
     ui = true
 [core]
@@ -24,5 +23,3 @@
 [rerere]
     enabled = true
     autoupdate = true
-[commit]
-    gpgsign = true
