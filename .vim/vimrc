@@ -33,8 +33,8 @@ Plug 'neozenith/estilo-xoria256'
 Plug 'rust-lang/rust.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'sirver/ultisnips'
-Plug 'supercollider/scvim'
 Plug 'vimwiki/vimwiki'
+Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'w0rp/ale'
 Plug 'zchee/deoplete-jedi'
 Plug 'autozimu/LanguageClient-neovim', {
@@ -339,7 +339,7 @@ nnoremap <A-l> <C-w>l
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UtilSnips']
+let g:UltiSnipsSnippetDirectories=['UtilSnips', 'scnvim-data']
 let g:UltiSnipsExpandTrigger="<c-\\>"
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
@@ -412,9 +412,12 @@ set completeopt-=preview
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 0
 
-" scvim
-let g:sclangTerm = "urxvt -e $SHELL -ic"
-let g:scFlash = 1
-let g:scTerminalBuffer = "off"
-let g:scSplitSize = 40
-autocmd VimEnter *.scd SClangStart
+" scnvim
+autocmd VimEnter *.scd SCNvimStart
+let g:scnvim_postwin_orientation = 'h'
+let g:scnvim_postwin_direction = 'right'
+let g:scnvim_postwin_size = 10
+let g:scnvim_postwin_auto_toggle = 1
+let g:scnvim_eval_flash_duration = 300
+let g:scnvim_eval_flash_repeats = 2
+let g:scnvim_scdoc = 1
