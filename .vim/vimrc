@@ -22,14 +22,10 @@ call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'
 Plug 'ambv/black'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'gmoe/vim-faust'
-Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mattesgroeger/vim-bookmarks'
-Plug 'neozenith/estilo-xoria256'
 Plug 'rust-lang/rust.vim'
 Plug 'shougo/deoplete.nvim'
 Plug 'sirver/ultisnips'
@@ -334,9 +330,6 @@ nnoremap <A-l> <C-w>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Tabular
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=['UtilSnips', 'scnvim-data']
