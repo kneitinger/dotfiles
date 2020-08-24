@@ -108,7 +108,9 @@ case $TERM in
         PS1+="\[${RED}\]\$(prompt_err)"
         PS1+="\[${L_YLW}\]\u\[${L_GRY}\] at \[${PNK}\]\h\[${L_GRY}\] in "
         PS1+="\[${CYN}\]\W "
-        PS1+="\[${L_GRY}\]\$(prompt_git)"
+        if [ "$(uname)" != "Darwin" ]; then
+            PS1+="\[${L_GRY}\]\$(prompt_git)"
+        fi
         PS1+="\[${RST}${BLD}${L_PUR}\]\$ \[${RST}\]"
         ;;
     *)
@@ -144,11 +146,11 @@ case $(uname) in
         BASHC_FILE=/usr/local/share/bash-completion/bash_completion.sh
         ;;
     Darwin)
-	    BASHC_FILE=$(brew --prefix)/etc/bash_completion
+        BASHC_FILE=$(brew --prefix)/etc/profile.d/bash_completion.sh
         ;;
 esac
 
-[[ $PS1 && -f "$BASHC_FILE" ]] && \
+[[ -n $PS1 && -f "$BASHC_FILE" ]] && \
     source "$BASHC_FILE"
 
 # Alt-h for manpage
