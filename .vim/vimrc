@@ -21,6 +21,9 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf.vim'
+if has('macunix')
+    set rtp+=/usr/local/opt/fzf
+endif
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mattesgroeger/vim-bookmarks'
