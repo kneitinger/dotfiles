@@ -20,23 +20,17 @@ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 
 call plug#begin('~/.vim/bundle')
 Plug 'airblade/vim-gitgutter'
-Plug 'ambv/black'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mattesgroeger/vim-bookmarks'
 Plug 'rust-lang/rust.vim'
-Plug 'shougo/deoplete.nvim'
 Plug 'sirver/ultisnips'
 Plug 'vimwiki/vimwiki'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'w0rp/ale'
-Plug 'zchee/deoplete-jedi'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-clangd', 'coc-go', 'coc-python', 'coc-sh']
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -337,10 +331,6 @@ let g:UltiSnipsExpandTrigger="<c-\\>"
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-" Use tab for suggestion selection
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
 
 " vimwiki
@@ -394,13 +384,6 @@ au BufRead,BufNewFile ~/.ipylogs/**.py ALEDisable
 " Rust.vim
 let g:rustfmt_autosave = 1
 
-" Language Client
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'go': ['~/go/bin/go-langserver', '-gocodecompletion', '-lint-tool', 'golint'],
-    \ }
-set completeopt-=preview
-
 " vim-bookmarks
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 0
@@ -414,3 +397,32 @@ let g:scnvim_postwin_auto_toggle = 1
 let g:scnvim_eval_flash_duration = 300
 let g:scnvim_eval_flash_repeats = 2
 let g:scnvim_scdoc = 1
+
+" coc.nvim 
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+
+" coc-snippets
+let g:coc_snippet_next = '<tab>'
