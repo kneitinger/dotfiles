@@ -46,7 +46,7 @@ ensure_venv () {
     if ! pip3 -V > /dev/null 2>&1; then
         python3 -m ensurepip --user
     fi
-    pip install --upgrade --user pip
+    pip3 install --upgrade --user pip
 }
 
 create_venv () {
