@@ -103,7 +103,7 @@ prompt_err() {
 
 # Disable fancy prompt for console
 case $TERM in
-    xterm*|rxvt*)
+    xterm*|rxvt*|alacritty)
         PS1="\[${BLD}${ITL}\]"
         PS1+="\[${RED}\]\$(prompt_err)"
         PS1+="\[${L_YLW}\]\u\[${L_GRY}\] at \[${PNK}\]\h\[${L_GRY}\] in "
