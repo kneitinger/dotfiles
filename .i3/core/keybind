@@ -20,6 +20,7 @@ bindsym $mod+backslash [con_mark="vimwiki"] scratchpad show; [con_mark="vimwiki"
 bindsym $mod+c [con_mark="tele"] scratchpad show; [con_mark="tele"] move position center
 bindsym $mod+semicolon [con_mark="signal"] scratchpad show; [con_mark="signal"] move position center
 bindsym $mod+t [con_mark="stopwatch"] scratchpad show
+bindsym $mod+y [con_mark="pip"] scratchpad show
 
 # Rofi dmenu replacement bindings
 bindsym $mod+d exec rofi -show run
