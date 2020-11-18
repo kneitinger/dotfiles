@@ -78,6 +78,10 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi StatusLineTermNC ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi rustFuncName ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
     hi rustFuncCall ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
+    " CoC Colors
+    hi PMenu ctermbg=4 ctermfg=white cterm=NONE
+    hi CocErrorFloat ctermbg=4 ctermfg=9 cterm=NONE
+    hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE
 
     let g:terminal_ansi_colors = [
         \ '#000000',
@@ -167,6 +171,11 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi StatusLineTermNC ctermbg=NONE ctermfg=white cterm=NONE
     hi rustFuncName ctermbg=NONE ctermfg=cyan cterm=italic
     hi rustFuncCall ctermbg=NONE ctermfg=cyan cterm=italic
+    " CoC Colors
+    hi PMenu ctermbg=4 ctermfg=white cterm=NONE
+    hi CocErrorFloat ctermbg=4 ctermfg=9 cterm=NONE
+    hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE
+
 endif
 
 let links = [
@@ -181,4 +190,5 @@ augroup fairlyfloss
 augroup END
 
 " Generated with RNB (https://gist.github.com/romainl/5cd2f4ec222805f49eca)
+
 
