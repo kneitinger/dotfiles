@@ -32,7 +32,7 @@ Plug 'sirver/ultisnips'
 Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'w0rp/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-clangd', 'coc-go', 'coc-python', 'coc-sh']
+let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-clangd', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -392,3 +392,7 @@ endif
 
 " coc-snippets
 let g:coc_snippet_next = '<tab>'
+
+" coc-explorer
+noremap <space>e :CocCommand explorer --no-toggle<CR>
+noremap <space>E :CocCommand explorer<CR>
