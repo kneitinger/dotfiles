@@ -44,7 +44,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 
 # Open pcmanfm in current directory
-alias pc='2>/dev/null 1>&2 pcmanfm & disown $!'
+alias pc='2>/dev/null 1>&2 pcmanfm & disown'
 
 # Allow sudo-ing aliases...no idea why this works
 alias sudo='sudo '
@@ -110,3 +110,10 @@ ff () {
         "$CMD" "$(fzf)"
     fi
 }
+
+# Cargo aliases
+alias cbd="cargo build"
+alias crd="cargo run"
+alias cb="cargo build --release"
+alias cr="cargo run --release"
+alias ct="cargo test"
