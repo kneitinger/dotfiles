@@ -6,6 +6,9 @@ SVN_EDITOR=$EDITOR
 export EDITOR
 export SVN_EDITOR
 
+# Indicates which terminal i3-sensible-terminal should try to spawn first
+export TERMINAL=alacritty
+
 # Use United States English
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
