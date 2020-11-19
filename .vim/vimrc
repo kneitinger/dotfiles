@@ -82,6 +82,10 @@ au! VimEnter  * hi Comment cterm=italic ctermfg=14
               \ | hi LineNr ctermfg=12
               "\ | hi MatchParen  ctermfg=15 ctermbg=131
 
+" Solves weird quirk of having a blank screen when spawned from joplin
+" I guess?
+au! BufEnter * highlight Normal guibg=0
+
 set laststatus=2    " always show status bar
 
 " status: [paste indicator][buffer num][filename][modified][readonly]
