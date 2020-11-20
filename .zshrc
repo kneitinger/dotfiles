@@ -1,3 +1,7 @@
+#!/usr/bin/env zsh
+# shellcheck disable=SC1090
+# shellcheck disable=SC2034
+
 #
 # Imports
 #
@@ -38,14 +42,14 @@ unsetopt autocd beep extendedglob nomatch notify
 boldital () {
     # If args are present, they are treated as the text to format.  If no
     # args are present, stdin contents are wrapped with the formatters
-    text=$( [ $# -lt 1 ] && read -e || echo "$*" )
+    text=$( [ $# -lt 1 ] && read -re || echo "$*" )
     printf "%%{\x1b[3m%%}%%B%s%%b" "$text"
 }
 
 color () {
     # Requires at least one arg. First arg is the desired color code
     # following args are the text to color (if omitted, stdin will be used)
-    text=$( [ $# -lt 2 ] && read -e || echo "${@:2}")
+    text=$( [ $# -lt 2 ] && read -re || echo "${@:2}")
     printf "%%F{$1}%s%%f" "$text"
 }
 
