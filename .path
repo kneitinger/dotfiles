@@ -6,7 +6,7 @@ export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 
 # Language specific paths
-paths=("$HOME/.cargo/bin" "$GOBIN" "$(ruby -e 'puts Gem.user_dir')/bin")
+paths=("$HOME/.cargo/bin" "$GOBIN")
 # Extra bins and opts
 paths+=("$HOME/bin" "$HOME/.local/bin"  "/opt")
 
