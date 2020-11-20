@@ -7,7 +7,7 @@ set -e
 
 FILES="$(find . \
     -maxdepth 3 -type f -not -iwholename '*.git*' -exec file {} \; \
-    | grep shell \
+    | grep 'zsh\|shell' \
     | cut -d':' -f1 \
     | sort)"
 
