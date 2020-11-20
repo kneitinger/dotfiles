@@ -21,3 +21,5 @@ bin/.*
 .vim/cache/*/*
 .vim/spell/
 .vim/black/
+
+__pycache__
