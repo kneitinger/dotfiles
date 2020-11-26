@@ -17,11 +17,13 @@ on_vagrant () {
 configure_i3 () {
     print_header "Installing i3 files and compiling config"
 
-    PIP_PKGS=(colour i3ipc i3pystatus netifaces pytz)
-    if [ "$(uname)" == "Linux" ]; then
-        PIP_PKGS+=(basiciw)
+    if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+        PIP_PKGS=(colour i3ipc i3pystatus netifaces pytz)
+        if [ "$(uname)" == "Linux" ]; then
+            PIP_PKGS+=(basiciw)
+        fi
+        create_venv .i3/.venv "${PIP_PKGS[@]}"
     fi
-    create_venv .i3/.venv "${PIP_PKGS[@]}"
 
     "$HOME/.i3/i3-conf-gen.sh"
     mkdir -p "$HOME"/screenshots
@@ -90,8 +92,9 @@ configure_vim () {
   fi
 
   ln -sf "$HOME"/.vim/vimrc "$HOME"/.vimrc
-
-  create_venv .vim/.venv neovim black vint
+  if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+      create_venv .vim/.venv neovim black vint
+  fi
 
   nvim -c "PlugInstall" -c "q" -c "q"
   nvim -c "UpdateRemotePlugins" -c "q"
@@ -135,8 +138,10 @@ symlink_files () {
 
 
 symlink_files
-ensure_venv
-create_venv "$HOME/.venv/core" ipython
+if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+    ensure_venv
+    create_venv "$HOME/.venv/core" ipython
+fi
 [ "$(uname)" != 'Darwin' ] && configure_i3
 [ "$(uname)" != 'Darwin' ] && configure_xorg_fonts
 configure_vim
