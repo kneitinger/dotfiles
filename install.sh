@@ -141,7 +141,7 @@ symlink_files
 if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
     ensure_venv
     create_venv "$HOME/.venv/core" ipython
+    [ "$(uname)" != 'Darwin' ] && configure_xorg_fonts
 fi
 [ "$(uname)" != 'Darwin' ] && configure_i3
-[ "$(uname)" != 'Darwin' ] && configure_xorg_fonts
 configure_vim
