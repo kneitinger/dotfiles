@@ -3,7 +3,11 @@
 # Aliases and typo remediation!
 
 alias xlt='xautolock -toggle'
-alias se='sudoedit'
+if [ "$TERM" = 'alacritty' ]; then
+    alias se='TERM=xterm-256color sudoedit'
+else
+    alias se='sudoedit'
+fi
 alias vim='nvim'
 alias cim='nvim'
 alias bim='nvim'
