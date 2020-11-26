@@ -17,7 +17,7 @@ on_vagrant () {
 configure_i3 () {
     print_header "Installing i3 files and compiling config"
 
-    if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+    if [ ! -d '/nix' ]; then
         PIP_PKGS=(colour i3ipc i3pystatus netifaces pytz)
         if [ "$(uname)" == "Linux" ]; then
             PIP_PKGS+=(basiciw)
@@ -92,7 +92,7 @@ configure_vim () {
   fi
 
   ln -sf "$HOME"/.vim/vimrc "$HOME"/.vimrc
-  if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+  if [ ! -d '/nix' ]; then
       create_venv .vim/.venv neovim black vint
   fi
 
@@ -138,7 +138,7 @@ symlink_files () {
 
 
 symlink_files
-if [ "$(uname -a | cut -d' ' -f2)" != "nixos" ]; then
+if [ ! -d '/nix' ]; then
     ensure_venv
     create_venv "$HOME/.venv/core" ipython
     [ "$(uname)" != 'Darwin' ] && configure_xorg_fonts
