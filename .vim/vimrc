@@ -325,7 +325,9 @@ let g:UltiSnipsExpandTrigger="<c-\\>"
 let g:UltiSnipsJumpForwardTrigger='<c-j>'
 let g:UltiSnipsJumpBackwardTrigger='<c-k>'
 
-"let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
+if !empty(glob($HOME.'/.vim/.venv'))
+    let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
+endif
 
 " vimtex
 let g:vimtex_view_method='zathura'
