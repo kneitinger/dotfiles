@@ -11,5 +11,5 @@ FILES="$(find -L $DIRS -type f -not -path '*/.*' -prune -not -executable | rofi 
 
 
 if [ -n "$FILES" ]; then
-    mimeopen -n "$FILES"
+    xdg-open "$FILES"
 fi
