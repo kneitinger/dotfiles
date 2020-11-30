@@ -11,7 +11,7 @@ xcape -e 'Control_L=Escape' -t 175
 xcape -e 'Alt_L=parenleft' -t 130
 xcape -e 'Alt_R=parenright' -t 130
 xcape -e 'Super_L=Shift_L|bracketleft' -t 130
-if [ "$HOSTNAME" = "janeway" ] || [ "$HOSTNAME" = "ziyal" ]; then
+if [ "$HOSTNAME" = "janeway" ]; then
     xcape -e 'Print=Shift_R|bracketright' -t 130
 else
     xcape -e 'Menu=Shift_R|bracketright' -t 130
