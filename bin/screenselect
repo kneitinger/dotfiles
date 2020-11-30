@@ -8,5 +8,16 @@ LAYOUT="$(find -L "$HOME/.screenlayout/$HOSTNAME" -type f -exec basename {} \; |
 
 if [ -n "$LAYOUT" ]; then
     "$HOME/.screenlayout/$HOSTNAME/$LAYOUT"
-    feh --bg-fill ~/.bg.jpg
+
+    # Check for background image files and reset the background via feh
+    # upon any changes.
+    #   - .background-image: used by nixos/lightdm
+    #   - .bg.*: used by me non-nixos systems
+    if [ -f "$HOME/.background-image" ]; then
+        feh --bg-fill "$HOME/.background-image"
+    elif [ -f "$HOME/.bg.jpg" ]; then
+        feh --bg-fill "$HOME/.bg.jpg"
+    elif [ -f "$HOME/.bg.png" ]; then
+        feh --bg-fill "$HOME/.bg.png"
+    fi
 fi
