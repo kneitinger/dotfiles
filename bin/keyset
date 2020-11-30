@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-killall xcape
+# If xcape is already running, kill it
+pgrep xcape > /dev/null && killall xcape
 
 # Map CapsLock->ctrl, ctrl-tap->Esc
 setxkbmap -option ctrl:nocaps
