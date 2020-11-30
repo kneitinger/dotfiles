@@ -21,20 +21,11 @@ cal_cmd = "notify-send 'Calendar' \"<tt>$(cal{})</tt>\"".format(cal_flag)
 
 stat.register(
     "clock",
-    interval=3,
+    interval=6,
     on_leftclick=cal_cmd,
     on_rightclick=["scroll_format", 1],
     format=[("%-m/%-d %-H:%M %Z", "America/Los_Angeles")],
 )
-
-if "ziyal" in hostname:
-    stat.register(
-        "clock",
-        interval=3,
-        on_leftclick=cal_cmd,
-        on_rightclick=["scroll_format", 1],
-        format=[("%-H:%M %Z", "UTC"), ("%-H:%M %Z", "Europe/Kiev")],
-    )
 
 stat.register(
     "pulseaudio",
