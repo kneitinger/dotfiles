@@ -19,7 +19,7 @@ bindsym XF86AudioRaiseVolume exec ~/bin/audioctl vol +1%
 bindsym $mod+XF86AudioLowerVolume exec ~/bin/audioctl vol -10%
 bindsym $mod+XF86AudioRaiseVolume exec ~/bin/audioctl vol +10%
 
-bindsym XF86AudioMicMute exec amixer sset Capture toggle
+bindsym XF86AudioMicMute exec ~/bin/audioctl micmute
 
 # Pressing Mod sets to extremes
 bindsym XF86MonBrightnessDown exec light -U 7

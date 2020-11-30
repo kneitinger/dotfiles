@@ -3,8 +3,10 @@
 SINK="$(pactl list sinks | grep "RUNNING"  -A1 | cut -d':' -f2 | tail -n1 | tr -d ' ')"
 
 if [ -z "$SINK" ]; then
-	SINK="$(pactl info | grep 'Default Sink:' | cut -d':' -f2 | tr -d ' ')"
+	SINK="$(pactl info | grep 'Default Sink:' | cut -d' ' -f2 | tr -d ' ')"
 fi
+
+SOURCE="$(pactl info | grep 'Default Source' | cut -d' ' -f3)"
 
 case "$1" in
     "vol")
@@ -12,5 +14,8 @@ case "$1" in
         ;;
     "mute")
         pactl set-sink-mute "$SINK" toggle
+        ;;
+    "micmute")
+        pactl set-source-mute "$SOURCE" toggle
         ;;
 esac
