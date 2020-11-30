@@ -55,8 +55,9 @@ exec i3-sensible-terminal
 exec keepassxc
 exec firefox
 exec syncthing --gui-address="http://localhost:8384"
+exec ~/bin/keyset
+exec ~/.i3/i3-file-watch.sh
 
 # Autolaunch tray applets at startup
 exec nm-applet
 exec blueman-applet
-exec redshift-gtk
