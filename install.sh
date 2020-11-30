@@ -98,10 +98,6 @@ configure_vim () {
 
   nvim -c "PlugInstall" -c "q" -c "q"
   nvim -c "UpdateRemotePlugins" -c "q"
-
-  # Make VimWiki notes directory
-  mkdir -p "$HOME"/notes
-  ln -sf "$HOME"/.vim/Vimwiki/style.css "$HOME"/notes/style.css
 }
 
 symlink_files () {
