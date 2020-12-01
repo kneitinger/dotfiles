@@ -53,7 +53,7 @@ workspace_auto_back_and_forth yes
 exec i3-sensible-terminal
 exec keepassxc
 exec firefox
-exec syncthing --gui-address="http://localhost:8384"
+exec syncthing --no-browser --gui-address="http://localhost:8384"
 exec ~/bin/keyset
 exec ~/.i3/i3-file-watch.sh
 
