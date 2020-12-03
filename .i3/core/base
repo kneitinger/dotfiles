@@ -50,13 +50,13 @@ focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 # Autolaunch programs at startup
-exec i3-sensible-terminal
+exec --no-startup-id i3-sensible-terminal
 exec keepassxc
 exec firefox
-exec syncthing --no-browser --gui-address="http://localhost:8384"
-exec ~/bin/keyset
-exec ~/.i3/i3-file-watch.sh
+exec --no-startup-id syncthing --no-browser --gui-address="http://localhost:8384"
+exec --no-startup-id ~/bin/keyset
+exec --no-startup-id ~/.i3/i3-file-watch.sh
 
 # Autolaunch tray applets at startup
-exec nm-applet
-exec blueman-applet
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
