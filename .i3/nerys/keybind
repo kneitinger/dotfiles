@@ -29,8 +29,8 @@ bindsym $mod+XF86MonBrightnessUp exec light -S 100
 
 # Mappings for moving current workspace to new display
 # Elevated|Left in current desk setup
-bindsym $mod+Ctrl+9 move workspace to output DisplayPort-4
+bindsym $mod+Ctrl+9 move workspace to output DisplayPort-3
 # Elevated|Right in current desk setup
-bindsym $mod+Ctrl+0 move workspace to output DisplayPort-3
+bindsym $mod+Ctrl+0 move workspace to output DisplayPort-4
 # Built in display
 bindsym $mod+Ctrl+o move workspace to output eDP1
