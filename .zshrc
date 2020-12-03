@@ -99,3 +99,5 @@ bindkey "^j" history-beginning-search-forward-end
 # Home/End move cursor to the beginning and end of the line, respectively
 bindkey  "$key[Home]" beginning-of-line
 bindkey  "$key[End]" end-of-line
+
+bindkey "\e." insert-last-word
