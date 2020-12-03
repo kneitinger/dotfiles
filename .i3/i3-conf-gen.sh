@@ -2,6 +2,16 @@
 
 set -e
 
+# In some cases, this script can run multiple times, creating a config that
+# is repeated once per invocation. Using mkdir as a lock, is sufficient to
+# get around this
+LOCKFILE=/tmp/i3-conf-gen.lock
+if ! mkdir $LOCKFILE 2>/dev/null; then
+    echo "i3-conf-gen is already running." >&2
+    exit 1
+fi
+trap 'rm -r $LOCKFILE; exit' INT TERM EXIT
+
 
 if [ -e "$HOME"/.i3/config ]; then
   mv "$HOME"/.i3/config "$HOME"/.i3/.config_backup
