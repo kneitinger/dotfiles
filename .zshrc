@@ -97,5 +97,5 @@ bindkey "^k" history-beginning-search-backward-end
 bindkey "^j" history-beginning-search-forward-end
 
 # Home/End move cursor to the beginning and end of the line, respectively
-bindkey  "^[[H" beginning-of-line
-bindkey  "^[[F" end-of-line
+bindkey  "$key[Home]" beginning-of-line
+bindkey  "$key[End]" end-of-line
