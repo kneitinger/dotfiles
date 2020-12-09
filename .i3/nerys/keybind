@@ -27,6 +27,9 @@ bindsym $mod+XF86MonBrightnessDown exec light -S 0.5
 bindsym XF86MonBrightnessUp exec light -A 3
 bindsym $mod+XF86MonBrightnessUp exec light -S 100
 
+# Add key to switch to laptop screen in case stuck in external layouts
+bindsym XF86Display exec autorandr -l default
+
 # Mappings for moving current workspace to new display
 # Elevated|Left in current desk setup
 bindsym $mod+Ctrl+9 move workspace to output DisplayPort-3
