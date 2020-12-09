@@ -29,9 +29,5 @@ for conf in "$HOME"/.i3/core/*; do
   fi
 done
 
-if notify-send -v > /dev/null 2>&1; then
-    notify-send "Rebuilding i3 config for $HOSTNAME" || true
-elif dunstify -? > /dev/null; then
-    dunstify "Rebuilding i3 config for $HOSTNAME"
-fi
+"$HOME"/bin/notify-wrapper "i3-conf-gen" "Rebuilding config for $HOSTNAME"
 echo "HOSTNAME is set to $HOSTNAME. All configs in the $HOSTNAME directory will be included"
