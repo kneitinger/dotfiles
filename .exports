@@ -32,3 +32,4 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 
 # Important.
 export ANSIBLE_COW_SELECTION=milk
+export BROSWER="firefox"
