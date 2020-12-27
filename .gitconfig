@@ -20,6 +20,7 @@
     s  = status
     st = stash
     sta = stash apply
+    adj-remote = "!~/bin/refactor-git-remotes"
 [rerere]
     enabled = true
     autoupdate = true

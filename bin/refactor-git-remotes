@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+origin=$(git remote -v get-url origin 2>/dev/null)
+[ -z "$origin" ] && echo "No remote called origin was located. Exiting." && exit 1
+origin_owner=$(echo "$origin" | sed 's/.*[:/]\(.*\)\/.*\.git/\1/')
+username=${GH_USERNAME:-kneitinger}
+
+if [ "$origin_owner" = "$username" ]; then
+  if [ $# -eq 0 ]; then
+    echo "You own origin, upstream owner's name must be provided. Exiting."
+    exit 1;
+  fi
+  upstream="$(echo "$origin" | sed "s/$username\//$1\//")"
+  echo "You own origin, setting upstream to $upstream"
+  git remote add upstream "$upstream"
+else
+  new_origin="$(echo "$origin" | sed "s/$origin_owner\//$username/")"
+  echo "You do not origin. Remapping:"
+  echo "  origin -> $new_origin"
+  echo "  upstream -> $origin"
+  git remote add upstream "$origin"
+  git remote set-url origin "$new_origin"
+fi
