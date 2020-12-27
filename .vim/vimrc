@@ -215,18 +215,16 @@ set matchtime=1     " Tenths of a second to show the match
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Filetype-Specific Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Force certain extensions to be recognized
-augroup filetype
-    au! BufRead,BufNewFile *.ll     set filetype=llvm
-    au! BufRead,BufNewFile *.fst    set filetype=faust
-    au! BufRead,BufNewFile *.dsp    set filetype=faust
-    au! BufRead,BufNewFile *.lib    set filetype=faust
-    au! BufRead,BufNewFile *.lhs    set textwidth=74
-    au! BufRead,BufNewFile *.lhs    set colorcolumn=76
-    au! BufRead,BufNewFile *.yml    set ts=2 shiftwidth=2
-augroup END
+augroup filetype_overrides
+    au!
+    " Force certain extensions to be recognized
+    au BufRead,BufNewFile *.fst,*.dsp,*.lib set filetype=faust
 
-autocmd FileType tex setlocal shiftwidth=2 tabstop=2
+    " 2 Space Indentation
+    au FileType
+        \ html,javascript,json,nix,php,sh,tex,vim,yaml,zsh
+        \ setlocal shiftwidth=2 tabstop=2
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Miscellaneous Settings
