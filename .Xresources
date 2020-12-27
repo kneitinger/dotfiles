@@ -16,8 +16,8 @@
 *.color3:      #dfb508
 *.color11:     #ffe90a
 ! blue
-*.color4:      #9d65ff
-*.color12:     #b78cff
+*.color4:      #b78cff
+*.color12:     #9d65ff
 ! magenta
 *.color5:      #fc6ea2
 *.color13:     #fda6c7

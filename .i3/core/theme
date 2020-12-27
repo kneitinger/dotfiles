@@ -34,8 +34,8 @@ set_from_resource  $color3       i3.color3       #dfb508
 set_from_resource  $color11      i3.color11      #ffe90a
 
 # blue
-set_from_resource  $color4       i3.color4       #9d65ff
-set_from_resource  $color12      i3.color12      #b78cff
+set_from_resource  $color4       i3.color4       #b78cff
+set_from_resource  $color12      i3.color12      #9d65ff
 
 # magenta
 set_from_resource  $color5       i3.color5       #fc6ea2
