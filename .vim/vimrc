@@ -206,7 +206,7 @@ set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
 set smarttab        " Be smart about auto tabbing
 
 set showmatch       " When a bracket is inserted, show the matching one
-set matchtime=1     " Tenths of a second to show the match
+set matchtime=2     " Tenths of a second to show the match
 
 "set textwidth=79    " Line auto-break column threshold
 
@@ -370,7 +370,7 @@ let g:scnvim_eval_flash_duration = 300
 let g:scnvim_eval_flash_repeats = 2
 let g:scnvim_scdoc = 1
 
-" coc.nvim 
+" coc.nvim
 set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
