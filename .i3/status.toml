@@ -1,0 +1,49 @@
+theme = "native"
+icons = "awesome5"
+
+[[block]]
+block = "custom"
+command = "echo keyset"
+interval = "once"
+on_click = "~/bin/keyset"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+clickable = false
+interval = 10
+
+[[block]]
+block = "cpu"
+interval = 4
+
+[[block]]
+block = "load"
+interval = 8
+format = "{1m}|{5m}|{15m}"
+
+[[block]]
+block = "net"
+interval = 5
+format = "{ssid}[{ip}]"
+on_click = "nm-connection-editor"
+
+[[block]]
+block = "backlight"
+step_width = 1
+
+[[block]]
+block = "battery"
+format = "{percentage}% {time} {power}W"
+interval = 13
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol"
+
+[[block]]
+block = "time"
+interval = 30
+format = "%a %d/%m %R"
+
