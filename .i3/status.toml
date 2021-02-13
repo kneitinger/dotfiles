@@ -45,5 +45,5 @@ on_click = "pavucontrol"
 [[block]]
 block = "time"
 interval = 30
-format = "%a %d/%m %R"
+format = "%a %m/%d %R"
 
