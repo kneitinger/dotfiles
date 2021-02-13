@@ -10,4 +10,5 @@ if [ -n "$LAYOUT" ]; then
     "$HOME/.screenlayout/$HOSTNAME/$LAYOUT"
 
     "$HOME"/bin/bg-apply
+    "$HOME"/bin/font-sizer-alacritty
 fi
