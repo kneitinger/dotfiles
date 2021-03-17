@@ -130,8 +130,8 @@ set $sysmenu "system:  [s]uspend [l]ock [r]estart [b]lank-screen [p]oweroff relo
 bindsym $mod+q mode $sysmenu
 mode $sysmenu {
     # restart i3 inplace (preserves your layout/session)
-    bindsym s exec ~/.i3/status_scripts/ambisleep; mode "default"
-    bindsym l exec i3lock -c 5a5376; mode "default"
+    bindsym s exec systemctl suspend; mode "default"
+    bindsym l exec loginctl lock-session; mode "default"
     bindsym r restart
     bindsym b exec "xset dpms force off"; mode "default"
     bindsym p exec systemctl shutdown
