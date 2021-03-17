@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#shellcheck disable=SC2230
+#shellcheck disable=SC2016,SC2230
 
 EDITOR=$(which nvim || which vim)
 SVN_EDITOR=$EDITOR
@@ -27,7 +27,6 @@ if [ "$(uname)" = 'Darwin' ]; then
 fi
 
 export FZF_DEFAULT_COMMAND='fd --type file'
-#export FZF_DEFAULT_OPTS=''
 FZF_HOME_DETECT='$([ "${PWD}" = "${HOME}" ] && echo "${HOME}" || echo ". ${HOME}")'
 FZF_HOME_TO_TILDE='sed s/${HOME//\//\\\/}/~/'
 export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT | $FZF_HOME_TO_TILDE"
