@@ -33,8 +33,8 @@ Plug 'mattesgroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'sirver/ultisnips'
-Plug 'w0rp/ale'
-let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-clangd', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
+Plug 'dense-analysis/ale'
+let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
