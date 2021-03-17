@@ -32,6 +32,7 @@ Plug 'majutsushi/tagbar'
 Plug 'mattesgroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
+Plug 'leissa/vim-acme'
 Plug 'sirver/ultisnips'
 Plug 'dense-analysis/ale'
 let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
@@ -219,6 +220,7 @@ augroup filetype_overrides
     au!
     " Force certain extensions to be recognized
     au BufRead,BufNewFile *.fst,*.dsp,*.lib set filetype=faust
+    au BufRead,BufNewFile *.asm set filetype=acme
 
     " 2 Space Indentation
     au FileType
