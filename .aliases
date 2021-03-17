@@ -114,6 +114,12 @@ ff () {
     fi
 }
 
+note () {
+  NOTE_DIR=${NOTE_DIR:-"$HOME/notes"} 
+  [ -d "$NOTE_DIR" ] || mkdir "$NOTE_DIR"
+  vim "$NOTE_DIR/${*// /_}"
+}
+
 # Cargo aliases
 alias cbd="cargo build"
 alias crd="cargo run"
