@@ -93,6 +93,40 @@ unfunction boldital color
 # Bindings
 #
 
+# create a zkbd compatible hash;
+# to add other keys to this hash, see: man 5 terminfo
+typeset -g -A key
+
+# terminfo array comes from zsh bundled module "terminfo"
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+key[Insert]="${terminfo[kich1]}"
+key[Backspace]="${terminfo[kbs]}"
+key[Delete]="${terminfo[kdch1]}"
+key[Up]="${terminfo[kcuu1]}"
+key[Down]="${terminfo[kcud1]}"
+key[Left]="${terminfo[kcub1]}"
+key[Right]="${terminfo[kcuf1]}"
+key[PageUp]="${terminfo[kpp]}"
+key[PageDown]="${terminfo[knp]}"
+key[Shift-Tab]="${terminfo[kcbt]}"
+key[Esc-Period]="\e."
+key[Ctrl-J]="^j"
+key[Ctrl-K]="^k"
+key[Alt-H]="^[h"
+key[Alt-L]="^[l"
+key[Alt-U]="^[u"
+key[Alt-Shift-H]="^[H"
+key[Alt-Shift-L]="^[L"
+
+
+safe_bind () {
+  # $1 -> key (in $key array), such as "Delete"
+  # $2 action, such as history-search-end
+  [[ -n "${key[$1]}" ]] \
+    && bindkey -- "${key[$1]}" "$2" \
+    || echo "No value set for \${key[$1]}. Not mapping $2"
+}
 
 # Up/Ctrl-k and Down/Ctrl-j search through history beginning with what
 # has already been typed.  The -end variant means the cursor is placed at
@@ -100,13 +134,34 @@ unfunction boldital color
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "$key[Up]" history-beginning-search-backward-end
-bindkey "$key[Down]" history-beginning-search-forward-end
-bindkey "^k" history-beginning-search-backward-end
-bindkey "^j" history-beginning-search-forward-end
+safe_bind Up history-beginning-search-backward-end
+safe_bind Down history-beginning-search-forward-end
+safe_bind Ctrl-K history-beginning-search-backward-end
+safe_bind Ctrl-J history-beginning-search-forward-end
 
 # Home/End move cursor to the beginning and end of the line, respectively
-bindkey  "$key[Home]" beginning-of-line
-bindkey  "$key[End]" end-of-line
+safe_bind Home beginning-of-line
+safe_bind End end-of-line
+safe_bind Alt-H backward-word
+safe_bind Alt-L forward-word
+safe_bind Alt-Shift-H backward-kill-word
+safe_bind Alt-Shift-L kill-word
 
-bindkey "\e." insert-last-word
+safe_bind Alt-U undo
+
+# esc then period, for insertion of last word
+safe_bind Esc-Period insert-last-word
+
+safe_bind Delete delete-char
+
+unfunction safe_bind
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+	autoload -Uz add-zle-hook-widget
+	function zle_application_mode_start { echoti smkx }
+	function zle_application_mode_stop { echoti rmkx }
+	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+fi
