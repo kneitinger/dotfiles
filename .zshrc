@@ -21,6 +21,8 @@ direnv version > /dev/null && eval "$(direnv hook zsh)"
 #
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle :compinstall filename '/home/leaf/.zshrc'
+# Remove need to manually execute `rehash` after changes to $PATH
+zstyle ':completion:*' rehash true
 
 autoload -Uz compinit
 compinit
