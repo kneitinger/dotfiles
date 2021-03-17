@@ -27,6 +27,10 @@ zstyle ':completion:*' rehash true
 autoload -Uz compinit
 compinit
 
+for f in key-bindings completion; do
+  [ -f "/usr/share/fzf/$f.zsh" ] && source "/usr/share/fzf/$f.zsh"
+done
+
 #
 # History settings
 #
