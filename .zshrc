@@ -93,8 +93,6 @@ unfunction boldital color
 # Bindings
 #
 
-# vim mode
-bindkey -v
 
 # Up/Ctrl-k and Down/Ctrl-j search through history beginning with what
 # has already been typed.  The -end variant means the cursor is placed at
