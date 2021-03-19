@@ -3,28 +3,43 @@
 # If xcape is already running, kill it
 pgrep xcape > /dev/null && killall xcape
 
+# Initialize array that holds the xcape mapping expressions
+xcape_exprs=()
+
 # Map CapsLock->ctrl, ctrl-tap->Esc
 setxkbmap -option ctrl:nocaps
+xcape_exprs+=( "Control_L=Escape" )
 
 # Ergonomic tap vs. hold keybindings
-xcape -e 'Control_L=Escape' -t 175
-xcape -e 'Alt_L=parenleft' -t 130
-xcape -e 'Alt_R=parenright' -t 130
-xcape -e 'Super_L=Shift_L|bracketleft' -t 130
-if [ "$HOSTNAME" = "janeway" ]; then
-    xcape -e 'Print=Shift_R|bracketright' -t 130
-else
-    xcape -e 'Menu=Shift_R|bracketright' -t 130
-fi
+xcape_exprs+=( "Shift_L=parenleft" )
+xcape_exprs+=( "Shift_R=parenright" )
+xcape_exprs+=( "Control_L=Escape" )
+xcape_exprs+=( "Alt_L=bracketleft" )
+xcape_exprs+=( "Alt_R=bracketright" )
+xcape_exprs+=( "Super_L=Shift_L|bracketleft" )
+# Older ThinkPads have Menu between Alt_R and Control_R, newer ones PrintScreen
+xcape_exprs+=( "Print=Shift_R|bracketright" )
+xcape_exprs+=( "Menu=Shift_R|bracketright" )
 
-# Map a spacebar hold to act as the i3 modifier
-xmodmap -e "clear mod3"
-xmodmap -e "clear mod4"
-xmodmap -e "add mod3 =  Hyper_L"
-xmodmap -e "add mod4 = Super_L Super_R"
-
+# Map a spacebar hold to act as the i3 modifier (Mod3)
+#
+# 1. Set space's former keycode to map to $spare_mod
+# 2. Remove $spare_mod from default mapping (note: mod4 is specific to Hyper_L)
+# 3. Set mod3 (which is unused by default) to map to $spare_mod
+# 4. Map space to an unused keycode so that it can be later used
+# 5. Create xcape mapping of Hyper_L (now spacebar) tap -> space
+# See: https://github.com/alols/xcape#examples
+# Todo: Create a way to nicely toggle this, as some games or applications
+#       require spacebar holding. One clean way to do this could perhaps be to
+#       to map Super to Hyper_L temporarily?
 spare_mod="Hyper_L"
 xmodmap -e "keycode 65 = $spare_mod"
-#xmodmap -e "add Hyper_L = $spare_mod"
+xmodmap -e "remove mod4 = $spare_mod"
+xmodmap -e "add mod3 = $spare_mod"
 xmodmap -e "keycode any = space"
-xcape -e "$spare_mod=space"
+xcape_exprs+=( "$spare_mod=space" )
+
+# Combine expressions array into semicolon-delimited string
+printf -v xcape_expr_arg '%s;' "${xcape_exprs[@]}"
+# Call xcape (and remove trailinig semicolon)
+xcape -e "${xcape_expr_arg%;}"
