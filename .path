@@ -2,8 +2,7 @@
 
 # Keeps PATH tidy by checking if entries are present before adding them
 
-export GOPATH=$HOME/go
-export GOBIN=$HOME/go/bin
+export GOPATH=$HOME/r/go
 
 # Language specific paths
 paths=("$HOME/.cargo/bin" "$GOBIN")
