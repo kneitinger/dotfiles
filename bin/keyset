@@ -14,12 +14,12 @@ xcape_exprs+=( "Control_L=Escape" )
 xcape_exprs+=( "Shift_L=parenleft" )
 xcape_exprs+=( "Shift_R=parenright" )
 xcape_exprs+=( "Control_L=Escape" )
-xcape_exprs+=( "Alt_L=bracketleft" )
-xcape_exprs+=( "Alt_R=bracketright" )
-xcape_exprs+=( "Super_L=Shift_L|bracketleft" )
+xcape_exprs+=( "Alt_L=Shift_L|bracketleft" )
+xcape_exprs+=( "Alt_R=Shift_R|bracketright" )
+xcape_exprs+=( "Super_L=bracketleft" )
 # Older ThinkPads have Menu between Alt_R and Control_R, newer ones PrintScreen
-xcape_exprs+=( "Print=Shift_R|bracketright" )
-xcape_exprs+=( "Menu=Shift_R|bracketright" )
+xcape_exprs+=( "Print=bracketright" )
+xcape_exprs+=( "Menu=bracketright" )
 
 # Map a spacebar hold to act as the i3 modifier (Mod3)
 #
