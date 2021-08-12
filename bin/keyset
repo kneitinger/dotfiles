@@ -40,5 +40,5 @@ xcape_exprs+=( "$spare_mod=space" )
 
 # Combine expressions array into semicolon-delimited string
 printf -v xcape_expr_arg '%s;' "${xcape_exprs[@]}"
-# Call xcape (and remove trailinig semicolon)
+# Call xcape (and remove trailing semicolon)
 xcape -e "${xcape_expr_arg%;}"
