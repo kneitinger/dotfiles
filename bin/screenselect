@@ -11,4 +11,5 @@ if [ -n "$LAYOUT" ]; then
 
     "$HOME"/bin/bg-apply
     "$HOME"/bin/font-sizer-alacritty
+    "$HOME"/bin/keyset
 fi
