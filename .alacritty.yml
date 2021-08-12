@@ -167,11 +167,11 @@ import:
   # Symlinked to one of many files, set per monitor height
   - /home/leaf/.config/alacritty/font_size.yml
 
-# Colors (Tomorrow Night)
+# Colorscheme
 colors:
   # Default colors
   primary:
-    background:  '#595176'
+    background:  '#5a5376'
     foreground:  '#f6f6ef'
 
     # Bright and dim foreground colors
