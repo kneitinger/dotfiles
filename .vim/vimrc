@@ -35,6 +35,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'leissa/vim-acme'
 Plug 'sirver/ultisnips'
 Plug 'dense-analysis/ale'
+Plug 'sirtaj/vim-openscad'
 let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
 call plug#end()
 
