@@ -29,8 +29,8 @@ fi
 export FZF_DEFAULT_COMMAND='fd --type file'
 FZF_HOME_DETECT='$([ "${PWD}" = "${HOME}" ] && echo "${HOME}" || echo ". ${HOME}")'
 FZF_HOME_TO_TILDE='sed s/${HOME//\//\\\/}/~/'
-export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT | $FZF_HOME_TO_TILDE"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME | $FZF_HOME_TO_TILDE"
+export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME"
 export FZF_CTRL_T_OPTS="--preview='head -n\$FZF_PREVIEW_LINES {}'"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
