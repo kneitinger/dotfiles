@@ -64,7 +64,7 @@ exec --no-startup-id redshift-gtk
 # xautolock implements the timeout behavior by telling xss-lock to lock after 20 mins (via loginctl),
 # and suspending 5 minutes *after* that. If mouse is in any bottom corner, timeouts will be ignored.
 exec --no-startup-id xss-lock -- i3lock -n -t -i ~/.bg.png
-exec --no-startup-id xautolock -time 20 -locker "loginctl lock-session" -killtime 5 -killer "systemctl suspend" -corners "00--"
+exec --no-startup-id xautolock -time 17 -locker "systemctl suspend"  -corners "00--"
 
 # Autolaunch tray applets at startup
 exec --no-startup-id nm-applet
