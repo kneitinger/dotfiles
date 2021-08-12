@@ -13,7 +13,6 @@ xcape_exprs+=( "Control_L=Escape" )
 # Ergonomic tap vs. hold keybindings
 xcape_exprs+=( "Shift_L=parenleft" )
 xcape_exprs+=( "Shift_R=parenright" )
-xcape_exprs+=( "Control_L=Escape" )
 xcape_exprs+=( "Alt_L=Shift_L|bracketleft" )
 xcape_exprs+=( "Alt_R=Shift_R|bracketright" )
 xcape_exprs+=( "Super_L=bracketleft" )
