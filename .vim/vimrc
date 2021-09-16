@@ -33,7 +33,6 @@ Plug 'mattesgroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'leissa/vim-acme'
-Plug 'sirver/ultisnips'
 Plug 'dense-analysis/ale'
 Plug 'sirtaj/vim-openscad'
 let g:coc_global_extensions = ['coc-snippets', 'coc-rls', 'coc-explorer', 'coc-go', 'coc-python', 'coc-sh', 'coc-vimlsp']
@@ -321,12 +320,6 @@ nnoremap <A-l> <C-w>l
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" UltiSnips
-let g:UltiSnipsSnippetDirectories=['UtilSnips', 'scnvim-data']
-let g:UltiSnipsExpandTrigger="<c-\\>"
-let g:UltiSnipsJumpForwardTrigger='<c-j>'
-let g:UltiSnipsJumpBackwardTrigger='<c-k>'
-
 if !empty(glob($HOME.'/.vim/.venv'))
     let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
 endif
@@ -433,7 +426,7 @@ endif
 
 
 " coc-snippets
-let g:coc_snippet_next = '<tab>'
+set runtimepath+=~/.vim/vim-snippets,~/.vim/UltiSnips
 
 " coc-explorer
 noremap <space>e :CocCommand explorer --no-toggle<CR>
