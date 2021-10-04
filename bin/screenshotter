@@ -5,7 +5,7 @@ BASE_PATH=${1:-$HOME/screenshots}
 
 TMP_PATH="$BASE_PATH/$(date +"%F_%H-%M-%S").png"
 
-scrot -s "$TMP_PATH" || exit 1
+maim -s "$TMP_PATH" || exit 1
 
 FILENAME="$(zenity --entry \
                    --text="Where would you like to save the file?" \
