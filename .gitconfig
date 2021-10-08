@@ -19,7 +19,6 @@
     rh = reset HEAD
     s  = status
     st = stash
-    adj-remote = "!~/bin/refactor-git-remotes"
     fu = fetch upstream
 [rerere]
     enabled = true
