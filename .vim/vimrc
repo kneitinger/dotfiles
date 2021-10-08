@@ -94,8 +94,6 @@ set statusline=%{HasPaste()}[%n][%<%F]%m%r%=
 " status: spacer [filetype]['Col:'column]['Line:' n/N:percentage through file]
 set statusline+=%y[Col:%c][Line:%l/%L:%p%%]
 
-set tabline=%!TabLine()
-
 set number          " Show current line number.
 set relativenumber  " All other line numbers are distance from current line
 set cursorline      " Highlight current line
@@ -425,3 +423,6 @@ set runtimepath+=~/.vim/vim-snippets,~/.vim/UltiSnips
 " coc-explorer
 noremap <space>e :CocCommand explorer --no-toggle<CR>
 noremap <space>E :CocCommand explorer<CR>
+
+" tagbar
+nmap <leader>tb :TagbarToggle<CR>
