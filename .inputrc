@@ -12,8 +12,6 @@ set skip-completed-text on
 set completion-query-items 0
 set page-completions off
 
-set bell-style visual
-
 # Always browse through history based on partial command match
 # Ctrl-k, Ctrl-j
 "\C-k": history-search-backward
@@ -21,6 +19,3 @@ set bell-style visual
 # Up arrow, Down arrow
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-
-
-
