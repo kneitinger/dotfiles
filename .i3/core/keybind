@@ -22,7 +22,8 @@ bindsym $mod+t [con_mark="stopwatch"] scratchpad show
 bindsym $mod+y [con_mark="pip"] scratchpad show
 
 # Rofi dmenu replacement bindings
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Shift+d exec rofi -show run
 bindsym $mod+o exec ~/bin/mimelaunch
 bindsym $mod+x exec rofi -show window
 bindsym $mod+s exec ~/bin/screenselect
