@@ -220,7 +220,7 @@ augroup filetype_overrides
 
     " 2 Space Indentation
     au FileType
-        \ html,javascript,json,nix,php,sh,tex,vim,yaml,zsh
+        \ html,javascript,json,nix,openscad,php,sh,tex,vim,yaml,zsh
         \ setlocal shiftwidth=2 tabstop=2
 augroup END
 
