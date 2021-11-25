@@ -45,6 +45,10 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
+# add a flag and keybind for hopping back to a window of interest
+bindsym $mod+z mark --toggle "topic"
+bindsym $mod+Tab [con_mark="topic"] focus
+
 # The middle button over a titlebar kills the window
 bindsym button2 kill
 
@@ -110,9 +114,6 @@ bindsym $mod+0 workspace $ws0
 
 bindsym $mod+Ctrl+h workspace prev
 bindsym $mod+Ctrl+l workspace next
-
-# Jump to urgent workspace
-bindsym $mod+Tab [urgent=latest] focus
 
 # Move focused workspace to another display
 bindsym $mod+Shift+Left move workspace to output left
