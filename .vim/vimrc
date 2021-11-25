@@ -330,6 +330,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <leader>t :Tags<CR>
+nnoremap <leader>m :Marks<CR>
 nnoremap <leader>wt :call fzf#vim#tags(expand('<cword>'))<CR>
 
 " Redefine Rg command with {'options': '--delimiter : --nth 4..'} to omit
