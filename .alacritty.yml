@@ -46,8 +46,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 1
-    y: 1
+    x: 4
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -288,7 +288,7 @@ colors:
     red:     '#fd8b89'
     green:   '#6dff6f'
     yellow:  '#ffe90a'
-    blue:    '#9d65ff'
+    blue:    '#dd95ff'
     magenta: '#fda6c7'
     cyan:    '#b7ffd7'
     white:   '#ffffff'
@@ -362,7 +362,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.85
+background_opacity: 0.60
 
 #selection:
   # This string contains all characters that are used as separators for
