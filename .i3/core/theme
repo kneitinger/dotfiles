@@ -12,6 +12,11 @@ exec --no-startup-id feh --bg-scale ~/.bg.jpg
 new_window pixel 0
 new_float pixel 0
 
+# Window title format.  Pads with a space to account for rounded corners
+for_window [class=".*"] title_format " %title "
+
+title_align center
+
 # Colorscheme definitions
 set_from_resource  $foreground   i3.foreground   #f6f6ef
 set_from_resource  $background   i3.background   #5a5376
