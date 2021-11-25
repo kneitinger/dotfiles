@@ -62,8 +62,12 @@ client.focused           $color4  $color4  $color0  $color5
 client.unfocused         $foregroundfaint  $foregroundfaint  $color0  $color4
 client.focused_inactive  $color4faint  $color4faint  $color0  $color4
 
+gaps inner 12
+
 # i3bar configuration
 bar {
+    # height is currently an i3-gaps specific setting
+    height 26
     position top
     mode dock
     hidden_state hide
