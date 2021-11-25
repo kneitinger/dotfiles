@@ -63,6 +63,8 @@ bar {
 
     modifier $alt
 
+    workspace_min_width 35
+
     # Don't show #s on workspace labels. Looks pleasant & retains functionality
     strip_workspace_numbers yes
 
