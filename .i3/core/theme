@@ -16,6 +16,7 @@ new_float pixel 0
 set_from_resource  $foreground   i3.foreground   #f6f6ef
 set_from_resource  $background   i3.background   #5a5376
 set_from_resource  $cursorColor  i3.cursorColor  #f6f6ef
+set                $foregroundfaint  #e0e0d9
 
 # black
 set_from_resource  $color0       i3.color0       #000000
@@ -36,6 +37,7 @@ set_from_resource  $color11      i3.color11      #ffe90a
 # blue
 set_from_resource  $color4       i3.color4       #b78cff
 set_from_resource  $color12      i3.color12      #9d65ff
+set                $color4faint  #d7acef
 
 # magenta
 set_from_resource  $color5       i3.color5       #fc6ea2
@@ -51,9 +53,9 @@ set_from_resource  $color15      i3.color15      #ffffff
 
 # Color scheme
 # class                  border   backgr   text         indicator
-client.focused           $color5  $color5  $foreground  $color5
-client.unfocused         $color4  $color4  $foreground  $color4
-client.focused_inactive  $color4  $color4  $foreground  $color4
+client.focused           $color4  $color4  $color0  $color5
+client.unfocused         $foregroundfaint  $foregroundfaint  $color0  $color4
+client.focused_inactive  $color4faint  $color4faint  $color0  $color4
 
 # i3bar configuration
 bar {
@@ -73,9 +75,9 @@ bar {
     tray_output primary
 
     colors {
-        background $color8
-        statusline $color6
-        separator  $color8
+        background #6a6376
+        statusline #ffffff
+        separator #6a6376
 
         # Property          border    backgr   text
         focused_workspace   $color6   $color8  $foreground
