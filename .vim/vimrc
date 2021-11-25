@@ -98,7 +98,7 @@ set number          " Show current line number.
 set relativenumber  " All other line numbers are distance from current line
 set cursorline      " Highlight current line
 set lazyredraw      " Don't redraw screen until macro completes
-set scrolloff=2     " Pad scrolls with 2 lines of context
+set scrolloff=0     " Number of lines of context to pad when scrolling
 set wildmenu        " Show bar of command autocompletes
 set wildignore=*.o,*.out,*~,*.pyc,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
