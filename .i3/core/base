@@ -32,7 +32,7 @@ for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
 
 # Firefox PiP windows should be sticky, and have a border
 # that is large enough to make simple resizing easy.
-for_window [title="Picture-in-Picture"] sticky enable, border pixel 5, resize set width 20 ppt height 20 ppt, \
+for_window [title="Picture-in-Picture"] sticky enable, resize set width 20 ppt height 20 ppt, \
     mark "pip", move scratchpad, [con_mark="pip"] scratchpad show
 
 # Mark windows for named scratchpads
