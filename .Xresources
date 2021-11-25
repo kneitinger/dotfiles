@@ -57,5 +57,6 @@ Xft.hinting:   true
 Xft.hintstyle: hintslight
 Xft.autohint:  true
 Xft.lcdfilter: lcddefault
+Xft.dpi: 96
 
 Xcursor.size: 32
