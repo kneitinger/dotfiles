@@ -11,7 +11,9 @@ fi
 
 # Delegate most setting/daemon commands to .xprofile for flexibility around
 # using startx or a display manager
+# shellcheck disable=SC1091
 [ -f /etc/xprofile ] && . /etc/xprofile
+# shellcheck disable=SC1090
 [ -f ~/.xprofile ] && . ~/.xprofile
 
 
