@@ -7,6 +7,4 @@
 
 PIC="/tmp/$RANDOM.png"
 
-scrot -s $PIC && feh --title feh:$PIC $PIC &
-
-rm $PIC
+maim -B -s $PIC && feh --title feh:$PIC $PIC && rm $PIC &
