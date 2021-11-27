@@ -60,7 +60,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Search ctermbg=NONE ctermfg=10 cterm=NONE guibg=NONE guifg=#6dff6f gui=NONE
     hi Directory ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi MatchParen ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
-    hi SpellBad ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE guisp=#fd8b89
+    hi SpellBad ctermbg=NONE ctermfg=15 cterm=underline guibg=NONE guifg=#ffffff gui=underline guisp=#fd8b89
     hi SpellCap ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE guisp=#b78cff
     hi SpellLocal ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE guisp=#fda6c7
     hi SpellRare ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE guisp=#b7ffd7
@@ -78,10 +78,10 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi StatusLineTermNC ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi rustFuncName ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
     hi rustFuncCall ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
-    " CoC Colors
-    hi PMenu ctermbg=4 ctermfg=white cterm=NONE
-    hi CocErrorFloat ctermbg=4 ctermfg=9 cterm=NONE
-    hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE
+    hi rustCommentLineDoc ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
+    hi PMenu ctermbg=4 ctermfg=15 cterm=NONE guibg=#9d65ff guifg=#ffffff gui=NONE
+    hi CocErrorFloat ctermbg=8 ctermfg=13 cterm=NONE guibg=#555555 guifg=#fda6c7 gui=NONE
+    hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE guibg=#9d65ff guifg=#ffe90a gui=NONE
 
     let g:terminal_ansi_colors = [
         \ '#000000',
@@ -153,7 +153,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Search ctermbg=NONE ctermfg=green cterm=NONE
     hi Directory ctermbg=NONE ctermfg=white cterm=NONE
     hi MatchParen ctermbg=NONE ctermfg=white cterm=NONE
-    hi SpellBad ctermbg=NONE ctermfg=white cterm=NONE
+    hi SpellBad ctermbg=NONE ctermfg=white cterm=underline
     hi SpellCap ctermbg=NONE ctermfg=white cterm=NONE
     hi SpellLocal ctermbg=NONE ctermfg=white cterm=NONE
     hi SpellRare ctermbg=NONE ctermfg=white cterm=NONE
@@ -171,11 +171,10 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi StatusLineTermNC ctermbg=NONE ctermfg=white cterm=NONE
     hi rustFuncName ctermbg=NONE ctermfg=cyan cterm=italic
     hi rustFuncCall ctermbg=NONE ctermfg=cyan cterm=italic
-    " CoC Colors
-    hi PMenu ctermbg=4 ctermfg=white cterm=NONE
-    hi CocErrorFloat ctermbg=4 ctermfg=9 cterm=NONE
-    hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE
-
+    hi rustCommentLineDoc ctermbg=NONE ctermfg=cyan cterm=italic
+    hi PMenu ctermbg=darkblue ctermfg=white cterm=NONE
+    hi CocErrorFloat ctermbg=darkgray ctermfg=magenta cterm=NONE
+    hi CocWarningFloat ctermbg=darkblue ctermfg=yellow cterm=NONE
 endif
 
 let links = [
@@ -190,5 +189,4 @@ augroup fairlyfloss
 augroup END
 
 " Generated with RNB (https://gist.github.com/romainl/5cd2f4ec222805f49eca)
-
 
