@@ -10,10 +10,6 @@ print_header() {
     echo -e "${BLD}*** $1 ***${RST}"
 }
 
-on_vagrant () {
-    [ -d /vagrant ]
-}
-
 configure_i3 () {
     print_header "Installing i3 files and compiling config"
 
