@@ -66,6 +66,7 @@ color () {
     printf "%%F{$1}%s%%f" "$text"
 }
 
+# shellcheck disable=SC2016
 precmd () { print -n '\e]2;$TITLE\a'; }
 title() { export TITLE="$*"; }
 
@@ -177,9 +178,7 @@ function xterm_title_preexec () {
 	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
 }
 
-# shellcheck disable=SC1009,SC1027,SC1036,SC1072,SC1073
-if [[ "$TERM" == (Eterm*|alacritty*|aterm*|gnome*|konsole*|kterm*|putty*|rxvt*|screen*|tmux*|xterm*) ]]; then
+if [[ "$TERM" == alacritty* ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
-
