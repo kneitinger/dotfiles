@@ -28,28 +28,6 @@
 *.color7:      #bbbbbb
 *.color15:     #ffffff
 
-! Rofi colors
-rofi.color-enabled: true
-rofi.color-normal:  #555555,#f6f6ef,#555555,#b78cff,#f6f6ef
-rofi.color-active:  #555555,#70f7aa,#555555,#555555,#70f7aa
-rofi.color-window:  #555555,#70f7aa
-
-! Rofi appearance
-rofi.font:            OperatorMonoMedium Italic 10
-!rofi.font:           FantasqueSansMono 10
-rofi.separator-style: solid
-rofi.padding:         3
-rofi.location:        2
-rofi.hide-scrollbar:  true
-rofi.width:           50
-rofi.lines:           15
-rofi.columns:         1
-
-! Rofi mechanics
-rofi.matching:       fuzzy
-rofi.sort:           true
-rofi.sorting_method: fzf
-
 ! Xorg font appearance
 Xft.antialias: true
 Xft.rgba:      rgba
