@@ -24,6 +24,13 @@ zstyle :compinstall filename '/home/leaf/.zshrc'
 # Remove need to manually execute `rehash` after changes to $PATH
 zstyle ':completion:*' rehash true
 
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
+
 autoload -Uz compinit
 compinit
 
