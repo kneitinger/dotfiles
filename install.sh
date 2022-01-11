@@ -59,8 +59,8 @@ configure_vim () {
 
 symlink_files () {
     print_header "Copying Files"
-    ALL_FILE_EXCLUDES=".git .gitignore .config .pre-commit-config.yaml"
-    MAC_FILE_EXCLUDES=".Xresources .fonts.conf .i3 .screenlayout .xinitrc .xmodmap*"
+    ALL_FFILE_EXCLUDES=".git .gitignore .config .pre-commit-config.yaml"
+    MAC_FILE_EXCLUDES=".Xresources .alacritty.yml .fonts.conf .i3 .screenlayout .xinitrc .xmodmap*"
     LINUX_FILE_EXCLUDES=""
     FREEBSD_FILE_EXCLUDES=""
 
@@ -88,11 +88,13 @@ symlink_files () {
         ln -sfn "$file" "$HOME/$(basename "$file")"
     done
 
-    FILES=$(find "$PWD/.config" -maxdepth 1 -mindepth 1)
-    for file in $FILES; do
-        echo "$file -> $HOME/.config/$(basename "$file")"
-        ln -sfn "$file" "$HOME/.config/$(basename "$file")"
-    done
+    if [[ "$(uname)" != "Darwin" ]]; then
+        FILES=$(find "$PWD/.config" -maxdepth 1 -mindepth 1)
+        for file in $FILES; do
+            echo "$file -> $HOME/.config/$(basename "$file")"
+            ln -sfn "$file" "$HOME/.config/$(basename "$file")"
+        done
+    fi
 }
 
 symlink_files
