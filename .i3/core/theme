@@ -18,43 +18,43 @@ for_window [class=".*"] title_format " %title "
 title_align center
 
 # Colorscheme definitions
-set_from_resource  $foreground   i3.foreground   #f6f6ef
-set_from_resource  $background   i3.background   #5a5376
-set_from_resource  $cursorColor  i3.cursorColor  #f6f6ef
-set                $foregroundfaint  #e0e0d9
+set_from_resource  $fg      i3.foreground   #f6f6ef
+set_from_resource  $bg      i3.background   #5a5376
+set_from_resource  $colcurs i3.cursorColor  #f6f6ef
+set                $fgdim   #e0e0d9
 
 # black
-set_from_resource  $color0       i3.color0       #000000
-set_from_resource  $color8       i3.color8       #555555
+set_from_resource  $col0    i3.color0   #000000
+set_from_resource  $col8    i3.color8   #555555
 
 # red
-set_from_resource  $color1       i3.color1       #eb5d5c
-set_from_resource  $color9       i3.color9       #fd8b89
+set_from_resource  $col1    i3.color1   #eb5d5c
+set_from_resource  $col9    i3.color9   #fd8b89
 
 # green
-set_from_resource  $color2       i3.color2       #5fe861
-set_from_resource  $color10      i3.color10      #6dff6f
+set_from_resource  $col2    i3.color2   #5fe861
+set_from_resource  $col10   i3.color10  #6dff6f
 
 # yellow
-set_from_resource  $color3       i3.color3       #dfb508
-set_from_resource  $color11      i3.color11      #ffe90a
+set_from_resource  $col3    i3.color3   #dfb508
+set_from_resource  $col11   i3.color11  #ffe90a
 
 # blue
-set_from_resource  $color4       i3.color4       #b78cff
-set_from_resource  $color12      i3.color12      #9d65ff
-set                $color4faint  #d7acef
+set_from_resource  $col4    i3.color4   #b78cff
+set_from_resource  $col12   i3.color12  #9d65ff
+set                $col4dim #d7acef
 
 # magenta
-set_from_resource  $color5       i3.color5       #fc6ea2
-set_from_resource  $color13      i3.color13      #fda6c7
+set_from_resource  $col5    i3.color5   #fc6ea2
+set_from_resource  $col13   i3.color13  #fda6c7
 
 # cyan
-set_from_resource  $color6       i3.color6       #70f7aa
-set_from_resource  $color14      i3.color14      #b7ffd7
+set_from_resource  $col6    i3.color6   #70f7aa
+set_from_resource  $col14   i3.color14  #b7ffd7
 
 # white
-set_from_resource  $color7       i3.color7       #bbbbbb
-set_from_resource  $color15      i3.color15      #ffffff
+set_from_resource  $col7    i3.color7   #bbbbbb
+set_from_resource  $col15   i3.color15  #ffffff
 
 # Color scheme
 # class                  border   backgr   text         indicator
@@ -86,13 +86,13 @@ bar {
     colors {
         background #6a6376
         statusline #ffffff
-        separator #6a6376
+        separator  #6a6376
 
-        # Property          border    backgr   text
-        focused_workspace   $color6   $color8  $foreground
-        active_workspace    $color11  $color8  $foreground
-        inactive_workspace  $color5   $color8  $foreground
-        urgent_workspace    $color1   $color8  $color1
-        binding_mode        $color11  $color8  $foreground
+        # Property          border  backgr text
+        focused_workspace   $col6   $col8  $fg
+        active_workspace    $col11  $col8  $fg
+        inactive_workspace  $col5   $col8  $fg
+        urgent_workspace    $col1   $col8  $col1
+        binding_mode        $col11  $col8  $fg
     }
 }
