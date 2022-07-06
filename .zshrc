@@ -175,6 +175,7 @@ function xterm_title_precmd () {
 }
 
 function xterm_title_preexec () {
+  # shellcheck disable=SC2296
 	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
 }
 
@@ -182,3 +183,8 @@ if [[ "$TERM" == alacritty* ]]; then
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
+
+
+# Begin: PlatformIO Core completion support
+eval "$(_PIO_COMPLETE=zsh_source pio)"
+# End: PlatformIO Core completion support

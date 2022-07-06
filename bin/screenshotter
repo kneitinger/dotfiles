@@ -13,9 +13,9 @@ FILENAME="$(zenity --entry \
 
 # If zenity prompt was cancelled, just use tmp path
 if [ $? -eq 1 ]; then
-    exit 
+    exit
 fi
-    
+
 # Delete tmp screenshot if filename is set to "rm"
 if [ "$FILENAME" = "rm" ]; then
     rm "$TMP_PATH"

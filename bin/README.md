@@ -43,4 +43,3 @@ image in a minimal view.  Good for quick temporary graphical references
 * `pauseyoutube`: Locates a window title containing "Youtube", moves the cursor
   to the center of the window, left-clicks, and restores your mouse to it's
 initial position
-

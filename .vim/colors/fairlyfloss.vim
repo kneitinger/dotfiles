@@ -189,4 +189,3 @@ augroup fairlyfloss
 augroup END
 
 " Generated with RNB (https://gist.github.com/romainl/5cd2f4ec222805f49eca)
-

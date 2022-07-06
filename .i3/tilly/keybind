@@ -6,7 +6,7 @@
 # [ F7  -> Display     ] [ F8  -> Wifi (HW)   ]
 # [ F9  -> Messaging*  ] [ F10 -> Start Call* ]
 # [ F11 -> End Call*   ] [ F12 -> Favorites   ]
-# 
+#
 # * not recognized by xev
 #
 ################################################################################

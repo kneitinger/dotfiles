@@ -115,7 +115,7 @@ ff () {
 }
 
 note () {
-  NOTE_DIR=${NOTE_DIR:-"$HOME/notes"} 
+  NOTE_DIR=${NOTE_DIR:-"$HOME/notes"}
   [ -d "$NOTE_DIR" ] || mkdir "$NOTE_DIR"
   vim "$NOTE_DIR/${*// /_}"
 }

@@ -417,7 +417,6 @@ else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-
 " coc-snippets
 set runtimepath+=~/.vim/vim-snippets,~/.vim/UltiSnips
 

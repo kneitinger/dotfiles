@@ -59,7 +59,7 @@ configure_vim () {
 
 symlink_files () {
     print_header "Copying Files"
-    ALL_FILE_EXCLUDES=".git .gitignore .config"
+    ALL_FILE_EXCLUDES=".git .gitignore .config .pre-commit-config.yaml"
     MAC_FILE_EXCLUDES=".Xresources .fonts.conf .i3 .screenlayout .xinitrc .xmodmap*"
     LINUX_FILE_EXCLUDES=""
     FREEBSD_FILE_EXCLUDES=""
