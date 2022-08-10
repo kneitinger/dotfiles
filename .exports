@@ -18,7 +18,7 @@ export PAGER=less
 if [ "$(uname)" = 'FreeBSD' ]; then
     export CCACHE_DIR="$HOME/.ccache"
     export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-elif [ -r "$HOME/.dircolors" ]; then
+  elif [ -r "$HOME/.dircolors" -a "$(uname)" != "Darwin" ]; then
     eval "$(dircolors -b "$HOME/.dircolors")"
 fi
 
