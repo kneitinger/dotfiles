@@ -53,7 +53,7 @@ case $SCREEN_HEIGHT in
     FONT_SIZE="11.0"
     ;;
   1440)
-    FONT_SIZE="11.0"
+    FONT_SIZE="10.0"
     ;;
   *)
     FONT_SIZE="11.0"
