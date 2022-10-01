@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Older ThinkPads have Menu between Alt_R and Control_R, newer ones PrintScreen
+RIGHT_BRACKET_EXPR="Print=bracketright"
+if [ $# = 1 ] && [ "$1" = "--menu-bracket" ]; then
+  RIGHT_BRACKET_EXPR="Menu=bracketright"
+fi
+
 # If xcape is already running, kill it
 pgrep xcape > /dev/null && killall xcape
 
@@ -16,9 +22,7 @@ xcape_exprs+=( "Shift_R=parenright" )
 xcape_exprs+=( "Alt_L=Shift_L|bracketleft" )
 xcape_exprs+=( "Alt_R=Shift_R|bracketright" )
 xcape_exprs+=( "Super_L=bracketleft" )
-# Older ThinkPads have Menu between Alt_R and Control_R, newer ones PrintScreen
-xcape_exprs+=( "Print=bracketright" )
-xcape_exprs+=( "Menu=bracketright" )
+xcape_exprs+=( "$RIGHT_BRACKET_EXPR" )
 
 # Map a spacebar hold to act as the i3 modifier (Mod3)
 #
@@ -40,5 +44,5 @@ xcape_exprs+=( "$spare_mod=space" )
 
 # Combine expressions array into semicolon-delimited string
 printf -v xcape_expr_arg '%s;' "${xcape_exprs[@]}"
-# Call xcape (and remove trailing semicolon)
-xcape -e "${xcape_expr_arg%;}"
+# Call xcape (and remove trailinig semicolon)
+xcape  -t 250 -e "${xcape_expr_arg%;}"
