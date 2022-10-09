@@ -29,6 +29,7 @@ for_window [class="Virt-manager"] border none
 for_window [title="feh:/tmp/*"] floating enable
 for_window [class="Pystopwatch"] floating enable
 for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
+for_window [all] border pixel
 
 # Firefox PiP windows should be sticky, and have a border
 # that is large enough to make simple resizing easy.
