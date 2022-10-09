@@ -1,5 +1,7 @@
 theme = "native"
 icons = "awesome5"
+icons_format = "  {icon} "
+
 
 [[block]]
 block = "custom"
@@ -10,6 +12,7 @@ on_click = "~/bin/keyset && ~/bin/font-sizer-alacritty"
 [[block]]
 block = "cpu"
 interval = 4
+format = "{utilization}"
 
 [[block]]
 block = "load"
@@ -29,7 +32,7 @@ step_width = 1
 
 [[block]]
 block = "battery"
-format = "{percentage}% {time} {power}W"
+format = "{percentage} {time} {power}"
 interval = 13
 
 [[block]]
@@ -41,3 +44,4 @@ step_width = 2
 block = "time"
 interval = 30
 format = "%a %m/%d %R"
+format = "%a %m/%d %R "
