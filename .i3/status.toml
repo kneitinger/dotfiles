@@ -3,16 +3,9 @@ icons = "awesome5"
 
 [[block]]
 block = "custom"
-command = "echo keyset"
+command = "echo '[-]'"
 interval = "once"
-on_click = "~/bin/keyset"
-
-[[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{Mup}%"
-clickable = false
-interval = 10
+on_click = "~/bin/keyset && ~/bin/font-sizer-alacritty"
 
 [[block]]
 block = "cpu"
