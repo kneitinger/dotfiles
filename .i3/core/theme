@@ -67,7 +67,7 @@ gaps inner 12
 # i3bar configuration
 bar {
     # height is currently an i3-gaps specific setting
-    height 26
+    height 24
     position top
     mode dock
     hidden_state hide
