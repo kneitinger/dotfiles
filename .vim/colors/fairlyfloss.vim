@@ -12,7 +12,7 @@ endif
 let colors_name = "fairlyfloss"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    hi Normal ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
+    hi Normal ctermbg=NONE ctermfg=15 cterm=NONE guibg=#5a5376 guifg=#ffffff gui=NONE
 
     set background=dark
 
