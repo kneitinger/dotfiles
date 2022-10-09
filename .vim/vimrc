@@ -405,6 +405,8 @@ function! CheckBackSpace() abort
 endfunction
 let g:coc_snippet_next = '<tab>'
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " coc-snippets
 set runtimepath+=~/.vim/vim-snippets,~/.vim/UltiSnips
