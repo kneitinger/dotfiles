@@ -4,6 +4,12 @@ icons_format = "  {icon} "
 
 
 [[block]]
+block = "focused_window"
+max_width = 100
+show_marks = "none"
+format = "{combo} "
+
+[[block]]
 block = "custom"
 command = "echo '[-]'"
 interval = "once"
