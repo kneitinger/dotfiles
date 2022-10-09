@@ -8,6 +8,8 @@ font pango:Jost* Book 12
 # Background image
 exec --no-startup-id feh --bg-scale ~/.bg.jpg
 
+gaps inner 8
+smart_gaps on
 # New window's border
 new_window pixel 0
 new_float pixel 0
@@ -62,7 +64,6 @@ client.focused           $color4  $color4  $color0  $color5
 client.unfocused         $foregroundfaint  $foregroundfaint  $color0  $color4
 client.focused_inactive  $color4faint  $color4faint  $color0  $color4
 
-gaps inner 12
 
 # i3bar configuration
 bar {
