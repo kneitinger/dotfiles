@@ -17,12 +17,12 @@ on_click = "~/bin/keyset && ~/bin/font-sizer-alacritty"
 
 [[block]]
 block = "cpu"
-interval = 4
 format = "{utilization}"
+interval = 7
 
 [[block]]
 block = "load"
-interval = 8
+interval = 21
 format = "{1m}|{5m}|{15m}"
 
 [[block]]
@@ -48,6 +48,5 @@ step_width = 2
 
 [[block]]
 block = "time"
-interval = 30
-format = "%a %m/%d %R"
+interval = 10
 format = "%a %m/%d %R "
