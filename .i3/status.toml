@@ -24,10 +24,11 @@ interval = 8
 format = "{1m}|{5m}|{15m}"
 
 [[block]]
-block = "net"
-interval = 5
-format = "{ssid}[{ip}]"
-on_click = "nm-connection-editor"
+block = "networkmanager"
+on_click = "alacritty -e nmtui"
+primary_only = true
+interface_name_exclude = ['br\-[0-9a-f]{12}', 'docker\d+']
+interface_name_include = []
 
 [[block]]
 block = "backlight"
