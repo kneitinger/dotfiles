@@ -42,9 +42,9 @@ interval = 13
 [[block]]
 block = "sound"
 on_click = "pavucontrol"
+step_width = 2
 
 [[block]]
 block = "time"
 interval = 30
 format = "%a %m/%d %R"
-
