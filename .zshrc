@@ -25,7 +25,7 @@ zstyle :compinstall filename '/home/leaf/.zshrc'
 zstyle ':completion:*' rehash true
 
 if type brew &>/dev/null; then
-  fpath=($(brew --prefix)/share/zsh-completions $fpath)
+  fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
 
 autoload -Uz compinit
@@ -193,3 +193,7 @@ fi
 # Begin: PlatformIO Core completion support
 eval "$(_PIO_COMPLETE=zsh_source pio)"
 # End: PlatformIO Core completion support
+
+if [ -f "${HOME}/.overrides" ]; then
+  source "${HOME}"/.overrides/*
+fi
