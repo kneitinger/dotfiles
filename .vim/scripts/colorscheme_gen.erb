@@ -61,6 +61,7 @@
     magenta     = ["#fda6c7", 13, "magenta"]
     cyan        = ["#b7ffd7", 14, "cyan"]
     white       = ["#ffffff", 15, "white"]
+    fadedwhite  = ["#555555", 250, "white"]
 
     # Step 3: highlights
     #
@@ -157,16 +158,17 @@
         [ "Cursor", "NONE", white, "NONE" ],
         [ "CursorColumn", "NONE", white, "NONE" ],
         [ "QuickFixLine", "NONE", white, "NONE" ],
-        [ "StatusLine", darkblue, white, "bold" ],
-        [ "StatusLineTerm", darkblue, white, "NONE" ],
+        [ "StatusLine", darkcyan, white, "bold" ],
+        [ "StatusLineTerm", darkcyan, white, "NONE" ],
         [ "StatusLineTermNC", "NONE", white, "NONE" ],
         [ "rustFuncName", "NONE", cyan, "italic" ],
         [ "rustFuncCall", "NONE", cyan, "italic" ],
         [ "rustCommentLineDoc", "NONE", cyan, "italic" ],
-        [ "PMenu", darkblue, white, "NONE" ],
+        [ "PMenu", darkcyan, white, "NONE" ],
         [ "CocErrorFloat", darkgray, magenta, "NONE" ],
         [ "CocWarningFloat", darkblue, yellow, "NONE" ],
-        [ "CocFloating", darkgray ],
+        [ "CocFloating", darkgray, white, "NONE" ],
+        [ "CocInlayHint", "NONE", fadedwhite, "italic" ],
     ]
 
     # Define the color platte used by :terminal when in GUI Vim
