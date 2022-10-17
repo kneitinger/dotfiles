@@ -12,7 +12,7 @@ endif
 let colors_name = "fairlyfloss"
 
 if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
-    hi Normal ctermbg=NONE ctermfg=15 cterm=NONE guibg=#5a5376 guifg=#ffffff gui=NONE
+    hi Normal ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
 
     set background=dark
 
@@ -73,15 +73,17 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Cursor ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi CursorColumn ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi QuickFixLine ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
-    hi StatusLine ctermbg=4 ctermfg=15 cterm=bold guibg=#9d65ff guifg=#ffffff gui=bold
-    hi StatusLineTerm ctermbg=4 ctermfg=15 cterm=NONE guibg=#9d65ff guifg=#ffffff gui=NONE
+    hi StatusLine ctermbg=6 ctermfg=15 cterm=bold guibg=#70f7aa guifg=#ffffff gui=bold
+    hi StatusLineTerm ctermbg=6 ctermfg=15 cterm=NONE guibg=#70f7aa guifg=#ffffff gui=NONE
     hi StatusLineTermNC ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi rustFuncName ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
     hi rustFuncCall ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
     hi rustCommentLineDoc ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
-    hi PMenu ctermbg=4 ctermfg=15 cterm=NONE guibg=#9d65ff guifg=#ffffff gui=NONE
+    hi PMenu ctermbg=6 ctermfg=15 cterm=NONE guibg=#70f7aa guifg=#ffffff gui=NONE
     hi CocErrorFloat ctermbg=8 ctermfg=13 cterm=NONE guibg=#555555 guifg=#fda6c7 gui=NONE
     hi CocWarningFloat ctermbg=4 ctermfg=11 cterm=NONE guibg=#9d65ff guifg=#ffe90a gui=NONE
+    hi CocFloating ctermbg=8 ctermfg=15 cterm=NONE guibg=#555555 guifg=#ffffff gui=NONE
+    hi CocInlayHint ctermbg=NONE ctermfg=250 cterm=italic guibg=NONE guifg=#555555 gui=italic
 
     let g:terminal_ansi_colors = [
         \ '#000000',
@@ -166,15 +168,17 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Cursor ctermbg=NONE ctermfg=white cterm=NONE
     hi CursorColumn ctermbg=NONE ctermfg=white cterm=NONE
     hi QuickFixLine ctermbg=NONE ctermfg=white cterm=NONE
-    hi StatusLine ctermbg=darkblue ctermfg=white cterm=bold
-    hi StatusLineTerm ctermbg=darkblue ctermfg=white cterm=NONE
+    hi StatusLine ctermbg=darkcyan ctermfg=white cterm=bold
+    hi StatusLineTerm ctermbg=darkcyan ctermfg=white cterm=NONE
     hi StatusLineTermNC ctermbg=NONE ctermfg=white cterm=NONE
     hi rustFuncName ctermbg=NONE ctermfg=cyan cterm=italic
     hi rustFuncCall ctermbg=NONE ctermfg=cyan cterm=italic
     hi rustCommentLineDoc ctermbg=NONE ctermfg=cyan cterm=italic
-    hi PMenu ctermbg=darkblue ctermfg=white cterm=NONE
+    hi PMenu ctermbg=darkcyan ctermfg=white cterm=NONE
     hi CocErrorFloat ctermbg=darkgray ctermfg=magenta cterm=NONE
     hi CocWarningFloat ctermbg=darkblue ctermfg=yellow cterm=NONE
+    hi CocFloating ctermbg=darkgray ctermfg=white cterm=NONE
+    hi CocInlayHint ctermbg=NONE ctermfg=white cterm=italic
 endif
 
 let links = [
