@@ -25,6 +25,7 @@ zstyle :compinstall filename '/home/leaf/.zshrc'
 zstyle ':completion:*' rehash true
 
 if type brew &>/dev/null; then
+  # shellcheck disable=SC2206
   fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
 fi
 
@@ -35,6 +36,10 @@ for f in key-bindings completion; do
   [ -f "/usr/share/fzf/$f.zsh" ] && source "/usr/share/fzf/$f.zsh"
   [ -f "$(brew --prefix)/opt/fzf/shell/$f.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/$f.zsh"
 done
+
+if type kubectl &>/dev/null; then
+  kubectl completion zsh > "${fpath[1]}/_kubectl"
+fi
 
 #
 # History settings
@@ -194,6 +199,6 @@ fi
 eval "$(_PIO_COMPLETE=zsh_source pio)"
 # End: PlatformIO Core completion support
 
-if [ -f "${HOME}/.overrides" ]; then
-  source "${HOME}"/.overrides/*
-fi
+for f in "$HOME"/.overrides/*; do
+  source "$f"
+done
