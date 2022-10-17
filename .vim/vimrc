@@ -33,7 +33,7 @@ Plug 'mattesgroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'leissa/vim-acme'
 Plug 'sirtaj/vim-openscad'
-let g:coc_global_extensions = ['coc-snippets', 'coc-rust-analyzer', 'coc-explorer', 'coc-python', 'coc-sh', 'coc-vimlsp']
+let g:coc_global_extensions = ['coc-snippets', 'coc-rust-analyzer', 'coc-explorer', 'coc-pyright', 'coc-sh', 'coc-vimlsp', 'coc-yaml']
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
