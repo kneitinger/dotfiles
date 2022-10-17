@@ -34,7 +34,7 @@ compinit
 
 for f in key-bindings completion; do
   [ -f "/usr/share/fzf/$f.zsh" ] && source "/usr/share/fzf/$f.zsh"
-  [ -f "$(brew --prefix)/opt/fzf/shell/$f.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/$f.zsh"
+  type brew &>/dev/null && [ -f "$(brew --prefix)/opt/fzf/shell/$f.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/$f.zsh"
 done
 
 if type kubectl &>/dev/null; then
