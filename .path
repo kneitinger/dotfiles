@@ -2,13 +2,15 @@
 
 # Keeps PATH tidy by checking if entries are present before adding them
 
+paths=()
+
 # Include Homebrew binaries (newer arm64 location)
 if [ "$(uname)" = "Darwin" ]; then
-  paths+=("/opt/homebrew/bin/")
+  paths+=("/opt/homebrew/bin")
 fi
 
 # Language specific paths
-paths=("$HOME/.cargo/bin")
+paths+=("$HOME/.cargo/bin")
 # Extra bins and opts
 paths+=("$HOME/bin" "$HOME/.local/bin")
 
