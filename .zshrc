@@ -25,10 +25,7 @@ zstyle :compinstall filename '/home/leaf/.zshrc'
 zstyle ':completion:*' rehash true
 
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit
+  fpath=($(brew --prefix)/share/zsh-completions $fpath)
 fi
 
 autoload -Uz compinit
@@ -36,6 +33,7 @@ compinit
 
 for f in key-bindings completion; do
   [ -f "/usr/share/fzf/$f.zsh" ] && source "/usr/share/fzf/$f.zsh"
+  [ -f "$(brew --prefix)/opt/fzf/shell/$f.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/$f.zsh"
 done
 
 #
