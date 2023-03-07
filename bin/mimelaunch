@@ -4,7 +4,7 @@
 # all non-executable, non-hidden files in the specified directories, and
 # launches them with their MIME default application
 
-DIRS="/home/leaf/downloads /home/leaf/documents /home/leaf/pictures"
+DIRS="$HOME/screenshots $HOME/downloads $HOME/documents $HOME/pictures"
 
 # shellcheck disable=SC2086
 FILES="$(find -L $DIRS -type f -not -path '*/.*' -prune -not -executable | rofi -show run -dmenu -p "Launch file" -i )"
