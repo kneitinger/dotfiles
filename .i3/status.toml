@@ -1,36 +1,41 @@
-theme = "native"
-icons = "awesome5"
 icons_format = "  {icon} "
+[theme]
+theme = "native"
+[icons]
+icons = "awesome6"
 
 
 [[block]]
 block = "focused_window"
-max_width = 100
-show_marks = "none"
-format = "{combo} "
+format = "$title.str(max_w:100) "
 
 [[block]]
 block = "custom"
 command = "echo '[-]'"
 interval = "once"
-on_click = "~/bin/keyset && ~/bin/font-sizer-alacritty"
+[[block.click]]
+button = "left"
+cmd = "~/bin/keyset && ~/bin/font-sizer-alacritty"
 
 [[block]]
 block = "cpu"
-format = "{utilization}"
+#format = "$utilization"
 interval = 7
 
 [[block]]
 block = "load"
 interval = 21
-format = "{1m}|{5m}|{15m}"
+format = "$icon $1m.eng(w:4) $5m.eng(w:4) $15m.eng(w:4)"
 
 [[block]]
-block = "networkmanager"
-on_click = "alacritty -e nmtui"
-primary_only = true
-interface_name_exclude = ['br\-[0-9a-f]{12}', 'docker\d+']
-interface_name_include = []
+block =  "net"
+format = "$icon $ip"
+#[[block]]
+#block = "networkmanager"
+#on_click = "alacritty -e nmtui"
+#primary_only = true
+#interface_name_exclude = ['br\-[0-9a-f]{12}', 'docker\d+']
+#interface_name_include = []
 
 [[block]]
 block = "backlight"
@@ -38,15 +43,17 @@ step_width = 1
 
 [[block]]
 block = "battery"
-format = "{percentage} {time} {power}"
+format = "$icon $percentage $time $power"
 interval = 13
 
 [[block]]
 block = "sound"
-on_click = "pavucontrol"
 step_width = 2
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"
 interval = 10
-format = "%a %m/%d %R "
+format = "    $timestamp.datetime(f:'%a %m/%d %R') "
