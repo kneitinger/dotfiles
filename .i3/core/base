@@ -27,7 +27,6 @@ for_window [class="Virt-manager"] border none
 
 # Always floating windows
 for_window [title="feh:/tmp/*"] floating enable
-for_window [class="Pystopwatch"] floating enable
 for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
 for_window [all] border pixel
 
@@ -38,7 +37,6 @@ for_window [title="Picture-in-Picture"] sticky enable, resize set width 20 ppt h
 
 # Mark windows for named scratchpads
 for_window [class="Spotify"] mark "music", move scratchpad
-for_window [title="pyStopwatch"] mark "stopwatch", move scratchpad
 for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
