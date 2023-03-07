@@ -89,7 +89,7 @@ PROMPT+="at $(color 13 %m) "
 PROMPT+="in $(color 14 %1~) "
 PROMPT+='$'
 # Entire prompt bolded and italicized
-PROMPT="$(boldital $PROMPT) "
+PROMPT="$(boldital "$PROMPT") "
 
 # Right-side prompt displays timestamp and exit status of previous command
 # %D -> YY-MM-DD
