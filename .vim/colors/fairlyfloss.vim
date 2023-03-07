@@ -73,7 +73,7 @@ if ($TERM =~ '256' || &t_Co >= 256) || has("gui_running")
     hi Cursor ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi CursorColumn ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi QuickFixLine ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
-    hi StatusLine ctermbg=6 ctermfg=15 cterm=bold guibg=#70f7aa guifg=#ffffff gui=bold
+    hi StatusLine ctermbg=4 ctermfg=15 cterm=bold guibg=#9d65ff guifg=#ffffff gui=bold
     hi StatusLineTerm ctermbg=6 ctermfg=15 cterm=NONE guibg=#70f7aa guifg=#ffffff gui=NONE
     hi StatusLineTermNC ctermbg=NONE ctermfg=15 cterm=NONE guibg=NONE guifg=#ffffff gui=NONE
     hi rustFuncName ctermbg=NONE ctermfg=14 cterm=italic guibg=NONE guifg=#b7ffd7 gui=italic
@@ -168,7 +168,7 @@ elseif &t_Co == 8 || $TERM !~# '^linux' || &t_Co == 16
     hi Cursor ctermbg=NONE ctermfg=white cterm=NONE
     hi CursorColumn ctermbg=NONE ctermfg=white cterm=NONE
     hi QuickFixLine ctermbg=NONE ctermfg=white cterm=NONE
-    hi StatusLine ctermbg=darkcyan ctermfg=white cterm=bold
+    hi StatusLine ctermbg=darkblue ctermfg=white cterm=bold
     hi StatusLineTerm ctermbg=darkcyan ctermfg=white cterm=NONE
     hi StatusLineTermNC ctermbg=NONE ctermfg=white cterm=NONE
     hi rustFuncName ctermbg=NONE ctermfg=cyan cterm=italic
