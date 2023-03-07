@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # If arg is provided, store screenshot relative to it
-BASE_PATH=${1:-$HOME/screenshots}
+BASE_PATH=${1:-$HOME/pictures/screenshots}
 
 TMP_PATH="$BASE_PATH/$(date +"%F_%H-%M-%S").png"
 
