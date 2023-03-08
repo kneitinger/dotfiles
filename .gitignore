@@ -2,6 +2,8 @@
 .additional
 .bash_completion.d/*
 
+.DS_Store
+
 **/*.sqlite
 
 .ipython/*/db
