@@ -2,9 +2,10 @@
 #shellcheck disable=SC2016,SC2230
 
 EDITOR=$(which nvim || which vim)
-SVN_EDITOR=$EDITOR
+GIT_EDITOR=$EDITOR
+
 export EDITOR
-export SVN_EDITOR
+export GIT_EDITOR
 
 # Indicates which terminal i3-sensible-terminal should try to spawn first
 export TERMINAL=alacritty
