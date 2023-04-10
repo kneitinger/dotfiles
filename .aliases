@@ -11,7 +11,6 @@ fi
 alias vim='nvim'
 alias cim='nvim'
 alias bim='nvim'
-alias view='vim -R'
 
 alias car='cat'
 alias packer='packer-io'
