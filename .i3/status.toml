@@ -20,13 +20,13 @@ cmd = "~/bin/pretty-mode-toggle"
 
 [[block]]
 block = "cpu"
-#format = "$utilization"
-interval = 7
+format = "$icon$utilization"
+interval = 5
 
 [[block]]
 block = "load"
 interval = 21
-format = "$icon $1m.eng(w:4) $5m.eng(w:4) $15m.eng(w:4)"
+format = "$icon $1m.eng(w:3) $5m.eng(w:3) $15m.eng(w:3)"
 
 [[block]]
 block =  "net"
