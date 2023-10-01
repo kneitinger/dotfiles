@@ -8,7 +8,9 @@ export EDITOR
 export GIT_EDITOR
 
 # Indicates which terminal i3-sensible-terminal should try to spawn first
-export TERMINAL=alacritty
+if [ "$(uname)" = "Linux" ]; then
+  export TERMINAL=alacritty
+fi
 
 # Use United States English
 export LANG="en_US.UTF-8";
@@ -27,14 +29,27 @@ if [ "$(uname)" = 'Darwin' ]; then
     export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
-export FZF_DEFAULT_COMMAND='fd --type file'
-FZF_HOME_DETECT='$([ "${PWD}" = "${HOME}" ] && echo "${HOME}" || echo ". ${HOME}")'
-export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME"
-export FZF_CTRL_T_OPTS="--preview='head -n\$FZF_PREVIEW_LINES {}'"
+#export FZF_DEFAULT_COMMAND='fd --type file'
+#FZF_HOME_DETECT='$([ "${PWD}" = "${HOME}" ] && echo "${HOME}" || echo ". ${HOME}")'
+#export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME"
+#export FZF_CTRL_T_OPTS="--preview='head -n\$FZF_PREVIEW_LINES {}'"
+
+export FZF_DEFAULT_OPTS='
+  --color fg:-1
+  --color preview-fg:-1
+  --color bg+:-1
+  --color prompt:6
+  --color pointer:14
+  --color hl:13
+  --color info:13
+  --color hl+:13
+'
 
 export QT_QPA_PLATFORMTHEME=qt5ct
+export BROSWER="firefox"
 
 # Important.
 export ANSIBLE_COW_SELECTION=milk
-export BROSWER="firefox"
+
+export ASSET_DIR="${HOME}/art/assets"
