@@ -7,7 +7,7 @@ icons = "awesome6"
 
 [[block]]
 block = "focused_window"
-format = "$title.str(max_w:100) "
+format = "<i>$title.str(max_w:100)</i>   "
 
 [[block]]
 block = "custom"
