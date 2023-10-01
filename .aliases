@@ -125,6 +125,10 @@ mon_brightness () {
   done
 }
 
+if [ "$(uname)" != "Darwin" ]; then
+    alias open="xdg-open"
+fi
+
 # Cargo aliases
 alias cbd="cargo build"
 alias crd="cargo run"
