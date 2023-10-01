@@ -2,7 +2,7 @@
 
 # WM mod key: Mod1 for alt, Mod4 for win.
 # mod3 is mapped to a spacebar hold by xcape
-set $mod Mod3
+set $mod Mod4
 set $alt Mod1
 set $super Mod4
 
