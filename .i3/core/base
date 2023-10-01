@@ -41,6 +41,7 @@ for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
 for_window [title="^Signal$"] mark "signal", move scratchpad
+for_window [class="^Ardour" floating_from="auto"] border normal 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
