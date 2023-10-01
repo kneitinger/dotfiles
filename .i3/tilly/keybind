@@ -32,8 +32,8 @@ bindsym XF86Display exec autorandr -l default
 
 # Mappings for moving current workspace to new display
 # Elevated|Left in current desk setup
-bindsym $mod+Ctrl+9 move workspace to output DisplayPort-3
+bindsym $mod+Ctrl+9 move workspace to output left
 # Elevated|Right in current desk setup
-bindsym $mod+Ctrl+0 move workspace to output DisplayPort-4
+bindsym $mod+Ctrl+0 move workspace to output right
 # Built in display
 bindsym $mod+Ctrl+o move workspace to output eDP1
