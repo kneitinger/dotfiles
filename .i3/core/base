@@ -55,9 +55,8 @@ popup_during_fullscreen smart
 # Autolaunch programs at startup
 exec --no-startup-id i3-sensible-terminal
 exec keepassxc
-exec firefox
+exec firefox-developer-edition
 exec --no-startup-id syncthing --no-browser --gui-address="http://localhost:8384"
-exec --no-startup-id ~/bin/keyset
 exec --no-startup-id ~/.i3/i3-file-watch.sh
 exec --no-startup-id redshift-gtk
 # Locking: let xss-lock manage the locking, triggering i3lock when appropriate.
@@ -68,4 +67,3 @@ exec --no-startup-id xautolock -time 17 -locker "systemctl suspend"  -corners "0
 
 # Autolaunch tray applets at startup
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
