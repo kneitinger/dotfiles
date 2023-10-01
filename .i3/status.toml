@@ -11,11 +11,12 @@ format = "<i>$title.str(max_w:100)</i>   "
 
 [[block]]
 block = "custom"
-command = "echo '[-]'"
+# https://fontawesome.com/icons/wand-magic-sparkles
+command = "echo '\ue2ca'"
 interval = "once"
 [[block.click]]
 button = "left"
-cmd = "~/bin/keyset && ~/bin/font-sizer-alacritty"
+cmd = "~/bin/pretty-mode-toggle"
 
 [[block]]
 block = "cpu"

@@ -67,7 +67,9 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.70
+  #
+  # KYLE NOTE: now set in ~/.config/alacritty/opactiy.yml
+  #opacity: 1.00
 
   # Startup Mode (changes require restart)
   #
@@ -170,6 +172,7 @@ font:
 
   # Point size
   # Set via dynamic import, to account for various screensizes
+  # KYLE NOTE: now set via ~/.config/alacritty/font_size.yml
   #size: 9
 
   # Offset is the extra space around each character. `offset.y` can be thought
@@ -197,7 +200,10 @@ font:
 #draw_bold_text_with_bright_colors: false
 
 import:
-  # Symlinked to one of many files, set per monitor height
+  # Edited when i3status toggle is triggered
+  # Toggles between full opacity, or pretty slightly transparent
+  - /home/leaf/.config/alacritty/opacity.yml
+  # Symlinked or edited via screen switch scripts, set per monitor height
   - /home/leaf/.config/alacritty/font_size.yml
 
 # Colorscheme
