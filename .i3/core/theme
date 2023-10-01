@@ -6,7 +6,7 @@
 font pango:Jost* Book 12
 
 # Background image
-exec --no-startup-id feh --bg-scale ~/.bg.jpg
+exec --no-startup-id feh --bg-scale ~/.bg.png
 
 gaps inner 8
 smart_gaps on
