@@ -1,0 +1,46 @@
+import = ["~/.config/alacritty/opacity.toml", "~/.config/alacritty/font_size.toml"]
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[[colors.indexed_colors]]
+color = "#989898"
+index = 243
+
+[colors.bright]
+black = "0x555555"
+blue = "0xccadff"
+cyan = "0xb7ffd7"
+green = "0x9dffa4"
+magenta = "0xfda6c7"
+red = "0xfd8b89"
+white = "0xffffff"
+yellow = "0xffe90a"
+
+[colors.normal]
+black = "0x000000"
+blue = "0xa773ff"
+cyan = "0x70f7aa"
+green = "0x5fe868"
+magenta = "0xfc6ea2"
+red = "0xeb5d5c"
+white = "0xbbbbbb"
+yellow = "0xdfb508"
+
+[colors.primary]
+background = "0x5a5376"
+foreground = "0xf6f6ef"
+
+[font.normal]
+family = "OperatorMonoMedium"
+style = "Regular"
+
+[scrolling]
+history = 100000
+
+[window]
+dynamic_padding = true
+
+[window.padding]
+x = 4
+y = 2

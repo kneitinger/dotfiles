@@ -30,24 +30,20 @@ else
   TARGET_OPACITY=0.8
 fi
 
-echo "conditional finished" >> ~/tog_log
-OPACITY_FILE="$HOME/.config/alacritty/opacity.yml"
+OPACITY_FILE="$HOME/.config/alacritty/opacity.toml"
 
-# Ensure import line is in ~/.alacritty.yml
-if ! grep -q "$OPACITY_FILE" \
-  "$HOME/.alacritty.yml"; then
-
+# Ensure import line is in ~/.alacritty.toml
+if ! grep -q "$(basename "$OPACITY_FILE")" "$HOME/.alacritty.toml"; then
   "$HOME/bin/notify-wrapper" "Pretty Mode Toggler" \
-    "Could not find import to alacritty opacity file ($OPACITY_FILE) in ~/.alacritty.yml"
+    "Could not find import to alacritty opacity file ($OPACITY_FILE) in ~/.alacritty.toml"
   exit 1
 fi
 
 # Ensure imported file exists
 if [ ! -f "$OPACITY_FILE" ]; then
-
   "$HOME/bin/notify-wrapper" "Pretty Mode Toggler" \
     "Alacritty opacity file ($OPACITY_FILE) does not exist"
   exit 1
 fi
 
-sed -i "s/opacity: [0-9]\+\(\.[0-9]\+\)*/opacity: $TARGET_OPACITY/" "$OPACITY_FILE"
+sed -i "s/opacity = [0-9]\+\(\.[0-9]\+\)*/opacity = $TARGET_OPACITY/" "$OPACITY_FILE"

@@ -8,36 +8,27 @@
 # autorandr's postswitch scripts) automatically change the font size on display
 # change, without having git report chages to the core alacritty.yml. Alacritty
 # has the ability to detect changes in configs and live-reload, so simply
-# editing the font_size.yml file is enough.
+# editing the font_size.toml file is enough.
 #
 # Expected formats:
-#   ~/.alacritty.yml:
-#     ...
-#     import:
-#       # Note: import not supported on versions less than 0.6.0, and paths
-#       # relative to ~ only supported in versions greater than 0.6.0
-#       - ~/.config/alacritty/font_size.yml
-#     ...
+#   ~/.alacritty.toml:
+#     import = ["~/.config/alacritty/font_size.toml"]
 #
-#   ~/.config/alacritty/font_size.yml:
-#     font:
-#       # Sizes can be floats as well
-#       size: 10
+#   ~/.config/alacritty/font_size.toml:
+#     [font]
+#     size = 10.0
 
-FONT_FILE="$HOME/.config/alacritty/font_size.yml"
+FONT_FILE="$HOME/.config/alacritty/font_size.toml"
 
-# Ensure import line is in ~/.alacritty.yml
-if ! grep -q "\(~\|$HOME\)/\.config/alacritty/font_size.yml" \
-  "$HOME/.alacritty.yml"; then
-
+# Ensure import line is in ~/.alacritty.toml
+if ! grep -q "$(basename "$FONT_FILE")" \ "$HOME/.alacritty.toml"; then
   "$HOME/bin/notify-wrapper" "Alacritty Font Sizer" \
-    "Could not find import to font size file ($FONT_FILE) in ~/.alacritty.yml"
+    "Could not find import to font size file ($FONT_FILE) in ~/.alacritty.toml"
   exit 1
 fi
 
 # Ensure imported file exists
 if [ ! -f "$FONT_FILE" ]; then
-
   "$HOME/bin/notify-wrapper" "Alacritty Font Sizer" \
     "Font size file ($FONT_FILE) does not exist"
   exit 1
@@ -50,7 +41,7 @@ SCREEN_HEIGHT="$(i3-msg -t get_outputs | jq '[.[] | select(.active == true)][0].
 # Determine font size based on screen height
 case $SCREEN_HEIGHT in
   1080)
-    FONT_SIZE="11.0"
+    FONT_SIZE="10.0"
     ;;
   1440)
     FONT_SIZE="10.0"
@@ -60,4 +51,4 @@ case $SCREEN_HEIGHT in
     ;;
 esac
 
-sed -i "s/size: [0-9]\+\(\.[0-9]\+\)*/size: $FONT_SIZE/" "$FONT_FILE"
+sed -i "s/size = [0-9]\+\(\.[0-9]\+\)*/size = $FONT_SIZE/" "$FONT_FILE"
