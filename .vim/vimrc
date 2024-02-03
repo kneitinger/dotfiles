@@ -19,21 +19,13 @@ endif
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 
 call plug#begin('~/.vim/bundle')
-Plug 'airblade/vim-gitgutter'
-Plug 'davidgranstrom/scnvim', { 'do': {-> scnvim#install() } }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 if has('macunix')
     set rtp+=/usr/local/opt/fzf
 endif
-Plug 'lervag/vimtex'
-Plug 'LnL7/vim-nix'
-Plug 'majutsushi/tagbar'
-Plug 'mattesgroeger/vim-bookmarks'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'leissa/vim-acme'
-Plug 'sirtaj/vim-openscad'
-let g:coc_global_extensions = ['coc-snippets', 'coc-rust-analyzer', 'coc-explorer', 'coc-pyright', 'coc-sh', 'coc-vimlsp', 'coc-yaml']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-explorer', 'coc-sh', 'coc-vimlsp', 'coc-yaml']
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -280,9 +272,6 @@ function! HasPaste()
     return ''
 endfunction
 
-" Load freebsd style functions, mapped to <leader>f
-source $HOME/.vim/scripts/freebsd.vim
-
 " Echo the colorscheme element of the current text
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -292,40 +281,12 @@ function! <SID>SynStack()
 endfunc
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Terminal Settings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('nvim')
-    au TermOpen * set nonumber norelativenumber
-endif
-tnoremap <C-\> <C-\><C-n>
-tnoremap <A-h> <C-\><C-N><C-w>h
-tnoremap <A-j> <C-\><C-N><C-w>j
-tnoremap <A-k> <C-\><C-N><C-w>k
-tnoremap <A-l> <C-\><C-N><C-w>l
-inoremap <A-h> <C-\><C-N><C-w>h
-inoremap <A-j> <C-\><C-N><C-w>j
-inoremap <A-k> <C-\><C-N><C-w>k
-inoremap <A-l> <C-\><C-N><C-w>l
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if !empty(glob($HOME.'/.vim/.venv'))
     let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
 endif
-
-" vimtex
-let g:vimtex_view_method='zathura'
-let g:vimtex_compiler_latexmk = {'build_dir' : './build'}
-let g:tex_flavor = "latex"
-
-" fzf
-nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>r :Rg<CR>
@@ -341,23 +302,6 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
-
-" ALE
-au BufRead,BufNewFile ~/.ipylogs/**.py ALEDisable
-
-" vim-bookmarks
-let g:bookmark_sign = '♥'
-let g:bookmark_highlight_lines = 0
-
-" scnvim
-autocmd VimEnter *.scd SCNvimStart
-let g:scnvim_postwin_orientation = 'h'
-let g:scnvim_postwin_direction = 'right'
-let g:scnvim_postwin_size = 10
-let g:scnvim_postwin_auto_toggle = 1
-let g:scnvim_eval_flash_duration = 300
-let g:scnvim_eval_flash_repeats = 2
-let g:scnvim_scdoc = 1
 
 " coc.nvim
 set updatetime=300
@@ -408,12 +352,6 @@ let g:coc_snippet_next = '<tab>'
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" coc-snippets
-set runtimepath+=~/.vim/vim-snippets,~/.vim/UltiSnips
-
 " coc-explorer
 noremap <space>e :CocCommand explorer --no-toggle<CR>
 noremap <space>E :CocCommand explorer<CR>
-
-" tagbar
-nmap <leader>tb :TagbarToggle<CR>

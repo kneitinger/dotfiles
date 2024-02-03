@@ -1,3 +1,0 @@
-[submodule ".vim/vim-snippets"]
-	path = .vim/vim-snippets
-	url = git@github.com:honza/vim-snippets.git
