@@ -33,13 +33,7 @@ alias lal='ls -lha'
 alias ll='ls -lh'
 alias sl='ls'
 alias lls='ls'
-
-# Set up custom Xorg keyboard settings (xmodmap, xcape, etc) on Xorg systems
-if [ "$(uname)" != 'Darwin' ]; then
-    alias ks='keyset'
-else
-    alias ks='ls'
-fi
+alias ks='ls'
 
 # Always ask before overwriting a file with mv or cp
 alias mv='mv -i'
