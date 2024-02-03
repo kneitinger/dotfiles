@@ -60,9 +60,9 @@ set_from_resource  $col15   i3.color15  #ffffff
 
 # Color scheme
 # class                  border     backgr      text    indicator
-client.focused           $col15     $col15      $col0   $col14
-client.unfocused         $col4dim   $col4dim    $col0   $col4dim
-client.focused_inactive  $col4dim   $col4dim    $col0   $col4dim
+client.focused           $col4dim   $col4dim    $col0   $col4dim
+client.unfocused         $col15     $col15      $col0   $col14
+client.focused_inactive  $col15     $col15      $col0   $col14
 
 
 # i3bar configuration
