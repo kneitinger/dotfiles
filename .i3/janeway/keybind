@@ -27,9 +27,6 @@ bindsym $mod+XF86MonBrightnessDown exec light -S 0.5
 bindsym XF86MonBrightnessUp exec light -A 3
 bindsym $mod+XF86MonBrightnessUp exec light -S 100
 
-bindsym XF86Tools exec ~/bin/keyset
-bindsym $mod+XF86Tools exec roxterm -e htop
-
 bindsym XF86LaunchA exec ~/bin/screenselect
 
 bindsym XF86Explorer bar mode toggle

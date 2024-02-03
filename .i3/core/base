@@ -18,16 +18,8 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws0 "10"
 
-# Configure default workspace for certain applications
-assign [class="Slack"] $ws6
-
-# No border for apps that usually take up a whole workspace
-for_window [class="Slack"] border none
-for_window [class="Virt-manager"] border none
-
 # Always floating windows
 for_window [title="feh:/tmp/*"] floating enable
-for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
 for_window [all] border pixel
 for_window [floating] border normal 3, move position center
 
@@ -37,11 +29,9 @@ for_window [title="Picture-in-Picture"] border pixel, sticky enable, resize set 
     mark "pip", move scratchpad, [con_mark="pip"] scratchpad show
 
 # Mark windows for named scratchpads
-for_window [class="Spotify"] mark "music", move scratchpad
 for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
-for_window [title="^Signal$"] mark "signal", move scratchpad
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

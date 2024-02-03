@@ -15,10 +15,7 @@ bindsym --release $mod+u exec ~/bin/screenshotter
 
 # Scratchpadded Apps
 bindsym $mod+n [con_mark="keys"] scratchpad show; [con_mark="keys"] move position center
-bindsym $mod+m [con_mark="music"] scratchpad show; [con_mark="music"] move position center
 bindsym $mod+c [con_mark="tele"] scratchpad show; [con_mark="tele"] move position center
-bindsym $mod+semicolon [con_mark="signal"] scratchpad show; [con_mark="signal"] move position center
-bindsym $mod+t [con_mark="term"] scratchpad show; move position center
 bindsym $mod+y [con_mark="pip"] scratchpad show
 
 # Rofi dmenu replacement bindings
@@ -47,7 +44,7 @@ bindsym $mod+Shift+l move right
 
 # add a flag and keybind for hopping back to a window of interest
 bindsym $mod+z mark --toggle "topic"
-bindsym $mod+Tab [con_mark="topic"] focus
+bindsym $mod+Tab [con_mark="topic"] move container to workspace current
 
 # The middle button over a titlebar kills the window
 bindsym button2 kill
