@@ -33,6 +33,13 @@ zstyle :compinstall filename '/home/leaf/.zshrc'
 # Remove need to manually execute `rehash` after changes to $PATH
 zstyle ':completion:*' rehash true
 
+# Find ALL user procs when tab completeing procs
+# shellcheck disable=SC2016
+zstyle ':completion:*:processes' command 'NOCOLORS=1 ps -U $(whoami)|sed "/ps/d"'
+zstyle ':completion:*:processes' insert-ids menu yes select
+zstyle ':completion:*:processes-names' command 'NOCOLORS=1 ps xho command|sed "s/://g"'
+zstyle ':completion:*:processes' sort false
+
 if type brew &>/dev/null; then
   # shellcheck disable=SC2206
   fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
