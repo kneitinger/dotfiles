@@ -287,6 +287,14 @@ endfunc
 if !empty(glob($HOME.'/.vim/.venv'))
     let g:python3_host_prog = $HOME.'/.vim/.venv/bin/python3'
 endif
+
+let g:gitdir=substitute(system("git rev-parse --show-toplevel 2>&1 | grep -v fatal:"),'\n','','g')
+if  g:gitdir != '' && isdirectory(g:gitdir) && index(split(&path, ","),g:gitdir) < 0
+  exec 'nnoremap <leader>f :Files '.g:gitdir.'<CR>'
+else
+  nnoremap <leader>f :Files ..<CR>
+endif
+
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>r :Rg<CR>
