@@ -29,10 +29,11 @@ for_window [class="Virt-manager"] border none
 for_window [title="feh:/tmp/*"] floating enable
 for_window [title="^nannou - .*" class="^(?!firefox).*$"] floating enable
 for_window [all] border pixel
+for_window [floating] border normal 3, move position center
 
 # Firefox PiP windows should be sticky, and have a border
 # that is large enough to make simple resizing easy.
-for_window [title="Picture-in-Picture"] sticky enable, resize set width 20 ppt height 20 ppt, \
+for_window [title="Picture-in-Picture"] border pixel, sticky enable, resize set width 20 ppt height 20 ppt, \
     mark "pip", move scratchpad, [con_mark="pip"] scratchpad show
 
 # Mark windows for named scratchpads
@@ -41,7 +42,6 @@ for_window [title="^.*.kdbx.* - KeePassXC"] mark "keys", move scratchpad
 for_window [title="Auto-Type - KeePassXC"] resize set 700 250
 for_window [class="TelegramDesktop" title="Telegram"] mark "tele", move scratchpad
 for_window [title="^Signal$"] mark "signal", move scratchpad
-for_window [class="^Ardour" floating_from="auto"] border normal 3
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
