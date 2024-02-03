@@ -4,6 +4,15 @@
 # shellcheck disable=SC2034
 # shellcheck disable=SC2154
 
+ZVM_INIT_MODE=sourcing
+
+# shellcheck source=/dev/null
+source "${ZDOTDIR:-$HOME}"/.antidote/antidote.zsh
+antidote load
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=12"
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+zstyle ':fzf-tab:*' continuous-trigger \\
 #
 # Imports
 #
