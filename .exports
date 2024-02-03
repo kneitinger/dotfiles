@@ -35,16 +35,7 @@ fi
 #export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME"
 #export FZF_CTRL_T_OPTS="--preview='head -n\$FZF_PREVIEW_LINES {}'"
 
-export FZF_DEFAULT_OPTS='
-  --color fg:-1
-  --color preview-fg:-1
-  --color bg+:-1
-  --color prompt:6
-  --color pointer:14
-  --color hl:13
-  --color info:13
-  --color hl+:13
-'
+export FZF_DEFAULT_OPTS="--color='fg:-1,preview-fg:-1,bg+:-1,prompt:6,pointer:14,hl:13,info:13,hl+:13'"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export BROSWER="firefox"
