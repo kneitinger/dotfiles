@@ -194,11 +194,6 @@ if [[ "$TERM" == alacritty* ]]; then
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
-
-# Begin: PlatformIO Core completion support
-eval "$(_PIO_COMPLETE=zsh_source pio)"
-# End: PlatformIO Core completion support
-
 for f in "$HOME"/.overrides/*; do
   source "$f"
 done
