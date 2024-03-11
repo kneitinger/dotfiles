@@ -31,9 +31,6 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has('nvim')
-    set t_Co=256        " 256 color mode
-endif
 
 " No bells
 set noerrorbells
@@ -175,8 +172,8 @@ nmap <leader>ccc :call <SID>SynStack()<CR>
 " Search Options
 set hlsearch        " Highlight all search matches
 set incsearch       " Match as search pattern is being typed
-set ignorecase      " Ignore case in search patterns ...
-set smartcase       " ...unless the search term has an upper case character
+"set ignorecase      " Ignore case in search patterns ...
+"set smartcase       " ...unless the search term has an upper case character
 
 
 
@@ -186,12 +183,12 @@ set smartcase       " ...unless the search term has an upper case character
                     " separated by commas. Each item allows a way to backspace
                     " over something.
 
-set autoindent      " Copy indent from current line when starting a new line
+"set autoindent      " Copy indent from current line when starting a new line
 set smartindent     " Make intuitive indent choices for some contexrs
 
 set tabstop=4       " Number of spaces that a <Tab> in the file counts for.
 set shiftwidth=4    " Number of spaces to use for each step of (auto)indent.
-set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
+"set expandtab       " Use the appropriate number of spaces to insert a <Tab>.
 set smarttab        " Be smart about auto tabbing
 
 set showmatch       " When a bracket is inserted, show the matching one
@@ -211,9 +208,9 @@ augroup filetype_overrides
     au BufRead,BufNewFile *.asm set filetype=acme
 
     " 2 Space Indentation
-    au FileType
-        \ html,javascript,json,nix,openscad,php,sh,tex,vim,yaml,zsh
-        \ setlocal shiftwidth=2 tabstop=2
+    "au FileType
+    "    \ html,javascript,json,nix,openscad,php,sh,tex,vim,yaml,zsh
+    "    \ setlocal shiftwidth=2 tabstop=2
 augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,19 +227,19 @@ endif
 " Backup/Swap/Persistence Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 try
-    set undodir=~/.vim/cache/undo//
+    set undodir=~/.vim/cache/undo/
     set undofile
 catch
 endtry
 
 try
-    set backupdir=~/.vim/cache/backup//
+    set backupdir=~/.vim/cache/backup/
     set backup
 catch
 endtry
 
 try
-    set directory=~/.vim/cache/swap//
+    set directory=~/.vim/cache/swap/
     set swapfile
 catch
 endtry
@@ -346,10 +343,10 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 inoremap <silent><expr> <TAB>
-  \ coc#pum#visible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ?
-  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ CheckBackSpace() ? "\<TAB>" :
+  \ coc#pum#visible() ?
+  \ coc#_select_confirm() :
+  \ CheckBackSpace() ?
+  \ "\<TAB>" :
   \ coc#refresh()
 function! CheckBackSpace() abort
   let col = col('.') - 1
