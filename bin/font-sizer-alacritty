@@ -21,7 +21,7 @@
 FONT_FILE="$HOME/.config/alacritty/font_size.toml"
 
 # Ensure import line is in ~/.alacritty.toml
-if ! grep -q "$(basename "$FONT_FILE")" \ "$HOME/.alacritty.toml"; then
+if ! grep -q "$(basename "$FONT_FILE")" "$HOME/.alacritty.toml"; then
   "$HOME/bin/notify-wrapper" "Alacritty Font Sizer" \
     "Could not find import to font size file ($FONT_FILE) in ~/.alacritty.toml"
   exit 1
