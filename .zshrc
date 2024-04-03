@@ -42,7 +42,7 @@ zstyle ':completion:*:processes' sort false
 
 if type brew &>/dev/null; then
   # shellcheck disable=SC2206
-  fpath=("$(brew --prefix)/share/zsh-completions" $fpath)
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 fi
 
 autoload -Uz compinit
