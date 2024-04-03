@@ -22,9 +22,6 @@ zstyle ':fzf-tab:*' continuous-trigger \\
 
 fpath+=~/.zfunc
 
-# If direnv is present, load hook
-direnv version > /dev/null && eval "$(direnv hook zsh)"
-
 #
 # Completion settings
 #
