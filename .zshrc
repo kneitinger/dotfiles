@@ -13,6 +13,7 @@ antidote load
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=12"
 ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 zstyle ':fzf-tab:*' continuous-trigger \\
+
 #
 # Imports
 #
@@ -88,10 +89,6 @@ color () {
     text=$( [ $# -lt 2 ] && read -re || echo "${@:2}")
     printf "%%F{$1}%s%%f" "$text"
 }
-
-# shellcheck disable=SC2016
-precmd () { print -n '\e]2;$TITLE\a'; }
-title() { export TITLE="$*"; }
 
 PROMPT=
 # Yellow user
