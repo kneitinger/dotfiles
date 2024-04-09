@@ -38,6 +38,15 @@ inc_backlight() {
 dec_backlight() {
 	brightnessctl s 5%- && get_icon && notify_user
 }
+# Increase brightness
+max_backlight() {
+	brightnessctl s 100% && get_icon && notify_user
+}
+
+# Decrease brightness
+min_backlight() {
+	brightnessctl s 5% && get_icon && notify_user
+}
 
 # Execute accordingly
 if [[ "$1" == "--get" ]]; then
@@ -46,6 +55,10 @@ elif [[ "$1" == "--inc" ]]; then
 	inc_backlight
 elif [[ "$1" == "--dec" ]]; then
 	dec_backlight
+elif [[ "$1" == "--max" ]]; then
+	max_backlight
+elif [[ "$1" == "--min" ]]; then
+	min_backlight
 else
 	get_backlight
 fi
