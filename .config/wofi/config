@@ -1,2 +1,3 @@
 matching=fuzzy
 insensitive=true
+dynamic_lines=true

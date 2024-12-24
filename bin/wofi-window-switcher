@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+hyprctl -j clients \
+	| jq -r '.[] | .address + "|" + (.class? | ascii_downcase) + "|" + .title' \
+	| wofi --show dmenu -r 'echo "%s" | cut -d "|" -f3 | tr -d "\n"'
