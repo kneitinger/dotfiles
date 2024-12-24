@@ -1,7 +1,10 @@
-import = ["~/.config/alacritty/opacity.toml", "~/.config/alacritty/font_size.toml"]
+#import = ["~/.config/alacritty/opacity.toml", "~/.config/alacritty/font_size.toml"]
 
 [colors]
 draw_bold_text_with_bright_colors = false
+
+[font]
+size = 10.0
 
 [[colors.indexed_colors]]
 color = "#989898"
@@ -40,6 +43,7 @@ history = 100000
 
 [window]
 dynamic_padding = true
+opacity = 0.8
 
 [window.padding]
 x = 4
