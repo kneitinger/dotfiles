@@ -9,7 +9,7 @@ window#waybar {
     /* Text color */
     color: #ffffff;
     transition-property: background-color;
-    transition-duration: .5s;
+    transition-duration: .25s;
 }
 
 /* Don't know what this does lol */
@@ -55,6 +55,7 @@ button:hover {
 #workspaces button:hover {
     /* background: rgba(0, 0, 0, 0.2); */
     /* background: rgba(0, 0, 0, 0.0); */
+    border-top: 3px solid white;
 }
 
 #workspaces button.focused {
@@ -70,9 +71,12 @@ button:hover {
     background: #92eec1;
     color: #000000;
     border-top: 3px solid #92eec1;
-    /* border-bottom: 3px solid transparent; */
-    /* border-top-left-radius: 0px; */
-    /* border-top-right-radius: 0px; */
+}
+
+#workspaces button.active:hover {
+    background: #92eec1;
+    color: #000000;
+    border-top: 3px solid white;
 }
 
 #window {
