@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+ARDOUR_EXE=$(find /usr/bin/ardour* | sort | head -1)
+TPL_NAME="Kyle Project"
+PROJ_NAME="$(date +%Y-%m-%d-%H-%M-%S)_scratch"
+PROJ_DIR="$HOME/music/ardour/scratch/$PROJ_NAME"
+
+$ARDOUR_EXE -n -T "$TPL_NAME" -N "$PROJ_DIR"
