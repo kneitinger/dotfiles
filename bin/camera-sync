@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+# Copies pics (raw and jpg) and videos (plus proxies) from Sony a6700
+# Currently invoked like:
+# CARD=$(lsblk -plf | grep 'ECD6-EAC0' | cut -f1 -d' '); \
+#   (( OFFSET_SECS = $(date +%z) * 60 / 100 )); \
+#   sudo mount -o uid=$(id -u),gid=$(id -g),fmask=0133,dmask=0022,time_offset="${OFFSET_SECS}" $CARD /mnt/camera && \
+#   camera-sync && sudo umount /mnt/camera
+#
+# due to FAT's lack of timezone awareness lol
+set -e
+
+DRY_RUN=""
+
+SRC_MNT="/mnt/camera"
+SRC_PIC_ROOT="${SRC_MNT}/DCIM/100MSDCF"
+SRC_VID_ROOT="${SRC_MNT}/PRIVATE/M4ROOT"
+SRC_PICS="${SRC_PIC_ROOT}"
+SRC_CLIPS="${SRC_VID_ROOT}/CLIP"
+SRC_PROXIES="${SRC_VID_ROOT}/SUB"
+
+DEST_PIC_ROOT="${HOME}/pictures/a6700"
+DEST_VID_ROOT="${HOME}/videos/a6700"
+DEST_PICS="${DEST_PIC_ROOT}"
+DEST_CLIPS="${DEST_VID_ROOT}/clip"
+DEST_PROXIES="${DEST_VID_ROOT}/sub"
+
+
+# Usage info
+show_help() {
+cat << EOF
+Usage: ${0##*/} [-hd]
+Transfer files from a mounted a6700 camera to my designated destinations
+
+    -h          display this help and exit
+    -d          simulate what file transfers will happen
+EOF
+}
+
+OPTIND=1
+# Resetting OPTIND is necessary if getopts was used previously in the script.
+# It is a good idea to make OPTIND local if you process options in a function.
+
+while getopts hd opt; do
+    case $opt in
+        h)
+            show_help
+            exit 0
+            ;;
+        d)  DRY_RUN="--dry-run"
+            ;;
+        *)
+            show_help >&2
+            exit 1
+            ;;
+    esac
+done
+shift "$((OPTIND-1))"   # Discard the options and sentinel --
+
+
+echo -e "\n##################################################"
+echo "Moving pics from ${SRC_PICS} to ${DEST_PICS}"
+echo
+
+rsync ${DRY_RUN} -aP "${SRC_PICS}/" "${DEST_PICS}"
+
+echo -e "\n##################################################"
+echo "Moving clips from ${SRC_CLIPS} to ${DEST_CLIPS}"
+echo
+
+rsync ${DRY_RUN} -aP ${SRC_CLIPS}/*.MP4 "${DEST_CLIPS}"
+
+echo -e "\n##################################################"
+echo "Moving proxies from ${SRC_PROXIES} to ${DEST_PROXIES}"
+echo
+
+rsync ${DRY_RUN} -aP "${SRC_PROXIES}/" "${DEST_PROXIES}"
+
+rm ${SRC_PICS}/*.{JPG,ARW} ${SRC_CLIPS}/*.{MP4,XML} ${SRC_PROXIES}/*.MP4 ${SRC_VID_ROOT}/THMBNL/*.JPG
