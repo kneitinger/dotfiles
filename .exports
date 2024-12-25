@@ -37,9 +37,6 @@ fi
 
 export FZF_DEFAULT_OPTS="--color='fg:-1,preview-fg:-1,bg+:-1,prompt:6,pointer:14,hl:13,info:13,hl+:13'"
 
-if [ "$(uname)" = 'Linux' ]; then
-	export QT_QPA_PLATFORMTHEME=qt5ct
-fi
 export BROSWER="firefox"
 
 # Important.
