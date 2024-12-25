@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+
+# Sets FnLock on ThinkPad bluetooth keyboard
+/bin/echo -ne "\x18\x05\x00" | dd of="/dev/hidraw$(grep -H 'HID_NAME=ThinkPad Compact' /sys/class/hidraw/hidraw*/device/uevent | cut -d'/' -f5 | tail -c2)" 2>/dev/null
