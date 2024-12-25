@@ -132,8 +132,10 @@ key[PageUp]="${terminfo[kpp]}"
 key[PageDown]="${terminfo[knp]}"
 key[Shift-Tab]="${terminfo[kcbt]}"
 key[Esc-Period]="\e."
+key[Ctrl-H]="^h"
 key[Ctrl-J]="^j"
 key[Ctrl-K]="^k"
+key[Ctrl-T]="^t"
 key[Alt-H]="^[h"
 key[Alt-L]="^[l"
 key[Alt-U]="^[u"
@@ -175,7 +177,23 @@ safe_bind Esc-Period insert-last-word
 
 safe_bind Delete delete-char
 
+if type zoxide &>/dev/null; then
+  eval "$(zoxide init zsh)"
+  zi-widget() { zi; }
+  zle -N zi-widget
+  safe_bind Ctrl-T zi-widget
+  safe_bind Ctrl-H zi-widget
+else
+  echo "Skipping zoxide hook, zoxide not found"
+fi
+
 unfunction safe_bind
+
+if type direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+else
+  echo "Skipping direnv hook, direnv not found"
+fi
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
