@@ -1,0 +1,8 @@
+tom-auger/cmdtime
+# Aloxaf/fzf-tab
+jeffreytse/zsh-vi-mode
+# zsh-users/zsh-autosuggestions
+# marlonrichert/zsh-autocomplete
+Aloxaf/fzf-tab
+# zsh-users/zsh-autosuggestions
+# zsh-users/zsh-autosuggestions

@@ -17,8 +17,12 @@ zstyle ':fzf-tab:*' continuous-trigger \\
 #
 # Imports
 #
+
+# shellcheck source=pkgs/shell/.aliases
 . "$HOME/.aliases"
+# shellcheck source=pkgs/shell/.path
 . "$HOME/.path"
+# shellcheck source=pkgs/shell/.exports
 . "$HOME/.exports"
 
 fpath+=~/.zfunc
@@ -222,6 +226,7 @@ if [[ "$TERM" == alacritty* ]]; then
 	add-zsh-hook -Uz preexec xterm_title_preexec
 fi
 
-for f in "$HOME"/.overrides/*; do
-  source "$f"
+[[ -d ~/.overrides ]] || mkdir ~/.overrides
+for file in ~/.overrides/*; do
+    [[ -f "$file" ]] && source "$file"
 done
