@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+# Zoom H6 file import/normalize script
+# Currently invoked like:
+# SOUND=1 CARD=$(lsblk -plf | grep 'H6_SD' | cut -f1 -d' '); \
+#   (( OFFSET_SECS = $(date +%z) * 60 / 100 )); \
+#   sudo mount -o uid=$(id -u),gid=$(id -g),fmask=0133,dmask=0022,time_offset="${OFFSET_SECS}" $CARD /mnt/zoom_h6
+#
+# then folders moved to ~/art/assets/triage, where this script will pick them up and move them
+# to a standardized location. Additionally this script will update filenames, metadata, etc if
+# the metadata.conf of a recording's folder is updated.
+
+ASSET_BASE="${ASSET_DIR:=$HOME/art/assets}"
+FIELDREC_BASE="${ASSET_BASE}/field_recordings"
+
+raw_projs=$(find "$ASSET_DIR" -type f -name '*.hprj' | grep -v '/orig/')
+
+for prj in $raw_projs; do
+  old_proj_dir="$(dirname "$prj")"
+  timestamp=$(basename -- "$prj")
+  timestamp="${timestamp%.*}"
+
+  new_proj_dir="${FIELDREC_BASE}/${timestamp}-untitled"
+
+  if [ ! -d "$new_proj_dir" ]; then
+    mkdir "$new_proj_dir"
+
+    backup_dir="$new_proj_dir/orig"
+    mkdir "$backup_dir"
+    cp -rf "$old_proj_dir"/* "$backup_dir"
+
+    metadata_file="${backup_dir}/metadata.conf"
+    touch "$metadata_file"
+
+    {
+      echo "shortname=untitled"
+      echo "description="
+      echo "capsule="
+      echo "tr1="
+      echo "tr2="
+      echo "tr3="
+      echo "tr4="
+      echo "machine_dir=$(basename "$old_proj_dir")"
+    } >> "$metadata_file"
+
+    for sound_file in "$old_proj_dir"/*.WAV; do
+      old_name=$(basename -- "$sound_file")
+      old_name="${old_name%.*}"
+      track_id="$(echo "$old_name" | cut -d'_' -f2)"
+
+      if [ "$track_id" == "BU" ]; then
+        continue
+      fi
+
+      new_name="${timestamp}_${track_id}_untitled.wav"
+
+      mv "$sound_file" "${new_proj_dir}/${new_name}"
+    done
+  fi
+
+  rm -rf "$old_proj_dir"
+done
+
+# Standardize deployed projects
+
+# Find dirs we manage by checking for presence of an "orig" child dir
+recording_dirs="$(find "$FIELDREC_BASE" -type d -name 'orig' -print0 | xargs --null dirname)"
+
+for recording_dir in $recording_dirs; do
+  echo "Analyzing $(basename "$recording_dir")"
+  current_id=$(basename "$recording_dir")
+  # Account for folders of recordings and don't assume all recordings
+  # live directly in $FIELDREC_BASE
+  parent_dir="$(dirname "$recording_dir")"
+
+  project_name=$(grep "^shortname" "$recording_dir"/orig/metadata.conf | cut -d'=' -f2)
+  project_name=$(echo "${project_name:-untitled}" | tr -d ' ')
+  echo "proj name = $project_name"
+
+  if [ "$project_name" = "untitled" ]; then
+    echo "  - No project name is set, continuing to next project"
+    echo
+    continue
+  fi
+
+  if [[ ! "$current_id" =~ .*untitled.* ]]; then
+    echo "  - Project does not have default name, not auto renaming."
+    echo
+    continue
+  fi
+
+  new_id="${current_id/untitled/$project_name}"
+  echo "  - Project does have default name, renaming to $new_id"
+
+  echo "  - Renaming any applicable project files"
+  # Rename any project files with "untitled" to replace it with $project_name
+  for project_file in "${recording_dir}"/*untitled*; do
+    file_id=$(basename "$project_file")
+    new_file_id="${file_id/untitled/$project_name}"
+    new_file="$(dirname "$project_file")/$new_file_id"
+    echo "    - mv $(basename "$project_file") $(basename "$new_file")"
+    mv "$project_file" "$new_file"
+  done
+
+  # This seems needlessly complicated instead of just mv'ing $recording_dir,
+  # but its done this way so no earlier "*untitled*" dirs become substitued.
+  echo "  - Renaming project directory"
+  mv "$parent_dir"/"$current_id" "$parent_dir"/"$new_id"
+  echo
+done
+
+find "$FIELDREC_BASE" -type f -exec chmod a-x {} \;
+
+chmod -R g-w,o-w "$FIELDREC_BASE"/*
+chmod -R a+X "$FIELDREC_BASE"/*
