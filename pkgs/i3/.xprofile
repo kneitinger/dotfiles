@@ -1,0 +1,10 @@
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+#picom &
+#batt-notify -p 7 -t 70 0 &
+xset b off
+# Blank screen after 15 minutes of inactivity
+xset s 900 900
+xset dpms 900 1800 3600
+light -S 50
+
+xinput set-prop "ETPS/2 Elantech Touchpad" $(xinput list-props "ETPS/2 Elantech Touchpad" | grep 'Natural Scrolling Enabled (' | sed -E 's/.*\(([0-9]+)\).*/\1/') 1
