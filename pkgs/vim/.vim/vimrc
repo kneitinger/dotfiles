@@ -5,6 +5,9 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Install vimplug if not found
+" TODO - figure out how to bootstrap the install (should be trivial lol, just lazy)
+"   nvim -c "PlugInstall" -c "q" -c "q"
+"   nvim -c "UpdateRemotePlugins" -c "q"
 if has('nvim')
     if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
       silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -17,6 +20,8 @@ else
     endif
 endif
 autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+
+
 
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
