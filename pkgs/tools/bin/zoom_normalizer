@@ -10,7 +10,7 @@
 # to a standardized location. Additionally this script will update filenames, metadata, etc if
 # the metadata.conf of a recording's folder is updated.
 
-ASSET_BASE="${ASSET_DIR:=$HOME/art/assets}"
+ASSET_BASE="${ASSET_DIR:=$HOME/c/art/assets}"
 FIELDREC_BASE="${ASSET_BASE}/field_recordings"
 
 raw_projs=$(find "$ASSET_DIR" -type f -name '*.hprj' | grep -v '/orig/')
