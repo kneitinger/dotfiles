@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=Fairy Floss
-Font=Operator Mono Medium,12,-1,5,316,0,0,0,0,0,0,0,0,0,0,1,Regular
+Font=Operator Mono Medium,11,-1,5,316,0,0,0,0,0,0,0,0,0,0,1,Regular
 
 [General]
 Name=Kyle
@@ -11,3 +11,6 @@ UnderlineFilesEnabled=true
 
 [Scrolling]
 HistoryMode=2
+
+[Terminal Features]
+LineNumbers=0

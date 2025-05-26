@@ -4,8 +4,14 @@ DefaultProfile=Kyle.profile
 [General]
 ConfigVersion=1
 
+[KonsoleWindow]
+RememberWindowSize=false
+
 [MainWindow]
-ToolBarsMovable=Disabled
+MenuBar=Enabled
+
+[MemorySettings]
+MemoryLimitValue=1024
 
 [UiSettings]
 ColorScheme=
