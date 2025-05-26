@@ -6,6 +6,8 @@
 
 ZVM_INIT_MODE=sourcing
 
+source /etc/profile
+
 # shellcheck source=/dev/null
 source "${ZDOTDIR:-$HOME}"/.antidote/antidote.zsh
 antidote load
@@ -187,8 +189,6 @@ if type zoxide &>/dev/null; then
   zle -N zi-widget
   safe_bind Ctrl-T zi-widget
   safe_bind Ctrl-H zi-widget
-else
-  echo "Skipping zoxide hook, zoxide not found"
 fi
 
 unfunction safe_bind

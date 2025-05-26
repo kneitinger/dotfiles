@@ -3,8 +3,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-  *i*) ;;
-  *) return;;
+*i*) ;;
+*) return ;;
 esac
 
 for file in ~/.{aliases,path,exports,additional}; do
@@ -27,3 +27,9 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a; history -n"
+# shellcheck source=/dev/null
+. "$HOME/.cargo/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/leaf/.lmstudio/bin"
+# End of LM Studio CLI section
