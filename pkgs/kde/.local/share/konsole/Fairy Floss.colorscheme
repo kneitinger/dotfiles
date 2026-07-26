@@ -1,5 +1,5 @@
 [Background]
-Color=90,83,118
+Color=91,83,119
 RandomHueRange=360
 RandomSaturationRange=100
 
@@ -106,7 +106,7 @@ Blur=true
 ColorRandomization=false
 Description=Fairy Floss
 FillStyle=Tile
-Opacity=0.68
+Opacity=0.74
 Wallpaper=
 WallpaperFlipType=NoFlip
 WallpaperOpacity=1
