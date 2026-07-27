@@ -1,27 +1,24 @@
 #!/usr/bin/env bash
 #shellcheck disable=SC2016,SC2230
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
 EDITOR=$(which nvim || which vim)
 GIT_EDITOR=$EDITOR
 
 export EDITOR
 export GIT_EDITOR
 
-# Indicates which terminal i3-sensible-terminal should try to spawn first
-if [ "$(uname)" = "Linux" ]; then
-  export TERMINAL=alacritty
-fi
-
 # Use United States English
-export LANG="en_US.UTF-8";
-export LC_ALL="en_US.UTF-8";
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 export PAGER=less
 
-if [ "$(uname)" = 'FreeBSD' ]; then
-    export CCACHE_DIR="$HOME/.ccache"
-    export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-  elif [ -r "$HOME/.dircolors" ] && [ "$(uname)" != "Darwin" ]; then
+if [ -r "$HOME/.dircolors" ] && [ "$(uname)" != "Darwin" ]; then
     eval "$(dircolors -b "$HOME/.dircolors")"
 fi
 
@@ -29,15 +26,7 @@ if [ "$(uname)" = 'Darwin' ]; then
     export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
-#export FZF_DEFAULT_COMMAND='fd --type file'
-#FZF_HOME_DETECT='$([ "${PWD}" = "${HOME}" ] && echo "${HOME}" || echo ". ${HOME}")'
-#export FZF_ALT_C_COMMAND="fd -p -t d . $FZF_HOME_DETECT"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND . $HOME"
-#export FZF_CTRL_T_OPTS="--preview='head -n\$FZF_PREVIEW_LINES {}'"
-
 export FZF_DEFAULT_OPTS="--color='fg:-1,preview-fg:-1,bg+:-1,prompt:6,pointer:14,hl:13,info:13,hl+:13'"
-
-export BROSWER="firefox"
 
 # Important.
 export ANSIBLE_COW_SELECTION=milk
