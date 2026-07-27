@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 
-# Aliases and typo remediation!
-
-alias xlt='xautolock -toggle'
 if [ "$TERM" = 'alacritty' ]; then
     alias se='TERM=xterm-256color sudoedit'
 else
     alias se='sudoedit'
 fi
-alias vim='nvim'
-alias cim='nvim'
-alias bim='nvim'
 
-alias car='cat'
-alias packer='packer-io'
+alias vim='nvim'
 
 # Directory traversal
 alias ..='cd ..'
@@ -31,57 +24,36 @@ fi
 alias la='ls -a'
 alias lal='ls -lha'
 alias ll='ls -lh'
-alias sl='ls'
-alias lls='ls'
 alias ks='ls'
 
 # Always ask before overwriting a file with mv or cp
 alias mv='mv -i'
 alias cp='cp -i'
 
-# Open pcmanfm in current directory
-alias pc='2>/dev/null 1>&2 pcmanfm & disown'
-
 # Allow sudo-ing aliases...no idea why this works
 alias sudo='sudo '
-
-# Clean up LaTeX build files
-alias latexclean='rm -rf *.{aux,fdb_latexmk,fls,log,out,synctex.gz} _minted*'
 
 # ZFS Aliases
 alias zsnap='zfs list -t snap'
 alias zsnaps='zfs list -t snap'
 alias zprops='zfs get all'
 
-# Like cat but more fun
-alias dog='pygmentize -g'
-
-# Fix bug where slack becomes unresponsive when dpms suspend occurs
-# Per aur.archlinux.org/packages/slack-desktop/
-# under '1ouis commented on 2018-11-15 06:36'
-alias slack='slack --disable-gpu'
-
 # cats out all files in child directories. get it cat child heh heh
-kittens () {
+kittens() {
     tree
     find . -type f -exec echo -e "\\n***************{}***************" \; -exec cat {} \;
 }
 
-# Removes duplicate ssh known_hosts entries
-host-clear () {
-    sed -i "$1d" "$HOME/.ssh/known_hosts"
-}
-
 # Create directory and cd into it
-mkcd () {
+mkcd() {
     mkdir "$1"
     cd "$1" || exit
 }
 
 # git status -> vim
 # Finds untracked, added, and modified files in git repo and opens them in vim
-gsv () {
-    if git status &> /dev/null; then
+gsv() {
+    if git status &>/dev/null; then
         mapfile -t changed_files < <(git status --short | grep -E '^(\?\?|A | M) ' | cut -c '4-')
         vim "${changed_files[@]}"
     else
@@ -91,10 +63,10 @@ gsv () {
 
 # Fuzzy find opener
 # Passes result of fzf to command specified as arg
-ff () {
+ff() {
     CMD=$1
     # vim -> nvim alias not recognized inhis function, so account for it
-    if nvim -v > /dev/null 2>&1 && [ "$1" == "vim" ]; then
+    if nvim -v >/dev/null 2>&1 && [ "$1" == "vim" ]; then
         CMD="nvim"
     fi
 
@@ -107,25 +79,81 @@ ff () {
     fi
 }
 
-note () {
-  NOTE_DIR=${NOTE_DIR:-"$HOME/notes"}
-  [ -d "$NOTE_DIR" ] || mkdir "$NOTE_DIR"
-  vim "$NOTE_DIR/${*// /_}"
-}
-
-mon_brightness () {
-  for d in $(ddcutil detect | sed -n 's/^Display \([0-9]\)/\1/p'); do
-    ddcutil setvcp 10 "$1" -d "$d"
-  done
-}
-
 if [ "$(uname)" != "Darwin" ]; then
     alias open="xdg-open"
 fi
 
-# Cargo aliases
-alias cbd="cargo build"
-alias crd="cargo run"
-alias cb="cargo build --release"
-alias cr="cargo run --release"
-alias ct="cargo test"
+cargo-example-run() {
+    local workspace_root package_root query_cmd preview_cmd selection cmd target_dir
+
+    # Use argument as target directory, or stay in current directory
+    target_dir="${1:-.}"
+
+    # Push to target directory if provided
+    if [ "$target_dir" != "." ]; then
+        pushd "$target_dir" >/dev/null || {
+            echo "Failed to cd to $target_dir"
+            return 1
+        }
+    fi
+
+    # Setup trap to popd on exit/return
+    trap 'popd >/dev/null 2>&1' EXIT
+
+    # Exit if not in a rust project
+    workspace_root=$(cargo locate-project --workspace --message-format plain | xargs dirname)
+    if [ -z "$workspace_root" ]; then
+        echo "Not in a cargo workspace, exiting."
+        return 1
+    fi
+
+    # FZF setup
+    query_cmd="cargo metadata --no-deps --format-version 1 | jq -r '.packages[].targets[] | select(.kind[] == \"example\") | .src_path'"
+    preview_cmd="head -n100 {} | grep ^//! | cut -b4-"
+    selection=$(eval "$query_cmd" | fzf --preview-window wrap-word --preview "$preview_cmd")
+
+    # Exit if no selection made
+    if [ -z "$selection" ]; then
+        echo "No example selected, exiting."
+        return 1
+    fi
+
+    # Determing the package root of the selected example. Done to support workspaces where the example may not be in the root package
+    package_root=$(pushd "$(dirname "$selection")" >/dev/null && cargo locate-project --message-format plain | xargs dirname && popd >/dev/null || exit 1)
+
+    # Enable additional features for certain examples
+    additional_features() {
+        features=()
+
+        # Repo specific features
+        case $(basename $workspace_root) in
+        *) ;;
+        esac
+
+        # Package specific features
+        case $(basename "$package_root") in
+        "bevy") features+=("wayland") ;;
+        *) ;;
+        esac
+
+        # Example specific features
+        case $(basename "$selection" .rs) in
+        #"change_detection") features+=("track_location") ;;
+        *) ;;
+        esac
+
+        if [ ${#features[@]} -gt 0 ]; then
+            echo "$(
+                IFS=,
+                echo "${features[*]}"
+            )"
+        else
+            echo ""
+        fi
+    }
+
+    cmd="cargo run --package=$(basename "$package_root") --features=$(additional_features) --example $(basename "$selection" .rs)"
+
+    echo "Running: ${cmd}"
+    eval "$cmd"
+}
