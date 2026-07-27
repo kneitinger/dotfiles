@@ -41,5 +41,3 @@ export BROSWER="firefox"
 
 # Important.
 export ANSIBLE_COW_SELECTION=milk
-
-export ASSET_DIR="${HOME}/art/assets"
