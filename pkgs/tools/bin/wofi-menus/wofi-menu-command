@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+
+# 1. Capture what you type into a variable
+cmd=$(wofi --location top --show run -D run-print_command=true --insensitive)
+
+# 2. If you actually typed something (didn't press Esc)
+if [[ -n "$cmd" ]]; then
+    # Launch Konsole and execute the command inside Zsh
+    konsole -e zsh -c "$cmd"
+fi

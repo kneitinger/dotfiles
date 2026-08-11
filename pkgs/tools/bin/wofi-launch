@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# A top-level launcher tool that spawns subsequent wofi instances for each of the submenus.
+# This is the main entry point for the wofi menu system.
+
+# An array of submenu display names.
+SUBMENUS=(
+    "Emojis"
+    "Apps"
+    "Command"
+    "Sound"
+)
+
+selection="$(printf '%s\n' "${SUBMENUS[@]}" | wofi --dmenu --sort-order alphabetical --prompt "Select submenu" --lines "${#SUBMENUS[@]}")" || exit 0
+
+if [[ -n "$selection" ]]; then
+    selection_lower="$(printf '%s' "$selection" | tr '[:upper:]' '[:lower:]')"
+    exec "$HOME/bin/wofi-menus/wofi-menu-${selection_lower}"
+fi

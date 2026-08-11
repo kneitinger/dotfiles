@@ -1,0 +1,147 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Add device name fragments here to hide them from the picker.
+# Example: OMIT_DEVICE_PARTS=("Monitor of" "Virtual")
+OMIT_DEVICE_PARTS=(
+    "easyeffects"
+)
+
+if ! command -v pactl >/dev/null 2>&1; then
+    echo "pactl is required" >&2
+    exit 1
+fi
+
+if ! command -v wofi >/dev/null 2>&1; then
+    echo "wofi is required" >&2
+    exit 1
+fi
+
+should_skip_device() {
+    local device="$1"
+    local pattern
+
+    for pattern in "${OMIT_DEVICE_PARTS[@]}"; do
+        if [[ "$device" == *"$pattern"* ]]; then
+            return 0
+        fi
+    done
+
+    return 1
+}
+
+build_display_label() {
+    local name="$1"
+    local description="$2"
+
+    if [[ -n "$description" ]]; then
+        if [[ "$description" != *"$name"* ]]; then
+            printf '%s (%s)' "$description" "$name"
+        else
+            printf '%s' "$description"
+        fi
+    else
+        printf '%s' "$name"
+    fi
+}
+
+find_matching_source() {
+    local sink_name="$1"
+    local source_name=""
+    local sink_key=""
+    local source_key=""
+
+    sink_key="${sink_name%.monitor}"
+    case "$sink_key" in
+        alsa_output.*) sink_key="${sink_key#alsa_output.}" ;;
+        bluez_output.*) sink_key="${sink_key#bluez_output.}" ;;
+        alsa_input.*) sink_key="${sink_key#alsa_input.}" ;;
+        bluez_input.*) sink_key="${sink_key#bluez_input.}" ;;
+    esac
+    sink_key="${sink_key%.*}"
+
+    while IFS= read -r source_name; do
+        [[ -z "$source_name" ]] && continue
+        [[ "$source_name" == *.monitor ]] && continue
+        [[ "$source_name" != *"input"* ]] && continue
+
+        source_key="${source_name%.monitor}"
+        case "$source_key" in
+            alsa_input.*) source_key="${source_key#alsa_input.}" ;;
+            bluez_input.*) source_key="${source_key#bluez_input.}" ;;
+            alsa_output.*) source_key="${source_key#alsa_output.}" ;;
+            bluez_output.*) source_key="${source_key#bluez_output.}" ;;
+        esac
+        source_key="${source_key%.*}"
+
+        if [[ "$source_key" == "$sink_key" ]]; then
+            printf '%s\n' "$source_name"
+            return 0
+        fi
+    done < <(pactl list short sources | awk '{print $2}')
+
+    return 1
+}
+
+current_sink="$(pactl info | awk -F': ' '/Default Sink:/ {print $2}')"
+
+declare -a sink_names=()
+declare -a sink_labels=()
+declare -a menu_entries=()
+
+while IFS='|' read -r name description; do
+    if [[ -z "$name" ]]; then
+        continue
+    fi
+
+    if should_skip_device "$name"; then
+        continue
+    fi
+
+    label="$(build_display_label "$name" "$description")"
+    if [[ "$name" == "$current_sink" ]]; then
+        label="* $label"
+    fi
+
+    sink_names+=("$name")
+    sink_labels+=("$label")
+    menu_entries+=("$label"$'\t'"$name")
+
+done < <(
+    pactl list sinks | awk '
+        /^[[:space:]]*Name:[[:space:]]*/ {
+            name=$0
+            sub(/^[[:space:]]*Name:[[:space:]]*/, "", name)
+            next
+        }
+        /^[[:space:]]*Description:[[:space:]]*/ {
+            description=$0
+            sub(/^[[:space:]]*Description:[[:space:]]*/, "", description)
+            print name "|" description
+        }
+    '
+)
+
+if [[ ${#sink_names[@]} -eq 0 ]]; then
+    echo "No audio sinks available" >&2
+    exit 1
+fi
+
+choice="$(printf '%s\n' "${menu_entries[@]}" | wofi --dmenu --prompt 'Select default audio device' --insensitive)"
+
+if [[ -z "$choice" ]]; then
+    exit 0
+fi
+
+selected_name="$(printf '%s' "$choice" | awk -F '\t' '{print $2}')"
+
+if [[ -z "$selected_name" ]]; then
+    exit 0
+fi
+
+pactl set-default-sink "$selected_name"
+
+matching_source="$(find_matching_source "$selected_name" || true)"
+if [[ -n "$matching_source" ]]; then
+    pactl set-default-source "$matching_source"
+fi

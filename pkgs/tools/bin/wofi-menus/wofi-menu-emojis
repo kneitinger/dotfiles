@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bemoji -c -n -f /home/leaf/.local/share/bemoji/emojis.txt --filter skintone=light
