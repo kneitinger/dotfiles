@@ -96,7 +96,8 @@ color () {
     printf "%%F{$1}%s%%f" "$text"
 }
 
-PROMPT=
+# Exit status if non-zero
+PROMPT="%(?..(%?%) )"
 # Yellow user
 PROMPT+="$(color 11 %n) "
 # Salmon host
@@ -111,7 +112,8 @@ PROMPT="$(boldital "$PROMPT") "
 # %D -> YY-MM-DD
 # %* -> HH:MM:SS (24 hr)
 # %? -> previous command integer exit status
-RPROMPT="%D %* (%?)"
+# RPROMPT="%D %* (%?)"
+RPROMPT=
 
 # Undefine functions used in the prompt string generation
 unfunction boldital color
@@ -148,13 +150,12 @@ key[Alt-U]="^[u"
 key[Alt-Shift-H]="^[H"
 key[Alt-Shift-L]="^[L"
 
-
-safe_bind () {
+safe_bind() {
   # $1 -> key (in $key array), such as "Delete"
   # $2 action, such as history-search-end
-  [[ -n "${key[$1]}" ]] \
-    && bindkey -- "${key[$1]}" "$2" \
-    || echo "No value set for \${key[$1]}. Not mapping $2"
+  [[ -n "${key[$1]}" ]] &&
+      bindkey -- "${key[$1]}" "$2" ||
+      echo "No value set for \${key[$1]}. Not mapping $2"
 }
 
 # Up/Ctrl-k and Down/Ctrl-j search through history beginning with what
