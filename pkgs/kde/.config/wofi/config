@@ -1,0 +1,6 @@
+matching=fuzzy
+insensitive=true
+dynamic_lines=true
+
+width=25%
+location=top

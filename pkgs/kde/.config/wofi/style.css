@@ -1,0 +1,15 @@
+window {
+    font-size: 32px;
+    border-radius: 0.6em;
+}
+
+
+#entry image {
+    margin-right: 0.5em;
+}
+
+
+#outer-box {
+    margin: 6px;
+    border-radius: 0.6em;
+}
