@@ -3,6 +3,31 @@
 # A top-level launcher tool that spawns subsequent wofi instances for each of the submenus.
 # This is the main entry point for the wofi menu system.
 
+active_menu_pids() {
+    pgrep -af 'wofi-menu-|wofi .*--dmenu.*--prompt.*Select submenu' 2>/dev/null |
+        awk -v self="$$" -v parent="${PPID:-0}" '
+            $1 != self && $1 != parent { print $1 }
+        ' |
+        sort -u || true
+}
+
+close_active_menu() {
+    local pid
+
+    while read -r pid; do
+        [[ -z "$pid" ]] && continue
+        if kill -0 "$pid" 2>/dev/null; then
+            pkill -TERM -P "$pid" 2>/dev/null || true
+            kill -TERM "$pid" 2>/dev/null || true
+        fi
+    done < <(active_menu_pids)
+}
+
+if [[ -n "$(active_menu_pids)" ]]; then
+    close_active_menu
+    exit 0
+fi
+
 # An array of submenu display names.
 SUBMENUS=(
     "Emojis"
