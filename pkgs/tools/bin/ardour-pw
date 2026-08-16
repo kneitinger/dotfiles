@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+
+# Launches Ardour with a dialog to select an existing session or create a new one,
+# and allows the user to choose a sample rate for new sessions. It also ensures that
+# the correct sample rate is set in PipeWire for the session being launched.
+
+ARDOUR_EXE=$(find /usr/bin/ardour* 2>/dev/null | sort | head -n 1)
+
+if [[ -z "$ARDOUR_EXE" ]]; then
+    echo "Ardour executable not found."
+    exit 1
+fi
+
+PIPEWIRE_CONF="$HOME/.config/pipewire/pipewire.conf.d/pipewire.conf"
+
+get_allowed_rates() {
+    local conf="$1"
+    local rates=()
+
+    if [[ -f "$conf" ]]; then
+        while IFS= read -r line; do
+            if [[ "$line" =~ default\.clock\.allowed-rates[[:space:]]*=[[:space:]]*\[(.*)\] ]]; then
+                for rate in ${BASH_REMATCH[1]}; do
+                    rates+=("$rate")
+                done
+                break
+            fi
+        done < "$conf"
+    fi
+
+    printf '%s\n' "${rates[@]}"
+}
+
+select_session_type() {
+    kdialog --title "Open Ardour" --menu "Start with an existing session or create a new one?" \
+        "existing" "Existing session" \
+        "new" "New session" 2>/dev/null
+}
+
+select_sample_rate() {
+    local rates=("$@")
+    local menu_args=()
+
+    if [[ ${#rates[@]} -eq 0 ]]; then
+        echo ""
+        return 0
+    fi
+
+    for rate in "${rates[@]}"; do
+        menu_args+=("$rate" "$rate")
+    done
+
+    kdialog --title "Select sample rate" --menu "Choose the sample rate for the new Ardour session" \
+        "${menu_args[@]}" 2>/dev/null
+}
+
+SESSION_MODE=$(select_session_type)
+if [[ $? -ne 0 ]] || [[ -z "$SESSION_MODE" ]]; then
+    echo "Selection canceled."
+    exit 0
+fi
+
+case "$SESSION_MODE" in
+    existing)
+        SESSION_FILE=$(kdialog --title "Select Ardour Session" --getopenfilename "$HOME" "*.ardour" 2>/dev/null)
+
+        if [[ $? -ne 0 ]] || [[ -z "$SESSION_FILE" ]]; then
+            echo "Selection canceled."
+            exit 0
+        fi
+
+        echo "Session chosen: $SESSION_FILE"
+
+        if [[ -f "$SESSION_FILE" && "$SESSION_FILE" == *.ardour ]]; then
+            RATE=$(grep -oP 'sample-rate="\K[0-9]+' "$SESSION_FILE" | head -n 1)
+
+            if [[ -n "$RATE" ]]; then
+                echo "Forcing PipeWire to ${RATE}Hz for this session..."
+                PIPEWIRE_RATE="1/$RATE" "$ARDOUR_EXE" -n "$SESSION_FILE" "$@"
+                exit 0
+            fi
+        fi
+
+        "$ARDOUR_EXE" -n "$SESSION_FILE" "$@"
+        ;;
+    new)
+        mapfile -t RATES < <(get_allowed_rates "$PIPEWIRE_CONF")
+
+        if [[ ${#RATES[@]} -eq 0 ]]; then
+            echo "No allowed sample rates found in $PIPEWIRE_CONF; using 48000Hz."
+            RATE="48000"
+        else
+            RATE=$(select_sample_rate "${RATES[@]}")
+
+            if [[ -z "$RATE" ]]; then
+                echo "Selection canceled."
+                exit 0
+            fi
+        fi
+
+        echo "Starting a new Ardour session at ${RATE}Hz..."
+        PIPEWIRE_RATE="1/$RATE" "$ARDOUR_EXE" -n "$@"
+        ;;
+    *)
+        echo "Unknown selection."
+        exit 1
+        ;;
+esac
