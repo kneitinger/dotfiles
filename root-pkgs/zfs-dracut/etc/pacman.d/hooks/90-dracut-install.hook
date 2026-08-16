@@ -1,0 +1,18 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/pkgbase
+
+#[Trigger]
+#Type = Package
+#Operation = Install
+#Operation = Upgrade
+#Target = zfs*
+
+[Action]
+Description = Updating linux initcpios (with dracut!)...
+When = PostTransaction
+Exec = /usr/local/bin/dracut-install.sh
+Depends = dracut
+NeedsTargets
