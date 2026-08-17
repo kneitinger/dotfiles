@@ -211,22 +211,6 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 fi
 
 
-autoload -Uz add-zsh-hook
-
-function xterm_title_precmd () {
-	print -Pn -- '\e]2;%n@%m %~\a'
-}
-
-function xterm_title_preexec () {
-  # shellcheck disable=SC2296
-	print -Pn -- '\e]2;%n@%m %~ %# ' && print -n -- "${(q)1}\a"
-}
-
-if [[ "$TERM" == alacritty* ]]; then
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
-fi
-
 [[ -d ~/.overrides ]] || mkdir ~/.overrides
 for file in ~/.overrides/*; do
     [[ -f "$file" ]] && source "$file"
