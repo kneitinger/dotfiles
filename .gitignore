@@ -1,5 +1,7 @@
 # Package runtime files
 pkgs/i3/.i3/config
 pkgs/i3/.i3/.config_backup
+
 pkgs/vim/.vim/cache/
 pkgs/vim/.vim/bundle/
+pkgs/vim/.vim/autoload/
